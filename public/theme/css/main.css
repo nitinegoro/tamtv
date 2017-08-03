@@ -32,11 +32,13 @@ div.c3 {
 	margin-top: 10px;
 	margin-bottom: 0px;
 	border-bottom: 1px solid #F0F0F0;
+  background-color: white;
 }
 .navbar-brand > img.main-logo {
 	width: 140px;
 	margin-top: -10px;
 }
+
 
 .navbar-form {
   margin-left: 75px;
@@ -174,6 +176,23 @@ nav.navbar-default  .navbar-nav > .disabled > a:focus {
 .navbar-default .navbar-nav > .open > a:focus {
   background-color: #e7e7e7;
   color: #555555;
+}
+
+/*  NAVBAR STICKy */
+a.sticky-logo > img.main-logo {
+  margin-top: -6px;
+  width: 80px;
+}
+.navbar-sticky {
+  background-color: white;
+  margin-bottom: -40px;
+}
+
+/*  MODE VIDIO NAVBAR */
+.mode-vidio {
+  background-color: black;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .content-wrapper {
@@ -456,4 +475,61 @@ div.navigation-footer > ul.social-icon  li {
 }
 div.navigation-footer > ul.social-icon > li > a img {
   width: 30px;
+}
+
+/*  SINGLE CONTENT */
+div.single-content {
+  padding-top: 30px;
+}
+div.single-content > h1 {
+  font-weight: 600;
+  font-size: 22pt;
+}
+
+/*  BREADCRUMBS */
+.content-breadcrumb > ul.breadcrumb {
+  background-color: transparent;
+  font-family: 'Cabin', sans-serif;
+  margin-left: -13px;
+}
+.content-breadcrumb > ul.breadcrumb > li a {
+  color: grey
+}
+
+/* AUTHOR BOX */
+div.author-box {
+  padding-top: 10px;
+}
+div.author-box > .media {
+  width: 50%;
+  float: left;
+  font-family: 'Cabin', sans-serif;
+}
+div.author-box > .media > .media-body > a {
+  font-weight: 600;
+  color: grey;
+  cursor: pointer;
+}
+div.author-box > .media > .media-body > small {
+  color: silver;
+}
+article.content-news {
+  margin-top: 20px;
+  font-family: 'Cabin', sans-serif;
+  color: grey;
+  font-size: 12pt;
+}
+article.content-news > figure {
+  border-bottom: 1.2px solid #EEEEEE;
+  margin-bottom: 20px;
+}
+article.content-news > figure > figcaption {
+  color: grey;
+  font-size: 9pt;
+  padding: 10px;
+  font-style: italic;
+}
+article.content-news > p {
+  line-height: 1.5em;
+  padding-bottom: 7px;
 }
