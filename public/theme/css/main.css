@@ -698,14 +698,14 @@ div.box-searching > input {
 input.form, 
 select.form {
   outline: none;
+  box-sizing: border-box;
+  border:1px solid grey;
 }
 input.form:focus, 
 select.form:focus {
   border-color: blue;
 }
 input.form {
-    padding: 10px 10px;
-    box-sizing: border-box;
-    outline: none;
+    padding: 0px 10px;
     border:1px solid grey;
 }
