@@ -204,6 +204,7 @@ h1.live-title {
 .content-wrapper {
    margin-top: 15px;
    padding-bottom: 30px;
+   min-height: 550px;
 }
 
 .adsvertising {
@@ -520,6 +521,7 @@ div.author-box > .media > .media-body > small {
   color: silver;
 }
 article.content-news {
+  text-align: justify-all;
   margin-top: 20px;
   font-family: 'Arial', sans-serif;
   letter-spacing: 1px;
@@ -539,13 +541,16 @@ article.content-news > figure > figcaption {
   font-style: italic;
 }
 article.content-news > p {
-  line-height: 1.5em;
   padding-bottom: 7px;
 }
 
 article.content-news > ul, 
 article.content-news > ol {
   margin-left: -20px;
+}
+article.content-page > ul > li > p, 
+article.content-page > ol > li > p {
+  margin-bottom: 10px;
 }
 article.content-news > h1,
 article.content-news > h2,
@@ -645,3 +650,62 @@ div.item-vidio > a:hover {
   text-decoration: none;
   color: #F4F4F4;
 } 
+
+.border-bottom {
+  border-bottom: 1.2px solid #EEEEEE;
+  padding-bottom: 20px;
+}
+
+/*  LOGIN  */
+div.box-login {
+  font-family: 'Cabin', sans-serif;
+  margin-top: 50px;
+}
+div.box-login > p {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+button.btn-social,
+a.btn-social {
+  width: 45%;
+  font-weight: 600;
+}
+button.btn-social > i.fa,
+a.btn-social > i.fa {
+  padding-right: 5px;
+}
+
+/* HELPER */
+div.left-pad {
+  padding-left: -70px;
+}
+
+.btn {
+  font-weight: 600;
+}
+
+/* BOX SEARCHING */
+div.box-searching {
+  margin-top: 20px;
+  padding-bottom: 50px;
+}
+div.box-searching > select,
+div.box-searching > input {
+  margin-right: 15px;
+}
+input.form, 
+select.form {
+  outline: none;
+}
+input.form:focus, 
+select.form:focus {
+  border-color: blue;
+}
+input.form {
+    padding: 10px 10px;
+    box-sizing: border-box;
+    outline: none;
+    border:1px solid grey;
+}
