@@ -22,11 +22,11 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->helper('url');
 		$config['image_library'] = 'gd2';
-		$config['source_image'] = './public/image/gambar.jpg';
+		$config['source_image'] = './public/bkkbn.png';
 		$config['create_thumb'] = TRUE;
 		$config['maintain_ratio'] = TRUE;
-		$config['width']         = 600;
-		$config['height']       = 450;
+		$config['width']         = 700;
+		$config['height']       = 550;
 
 		$this->load->library('image_lib', $config);
 
@@ -38,16 +38,15 @@ class Welcome extends CI_Controller {
 		} else {
                         
 			$imgConfig['image_library']   = 'gd2';                    
-			$imgConfig['source_image'] = './public/image/gambar_thumb.jpg';       
-			$imgConfig['wm_overlay_path'] = './public/image/site/logo.png';            
+			$imgConfig['source_image'] = './public/bkkbn_thumb.png';       
+			$imgConfig['wm_overlay_path'] = './public/image/site/logo-watermark.png';            
 			$imgConfig['wm_type'] = 'overlay';
-			$imgConfig['wm_opacity'] = 50;
 
-            $imgConfig['padding'] = 90;
+            $imgConfig['padding'] = 20;
 			$imgConfig['wm_hor_offset'] = 5;
 			$imgConfig['wm_vrt_offset'] = 5;
 			$imgConfig['wm_vrt_alignment'] = 'bottom';
-			$imgConfig['wm_hor_alignment'] = 'left';
+			$imgConfig['wm_hor_alignment'] = 'right';
 			                        
 			$this->load->library('image_lib', $imgConfig);
 			                        
@@ -56,7 +55,7 @@ class Welcome extends CI_Controller {
 			if( ! $this->image_lib->watermark() )
 				echo $this->image_lib->display_errors(); 
 
-			echo "<img src='".base_url("public/image/gambar_thumb_thumb.jpg")."'/>";
+			echo "<img src='".base_url("public/bkkbn_thumb_thumb.png")."'/>";
 		}
 	}
 }

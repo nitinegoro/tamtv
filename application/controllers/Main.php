@@ -44,9 +44,9 @@ class Main extends Web
 
 	public function update($value='')
 	{
-		foreach ($this->db->get('tags')->result() as $row) 
+		foreach ($this->db->get('posts')->result() as $row) 
 		{
-			$this->db->update('tags', array('slug' => $this->slug->create_slug($row->name)), array('tag_id' => $row->tag_id));
+			$this->db->update('posts', array('post_slug' => $this->slug->create_slug($row->post_title)), array('ID' => $row->ID));
 		}
 	}
 

@@ -215,7 +215,7 @@ h1.live-title {
 .featured-news {
   width: 100%;
   margin-top: 15px;
-  min-height: 600px;
+  min-height: 570px;
 }
 
 .item-box-related {
@@ -252,6 +252,10 @@ h1.live-title {
 .item-featured > .item-content {
   font-size: 9pt;
   letter-spacing: 0.7px;
+}
+.item-featured > time {
+  font-size: 9pt;
+  font-style: italic;
 }
 
 .item-box-related > h4.related-heading {

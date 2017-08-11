@@ -33,7 +33,11 @@ class Web extends MY_Controller
 			$this->user_login = $this->session->userdata('user_login');
 
 		$this->load->model(
-			array('menus', 'options','themes')
+			array('menus', 'options','themes', 'tags','posts')
+		);
+
+		$this->load->helper(
+			array('text', 'form')
 		);
 
 		//$this->load->js(base_url("public/dist/js/push.min.js?v1.0.1"));

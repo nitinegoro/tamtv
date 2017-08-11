@@ -6,7 +6,9 @@ class Themes extends CI_Model
 	public function layout($layout = 'content-index')
 	{
 		return $this->db->query("
-			SELECT meta_name, meta_key, meta_value FROM themesmeta WHERE status = 'yes' ORDER BY position ASC
+			SELECT meta_name, meta_key, meta_value FROM themesmeta 
+				WHERE status = 'yes' AND layout = '{$layout}'
+			ORDER BY position ASC
 		")->result();
 	}
 	

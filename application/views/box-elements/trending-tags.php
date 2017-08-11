@@ -7,12 +7,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $box = $this->themes->get('trending-tags');
 
-$tags = $this->db->query()
+$tags = json_decode($box->meta_value);
 ?>
 <div class="box-topic-tag">
 	<h3 class="sidebar-heading"><?php echo $box->meta_name ?></h3>
 	<ul class="list-topic-tag">
-		<li><a href="">Lorem ipsum dolor.</a></li>
+	<?php  
+		foreach ($this->tags->box($tags->limit) as $row) 
+		{
+			echo '<li><a href="'.base_url("tag/{$row->slug}").'">'.$row->name.'</a></li>';
+		}
+	?>
 	</ul>
 </div>
 <?php
