@@ -14,7 +14,7 @@ class Posts extends CI_Model
 
 	public function get()
 	{
-		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_modified, post_excerpt');
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_modified, post_excerpt, comment_status, poll_status');
 
 		switch ($this->permalink_type) 
 		{
@@ -136,6 +136,17 @@ class Posts extends CI_Model
 		$this->db->group_by('name');
 		
 		return $this->db->get('posttags')->result();
+	}
+
+	public function get_post_author($post = 0)
+	{
+		$this->db->select('fullname, avatar, username');
+
+		$this->db->join('posts', 'users.ID = posts.post_author', 'inner');
+
+		$this->db->where('posts.ID', $post);
+
+		return $this->db->get('users')->row();
 	}
 
 	public function similar($tags = 0, $not_post = 0, $limit = 6, $offset = 0)

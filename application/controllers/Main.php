@@ -41,6 +41,11 @@ class Main extends Web
 		$this->template->view('index', $this->data);
 	}
 
+	/**
+	 * Detail POST
+	 *
+	 * @param string uri_segment (1, 2, 3)
+	 **/
 	public function getpost()
 	{
 		$post = $this->posts->get();
@@ -64,7 +69,7 @@ class Main extends Web
 		$this->meta_tags->set_meta_tag('description', strip_tags(word_limiter($post->post_content, 13)) );
 
 		if( $category )
-			$this->breadcrumbs->unshift(1, $category->name, "category/slug/{$category->slug}");
+			$this->breadcrumbs->unshift(1, $category->name, "category/{$category->slug}");
 
 		$this->breadcrumbs->unshift(2, $post->post_title, "/");
 
@@ -76,6 +81,23 @@ class Main extends Web
 		);
 
 		$this->template->view('single', $this->data);
+	}
+
+	/**
+	 * Index of live streaming
+	 *
+	 **/
+	public function live()
+	{
+		$this->meta_tags->set_meta_tag('title', $this->options->get('sitename') );
+		$this->meta_tags->set_meta_tag('news_keywords', '' );
+		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
+
+		$this->data = array(
+			'title' => $this->options->get('sitename')	
+		);
+
+		$this->template->view('live-streaming', $this->data);
 	}
 
 

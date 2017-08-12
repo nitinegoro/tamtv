@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 *
 			 * @param string ( themes layout )
 			 **/
-			foreach ($this->themes->layout('sidebar-index') as $row) 
+			foreach ($this->themes->layout('sidebar-live') as $row) 
 			{
 				$this->load->view('box-elements/'.$row->meta_key);
 			}
@@ -26,5 +26,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</div>
 <?php
-/* End of file right-sidebar.php */
-/* Location: ./application/views/sidebar-index.php */
+/* End of file sidebar-live.php */
+/* Location: ./application/views/sidebar-live.php */

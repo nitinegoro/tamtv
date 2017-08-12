@@ -53,6 +53,8 @@ $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/* STATIC ROUTE */
+$route['live'] = 'main/live';
 
 /**
  * Generate Route SEO Freindly

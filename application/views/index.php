@@ -26,11 +26,17 @@ if (isset($content))
     echo $content;
 }
 
-if($this->router->fetch_method()=='index')
+switch ($this->router->fetch_method()) 
 {
-	$this->load->view('sidebar-index', $this->data);
-} else {
-	$this->load->view('sidebar-single', $this->data);
+	case 'index':
+		$this->load->view('sidebar-index', $this->data);
+		break;
+	case 'live':
+		$this->load->view('sidebar-live', $this->data);
+		break;
+	default:
+		$this->load->view('sidebar-index', $this->data);
+		break;
 }
 
 if (isset($footer))

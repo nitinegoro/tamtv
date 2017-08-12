@@ -13,8 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $box = $this->themes->get('category-two');
 
 $value = json_decode($box->meta_value);
+
 ?>
-<div id="sticker">
+<div id="<?php if($value->sticky == 'yes') echo 'sticker'; ?>">
 <div class="box-category-1">
 	<h3 class="sidebar-heading"> <?php echo $box->meta_name; ?> </h3> 
 	<div class="media-news">
