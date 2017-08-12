@@ -29,12 +29,12 @@ $value = json_decode($box->meta_value);
 			echo '<div class="clearfix"></div>';
 	?>
 	<div class="box-category-1 c3">
-		<a href="<?php echo base_url($post->post_slug) ?>" title="<?php echo $post->post_title; ?>">
+		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
 			<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
 		</a>
 		<div class="item-featured">
 			<h4 class="item-heading">
-				<a href="<?php echo base_url($post->post_slug) ?>" title="<?php echo $post->post_title; ?>">
+				<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
 					<?php echo $post->post_title; ?>
 				</a>
 			</h4>

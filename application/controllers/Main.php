@@ -9,6 +9,8 @@ class Main extends Web
 	{
 		parent::__construct();
 
+		$this->meta_tags->set_meta_tag('canonical', current_url() );
+		$this->meta_tags->set_meta_tag('type', 'article' );
 	}
 
 	/**
@@ -29,8 +31,6 @@ class Main extends Web
 	public function index()
 	{
 		$this->meta_tags->set_meta_tag('title', $this->options->get('sitename') );
-		$this->meta_tags->set_meta_tag('canonical', current_url() );
-		$this->meta_tags->set_meta_tag('type', 'article' );
 		$this->meta_tags->set_meta_tag('news_keywords', '' );
 		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
 
@@ -39,6 +39,43 @@ class Main extends Web
 		);
 
 		$this->template->view('index', $this->data);
+	}
+
+	public function getpost()
+	{
+		$post = $this->posts->get();
+
+		if($post == FALSE)
+			show_404();
+
+		$inputTags = array_map(function ($object) { 
+				return $object->name; 
+			}, 
+			$this->posts->get_post_tags($post->ID)
+		);
+
+		$tags = implode(', ', $inputTags);
+
+		$category = $this->posts->get_post_category($post->ID);
+
+		$this->meta_tags->set_meta_tag('title', $post->post_title );
+		$this->meta_tags->set_meta_tag('news_keywords', $tags );
+		$this->meta_tags->set_meta_tag('image', base_url($this->posts->get_thumbnail($post->image)) );
+		$this->meta_tags->set_meta_tag('description', strip_tags(word_limiter($post->post_content, 13)) );
+
+		if( $category )
+			$this->breadcrumbs->unshift(1, $category->name, "category/slug/{$category->slug}");
+
+		$this->breadcrumbs->unshift(2, $post->post_title, "/");
+
+		$this->data = array(
+			'title' => $post->post_title,
+			'post' => $post,
+			'news_keyword' => $tags,
+			'metacategory' =>  $category ? $category->name : ''
+		);
+
+		$this->template->view('single', $this->data);
 	}
 
 

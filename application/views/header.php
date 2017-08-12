@@ -15,7 +15,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><?php echo $title ?></title>
+	<meta http-equiv="Refresh" content="900" />
+	<title><?php echo $title ?> - <?php echo $this->options->get('sitename') ?></title>
+	<link rel="shortcut icon" href="<?php echo base_url("public/image/site/favicon.png"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/bootstraps/css/bootstrap.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/main.css"); ?>">
@@ -30,7 +32,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	echo $this->meta_tags->generate_meta_social();
 
 	echo PHP_EOL;
+
+	if($this->router->fetch_method() == 'getpost') :
 	?>
+	<meta property="article:modified_time" content="<?php echo $post->post_modified; ?>" />
+	<meta property="article:published_time" content="<?php echo $post->post_date ?>" />
+	<meta property="article:section" content="<?php echo $metacategory ?>" />
+	<meta property="article:tag" content="<?php echo $news_keyword; ?>" />
+	<?php endif; ?>
+	<meta property="og:locale" content="id_ID" />
+	<meta name="robots" content="index, follow" />
+	<meta property="og:url" content="<?php echo current_url() ?>" />
+	<meta name="google-site-verification" content="" >
 	<meta name="fb:admins" content="tamtvbabel" />
 	<meta property="fb:app_id" content=""/>
 	<meta property="fb:pages" content="426577360732884" />

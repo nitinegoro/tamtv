@@ -15,4 +15,6 @@ $(document).ready(function() {
       $navbar.removeClass("navbar-fixed-top");
     }
   }
+
+  $("#sticker").sticky({topSpacing:50});
 });

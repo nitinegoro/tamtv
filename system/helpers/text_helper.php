@@ -61,7 +61,7 @@ if ( ! function_exists('word_limiter'))
 	 * @param	string	the end character. Usually an ellipsis
 	 * @return	string
 	 */
-	function word_limiter($str, $limit = 100, $end_char = '&#8230;')
+	function word_limiter($str, $limit = 20, $end_char = ',')
 	{
 		if (trim($str) === '')
 		{
@@ -75,7 +75,7 @@ if ( ! function_exists('word_limiter'))
 			$end_char = '';
 		}
 
-		return rtrim($matches[0]).$end_char;
+		return preg_replace("/\s|&nbsp;|&ndash;/",' ', rtrim($matches[0]).$end_char );
 	}
 }
 

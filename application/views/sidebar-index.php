@@ -26,4 +26,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 <?php
 /* End of file right-sidebar.php */
-/* Location: ./application/views/right-sidebar.php */
+/* Location: ./application/views/sidebar-index.php */

@@ -40,6 +40,7 @@ class Web extends MY_Controller
 			array('text', 'form')
 		);
 
+		$this->breadcrumbs->unshift(0, 'Home', "/");
 		//$this->load->js(base_url("public/dist/js/push.min.js?v1.0.1"));
 		//$this->load->js(base_url("public/android/js/notifications.js?v1.0.1"));
 	}

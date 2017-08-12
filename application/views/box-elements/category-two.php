@@ -14,6 +14,7 @@ $box = $this->themes->get('category-two');
 
 $value = json_decode($box->meta_value);
 ?>
+<div id="sticker">
 <div class="box-category-1">
 	<h3 class="sidebar-heading"> <?php echo $box->meta_name; ?> </h3> 
 	<div class="media-news">
@@ -29,13 +30,13 @@ $value = json_decode($box->meta_value);
 	?>
 		<div class="media-item">
 			<div class="media-image">
-				<a href="<?php echo base_url($post->post_slug) ?>" title="<?php echo $post->post_title; ?>">
+				<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
 					<img src="<?php echo $this->posts->get_thumbnail($post->image, 'x-small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
 				</a>
 			</div>
 			<div class="media-content">
 				<h4 class="media-title">
-					<a href="<?php echo base_url($post->post_slug) ?>" itemprop="name" title="<?php echo $post->post_title; ?>">
+					<a href="<?php echo $this->posts->permalink($post->ID) ?>" itemprop="name" title="<?php echo $post->post_title; ?>">
 						<?php echo $post->post_title; ?>
 					</a>
 				</h4>
@@ -43,6 +44,7 @@ $value = json_decode($box->meta_value);
 		</div>
 	<?php endforeach; ?>
 	</div>
+</div>
 </div>
 <?php
 /* End of file category-two.php */

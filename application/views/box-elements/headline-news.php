@@ -25,13 +25,13 @@ $value = json_decode($box->meta_value);
 	 **/
 	foreach( $this->posts->get_type('headline', 1, 0) as $post) :
 	?>
-	<a href="<?php echo base_url($post->post_slug) ?>" title="<?php echo $post->post_title; ?>">
+	<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
 		<img src="<?php echo $this->posts->get_thumbnail($post->image); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
 	</a>
 	<div class="item-featured">
 		<time><i class="fa fa-clock-o"></i> <?php echo $this->posts->date_format($post->post_date); ?></time>
 		<h3 class="item-heading">
-			<a href="<?php echo base_url($post->post_slug) ?>" itemprop="name" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
+			<a href="<?php echo $this->posts->permalink($post->ID) ?>" itemprop="name" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
 		</h3>
 		<div class="item-content">
 			<p><?php echo strip_tags(word_limiter($post->post_content, 15)) ?></p>
@@ -43,7 +43,7 @@ $value = json_decode($box->meta_value);
 		<ul class="list-related">
 			<?php foreach( $this->posts->get_type('headline', ++$value->limit, 1) as $row) : ?>
 			<li>
-				<a href="<?php echo base_url($post->post_slug) ?>" itemprop="relatedLink" title="<?php echo $row->post_title; ?>">
+				<a href="<?php echo $this->posts->permalink($row->ID) ?>" itemprop="relatedLink" title="<?php echo $row->post_title; ?>">
 					<?php echo $row->post_title; ?>
 				</a>
 			</li>

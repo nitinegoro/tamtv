@@ -287,6 +287,7 @@ h1.live-title {
 /*  SIDEBAR */
 .box-sidebar {
   margin-top: 15px;
+  background-color: white;
 }
 .box-topic-tag,
 .box-category-1 {
@@ -300,6 +301,7 @@ h1.live-title {
 
 .box-sidebar > .box-topic-tag > h3.sidebar-heading,
 .box-sidebar > .box-category-1 > h3.sidebar-heading,
+.box-category-1 > h3.sidebar-heading,
 .featured-heading {
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
@@ -492,7 +494,7 @@ div.navigation-footer > ul.social-icon > li > a img {
 div.single-content {
   padding-top: 30px;
 }
-div.single-content > h1 {
+article.content-news > h1 {
   font-weight: 600;
   font-size: 22pt;
 }
@@ -510,6 +512,7 @@ div.single-content > h1 {
 /* AUTHOR BOX */
 div.author-box {
   padding-top: 10px;
+  margin-bottom: 20px;
 }
 div.author-box > .media {
   width: 50%;
@@ -521,15 +524,15 @@ div.author-box > .media > .media-body > a {
   color: grey;
   cursor: pointer;
 }
-div.author-box > .media > .media-body > small {
-  color: silver;
+div.author-box > .media > .media-body > time {
+  font-size: 8pt;
 }
 article.content-news {
   text-align: justify-all;
   margin-top: 20px;
   font-family: 'Arial', sans-serif;
   letter-spacing: 1px;
-  font-size: 11pt;
+  font-size: 10.3pt;
   padding-bottom: 20px;
   margin-bottom: 20px;
   border-bottom: 1.2px solid #EEEEEE;
@@ -544,24 +547,25 @@ article.content-news > figure > figcaption {
   padding: 10px;
   font-style: italic;
 }
-article.content-news > p {
+article.content-news > section > p {
   padding-bottom: 7px;
+  line-height: 1.5em;
 }
 
-article.content-news > ul, 
+article.content-news > section > ul, 
 article.content-news > ol {
   margin-left: -20px;
 }
-article.content-page > ul > li > p, 
-article.content-page > ol > li > p {
+article.content-page > section > ul > li > p, 
+article.content-page > section > ol > li > p {
   margin-bottom: 10px;
 }
-article.content-news > h1,
-article.content-news > h2,
-article.content-news > h3, 
-article.content-news > h4,
-article.content-news > h5,
-article.content-news > h6 {
+article.content-news > section > h1,
+article.content-news > section > h2,
+article.content-news > section > h3, 
+article.content-news > section > h4,
+article.content-news > section > h5,
+article.content-news > section > h6 {
   margin-top: 5px;
   margin-bottom: 5px;
 }

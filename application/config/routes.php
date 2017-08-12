@@ -52,3 +52,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+/**
+ * Generate Route SEO Freindly
+ * Inspiriration from
+ * @see https://osvaldas.info/smart-database-driven-routing-in-codeigniter
+ **/
+
+require_once( BASEPATH .'database/DB.php' );
+
+$db =& DB();
+
+$permalink = $db->get_where('options', array('option_name' => 'permalink'))->row('option_value');
+
+foreach( $db->get( 'posts' )->result() as $row )
+{
+	$date = new DateTime($row->post_date);
+	switch ($permalink) 
+	{
+		case 'slug':
+			$route[ $row->post_slug ]   = 'main/getpost/';
+			break;
+		case 'date':
+			$route[ $date->format('Y') . '/' . $date->format('m') . '/' . $date->format('d') . '/' . $row->post_slug ]   = 'main/getpost/';
+			break;
+		case 'month_year':
+			$route[ $date->format('Y') . '/' . $date->format('m') . '/' . $row->post_slug ]   = 'main/getpost/';
+			break;
+		default:
+			$route[ 'read/'.$row->ID . '/' . $row->post_slug ]   = 'main/getpost/';
+			break;
+	}
+	
+}

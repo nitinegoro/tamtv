@@ -8,11 +8,11 @@ class Breadcrumbs {
 
     private $breadcrumbs = array();
 
-    private $_open 			= '<ol class="breadcrumb hidden-xs" style="margin-top:-6px;">';
-	private	$_close			= '</ol>';
+    private $_open 			= '<ul class="breadcrumb">';
+	private	$_close			= '</ul>';
 	private	$_el_open 		= '<li>';
 	private	$_el_close 		= '</li>';
-	private	$_el_first 		= '<i class="fa fa-home"></i>';
+	private	$_el_first 		= '';
 	private	$_el_last_open 	= '<li class="active">';
 
     public function __construct()
