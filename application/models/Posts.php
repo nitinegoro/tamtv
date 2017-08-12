@@ -123,7 +123,7 @@ class Posts extends CI_Model
 
 	public function get_post_tags($post = 0)
 	{
-		$this->db->select('name, slug');
+		$this->db->select('name, slug, tags.tag_id');
 
 		$this->db->join('tags', 'tags.tag_id = posttags.tag_id', 'inner');
 
@@ -136,6 +136,23 @@ class Posts extends CI_Model
 		$this->db->group_by('name');
 		
 		return $this->db->get('posttags')->result();
+	}
+
+	public function similar($tags = 0, $not_post = 0, $limit = 6, $offset = 0)
+	{
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
+
+		$this->db->join('posts', 'posttags.post_id = posts.ID', 'inner');
+
+		$this->db->where_in('tag_id', $tags);
+
+		$this->db->where_not_in('post_id', $not_post);
+
+		$this->db->order_by('post_date', 'desc');
+
+		$this->db->group_by('post_id');
+		
+		return $this->db->get('posttags', $limit, $offset)->result();
 	}
 
 	public function permalink($post = 0)

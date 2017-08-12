@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
+
 ?>
 	<div class="container content-wrapper">
 		<div class="col-xs-8 single-content">
@@ -44,11 +45,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				?>
 				<figure>
 				  	<img src="<?php echo $this->posts->get_thumbnail($post->image) ?>" alt="" class="img-responsive">
-				  	<figcaption><?php echo $post->post_excerpt; ?></figcaption>
+				  	<figcaption><?php echo $post->post_excerpt; ?> {news_keyword}</figcaption>
 				</figure>
 				<?php endif; ?>
 				<section itemprop="description">
-					<?php echo $post->post_content; ?>
+					<?php echo str_replace('[related_news]', $this->content_parser->related_news($post->ID, 4), $post->post_content); ?>
 				</section>
 			</article>
 			<?php  
@@ -60,45 +61,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			foreach ($this->themes->layout('content-single') as $row) 
 				$this->load->view('box-elements/'.$row->meta_key);
 			?>
-			<div class="box-thumbnail">
-				<h3 class="featured-heading"> Berita Populer </h3> 
-				<div class="box-category-1 c3">
-					<a href=""><img src="public/image/news/test.jpg" alt="" class="img-responsive"></a>
-					<div class="item-featured">
-						<h4 class="item-heading"><a href="">Pria Malaysia 'Ladang Uang' ISIS Jadi Buron Polisi</a></h4>
-					</div>
-				</div>
-				<div class="box-category-1 c3">
-					<a href=""><img src="public/image/news/test.jpg" alt="" class="img-responsive"></a>
-					<div class="item-featured">
-						<h4 class="item-heading"><a href="">Pria Malaysia 'Ladang Uang' ISIS Jadi Buron Polisi</a></h4>
-					</div>
-				</div>
-				<div class="box-category-1 c3">
-					<a href=""><img src="public/image/news/test.jpg" alt="" class="img-responsive"></a>
-					<div class="item-featured">
-						<h4 class="item-heading"><a href="">Pria Malaysia 'Ladang Uang' ISIS Jadi Buron Polisi</a></h4>
-					</div>
-				</div>
-				<div class="box-category-1 c3">
-					<a href=""><img src="public/image/news/test.jpg" alt="" class="img-responsive"></a>
-					<div class="item-featured">
-						<h4 class="item-heading"><a href="">Pria Malaysia 'Ladang Uang' ISIS Jadi Buron Polisi</a></h4>
-					</div>
-				</div>
-				<div class="box-category-1 c3">
-					<a href=""><img src="public/image/news/test.jpg" alt="" class="img-responsive"></a>
-					<div class="item-featured">
-						<h4 class="item-heading"><a href="">Pria Malaysia 'Ladang Uang' ISIS Jadi Buron Polisi</a></h4>
-					</div>
-				</div>
-				<div class="box-category-1 c3">
-					<a href=""><img src="public/image/news/test.jpg" alt="" class="img-responsive"></a>
-					<div class="item-featured">
-						<h4 class="item-heading"><a href="">Pria Malaysia 'Ladang Uang' ISIS Jadi Buron Polisi</a></h4>
-					</div>
-				</div>
-			</div>
 		</div>
 <?php
 /* End of file single.php */

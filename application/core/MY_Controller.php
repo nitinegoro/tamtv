@@ -26,7 +26,7 @@ class Web extends MY_Controller
 		parent::__construct();
 
 		$this->load->library(
-			array('slug','session','template','page_title','breadcrumbs','meta_tags')
+			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser')
 		);
 		
 		if($this->session->userdata('user_login') != FALSE) 

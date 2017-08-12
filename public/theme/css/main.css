@@ -210,6 +210,7 @@ h1.live-title {
 .adsvertising {
   width: 100%;
   text-align: center;
+  z-index: 99;
 }
 
 .featured-news {
@@ -288,6 +289,7 @@ h1.live-title {
 .box-sidebar {
   margin-top: 15px;
   background-color: white;
+  z-index: 1;
 }
 .box-topic-tag,
 .box-category-1 {
@@ -716,4 +718,12 @@ select.form:focus {
 input.form {
     padding: 0px 10px;
     border:1px solid grey;
+}
+
+.top {
+  padding-top: 10px;
+}
+
+#sticker {
+  background-color: white;
 }
