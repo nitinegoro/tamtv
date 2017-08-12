@@ -327,11 +327,11 @@ span.more-heading {
   padding-top: 5px;
   padding-bottom: 5px;
   border-bottom: 1.2px solid #EEEEEE;
+  width: 270px;
 }
 .box-topic-tag > ul.list-topic-tag > li > a {
     font-weight: 600;
     color: black;
-
 }
 .box-topic-tag > ul.list-topic-tag > li > a:hover {
   text-decoration: none;

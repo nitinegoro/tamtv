@@ -20,7 +20,52 @@ class Posts extends CI_Model
 		
 		return $this->db->get('posts', $limit, $offset)->result();
 	}
+
+	public function latest($limit = 6, $offset = 0)
+	{
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
+
+		$this->db->order_by('post_date', 'desc');
+		
+		return $this->db->get('posts', $limit, $offset)->result();
+	}
+
+	public function tags($tags = 0, $limit = 6, $offset = 0)
+	{
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
+
+		$this->db->join('posttags', 'posts.ID = posttags.post_id', 'inner');
+
+		$this->db->where('tag_id', $tags);
+
+		$this->db->order_by('post_date', 'desc');
+
+		$this->db->group_by('post_id');
+		
+		return $this->db->get('posts', $limit, $offset)->result();
+	}
 	
+	public function get_thumbnail($image = FALSE, $size = FALSE)
+	{
+		if($image == FALSE)
+			return base_url("public/image/news/no-image.jpg");
+
+		switch ($size) 
+		{
+			case 'small':
+				return base_url("public/image/news/small/{$image}");
+				break;
+			case 'x-small':
+				return base_url("public/image/news/x-small/{$image}");
+				break;
+			default:
+				return base_url("public/image/news/{$image}");
+				break;
+		}
+
+		return base_url("public/image/news/{$image}");
+	}
+
 	public function date_format($date = FALSE)
 	{
 		if($date == FALSE)

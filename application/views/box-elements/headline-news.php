@@ -25,7 +25,7 @@ $value = json_decode($box->meta_value);
 	foreach( $this->posts->get_type('headline', 1, 0) as $post) :
 	?>
 	<a href="<?php echo base_url($post->post_slug) ?>" title="<?php echo $post->post_title; ?>">
-		<img src="<?php echo $post->image; ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
+		<img src="<?php echo $this->posts->get_thumbnail($post->image); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
 	</a>
 	<div class="item-featured">
 		<time><i class="fa fa-clock-o"></i> <?php echo $this->posts->date_format($post->post_date); ?></time>

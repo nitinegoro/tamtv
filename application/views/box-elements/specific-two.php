@@ -1,0 +1,60 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * The template for displaying the Specifik two by Tag
+ *
+ * Displays all of the Specifik two right element.
+ *
+ * @package Codeigniter
+ * @subpackage Tamtv Template
+ * @since Tamtv 1.0
+ */
+$box = $this->themes->get('specific-two');
+
+$value = json_decode($box->meta_value);
+?>
+<div class="box-category-1">
+	<?php  
+	/**
+	 * Get Post By Type
+	 *
+	 * @param String (post_type)
+	 * @param Integer (limit)
+	 * @param Integer (offset)
+	 **/
+	foreach( $this->posts->tags($value->tags, 1, 0) as $post) :
+	?>
+	<h3 class="sidebar-heading"><?php echo $box->meta_name; ?></h3>
+	<a href="<?php echo base_url($post->post_slug) ?>" title="<?php echo $post->post_title; ?>">
+		<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
+	</a>
+	<div class="item-featured">
+		<h4 class="item-heading">
+			<a href="<?php echo base_url($post->post_slug) ?>" itemprop="name" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
+		</h4>
+	</div>
+	<?php endforeach; ?>
+	<div class="media-news">
+	<?php  
+	foreach( $this->posts->tags($value->tags, ++$value->limit, 1) as $post) :
+	?>
+		<div class="media-item">
+			<div class="media-image">
+				<a href="<?php echo base_url($post->post_slug) ?>" title="<?php echo $post->post_title; ?>">
+					<img src="<?php echo $this->posts->get_thumbnail($post->image, 'x-small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
+				</a>
+			</div>
+			<div class="media-content">
+				<h4 class="media-title">
+					<a href="<?php echo base_url($post->post_slug) ?>" itemprop="name" title="<?php echo $post->post_title; ?>">
+						<?php echo $post->post_title; ?>
+					</a>
+				</h4>
+			</div>
+		</div>
+	<?php endforeach; ?>
+	</div>
+</div>
+<?php
+/* End of file specific-two.php */
+/* Location: ./application/views/box-elements/specific-two.php */

@@ -21,24 +21,25 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('url');
-		$config['image_library'] = 'gd2';
-		$config['source_image'] = './public/bkkbn.png';
-		$config['create_thumb'] = TRUE;
-		$config['maintain_ratio'] = TRUE;
-		$config['width']         = 700;
-		$config['height']       = 550;
+
+		$config['image_library'] = 'GD2';
+		$config['source_image'] = './public/image/news/waspada-ini-3-tanda-mesin-atm-yang-diintai-penjahat.jpg';
+		$config['new_image'] = './public/image/news/x-small/waspada-ini-3-tanda-mesin-atm-yang-diintai-penjahat.jpg';
+		//$config['create_thumb'] = TRUE;
+		//$config['maintain_ratio'] = TRUE;
+		$config['width'] = 100;
+		$config['height'] = 70;
 
 		$this->load->library('image_lib', $config);
 
-		
 
 		if ( ! $this->image_lib->resize())
 		{
 		    echo $this->image_lib->display_errors();
 		} else {
                         
-			$imgConfig['image_library']   = 'gd2';                    
-			$imgConfig['source_image'] = './public/bkkbn_thumb.png';       
+/*			$imgConfig['image_library']   = 'GD2';                    
+			$imgConfig['source_image'] = './public/image/news/waspada-ini-3-tanda-mesin-atm-yang-diintai-penjahat.jpg';       
 			$imgConfig['wm_overlay_path'] = './public/image/site/logo-watermark.png';            
 			$imgConfig['wm_type'] = 'overlay';
 
@@ -55,7 +56,7 @@ class Welcome extends CI_Controller {
 			if( ! $this->image_lib->watermark() )
 				echo $this->image_lib->display_errors(); 
 
-			echo "<img src='".base_url("public/bkkbn_thumb_thumb.png")."'/>";
+			echo "<img src='".base_url("public/image/news/aktifitas-permainan-di-atm-dihentikan-demi-kenyamanan-100x70.jpg")."'/>";*/
 		}
 	}
 }

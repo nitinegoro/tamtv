@@ -30,7 +30,7 @@ $value = json_decode($box->meta_value);
 	?>
 	<div class="box-category-1 c3">
 		<a href="<?php echo base_url($post->post_slug) ?>" title="<?php echo $post->post_title; ?>">
-			<img src="<?php echo $post->image; ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
+			<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
 		</a>
 		<div class="item-featured">
 			<h4 class="item-heading">
