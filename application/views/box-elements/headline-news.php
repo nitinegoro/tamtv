@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @package Codeigniter
  * @subpackage Tamtv Template
+ * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
 $box = $this->themes->get('headline-news');

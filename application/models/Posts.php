@@ -34,7 +34,7 @@ class Posts extends CI_Model
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
 
-		$this->db->join('posttags', 'posts.ID = posttags.post_id', 'inner');
+		$this->db->join('posts', 'posttags.post_id = posts.ID', 'inner');
 
 		$this->db->where('tag_id', $tags);
 
@@ -42,7 +42,22 @@ class Posts extends CI_Model
 
 		$this->db->group_by('post_id');
 		
-		return $this->db->get('posts', $limit, $offset)->result();
+		return $this->db->get('posttags', $limit, $offset)->result();
+	}
+
+	public function category($category = 0, $limit = 6, $offset = 0)
+	{
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
+
+		$this->db->join('posts', 'postcategory.post_id = posts.ID', 'inner');
+
+		$this->db->where('category_id', $category);
+
+		$this->db->order_by('post_date', 'desc');
+
+		$this->db->group_by('post_id');
+		
+		return $this->db->get('postcategory', $limit, $offset)->result();
 	}
 	
 	public function get_thumbnail($image = FALSE, $size = FALSE)

@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage Tamtv Template
  * @since Tamtv 1.0
  */
-$box = $this->themes->get('headline-news');
+$box = $this->themes->get('infinite-loop');
 
 $value = json_decode($box->meta_value);
 ?>

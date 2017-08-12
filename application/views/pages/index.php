@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @package Codeigniter
  * @subpackage Tamtv Template
+ * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
 ?>
@@ -19,9 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 * @param string ( themes layout )
 			 **/
 			foreach ($this->themes->layout('content-index') as $row) 
-			{
 				$this->load->view('box-elements/'.$row->meta_key);
-			}
 			?>
 		</div>
 <?php

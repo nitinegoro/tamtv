@@ -7,18 +7,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @package Codeigniter
  * @subpackage Tamtv Template
+ * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
 $box = $this->themes->get('specific-two');
 
 $value = json_decode($box->meta_value);
 ?>
-<div class="box-category-1">
+<div class="box-category-1" itemscope itemtype="http://schema.org/Article">
 	<?php  
 	/**
 	 * Get Post By Type
 	 *
-	 * @param String (post_type)
+	 * @param Integer (tag_id)
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
