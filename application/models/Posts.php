@@ -30,15 +30,21 @@ class Posts extends CI_Model
 		return $this->db->get('posts')->row();
 	}
 
-	public function get_type($type = 'default', $limit = 6, $offset = 0)
+	public function get_type($param = NULL, $limit = 6, $offset = 0, $type = 'num')
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
 
-		$this->db->where('post_type', $type);
+		if($param != NULL)
+			$this->db->where('post_type', $param);
 
 		$this->db->order_by('post_date', 'desc');
 		
-		return $this->db->get('posts', $limit, $offset)->result();
+		if($type == 'num')
+		{
+			return $this->db->get('posts')->num_rows();
+		} else {
+			return $this->db->get('posts', $limit, $offset)->result();
+		}
 	}
 
 	public function most_viewer($limit = 6, $offset = 0)

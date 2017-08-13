@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 * @param Integer (limit)
 			 * @param Integer (offset)
 			 **/
-			foreach( $this->posts->get_type('vidio', 4, 0) as $row) :
+			foreach( $this->posts->get_type('vidio', 4, 0, 'results') as $row) :
 			?>
 			<div class="item-vidio">
 				<a href="<?php echo $this->posts->permalink($row->ID) ?>" title="<?php echo $row->post_title; ?>">
@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 * @param Integer (limit)
 			 * @param Integer (offset)
 			 **/
-			foreach( $this->posts->get_type('vidio', 4, 4) as $row) :
+			foreach( $this->posts->get_type('vidio', 4, 4, 'results') as $row) :
 			?>
 			<div class="item-vidio">
 				<a href="<?php echo $this->posts->permalink($row->ID) ?>" title="<?php echo $row->post_title; ?>">

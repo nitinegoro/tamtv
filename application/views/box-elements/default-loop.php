@@ -10,8 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @since Tamtv 1.0
  */
 $box = $this->themes->get('default-loop');
+$boxhead = $this->themes->get('headline-news');
+
 
 $value = json_decode($box->meta_value);
+$valhead = json_decode($boxhead->meta_value);
 ?>
 <div class="col-xs-12"><hr></div>
 <div class="box-big-loop" itemscope itemtype="http://schema.org/Article">
@@ -23,7 +26,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->latest($value->limit, 0) as $key => $post) :
+	foreach( $this->posts->latest($value->limit, $valhead->limit) as $key => $post) :
 	?>
 	<div class="big-loop-item">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">

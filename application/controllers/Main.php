@@ -18,7 +18,7 @@ class Main extends Web
 
 		$this->page = $this->input->get('page');
 
-		$this->per_page = 15;
+		$this->per_page = 2;
 	}
 
 	/**
@@ -100,8 +100,18 @@ class Main extends Web
 		$this->meta_tags->set_meta_tag('title', $this->options->get('sitename') );
 		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
 
+		$config = $this->template->pagination_list();
+
+		$config['base_url'] = site_url("live");
+
+		$config['per_page'] = $this->per_page;
+		$config['total_rows'] = ($this->posts->get_type('vidio', null, null, 'num') - 8);
+
+		$this->pagination->initialize($config);
+
 		$this->data = array(
-			'title' => "Live Streaming TV Lokal "	
+			'title' => "Live Streaming TV Lokal ",
+			'vidio_posts' => $this->posts->get_type('vidio', $this->per_page, ($this->page+8), 'results')
 		);
 
 		$this->template->view('live-streaming', $this->data);
