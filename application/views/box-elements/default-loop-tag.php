@@ -22,7 +22,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->tags($tag->tag_id, 10, 0) as $post) :
+	foreach($posttags as $post) :
 	?>
 	<div class="big-loop-item">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
@@ -54,7 +54,10 @@ $value = json_decode($box->meta_value);
 		</div>
 	</div>
 	<?php endforeach; ?>
+	<div class="text-center">
+		<?php if($posttags) echo $this->pagination->create_links(); ?>
+	</div>
 </div>
 <?php
-/* End of file default-loop.php */
-/* Location: ./application/views/box-elements/default-loop.php */
+/* End of file default-loop-tag.php */
+/* Location: ./application/views/box-elements/default-loop-tag.php */

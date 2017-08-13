@@ -23,7 +23,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->tags($value->tags, 1, 0) as $post) :
+	foreach( $this->posts->tags($value->tags, 1, 0 , 'results') as $post) :
 	?>
 	<h3 class="sidebar-heading"><?php echo $box->meta_name; ?></h3>
 	<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
@@ -37,7 +37,7 @@ $value = json_decode($box->meta_value);
 	<?php endforeach; ?>
 	<div class="media-news">
 	<?php  
-	foreach( $this->posts->tags($value->tags, ++$value->limit, 1) as $post) :
+	foreach( $this->posts->tags($value->tags, ++$value->limit, 1 , 'results') as $post) :
 	?>
 		<div class="media-item">
 			<div class="media-image">

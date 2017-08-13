@@ -5,12 +5,20 @@ class Main extends Web
 {
 	public $data;
 
+	public $per_page;
+
+	public $page;
+
 	public function __construct()
 	{
 		parent::__construct();
 
 		$this->meta_tags->set_meta_tag('canonical', current_url() );
 		$this->meta_tags->set_meta_tag('type', 'article' );
+
+		$this->page = $this->input->get('page');
+
+		$this->per_page = 15;
 	}
 
 	/**
@@ -120,9 +128,20 @@ class Main extends Web
 
 		$this->breadcrumbs->unshift(2, $category->name, current_url());
 
+
+		$config = $this->template->pagination_list();
+
+		$config['base_url'] = site_url("kategori/{$category->slug}");
+
+		$config['per_page'] = $this->per_page;
+		$config['total_rows'] = ($this->posts->category($category->category_id, null, null, 'num') - 6);
+
+		$this->pagination->initialize($config);
+
 		$this->data = array(
 			'title' => $category->name,
-			'category' => $category
+			'category' => $category,
+			'categories' => $this->posts->category($category->category_id, $this->per_page, ($this->page+6), 'results')
 		);
 
 		$this->template->view('category', $this->data);
@@ -142,11 +161,19 @@ class Main extends Web
 		$this->meta_tags->set_meta_tag('title', $tag->name );
 		$this->meta_tags->set_meta_tag('description', $tag->description );
 
-		$this->breadcrumbs->unshift(2, $tag->name, current_url());
+		$config = $this->template->pagination_list();
+
+		$config['base_url'] = site_url("tag/{$tag->slug}");
+
+		$config['per_page'] = $this->per_page;
+		$config['total_rows'] = $this->posts->tags($tag->tag_id, null, null, 'num');
+
+		$this->pagination->initialize($config);
 
 		$this->data = array(
 			'title' => "Topik : ".$tag->name,
-			'tag' => $tag	
+			'tag' => $tag,
+			'posttags'=>  $this->posts->tags($tag->tag_id, $this->per_page, $this->page, 'results')
 		);
 
 		$this->template->view('tags', $this->data);

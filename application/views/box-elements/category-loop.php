@@ -9,10 +9,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage Tamtv Template
  * @since Tamtv 1.0
  */
-$box = $this->themes->get('infinite-loop');
-
-$value = json_decode($box->meta_value);
 ?>
+<div class="box-thumbnail">
+	<?php  
+	/**
+	 * Get Similar Post by Tag
+	 *
+	 * @param String (IN tag_id)
+	 **/
+	foreach( $this->posts->category($category->category_id, 6, 0, 'results') as $key =>  $post) :
+		
+		if($key % 3 == 0 )
+			echo '<div class="clearfix"></div>';
+	?> 
+	<div class="box-category-1 c3">
+		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
+			<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
+		</a>
+		<div class="item-featured">
+			<h4 class="item-heading">
+				<a href="<?php echo $this->posts->permalink($post->ID) ?>" itemprop="name" title="<?php echo $post->post_title; ?>">
+					<?php echo $post->post_title; ?>
+				</a>
+			</h4>
+		</div>
+	</div>
+	<?php endforeach; ?>
+</div>
 <div class="box-big-loop" itemscope itemtype="http://schema.org/Article">
 	<hr>
 	<?php  
@@ -23,7 +46,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->category($category->category_id, $value->limit, 7) as $post) :
+	foreach( $categories as $q => $post) :
 	?>
 	<div class="big-loop-item">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
@@ -40,8 +63,11 @@ $value = json_decode($box->meta_value);
 		</div>
 	</div>
 	<?php endforeach; ?>
+	<div class="text-center">
+		<?php if($categories) echo $this->pagination->create_links(); ?>
+	</div>
 </div>
 
-<!-- <div class="col-md-12 text-center" align="center">
-	<a href="" class="btn btn-default"><i class="fa fa-refresh"></i> Indeks Berita</a>
-</div> -->
+<?php
+/* End of file category-loop.php */
+/* Location: ./application/views/box-elements/category-loop.php */

@@ -840,3 +840,31 @@ div.page-tag > h1 {
 .top3x { 
   padding-top: 30px;
 }
+
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 3;
+    color: #283593;
+    background-color: transparent;
+    border-color: #283593;
+}
+
+.pagination > li > a:first-child,
+.pagination > li > a,
+.pagination > li > a span {
+  font-weight:bold;
+  margin-right: 5px;
+  border-radius: 50px;
+  transition: all 0.5s ease;
+}
+
+.pagination > li.active > a,
+.pagination > li.active > a:hover {
+   z-index: 3;
+    color: white;
+    background-color: #283593;
+    border-color: #283593;
+}

@@ -26,7 +26,7 @@ class Web extends MY_Controller
 		parent::__construct();
 
 		$this->load->library(
-			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser')
+			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser', 'pagination')
 		);
 		
 		if($this->session->userdata('user_login') != FALSE) 
@@ -37,7 +37,7 @@ class Web extends MY_Controller
 		);
 
 		$this->load->helper(
-			array('text', 'form')
+			array('text', 'form', 'language')
 		);
 
 		$this->breadcrumbs->unshift(0, 'Home', "/");

@@ -27,7 +27,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->category($value->category, ++$value->limit, 0) as $post) :
+	foreach( $this->posts->category($value->category, ++$value->limit, 0, 'results') as $post) :
 	?>
 		<div class="media-item">
 			<div class="media-image">
