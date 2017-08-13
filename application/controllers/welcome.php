@@ -23,12 +23,12 @@ class Welcome extends CI_Controller {
 		$this->load->helper('url');
 
 		$config['image_library'] = 'GD2';
-		$config['source_image'] = './public/image/news/waspada-ini-3-tanda-mesin-atm-yang-diintai-penjahat.jpg';
-		$config['new_image'] = './public/image/news/x-small/waspada-ini-3-tanda-mesin-atm-yang-diintai-penjahat.jpg';
+		$config['source_image'] = './public/image/site/2253-warga-belitung-terima-bantuan-pkh.jpg';
+		$config['new_image'] = './public/image/news/2253-warga-belitung-terima-bantuan-pkh.jpg';
 		//$config['create_thumb'] = TRUE;
 		//$config['maintain_ratio'] = TRUE;
-		$config['width'] = 100;
-		$config['height'] = 70;
+		$config['width'] = 600;
+		$config['height'] = 400;
 
 		$this->load->library('image_lib', $config);
 

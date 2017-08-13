@@ -34,7 +34,7 @@ class Breadcrumbs {
     {
 		if (!$page OR !$url) return;
 
-		$url = site_url($url);
+		$url = base_url($url);
 
 		$this->breadcrumbs[$url] = array('id' => $id, 'page' => $page, 'href' => $url);
 	}
@@ -44,7 +44,7 @@ class Breadcrumbs {
 	{
 		if (!$page OR !$url) return;
 
-		$url = site_url($url);
+		$url = base_url($url);
 
 		array_unshift($this->breadcrumbs, array('id' => $id, 'page' => $page, 'href' => $url));
 	}

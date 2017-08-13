@@ -13,8 +13,8 @@ $box = $this->themes->get('infinite-loop');
 
 $value = json_decode($box->meta_value);
 ?>
-<div class="col-xs-12"><hr></div>
 <div class="box-big-loop" itemscope itemtype="http://schema.org/Article">
+	<hr>
 	<?php  
 	/**
 	 * Get Latest Post
@@ -23,28 +23,14 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->latest($value->limit, 0) as $key => $post) :
+	foreach( $this->posts->category($category->category_id, $value->limit, 7) as $post) :
 	?>
 	<div class="big-loop-item">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
 			<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
 		</a>
 		<div class="item-content">
-		<?php  
-		/**
-		 * Get Post Categories
-		 *
-		 * @param String (category_id)
-		 **/
-		$category = $this->posts->get_post_category($post->ID);
-
-		if( $category ) 
-			echo anchor(
-					$this->posts->permalink($post->ID), 
-					'<span class="category-title">'.$category->name.'</span>', 
-					array('titel' => $category->name)
-				);
-		?>
+			<time class="timeago" datetime="<?php echo $post->post_date; ?>"></time>
 			<h4 class="item-heading">
 				<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
 					<?php echo $post->post_title; ?>
@@ -55,3 +41,7 @@ $value = json_decode($box->meta_value);
 	</div>
 	<?php endforeach; ?>
 </div>
+
+<!-- <div class="col-md-12 text-center" align="center">
+	<a href="" class="btn btn-default"><i class="fa fa-refresh"></i> Indeks Berita</a>
+</div> -->

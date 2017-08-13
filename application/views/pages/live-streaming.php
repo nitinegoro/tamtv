@@ -11,10 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @since Tamtv 1.0
  */
 ?>
-	<!-- if content mode vidio -->
 	<?php  
 	/**
-	 * undocumented class variable
+	 * Content Index Live Streaming
 	 *
 	 * @var string
 	 **/

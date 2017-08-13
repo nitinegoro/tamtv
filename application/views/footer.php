@@ -66,11 +66,11 @@
 		    		?>
 				</ul>
 				<ul class="social-icon pull-right">
-					<li><a href=""><img src="public/image/component/facebook.png" alt=""></a></li>
-					<li><a href=""><img src="public/image/component/twitter.png" alt=""></a></li>
-					<li><a href=""><img src="public/image/component/gplus.png" alt=""></a></li>
-					<li><a href=""><img src="public/image/component/youtube.png" alt=""></a></li>
-					<li><a href=""><img src="public/image/component/instagram.png" alt=""></a></li>
+					<li><a href=""><img src="<?php echo base_url("public/image/component/facebook.png") ?>" alt=""></a></li>
+					<li><a href=""><img src="<?php echo base_url("public/image/component/twitter.png") ?>" alt=""></a></li>
+					<li><a href=""><img src="<?php echo base_url("public/image/component/gplus.png") ?>" alt=""></a></li>
+					<li><a href=""><img src="<?php echo base_url("public/image/component/youtube.png") ?>" alt=""></a></li>
+					<li><a href=""><img src="<?php echo base_url("public/image/component/instagram.png") ?>" alt=""></a></li>
 				</ul>
 				<div class="col-xs-6">
 					<p class="copyright"><small>Hak Cipta 2017 Tam TV Babel - Develop By <a href="">Teitra Mega</a></small></p>
@@ -81,6 +81,10 @@
 	<script src="<?php echo base_url("public/theme/js/jquery-3.2.1.min.js"); ?>"></script>
 	<script src="<?php echo base_url("public/bootstraps/js/bootstrap.min.js"); ?>"></script>
 	<script src="<?php echo base_url("public/theme/js/jquery.sticky.min.js"); ?>"></script>
+	<script src="<?php echo base_url("public/theme/js/jquery.timeago.js");?>" type="text/javascript"></script>
+	<script>
+		var base_url = '<?php echo base_url(); ?>';
+	</script>
 	<script src="<?php echo base_url("public/theme/js/main.js"); ?>"></script>
 	<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=59227929b27f700011ad0da3&product=inline-share-buttons' async='async'></script>
 </body>

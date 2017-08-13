@@ -33,7 +33,7 @@ class Web extends MY_Controller
 			$this->user_login = $this->session->userdata('user_login');
 
 		$this->load->model(
-			array('menus', 'options','themes', 'tags','posts')
+			array('menus', 'options','themes', 'tags','posts','category')
 		);
 
 		$this->load->helper(

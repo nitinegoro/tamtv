@@ -69,7 +69,7 @@ class Main extends Web
 		$this->meta_tags->set_meta_tag('description', strip_tags(word_limiter($post->post_content, 13)) );
 
 		if( $category )
-			$this->breadcrumbs->unshift(1, $category->name, "category/{$category->slug}");
+			$this->breadcrumbs->unshift(1, $category->name, "kategori/{$category->slug}");
 
 		$this->breadcrumbs->unshift(2, $post->post_title, "/");
 
@@ -90,14 +90,66 @@ class Main extends Web
 	public function live()
 	{
 		$this->meta_tags->set_meta_tag('title', $this->options->get('sitename') );
-		$this->meta_tags->set_meta_tag('news_keywords', '' );
 		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
 
 		$this->data = array(
-			'title' => $this->options->get('sitename')	
+			'title' => "Live Streaming TV Lokal "	
 		);
 
 		$this->template->view('live-streaming', $this->data);
+	}
+
+	/**
+	 * Get Post by category
+	 *
+	 **/
+	public function getcategory()
+	{
+		$category = $this->category->get();
+
+		if($category == FALSE)
+			show_404();
+
+		$this->meta_tags->set_meta_tag('title', $category->name );
+		$this->meta_tags->set_meta_tag('description', $category->description );
+
+		$parent = $this->category->get($category->parent);
+
+		if( $parent )
+			$this->breadcrumbs->unshift(1, $parent->name, "/kategori/" . $parent->slug);
+
+		$this->breadcrumbs->unshift(2, $category->name, current_url());
+
+		$this->data = array(
+			'title' => $category->name,
+			'category' => $category
+		);
+
+		$this->template->view('category', $this->data);
+	}
+
+	/**
+	 * Get Post by Tag
+	 *
+	 **/
+	public function gettag()
+	{
+		$tag = $this->tags->get();
+
+		if($tag == FALSE)
+			show_404();
+
+		$this->meta_tags->set_meta_tag('title', $tag->name );
+		$this->meta_tags->set_meta_tag('description', $tag->description );
+
+		$this->breadcrumbs->unshift(2, $tag->name, current_url());
+
+		$this->data = array(
+			'title' => "Topik : ".$tag->name,
+			'tag' => $tag	
+		);
+
+		$this->template->view('tags', $this->data);
 	}
 
 
@@ -105,7 +157,9 @@ class Main extends Web
 	{
 		foreach ($this->db->get('posts')->result() as $row) 
 		{
-			$this->db->update('posts', array('post_slug' => $this->slug->create_slug($row->post_title)), array('ID' => $row->ID));
+			//$this->db->update('menus', array('url' => str_replace('category', 'kategori', $row->url)), array('ID' => $row->ID));
+			$this->db->update('posts', array('image' => $row->post_slug.'.jpg'), array('ID' => $row->ID));
+			//$this->db->update('posts', array('post_slug' => $this->slug->create_slug($row->post_title)), array('ID' => $row->ID));
 		}
 	}
 

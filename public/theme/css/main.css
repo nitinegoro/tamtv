@@ -323,8 +323,10 @@ span.more-heading {
   text-transform: uppercase;
 }
 .box-topic-tag > ul.list-topic-tag > li:before {
-  content: '#';
-  padding-right: 20px;
+  content: "\f292";
+  padding-right: 4px;
+  color: grey;
+  font-family: FontAwesome;
   color: #6666B2;
 }
 .box-topic-tag > ul.list-topic-tag > li {
@@ -418,7 +420,7 @@ span.more-heading {
   font-family: 'Roboto', sans-serif;
   font-size: 9pt;
   font-weight: bold;
-  color: grey;
+  color: #3f51b5;
   text-transform: uppercase;
 }
 .big-loop-item > .item-content > a {
@@ -788,4 +790,53 @@ textarea.input {
 .input::-ms-expand {
   border: 0;
   background-color: transparent;
+}
+
+section.page-cetegory {
+  font-family: 'Cabin', sans-serif;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1.2px solid #EEEEEE;
+}
+
+section.page-cetegory > h1 {
+  font-size: 17pt;
+  text-transform: uppercase;
+}
+
+section.page-cetegory > p,
+div.page-tag > p {
+  font-family: 'Arial', sans-serif;
+  font-size: 10pt;
+  line-height: 1.5em;
+  letter-spacing: 0.5pt;
+}
+
+div.tag-content {
+   border-left: 1.2px solid #EEEEEE;
+}
+div.page-tag > p {
+  padding-bottom: 20px;
+  border-bottom: 1.2px solid #EEEEEE;
+}
+
+div.page-tag > h1:before {
+  content: "\f292";
+  padding-right: 3px;
+  color: grey;
+  font-family: FontAwesome;
+}
+div.page-tag > h1 {
+  font-family: 'Cabin', sans-serif;
+  font-size: 15pt;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.item-content > time.timeago {
+  font-size: 8pt;
+  font-style: italic;
+}
+.top3x { 
+  padding-top: 30px;
 }

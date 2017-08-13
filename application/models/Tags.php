@@ -1,7 +1,31 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tags extends CI_Model {
+class Tags extends CI_Model 
+{
+	public $slug;
+
+	public function __construct()
+	{
+		parent::__construct();
+		
+		$this->slug = $this->uri->segment(2);
+	}
+
+	public function get($param = NULL)
+	{
+		$this->db->select('tag_id, name, slug, description');
+
+		if( is_null($param) == TRUE )
+		{
+			$this->db->where('slug', $this->slug);
+		} else {
+			$this->db->where('tag_id', $param);
+		}
+
+		return $this->db->get('tags')->row();
+	}
+
 
 	/**
 	 * Select distinct tag from posttags

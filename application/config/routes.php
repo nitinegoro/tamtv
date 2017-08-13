@@ -86,5 +86,10 @@ foreach( $db->get( 'posts' )->result() as $row )
 			$route[ 'read/'.$row->ID . '/' . $row->post_slug ]   = 'main/getpost/';
 			break;
 	}
-	
 }
+
+foreach( $db->get('categories')->result() as $row)
+	$route['kategori/' . $row->slug ] = 'main/getcategory/';
+
+foreach( $db->get('tags')->result() as $row)
+	$route['tag/' . $row->slug ] = 'main/gettag/';
