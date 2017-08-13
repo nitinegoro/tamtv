@@ -103,7 +103,51 @@ class Posts extends CI_Model
 			return $this->db->get('postcategory', $limit, $offset)->result();
 		}
 	}
-	
+
+	/**
+	 * Fulltext searching
+	 *
+	 * @see http://www.vionblog.com/mysql-full-text-search-with-multiple-words/
+	 **/
+	public function search($limit = 6, $offset = 0, $type = 'num')
+	{
+/*		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
+
+		$this->db->join('posts', 'postcategory.post_id = posts.ID', 'inner');
+
+		if($this->input->get('category') != '')
+			$this->db->where('category_id', $this->input->get('category'));
+
+		if($this->input->get('q') != '');
+
+		$this->db->order_by('post_date', 'desc');
+
+		$this->db->group_by('post_id');*/
+		$keyword = $this->clean_string($this->input->get('q'));
+
+
+		$query = $this->db->query("
+			SELECT ID, post_date, post_title, post_excerpt, post_content, image,
+				MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE) AS relevance
+			FROM posts 
+			WHERE MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE)
+			ORDER BY relevance DESC
+		");
+
+		if($type == 'num')
+		{
+			return $query->num_rows();
+		} else {
+			return $query->result();
+		}
+	}
+
+	public function clean_string($s) 
+	{
+	  $string = str_replace(')', '', str_replace('(', '', str_replace('-', '', str_replace('+', '', str_replace('<', '', str_replace('>', '', str_replace('@', '', str_replace("'", '', trim($s)))))))));
+	  return $string;
+	}
+
 	public function get_thumbnail($image = FALSE, $size = FALSE)
 	{
 		if($image == FALSE)

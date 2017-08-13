@@ -31,7 +31,7 @@ $author = $this->posts->get_post_author($post->ID);
 					<div class="media">
 						<?php if($this->posts->get_post_author($post->ID)) : ?>
 					  	<div class="media-left media-middle">
-					    	<a href="<?php echo base_url("author/{$author->username}"); ?>">
+					    	<a href="">
 					      		<img class="media-object img-circle" src="<?php echo base_url("public/image/avatar/{$author->avatar}"); ?>" alt="avatar <?php echo $author->fullname ?>" width="40">
 					    	</a>
 					  	</div>
@@ -39,7 +39,7 @@ $author = $this->posts->get_post_author($post->ID);
 					  	<div class="media-body">
 						<?php 
 						if($this->posts->get_post_author($post->ID)) 
-							echo '<a href="'.base_url("author/{$author->username}").'" class="media-heading">'.$author->fullname.'</a> <br>';
+							echo '<a class="media-heading">'.$author->fullname.'</a> <br>';
 						?>
 					   		<time itemprop="datePublished"><?php echo $this->posts->date_format($post->post_date); ?></time>
 					  	</div>
@@ -84,7 +84,7 @@ $author = $this->posts->get_post_author($post->ID);
 				<div class="media">
 					<?php if($this->posts->get_post_author($post->ID)) : ?>
 					  <div class="media-left media-middle">
-					    	<a href="<?php echo base_url("author/{$author->username}"); ?>">
+					    	<a href="">
 					      	<img class="media-object img-circle" src="<?php echo base_url("public/image/avatar/{$author->avatar}"); ?>" alt="avatar <?php echo $author->fullname ?>" width="40">
 					    </a>
 					  </div>
@@ -92,7 +92,7 @@ $author = $this->posts->get_post_author($post->ID);
 					  <div class="media-body">
 						<?php 
 						if($this->posts->get_post_author($post->ID)) 
-							echo '<a href="'.base_url("author/{$author->username}").'" class="media-heading">'.$author->fullname.'</a> <br>';
+							echo '<a class="media-heading">'.$author->fullname.'</a> <br>';
 						?>
 					   	<time itemprop="datePublished"><?php echo $this->posts->date_format($post->post_date); ?></time>
 					  </div>

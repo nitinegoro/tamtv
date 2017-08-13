@@ -25,6 +25,11 @@ class Category extends CI_Model
 
 		return $this->db->get('categories')->row();
 	}
+
+	public function getall()
+	{
+		return $this->db->get('categories')->result();
+	}
 }
 
 /* End of file Category.php */

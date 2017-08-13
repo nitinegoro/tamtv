@@ -56,6 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 /* STATIC ROUTE */
 $route['live'] = 'main/live';
 
+$route['search'] = 'main/search';
+
 /**
  * Generate Route SEO Freindly
  * Inspiriration from

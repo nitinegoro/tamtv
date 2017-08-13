@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      		?>
 	      		</a>
 	    	</div>
-		    <form class="navbar-form navbar-left" action="search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+		    <form class="navbar-form navbar-left" action="<?php echo base_url("search") ?>" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
 		      	<div class="form-group">
 		        	<input type="text" class="form-control" itemprop="query-input" name="q" value="<?php echo $this->input->get('q') ?>" placeholder="Berita apa yang ingin Anda Baca hari ini?">
 		        <?php  

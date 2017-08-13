@@ -9,6 +9,14 @@ class Main extends Web
 
 	public $page;
 
+	public $query;
+
+	public $order;
+
+	public $from_date;
+
+	public $to_date;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -18,7 +26,15 @@ class Main extends Web
 
 		$this->page = $this->input->get('page');
 
-		$this->per_page = 2;
+		$this->per_page = 16;
+
+		$this->query = $this->input->get('q');
+
+		$this->order = $this->input->get('order');
+
+		$this->from_date = $this->input->get('from_date');
+
+		$this->to_date = $this->input->get('to_date');
 	}
 
 	/**
@@ -116,6 +132,10 @@ class Main extends Web
 
 		$this->template->view('live-streaming', $this->data);
 	}
+	public function re($value='')
+	{
+		echo preg_replace( '/[^[:cntrl:]]/', '', '!@#$%^>\sdfsd<');
+	}
 
 	/**
 	 * Get Post by category
@@ -189,6 +209,30 @@ class Main extends Web
 		$this->template->view('tags', $this->data);
 	}
 
+	/**
+	 * Searchong page
+	 *
+	 **/
+	public function search()
+	{
+		$this->meta_tags->set_meta_tag('title', $this->options->get('sitename') );
+		$this->meta_tags->set_meta_tag('news_keywords', '' );
+		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
+
+		$config = $this->template->pagination_list();
+
+		$config['base_url'] = site_url("search/?q={$this->query}&order={$this->order}");
+
+		$config['per_page'] = $this->per_page;
+		$config['total_rows'] = $this->posts->search(null, null, 'num');
+
+		$this->data = array(
+			'title' => $this->options->get('sitename'),
+			'contents'=>  $this->posts->search($this->per_page, $this->page, 'results')
+		);
+
+		$this->template->view('search', $this->data);
+	}
 
 	public function update($value='')
 	{

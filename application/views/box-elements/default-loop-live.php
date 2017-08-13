@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @since Tamtv 1.0
  */
 ?>
-<div class="box-thumbnail">
+<div class="box-thumbnail top3x">
 	<?php  
 	/**
 	 * Get Similar Post by Tag

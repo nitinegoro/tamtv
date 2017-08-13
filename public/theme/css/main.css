@@ -211,7 +211,7 @@ h1.live-title {
 .adsvertising {
   width: 100%;
   text-align: center;
-  z-index: 99;
+  z-index: 9;
 }
 
 .featured-news {
@@ -290,7 +290,6 @@ h1.live-title {
 .box-sidebar {
   margin-top: 15px;
   background-color: white;
-  z-index: 1;
 }
 .box-topic-tag,
 .box-category-1 {
@@ -867,4 +866,9 @@ div.page-tag > h1 {
     color: white;
     background-color: #283593;
     border-color: #283593;
+}
+
+.over-index {
+  z-index: 99;
+  background-color: white;
 }

@@ -20,4 +20,5 @@ $(document).ready(function() {
 
     /* STICKY  SIdebar */
     $("#sticker").sticky({topSpacing:50, bottomSpacing:100});
+    $("#sticker2").sticky({topSpacing:30, bottomSpacing:100});
 });
