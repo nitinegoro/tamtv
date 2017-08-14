@@ -26,7 +26,7 @@
 			<input type="text" class="col-md-2 input-sm form" name="from_date" placeholder="2000-03-23">
 			<input type="text" class="col-md-2 input-sm form" name="to_date" placeholder="2000-03-23">
 			<div class="col-md-2">
-				<button class="btn btn-primary btn-sm">Cari Berita</button>
+				<button class="btn btn-primary">Cari Berita</button>
 			</div>
 		</div>
 		</form>

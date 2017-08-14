@@ -764,7 +764,9 @@ select.form {
   outline: none;
   box-sizing: border-box;
   border:1px solid grey;
+  height: 36px;
 }
+
 input.form:focus, 
 select.form:focus {
   border-color: blue;
