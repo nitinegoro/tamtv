@@ -44,6 +44,14 @@
 		    		}
 		    		?>
 	    		</ul>
+    		<ul class="nav navbar-nav navbar-right navbar-live">
+    			<li class="live-menu">
+    				<a href="<?php echo base_url("live"); ?>">
+    					<div class="live-circle"><i class="fa fa-play-circle-o "></i></div>
+    					<div class="text-live-menu">live Streaming</div>
+    				</a>
+    			</li>
+    		</ul>
 	     	</div>
 	  	</div>
 	</nav>

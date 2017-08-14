@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		      	</div>
 		      	<button type="submit" class="btn btn-default">Cari</button>
 		    </form>
-    		<ul class="nav navbar-nav navbar-right">
+    		<ul class="nav navbar-nav navbar-right navbar-user">
 	    		<?php 
 	    		/**
 	    		 * Displayed User Menu
@@ -90,8 +90,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		}
     		?>
     		</ul>
+    		<ul class="nav navbar-nav navbar-right navbar-live">
+    			<li class="live-menu">
+    				<a href="<?php echo base_url("live"); ?>">
+    					<div class="live-circle"><i class="fa fa-play-circle-o "></i></div>
+    					<div class="text-live-menu">live Streaming</div>
+    				</a>
+    			</li>
+    		</ul>
 		</nav>
 	</div>
+
+
 <?php
 /* End of file navbar.php */
 /* Location: ./application/views/navbar.php */

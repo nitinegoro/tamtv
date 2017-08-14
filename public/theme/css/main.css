@@ -4,7 +4,6 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
-h1 {}
 
 @media (min-width: 768px) {
   .container {
@@ -36,7 +35,7 @@ div.c3 {
 }
 .navbar-brand > img.main-logo {
 	width: 140px;
-	margin-top: -10px;
+	margin-top: -12px;
 }
 
 
@@ -84,13 +83,17 @@ div.c3 {
 	border-radius: 0px;
 	padding: 7.5px 24px 7.5px 24px;
 }
+.navbar-default  .navbar-nav,
+.navbar-default  .navbar-nav .navbar-right
+ {
+  padding-bottom: 0px;
+}
 
 .navbar-default  .navbar-nav > li > a {
     font-weight:600;
     font-family: 'Cabin', sans-serif;
     color: black !important;
   	text-transform: uppercase;
-  	margin: 3px 0px 0px 0px;
 }
 nav.navbar-default  .navbar-nav > li > a:hover,
 nav.navbar-default  .navbar-nav > li > a:focus {
@@ -116,7 +119,6 @@ nav.navbar-default  .navbar-nav > .disabled > a:focus {
   }
   .navbar-right {
     float: right !important;
-    margin-right: -15px;
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
@@ -139,6 +141,8 @@ nav.navbar-default  .navbar-nav > .disabled > a:focus {
 }
 .navbar-default .navbar-nav > li > a {
   color: #777777;
+  padding-top: 20px;
+  padding-bottom: 20px; 
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -177,15 +181,49 @@ nav.navbar-default  .navbar-nav > .disabled > a:focus {
   background-color: #e7e7e7;
   color: #555555;
 }
+.navbar-user {
+  margin-top: -10px;
+}
+
+.navbar-default .navbar-live > li.live-menu {
+  border-radius: 50px;
+  border: 1.2px solid #EEEEEE;
+  margin: 0px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #010080;
+}
+.navbar-default .navbar-nav > li.live-menu > a  {
+  padding: -0px ;
+  height: 30px;
+  font-size: 10pt;
+  text-transform: normal;
+  color: white !important;
+}
+.navbar-default .navbar-nav > li.live-menu > a > div.live-circle {
+  padding-top: 2px;
+  font-size: 18pt;
+  width: 30px;
+  float: left;
+}
+.navbar-default .navbar-nav > li.live-menu > a > div.text-live-menu {
+  padding-left: 5px;
+  float: right;
+  line-height: 1.1em;
+  text-align: left;
+  width: 105px;
+  letter-spacing: 2px;
+  font-weight: bold;
+} 
 
 /*  NAVBAR STICKy */
 a.sticky-logo > img.main-logo {
-  margin-top: -6px;
+  margin-top: -4px;
   width: 80px;
 }
 .navbar-sticky {
   background-color: white;
-  margin-bottom: -40px;
 }
 
 /*  MODE VIDIO NAVBAR */
