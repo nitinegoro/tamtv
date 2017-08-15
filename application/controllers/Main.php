@@ -221,10 +221,13 @@ class Main extends Web
 
 		$config = $this->template->pagination_list();
 
-		$config['base_url'] = site_url("search/?q={$this->query}&order={$this->order}");
+		$config['base_url'] = site_url("search?q={$this->query}&order={$this->order}&category={$this->input->get('category')}");
 
 		$config['per_page'] = $this->per_page;
 		$config['total_rows'] = $this->posts->search(null, null, 'num');
+
+		if(!$this->page)
+			$this->page = 0;
 
 		$this->data = array(
 			'title' => $this->options->get('sitename'),
@@ -232,6 +235,26 @@ class Main extends Web
 		);
 
 		$this->template->view('search', $this->data);
+	}
+
+	public function page()
+	{
+		$post = $this->posts->get_page();
+
+		if($post == FALSE)
+			show_404();
+
+		$this->meta_tags->set_meta_tag('title', $post->post_title );
+		$this->meta_tags->set_meta_tag('description', strip_tags(word_limiter($post->post_content, 13)) );
+
+		$this->breadcrumbs->unshift(1, $post->post_title, "/");
+
+		$this->data = array(
+			'title' => $post->post_title,
+			'post' => $post
+		);
+
+		$this->template->view('page', $this->data);
 	}
 
 	public function update($value='')

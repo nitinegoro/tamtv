@@ -70,7 +70,7 @@ $db =& DB();
 
 $permalink = $db->get_where('options', array('option_name' => 'permalink'))->row('option_value');
 
-foreach( $db->get( 'posts' )->result() as $row )
+foreach( $db->get_where( 'posts', array('post_status' => 'publish', 'post_type !=' => 'page') )->result() as $row )
 {
 	$date = new DateTime($row->post_date);
 	switch ($permalink) 
@@ -89,6 +89,9 @@ foreach( $db->get( 'posts' )->result() as $row )
 			break;
 	}
 }
+
+foreach( $db->get_where( 'posts', array('post_status' => 'publish', 'post_type =' => 'page') )->result() as $row )
+	$route['page/' . $row->post_slug ] = 'main/page/';
 
 foreach( $db->get('categories')->result() as $row)
 	$route['kategori/' . $row->slug ] = 'main/getcategory/';

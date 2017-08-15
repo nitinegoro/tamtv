@@ -78,7 +78,7 @@
 			</div>
 		</div>
 		<?php if(!$contents ) : ?>
-		<p><i class="fa fa-warning"></i> Maaf, kami tidak menemukan pencarian <strong><mark>dg</mark></strong> yang Anda lakukan</p>
+		<p><i class="fa fa-warning"></i> Maaf, kami tidak menemukan pencarian <strong><mark><?php echo $this->query; ?></mark></strong> yang Anda lakukan</p>
 		<p>Coba ulangi dengan cara :</p>
 		<ul>
 			<li>Memeriksa kesalahan penulisan</li>

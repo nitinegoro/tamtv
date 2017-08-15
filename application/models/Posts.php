@@ -10,11 +10,15 @@ class Posts extends CI_Model
 		parent::__construct();
 		
 		$this->permalink_type = $this->get_option('permalink');
+
+		$this->permalink_page = $this->uri->segment(2);
 	}
 
 	public function get()
 	{
-		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_modified, post_excerpt, comment_status, poll_status');
+		$this->db->select('
+			ID, post_title, post_slug, post_date, post_content, post_type, image, post_modified, post_excerpt, comment_status, poll_status
+		');
 
 		switch ($this->permalink_type) 
 		{
@@ -34,6 +38,8 @@ class Posts extends CI_Model
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
 
+		$this->db->where_not_in('post_type', 'page');
+
 		if($param != NULL)
 			$this->db->where('post_type', $param);
 
@@ -51,6 +57,8 @@ class Posts extends CI_Model
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
 
+		$this->db->where_not_in('post_type', 'page');
+
 		$this->db->order_by('viewer', 'desc');
 		
 		return $this->db->get('posts', $limit, $offset)->result();
@@ -60,6 +68,8 @@ class Posts extends CI_Model
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
 
+		$this->db->where_not_in('post_type', 'page');
+
 		$this->db->order_by('post_date', 'desc');
 		
 		return $this->db->get('posts', $limit, $offset)->result();
@@ -68,6 +78,8 @@ class Posts extends CI_Model
 	public function tags($tags = 0, $limit = 6, $offset = 0, $type = 'num')
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
+
+		$this->db->where_not_in('post_type', 'page');
 
 		$this->db->join('posts', 'posttags.post_id = posts.ID', 'inner');
 
@@ -89,6 +101,8 @@ class Posts extends CI_Model
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
 
+		$this->db->where_not_in('post_type', 'page');
+
 		$this->db->join('posts', 'postcategory.post_id = posts.ID', 'inner');
 
 		$this->db->where('category_id', $category);
@@ -109,35 +123,58 @@ class Posts extends CI_Model
 	 *
 	 * @see http://www.vionblog.com/mysql-full-text-search-with-multiple-words/
 	 **/
-	public function search($limit = 6, $offset = 0, $type = 'num')
+	public function search($limit = 0, $offset = 0, $type = 'num')
 	{
-/*		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
-
-		$this->db->join('posts', 'postcategory.post_id = posts.ID', 'inner');
-
-		if($this->input->get('category') != '')
-			$this->db->where('category_id', $this->input->get('category'));
-
-		if($this->input->get('q') != '');
-
-		$this->db->order_by('post_date', 'desc');
-
-		$this->db->group_by('post_id');*/
 		$keyword = $this->clean_string($this->input->get('q'));
 
+		$filter = '';
 
-		$query = $this->db->query("
-			SELECT ID, post_date, post_title, post_excerpt, post_content, image,
-				MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE) AS relevance
-			FROM posts 
-			WHERE MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE)
-			ORDER BY relevance DESC
-		");
+		$order_by = '';
+
+		$category = '';
+
+		switch ($this->input->get('order')) 
+		{
+			case 'latest':
+				$order_by .= ' ORDER BY post_date DESC ';
+				break;
+			case 'relevance':
+				$order_by .= ' ORDER BY relevance DESC ';
+				break;
+			case 'popular':
+				$order_by .= ' ORDER BY viewer DESC ';
+				break;
+		}
+
+		$inputCat = $this->input->get('category');
+		
+		if($this->input->get('category') != '')
+			$category .= " AND category_id = '{$inputCat}' ";
 
 		if($type == 'num')
 		{
+			$query = $this->db->query("
+				SELECT ID, post_date, post_title, post_excerpt, post_content, image,
+					MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE) AS relevance
+				FROM postcategory 
+					INNER JOIN posts ON postcategory.post_id = posts.ID
+				WHERE MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE)	
+					{$category}			
+				GROUP BY post_id
+			");
 			return $query->num_rows();
 		} else {
+			$query = $this->db->query("
+				SELECT ID, post_date, post_title, post_excerpt, post_content, image,
+					MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE) AS relevance
+				FROM postcategory 
+					INNER JOIN posts ON postcategory.post_id = posts.ID
+				WHERE MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE)
+					{$category}
+					GROUP BY post_id
+				{$order_by}
+				LIMIT {$limit} OFFSET {$offset}
+			");
 			return $query->result();
 		}
 	}
@@ -216,6 +253,8 @@ class Posts extends CI_Model
 
 		$this->db->join('posts', 'posttags.post_id = posts.ID', 'inner');
 
+		$this->db->where_not_in('post_type', 'page');
+
 		$this->db->where_in('tag_id', $tags);
 
 		$this->db->where_not_in('post_id', $not_post);
@@ -269,6 +308,22 @@ class Posts extends CI_Model
 	public function get_option($param = 'date_format')
 	{
 		return $this->db->query("SELECT option_value FROM options WHERE option_name = '{$param}'")->row('option_value');
+	}
+
+	/**
+	 * undocumented class variable
+	 *
+	 * @var string
+	 **/
+	public function get_page()
+	{
+		$this->db->select('
+			ID, post_title, post_slug, post_date, post_content, post_type, image, post_modified, post_excerpt, comment_status, poll_status
+		');
+
+		$this->db->where('post_slug', $this->permalink_page);
+
+		return $this->db->get('posts')->row();
 	}
 }
 

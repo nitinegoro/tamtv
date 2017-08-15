@@ -35,6 +35,7 @@ switch ($this->router->fetch_method())
 		$this->load->view('sidebar-live', $this->data);
 		break;
 	case 'gettag':
+	case 'page':
 		break;
 	default:
 		$this->load->view('sidebar-index', $this->data);
