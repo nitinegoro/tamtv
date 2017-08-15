@@ -45,8 +45,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    		 **/
 	    		if($this->user_login == FALSE) : 
 	    		?>
-      			<li><a href="<?php echo base_url("login") ?>">Masuk</a></li>
-      			<li><a href="<?php echo base_url("signup"); ?>">Daftar</a></li>
+      			<li><a href="<?php echo base_url("login?back-to=".current_url()) ?>">Masuk</a></li>
+      			<li><a href="<?php echo base_url("signup?back-to=".current_url()); ?>">Daftar</a></li>
 	      		<?php else : ?>
  	      		<li class="dropdown">
 	        		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -56,6 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	        		<ul class="dropdown-menu">
 	          			<li><a href="<?php echo base_url("me/{$this->session->userdata('user')->username}") ?>">Profil Saya</a></li>
 	          			<li><a href="<?php echo base_url("user/change_password"); ?>">Ganti Password</a></li>
+	          			<li><a href="<?php echo base_url("login/signout?back-to=".current_url()); ?>">Logout</a></li>
 	        		</ul>
 	      		</li>
 	      		<?php endif; 
@@ -101,8 +102,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		</ul>
 		</nav>
 	</div>
-
-
 <?php
 /* End of file navbar.php */
 /* Location: ./application/views/navbar.php */

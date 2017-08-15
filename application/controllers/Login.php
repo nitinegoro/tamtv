@@ -6,6 +6,7 @@ class Login extends Web
 	public function __construct()
 	{
 		parent::__construct();
+
 		$this->meta_tags->set_meta_tag('news_keywords', '' );
 		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
 	}
@@ -26,7 +27,13 @@ class Login extends Web
 			        $user_session = array(
 			        	'user_login' => TRUE,
 			        	'ID' => $user->ID,
-			        	'user' => $user
+			        	'user' => (Object) array(
+			        		'ID' => $user->ID,
+			        		'fullname' => $user->fullname,
+			        		'email' => $user->username,
+			        		'username' => $user->username,
+			        		'last_login' => $user->last_login
+			        	)
 			        );	
 
 			        $this->session->set_userdata( $user_session );
@@ -58,6 +65,13 @@ class Login extends Web
 		);
 
 		$this->template->view('login', $this->data);
+	}
+
+	public function signout()
+	{
+		$this->session->sess_destroy();
+
+		redirect($this->input->get('back-to'));
 	}
 
 	public function signup()

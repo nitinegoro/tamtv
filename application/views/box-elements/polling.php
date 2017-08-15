@@ -26,8 +26,8 @@ if( $question ) :
 	foreach( $this->polling->get_answers($question->question_id) as $row) :
 	?>
 		<li>
-			<a href="" data-id="">
-				<img src="<?php echo base_url("public/image/polling/{$row->icon}"); ?>" alt=""><br>
+			<a href="#polling-click" id="set-polling" data-id="<?php echo $row->answer_id; ?>" data-post="<?php echo $post->ID ?>">
+				<img src="<?php echo base_url("public/image/polling/{$row->icon}"); ?>" alt="<?php echo $row->label ?>"><br>
 				<span><?php echo $row->label ?></span>
 			</a>
 		</li>

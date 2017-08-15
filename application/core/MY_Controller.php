@@ -26,25 +26,63 @@ class Web extends MY_Controller
 		parent::__construct();
 
 		$this->load->library(
-			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser', 'pagination','form_validation')
+			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser', 'pagination','form_validation','cart')
 		);
 		
-		if($this->session->userdata('user_login') != FALSE) 
-			$this->user_login = $this->session->userdata('user_login');
-
 		$this->load->model(
 			array('menus', 'options','themes', 'tags','posts','category','user','polling')
 		);
+
+		if($this->session->userdata('user_login') != FALSE)  
+		{
+			$this->user_login = $this->session->userdata('user');
+
+			$this->polling->save_polling_session();
+		}
 
 		$this->load->helper(
 			array('text', 'form', 'language')
 		);
 
 		$this->breadcrumbs->unshift(0, 'Home', "/");
-		//$this->load->js(base_url("public/dist/js/push.min.js?v1.0.1"));
-		//$this->load->js(base_url("public/android/js/notifications.js?v1.0.1"));
 	}
 
+	/**
+	 * User Sugmit Polling
+	 *
+	 * @return Header 503
+	 **/
+	public function set_polling()
+	{
+		if($this->user_login)
+		{
+			$this->polling->save_polling();
+			
+			$this->data = array(
+				'status' => "success"
+			);
+		} else {
+			$jumlalPolling = count($this->session->userdata('polling'));
+
+			$polling = array(
+				'id'      => $this->input->post('post'),
+				'qty' => 1,
+				'price' => 1,
+				'name' => 'set-polling',
+					'post' => $this->input->post('post'),
+					'answer' => $this->input->post('answer')
+			);
+			
+			$this->cart->insert($polling);
+
+			$this->data = array(
+				'status' => "failed",
+				'redirectTo' => $this->input->post('backTo')
+			);
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+	}
 }
 
 /* End of file MY_Controller.php */
