@@ -77,6 +77,8 @@ class Main extends Web
 		if($post == FALSE)
 			show_404();
 
+		$this->posts->update_viewer($post->ID, ++$post->viewer);
+
 		$inputTags = array_map(function ($object) { 
 				return $object->name; 
 			}, 

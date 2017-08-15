@@ -17,7 +17,8 @@ class Posts extends CI_Model
 	public function get()
 	{
 		$this->db->select('
-			ID, post_title, post_slug, post_date, post_content, post_type, image, post_modified, post_excerpt, comment_status,poll_status, poll_status
+			ID, post_title, post_slug, post_date, post_content, post_type, image, post_modified, 
+			post_excerpt, comment_status,poll_status, poll_status, viewer
 		');
 
 		switch ($this->permalink_type) 
@@ -32,6 +33,13 @@ class Posts extends CI_Model
 		}
 
 		return $this->db->get('posts')->row();
+	}
+
+	public function update_viewer($param = 0, $counter = 0)
+	{
+		$this->db->update('posts', array('viewer' => $counter), array('ID' => $param));
+
+		return $this->db->affected_rows();
 	}
 
 	public function get_type($param = NULL, $limit = 6, $offset = 0, $type = 'num')
