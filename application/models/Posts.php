@@ -17,7 +17,7 @@ class Posts extends CI_Model
 	public function get()
 	{
 		$this->db->select('
-			ID, post_title, post_slug, post_date, post_content, post_type, image, post_modified, post_excerpt, comment_status, poll_status
+			ID, post_title, post_slug, post_date, post_content, post_type, image, post_modified, post_excerpt, comment_status,poll_status, poll_status
 		');
 
 		switch ($this->permalink_type) 
@@ -311,7 +311,7 @@ class Posts extends CI_Model
 	}
 
 	/**
-	 * undocumented class variable
+	 * Get POSTpage type
 	 *
 	 * @var string
 	 **/
@@ -324,6 +324,19 @@ class Posts extends CI_Model
 		$this->db->where('post_slug', $this->permalink_page);
 
 		return $this->db->get('posts')->row();
+	}
+
+	public function get_polling_post($param = 0)
+	{
+		$this->db->select('pollingquestion.question_id, pollingquestion.question');
+
+		$this->db->join('pollingquestion', 'pollingpost.question_id = pollingquestion.question_id', 'inner');
+
+		$this->db->where('post_id', $param);
+
+		$this->db->where('polling_status', 'active');
+
+		return $this->db->get('pollingpost')->row();
 	}
 }
 

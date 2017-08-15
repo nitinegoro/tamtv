@@ -913,3 +913,36 @@ div.page-tag > h1 {
   z-index: 99;
   background-color: white;
 }
+
+/* BOX POLLING */
+section.box-polling {
+  font-family: 'Cabin', sans-serif;
+}
+
+section.box-polling > h2.polling-question {
+  font-size: 12pt;
+}
+
+section.box-polling > ul.polling-answer {
+  margin-left: -20px;
+  margin-top: 10px;
+}
+section.box-polling > ul.polling-answer > li {
+  padding-top: 10px;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
+section.box-polling > ul.polling-answer > li > a {
+  font-size: 9pt;
+  text-decoration: none;
+  color: grey;
+}
+
+section.box-polling > ul.polling-answer > li > a img {
+  width: 55px;
+  transition: all 0.5s ease;
+}
+section.box-polling > ul.polling-answer > li > a img:hover {
+  margin-top: -40px;
+}

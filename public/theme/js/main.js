@@ -30,4 +30,6 @@ $(document).ready(function() {
         if (e.which == 32)
             return false;
     });
+
+    $('[data-toggle="tooltip"]').tooltip(); 
 });

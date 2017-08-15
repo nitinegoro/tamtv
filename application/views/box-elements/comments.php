@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <section class="box-comments">
 	<form action="" method="post">
 		<div class="form-group">
-			<textarea name="comment" class="input" rows="3" placeholder="Tuliskan Komentar anda..."></textarea>
+			<textarea name="comment" class="input" rows="3" placeholder="<?php if($this->session->userdata('user_login')) ?>Tuliskan Komentar anda ..."></textarea>
 		</div>
 		<button class="btn btn-block btn-primary"><i class="fa fa-comments"></i> Tulis Komentar</button>
 	</form>

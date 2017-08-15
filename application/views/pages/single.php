@@ -71,15 +71,6 @@ $author = $this->posts->get_post_author($post->ID);
 					</ul>
 				</section>
 			</article>
-			<?php  
-			/**
-			 * undocumented class variable
-			 *
-			 * @var string
-			 **/
-			if( $post->comment_status == 'open' )
-				$this->load->view('box-elements/comments', $this->data);
-			?>
 			<div class="author-box">
 				<div class="media">
 					<?php if($this->posts->get_post_author($post->ID)) : ?>
@@ -100,6 +91,22 @@ $author = $this->posts->get_post_author($post->ID);
 				<div class="sharethis-inline-share-buttons"></div> <hr>
 			</div>
 			<?php  
+			/**
+			 * Polling Elements
+			 *
+			 * @var string
+			 **/
+			if( $post->poll_status == 'open' )
+				$this->load->view('box-elements/polling', $this->data);
+
+			/**
+			 * Comments Elements
+			 *
+			 * @var string
+			 **/
+			if( $post->comment_status == 'open' )
+				$this->load->view('box-elements/comments', $this->data);
+ 
 			/**
 			 * Load the elements sidebar
 			 *
