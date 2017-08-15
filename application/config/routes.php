@@ -100,3 +100,8 @@ foreach( $db->get('categories')->result() as $row)
 
 foreach( $db->get('tags')->result() as $row)
 	$route['tag/' . $row->slug ] = 'main/gettag/';
+
+
+/* USER ROUTE */
+foreach( $db->get_where('users', array('user_type' => 'reader'))->result() as $row)
+	$route['me/' . $row->username ] = 'account';
