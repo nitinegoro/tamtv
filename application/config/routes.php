@@ -58,6 +58,8 @@ $route['live'] = 'main/live';
 
 $route['search'] = 'main/search';
 
+$route['signup'] = 'login/signup';
+
 /**
  * Generate Route SEO Freindly
  * Inspiriration from

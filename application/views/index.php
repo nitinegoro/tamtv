@@ -26,21 +26,25 @@ if (isset($content))
     echo $content;
 }
 
-switch ($this->router->fetch_method()) 
+if( $this->router->fetch_class() == 'main' ) 
 {
-	case 'index':
-		$this->load->view('sidebar-index', $this->data);
-		break;
-	case 'live':
-		$this->load->view('sidebar-live', $this->data);
-		break;
-	case 'gettag':
-	case 'page':
-		break;
-	default:
-		$this->load->view('sidebar-index', $this->data);
-		break;
+	switch ($this->router->fetch_method() ) 
+	{
+		case 'index':
+			$this->load->view('sidebar-index', $this->data);
+			break;
+		case 'live':
+			$this->load->view('sidebar-live', $this->data);
+			break;
+		case 'gettag':
+		case 'page':
+			break;
+		default:
+			$this->load->view('sidebar-index', $this->data);
+			break;
+	}
 }
+
 
 if (isset($footer))
 {

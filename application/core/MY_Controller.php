@@ -26,14 +26,14 @@ class Web extends MY_Controller
 		parent::__construct();
 
 		$this->load->library(
-			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser', 'pagination')
+			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser', 'pagination','form_validation')
 		);
 		
 		if($this->session->userdata('user_login') != FALSE) 
 			$this->user_login = $this->session->userdata('user_login');
 
 		$this->load->model(
-			array('menus', 'options','themes', 'tags','posts','category')
+			array('menus', 'options','themes', 'tags','posts','category','user')
 		);
 
 		$this->load->helper(

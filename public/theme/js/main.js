@@ -1,7 +1,8 @@
 $(document).ready(function() {
     var $navbar = $("#sticky-navbar");
   
-    AdjustHeader(); // Incase the user loads the page from halfway down (or something);
+    AdjustHeader();
+
     $(window).scroll(function() {
         AdjustHeader();
     });
@@ -21,4 +22,12 @@ $(document).ready(function() {
     /* STICKY  SIdebar */
     $("#sticker").sticky({topSpacing:50, bottomSpacing:100});
     $("#sticker2").sticky({topSpacing:30, bottomSpacing:100});
+
+    /* NOT ALLOWED SPACE IN INPUT 
+    * @see https://stackoverflow.com/questions/19024825/not-allow-a-blank-character-space-in-a-input-form
+    */
+    $('#not-space').on('keypress', function(e) {
+        if (e.which == 32)
+            return false;
+    });
 });

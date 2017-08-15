@@ -724,6 +724,7 @@ div.item-vidio > a:hover {
 div.box-login {
   font-family: 'Cabin', sans-serif;
   margin-top: 50px;
+  margin-bottom: 200px;
 }
 div.box-login > p {
   margin-top: 25px;
