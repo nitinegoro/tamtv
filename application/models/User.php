@@ -44,6 +44,13 @@ class User extends CI_Model
 
 		return $this->db->get('users')->row();
 	}
+
+	public function update_last_login($param = 0)
+	{
+		$this->db->update('users', array('last_login' => date('Y-m-d H:i:s')), array('ID' => $param));
+
+		return $this->db->affected_rows();
+	}
 }
 
 /* End of file User.php */

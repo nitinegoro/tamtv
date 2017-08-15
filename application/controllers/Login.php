@@ -38,6 +38,8 @@ class Login extends Web
 
 			        $this->session->set_userdata( $user_session );
 
+			        $this->user->update_last_login($user->ID);
+
 					if( $this->input->get('back-to') != '' )
 					{
 						redirect($this->input->get('back-to'));
@@ -89,7 +91,23 @@ class Login extends Web
 		{
 			$this->user->create();
 
-			redirect(current_url());
+			$user = $this->user->get_user_login();
+			        
+			$user_session = array(
+				 'user_login' => TRUE,
+				 'ID' => $user->ID,
+				 'user' => (Object) array(
+					  'ID' => $user->ID,
+					  'fullname' => $user->fullname,
+					  'email' => $user->username,
+					  'username' => $user->username,
+					  'last_login' => $user->last_login
+				 )
+			);	
+
+			$this->session->set_userdata( $user_session );
+
+			redirect(base_url());
 		}
 
 		$this->data = array(
