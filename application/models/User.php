@@ -33,7 +33,16 @@ class User extends CI_Model
 	
 	public function get_user_login()
 	{
-		# code...
+		if (filter_var($this->input->post('username'), FILTER_VALIDATE_EMAIL)) 
+		{
+			$this->db->where('email', $this->input->post('username'));
+		} else {
+			$this->db->where('username', $this->input->post('username'));
+		}
+
+		$this->db->where('status', 1);
+
+		return $this->db->get('users')->row();
 	}
 }
 

@@ -26,16 +26,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<i class="fa fa-google-plus"></i> Google
 					</a>
 				</div>
-				<p>Atau masuk dengan akun yang sudah ada</p>
+				<p>Atau masuk dengan akun yang sudah ada :</p>
 				<div class="col-md-12 text-left">
 					<div class="form-group">
-						<label>E-Mail :</label>
-						<input type="text" class="form-control" placeholder="Masukkan E-Mail / Username anda ...">
+						<?php echo $this->session->flashdata('alert'); ?>
+					</div>
+					<div class="form-group">
+						<label>Username / E-Mail :</label>
+						<input type="text" name="username" id="not-space" value="<?php echo set_value('username'); ?>" class="form-control" placeholder="Masukkan E-Mail / Username anda ...">
+						<p class="help-block"><?php echo form_error('username', '<small class="text-danger">', '</small>'); ?></p>
 					</div>
 					<div class="form-group">
 						<label>Password : </label>
 						<a href="" class="link pull-right">Lupa?</a>
-						<input type="password" class="form-control" placeholder="Masukkan Paswird anda ...">
+						<input type="password" name="password" value="<?php echo set_value('password'); ?>" class="form-control" placeholder="Masukkan Paswird anda ...">
+						<p class="help-block"><?php echo form_error('password', '<small class="text-danger">', '</small>'); ?></p>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-block btn-primary">Masuk</button>

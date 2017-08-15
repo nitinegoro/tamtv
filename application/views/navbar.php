@@ -49,12 +49,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       			<li><a href="<?php echo base_url("signup"); ?>">Daftar</a></li>
 	      		<?php else : ?>
  	      		<li class="dropdown">
-	        		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Akun Saya
+	        		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<i class="fa fa-user-o" style="padding-right: 10px;"></i>
+	        		<?php echo $this->session->userdata('user')->fullname; ?>
 	        		<span class="caret"></span></a>
 	        		<ul class="dropdown-menu">
-	          			<li><a href="#">Page 1-1</a></li>
-	          			<li><a href="#">Page 1-2</a></li>
-	          			<li><a href="#">Page 1-3</a></li>
+	          			<li><a href="<?php echo base_url("me/{$this->session->userdata('user')->username}") ?>">Profil Saya</a></li>
+	          			<li><a href="<?php echo base_url("user/change_password"); ?>">Ganti Password</a></li>
 	        		</ul>
 	      		</li>
 	      		<?php endif; 

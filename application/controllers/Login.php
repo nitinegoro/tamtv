@@ -12,6 +12,45 @@ class Login extends Web
 
 	public function index()
 	{
+		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			$user = $this->user->get_user_login();
+
+			if( $user != FALSE)
+			{
+				if (password_verify($this->input->post('password'), $user->password)) 
+				{
+			        $user_session = array(
+			        	'user_login' => TRUE,
+			        	'ID' => $user->ID,
+			        	'user' => $user
+			        );	
+
+			        $this->session->set_userdata( $user_session );
+
+					if( $this->input->get('back-to') != '' )
+					{
+						redirect($this->input->get('back-to'));
+					} else {
+						redirect(base_url());
+					}
+				} else {
+					$this->template->alert(
+						' Maaf! Kombinasi Username / E-Mail dengan password anda tidak valid.', 
+						array('type' => 'warning','icon' => 'warning')
+					);
+				}
+			} else {
+				$this->template->alert(
+					' Maaf! Kombinasi Username / E-Mail dengan password anda tidak valid.', 
+					array('type' => 'warning','icon' => 'warning')
+				);
+			}
+		}
+
 		$this->meta_tags->set_meta_tag('title', "Login" );
 
 		$this->data = array(
