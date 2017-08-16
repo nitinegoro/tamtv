@@ -59,4 +59,16 @@ class Welcome extends CI_Controller {
 			echo "<img src='".base_url("public/image/news/aktifitas-permainan-di-atm-dihentikan-demi-kenyamanan-100x70.jpg")."'/>";*/
 		}
 	}
+
+	public function test($value='')
+	{
+		$query = $this->db->query("SELECT MATCH(post_title, post_excerpt, post_content) AGAINST ('endang' IN BOOLEAN MODE) AS relevance 
+			FROM posts 
+				WHERE post_date >= '2017-08-11' AND post_date <= '2017-08-17'
+			AND MATCH(post_title, post_excerpt, post_content) AGAINST ('endang' IN BOOLEAN MODE)
+			")->result();
+
+		echo "<pre>";
+		echo count($query);
+	}
 }

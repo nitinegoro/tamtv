@@ -60,6 +60,10 @@ $route['search'] = 'main/search';
 
 $route['signup'] = 'login/signup';
 
+$route['comments/submit'] = 'main/set_comment';
+
+$route['comments/delete/([0-9])+'] = 'main/delete_comment/$1';
+
 /**
  * Generate Route SEO Freindly
  * Inspiriration from

@@ -141,6 +141,10 @@ class Posts extends CI_Model
 
 		$category = '';
 
+		$from_date = '';
+
+		$to_date = '';
+
 		switch ($this->input->get('order')) 
 		{
 			case 'latest':
@@ -153,6 +157,12 @@ class Posts extends CI_Model
 				$order_by .= ' ORDER BY viewer DESC ';
 				break;
 		}
+
+		if( $this->input->get('from_date') != '')
+			$from_date = " AND post_date >= '{$this->input->get('from_date')}' ";
+
+		if( $this->input->get('to_date') != '')
+			$to_date = " AND post_date <= '{$this->input->get('to_date')}' ";
 
 		$inputCat = $this->input->get('category');
 		
@@ -167,7 +177,9 @@ class Posts extends CI_Model
 				FROM postcategory 
 					INNER JOIN posts ON postcategory.post_id = posts.ID
 				WHERE MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE)	
-					{$category}			
+					{$category}	
+					{$from_date} 
+					{$to_date}		
 				GROUP BY post_id
 			");
 			return $query->num_rows();
@@ -179,6 +191,8 @@ class Posts extends CI_Model
 					INNER JOIN posts ON postcategory.post_id = posts.ID
 				WHERE MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE)
 					{$category}
+					{$from_date} 
+					{$to_date}
 					GROUP BY post_id
 				{$order_by}
 				LIMIT {$limit} OFFSET {$offset}

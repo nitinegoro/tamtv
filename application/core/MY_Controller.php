@@ -30,7 +30,7 @@ class Web extends MY_Controller
 		);
 		
 		$this->load->model(
-			array('menus', 'options','themes', 'tags','posts','category','user','polling')
+			array('menus', 'options','themes', 'tags','posts','category','user','polling','comment')
 		);
 
 		if($this->session->userdata('user_login') != FALSE)  
@@ -82,6 +82,20 @@ class Web extends MY_Controller
 		}
 
 		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+	}
+
+	public function set_comment()
+	{
+		$this->comment->user_create_comment();
+
+		redirect($this->input->post('backTo')."#comment-list");
+	}
+
+	public function delete_comment($param = 0)
+	{
+		$this->comment->delete($param);
+
+		redirect($this->input->get('backTo')."#comment-list");
 	}
 }
 

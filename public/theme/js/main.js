@@ -62,5 +62,11 @@ $(document).ready(function()
                 window.location.assign(base_url + 'login?back-to=' + data.redirectTo);
             }
         });
-    })
+    });
+
+    /* DATEPICKER */
+    $('#datepicker1, #datepicker2').daterangepicker({
+        singleDatePicker: true,
+        format:'YYYY-MM-DD', 
+    });
 });

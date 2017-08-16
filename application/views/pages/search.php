@@ -23,8 +23,8 @@
 				}
 				?>
 			</select>
-			<input type="text" class="col-md-2 input-sm form" name="from_date" placeholder="2000-03-23">
-			<input type="text" class="col-md-2 input-sm form" name="to_date" placeholder="2000-03-23">
+			<input type="text" class="col-md-2 input-sm form" name="from_date" value="<?php echo $this->input->get('from_date') ?>" id="datepicker1" placeholder="2000-03-23">
+			<input type="text" class="col-md-2 input-sm form" name="to_date" value="<?php echo $this->input->get('to_date') ?>" id="datepicker2" placeholder="2000-03-23">
 			<div class="col-md-2">
 				<button class="btn btn-primary">Cari Berita</button>
 			</div>

@@ -926,6 +926,8 @@ section.box-polling > h2.polling-question {
 section.box-polling > ul.polling-answer {
   margin-left: -20px;
   margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1.2px solid #EEEEEE;
 }
 section.box-polling > ul.polling-answer > li {
   padding-top: 10px;
@@ -945,4 +947,28 @@ section.box-polling > ul.polling-answer > li > a img {
 }
 section.box-polling > ul.polling-answer > li > a img:hover {
   margin-top: -40px;
+}
+
+section.comment-list {
+  margin-bottom: 20px;
+}
+section.comment-list > div.media {
+  border-bottom: 1.2px solid #EEEEEE;
+}
+section.comment-list > div.left {
+  margin-left: 50px;
+}
+section.comment-list > div.media > div.media-body {
+  font-size: 10pt;
+}
+section.comment-list > div.media > div.media-body > time{
+  font-size: 8pt;
+  color: grey;
+  padding-left: 20px;
+}
+section.comment-list > div.media > div.media-body > a.comment-reply {
+  font-size: 9pt;
+}
+section.comment-list > div.media > div.media-body > a {
+  padding-left: 20px;
 }
