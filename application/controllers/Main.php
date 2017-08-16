@@ -134,10 +134,6 @@ class Main extends Web
 
 		$this->template->view('live-streaming', $this->data);
 	}
-	public function re($value='')
-	{
-		echo preg_replace( '/[^[:cntrl:]]/', '', '!@#$%^>\sdfsd<');
-	}
 
 	/**
 	 * Get Post by category

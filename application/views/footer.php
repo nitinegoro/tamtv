@@ -96,6 +96,7 @@
 			user_login = '<?php echo json_encode($this->user_login) ?>';
 	</script>
 	<script src="<?php echo base_url("public/theme/js/main.js"); ?>"></script>
+	<script src="<?php echo base_url("public/facebook/fbapp.js"); ?>"></script>
 	<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=59227929b27f700011ad0da3&product=inline-share-buttons' async='async'></script>
 </body>
 </html>
