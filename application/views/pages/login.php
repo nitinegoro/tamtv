@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<form action="" method="post">
 			<div class="box-login text-center">
 				<h1>Masuk</h1>
-				<p>Gunakan akun media sosial Anda untuk dapat mengakses seluruh fitur domain-ini.com.</p>
+				<p>Gunakan akun media sosial Anda untuk dapat mengakses seluruh fitur.</p>
 				<div class="btn-social">
 					<a href="" class="btn btn-primary btn-social">
 						<i class="fa fa-facebook"></i> Facebook

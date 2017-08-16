@@ -31,6 +31,17 @@ class Comment extends CI_Model
 		return $this->db->get('comments', $limit)->result();
 	}
 
+	public function get_user_comments($limit = 15)
+	{
+		$this->db->select('comment_id, comment_parent, comment_date, comment_content, post_title, comment_post_ID');
+
+		$this->db->join('posts', 'comments.comment_post_ID = posts.ID', 'inner');
+
+		$this->db->order_by('comment_date', 'desc');
+
+		return $this->db->get('comments', $limit)->result();
+	}
+
 	public function user_create_comment()
 	{
 		$comment = array(

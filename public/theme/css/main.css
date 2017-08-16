@@ -91,7 +91,7 @@ div.c3 {
 
 .navbar-default  .navbar-nav > li > a {
     font-weight:600;
-    font-family: 'Cabin', sans-serif;
+    font-family: 'Cabin', sans-serif !important;
     color: black !important;
   	text-transform: uppercase;
 }
@@ -342,7 +342,8 @@ h1.live-title {
 .box-sidebar > .box-topic-tag > h3.sidebar-heading,
 .box-sidebar > .box-category-1 > h3.sidebar-heading,
 .box-category-1 > h3.sidebar-heading,
-.featured-heading {
+.featured-heading,
+.panel-default > .panel-heading {
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
   font-size: 10pt;
@@ -853,6 +854,7 @@ div.page-tag > p {
 }
 
 div.tag-content {
+  min-height: 500px;
    border-left: 1.2px solid #EEEEEE;
 }
 div.page-tag > p {
@@ -971,4 +973,75 @@ section.comment-list > div.media > div.media-body > a.comment-reply {
 }
 section.comment-list > div.media > div.media-body > a {
   padding-left: 20px;
+}
+
+.box-sidebar > ul.menu-account {
+  font-size: 10pt;
+  line-height: 1.5em;
+  list-style: none;
+  text-transform: uppercase;
+  margin-left: -10px;
+}
+.box-sidebar > ul.menu-account > li {
+  margin-left: -30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1.2px solid #EEEEEE;
+}
+.box-sidebar > ul.menu-account > li > a {
+  font-weight: 600;
+  color: black;
+  transition: all 0.5s ease;
+}
+.box-sidebar > ul.menu-account > li:hover {
+  padding-right: 70px;
+}
+.box-sidebar > ul.menu-account > li > a:hover {
+  text-decoration: none;
+  color: #6666B2;
+}
+
+.box-sidebar > .box-account {
+  margin-bottom: 30px;
+  font-family: 'Cabin', sans-serif;
+}
+.box-sidebar > .box-account > .account-avatar {
+  border-bottom: 1.2px solid #EEEEEE;
+  padding-bottom: 10px;
+}
+.box-sidebar > .box-account > .account-info > h1 {
+  font-size: 13pt;
+}
+.panel-default > .panel-heading {
+  background: transparent;
+}
+.panel-default > .panel-heading > i.fa {
+  color: grey; padding-right: 10px;
+} 
+
+.panel-default > .panel-body > .media {
+  border-bottom: 1.2px solid #EEEEEE;
+  padding-bottom: 4px;
+}
+.panel-default > .panel-body > .media > .media-body > a.media-heading {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10pt;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+.panel-default > .panel-body > .media > .media-body > a.media-heading:hover {
+  color: #3f51b5;
+}
+.panel-default > .panel-body > .media > .media-body > time,
+.panel-default > .panel-body > .media > .media-body > a.menu-comment {
+  font-size: 8pt;
+}
+.panel-default > .panel-body > .media > .media-body > time {
+  color: grey;
+  font-style: italic;
+}
+.panel-default > .panel-body > .media > .media-body > a.menu-comment {
+  padding-left: 10px;
+
 }
