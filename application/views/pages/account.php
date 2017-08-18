@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</a> <br>
 								<time itemprop="datePublished"><?php echo $dateClass->format('D, j F Y - g:i A'); ?></time>
 								<?php  
-									echo anchor(base_url("comments/delete/{$row->comment_id}?backTo=".current_url()), '<i class="fa fa-trash-o"></i> Hapus', array('class' => 'text-danger menu-comment'));
+									echo anchor(base_url("main/delete_comment/{$row->comment_id}?backTo=".current_url()), '<i class="fa fa-trash-o"></i> Hapus', array('class' => 'text-danger menu-comment'));
 								?>
 								<p><?php echo $row->comment_content ?></p>
 							</div>

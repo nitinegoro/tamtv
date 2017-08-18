@@ -37,7 +37,7 @@ $author = $this->posts->get_post_author($post->ID);
 					echo anchor(current_url()."?parent=".$row->comment_id, '<i class="fa fa-reply"></i> Balas', array('class' => 'comment-reply'));
 					
 					if( $row->user_id == $this->session->userdata('user')->ID)
-						echo anchor(base_url("comments/delete/{$row->comment_id}?backTo=".current_url()), '<i class="fa fa-trash-o"></i> Hapus', array('class' => 'text-danger comment-reply'));
+						echo anchor(base_url("main/delete_comment/{$row->comment_id}?backTo=".current_url()), '<i class="fa fa-trash-o"></i> Hapus', array('class' => 'text-danger comment-reply'));
 				}
 				?>
 				<p><?php echo $row->comment_content; ?></p>
@@ -66,7 +66,7 @@ $author = $this->posts->get_post_author($post->ID);
 					echo anchor(current_url()."?parent=".$row->comment_id, '<i class="fa fa-reply"></i> Balas', array('class' => 'comment-reply'));
 					
 					if( $child->user_id == $this->session->userdata('user')->ID)
-						echo anchor(base_url("comments/delete/{$child->comment_id}?backTo=".current_url()), '<i class="fa fa-trash-o"></i> Hapus', array('class' => 'text-danger comment-reply'));
+						echo anchor(base_url("main/delete_comment/{$child->comment_id}?backTo=".current_url()), '<i class="fa fa-trash-o"></i> Hapus', array('class' => 'text-danger comment-reply'));
 				}
 				?>
 				<p><?php echo $child->comment_content; ?></p>

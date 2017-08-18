@@ -30,10 +30,10 @@ class Auth extends CI_Controller
 			        $user_session = array(
 			        	'admin_login' => TRUE,
 			        	'ID' => $user->ID,
-			        	'admin' => (Object) array(
+			        	'user' => (Object) array(
 			        		'ID' => $user->ID,
 			        		'fullname' => $user->fullname,
-			        		'email' => $user->username,
+			        		'email' => $user->email,
 			        		'username' => $user->username,
 			        		'last_login' => $user->last_login
 			        	)
@@ -74,7 +74,7 @@ class Auth extends CI_Controller
 	{
 		$this->session->sess_destroy();
 
-		redirect($this->input->get('back-to'));
+		redirect(base_url("administrator/auth"));
 	}
 }
 

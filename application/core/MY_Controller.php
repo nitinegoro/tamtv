@@ -115,7 +115,7 @@ class Admin_panel extends CI_Controller
 		);
 
 		$this->load->helper(
-			array('text', 'form', 'language','menus')
+			array('text', 'form', 'language','menus','admin')
 		);
 
 		if($this->session->userdata('admin_login') == FALSE)  
@@ -126,6 +126,8 @@ class Admin_panel extends CI_Controller
 		);
 
 		$this->breadcrumbs->unshift(0, 'Dashboard', "administrator");
+
+		$this->load->js(base_url("public/admin/app/dialog.js"));
 	}
 }
 
