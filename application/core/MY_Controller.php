@@ -109,7 +109,17 @@ class Admin_panel extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		//Do your magic here
+
+		$this->load->library(
+			array('slug','session','template','breadcrumbs','meta_tags', 'pagination','form_validation')
+		);
+
+		$this->load->helper(
+			array('text', 'form', 'language')
+		);
+
+		if($this->session->userdata('admin_login') == FALSE)  
+			redirect('administrator/auth');
 	}
 }
 

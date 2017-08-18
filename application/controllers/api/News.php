@@ -11,17 +11,7 @@ class News extends web
 
 	public function category($param = '')
 	{
-		$box = $this->themes->get('infinite-loop');
 
-		$value = json_decode($box->meta_value);
-
-		$category = $this->api->get_category($param);
-
-		$this->data = array(
-			'content' => $this->api->category($category->category_id, 2)
-		);
-
-		$this->load->view('box-elements/ajax-loop-infinite', $this->data );
 	}
 
 }

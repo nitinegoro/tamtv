@@ -27,7 +27,7 @@ class Template
 	
     public function alert($message, $config)
     {
-        $alert  = "<div class='alert alert-{$config['type']} animated fadeIn'>";
+        $alert  = "<div class='alert alert-{$config['type']} animated'>";
         $alert .= "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
         $alert .= "<small><strong><i class='ace-icon fa fa-{$config['icon']}'></i> </strong>{$message}</small>";
         $alert .= "</div>";

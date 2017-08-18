@@ -75,6 +75,22 @@ class User extends CI_Model
 		return $this->db->get('users')->row();
 	}
 
+	public function get_admin_login()
+	{
+		if (filter_var($this->input->post('username'), FILTER_VALIDATE_EMAIL)) 
+		{
+			$this->db->where('email', $this->input->post('username'));
+		} else {
+			$this->db->where('username', $this->input->post('username'));
+		}
+
+		$this->db->where('status', 1);
+
+		$this->db->where('user_type !=', 'reader');
+
+		return $this->db->get('users')->row();
+	}
+
 	public function update_last_login($param = 0)
 	{
 		$this->db->update('users', array('last_login' => date('Y-m-d H:i:s')), array('ID' => $param));

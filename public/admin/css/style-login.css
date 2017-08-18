@@ -1,0 +1,66 @@
+/*! 
+ Theme Name: Tamtv 1.0
+ Description: Login page styling.
+ *
+ * @author Vicky Nitinegoro [https://facebook.com/muh.azzain]
+ * @since 1.0 2017
+ */
+body {
+	background-color: #F1F1F1;
+}
+
+div.box-login {
+	margin-top: 10%;
+}
+div.box-login > div.box-logo {
+	text-align: center;
+}
+div.box-login > div.box-logo img {
+	width: 200px;
+}
+div.box-login > .box-alert {
+	margin-top: 20px;
+}
+div.box-login > .box-alert > .alert {
+	background-color: white;
+	border-left: 5px;
+	border-style: solid;
+	border-right: none;
+	border-bottom: none;
+	border-top: none;
+	color: grey;
+}
+div.box-login > .box-alert > .alert-danger {
+	border-color:red;
+}
+div.box-login > .box-alert > .alert-info {
+	border-color: #00A0D2;
+}
+div.box-login > .box-body {
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+div.box-login > .box-footer {
+	margin-top: 20px;
+	font-size: 10pt;
+}
+div.box-login > .box-footer > a.forgot {
+	padding-left: 20px;
+	color: grey;
+}
+div.box-login > .box-footer > a.forgot:hover {
+	color: #010080;
+}
+/* BOOTSTRAPS */
+.input-lg {
+	font-size: 17pt;
+	padding: 3px 3px 3px 10px;
+}
+.btn-primary {
+	background-color: #302F97;
+}
+.btn-primary:hover {
+	background-color: #5453A9
+}
