@@ -99,5 +99,19 @@ class Web extends MY_Controller
 	}
 }
 
+/**
+* Extends Class Admin_panel
+*
+* @author Vicky Nitinegoro <pkpvicky@gmail.com>
+*/
+class Admin_panel extends CI_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+		//Do your magic here
+	}
+}
+
 /* End of file MY_Controller.php */
 /* Location: ./application/core/MY_Controller.php */
