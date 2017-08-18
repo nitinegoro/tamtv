@@ -111,15 +111,21 @@ class Admin_panel extends CI_Controller
 		parent::__construct();
 
 		$this->load->library(
-			array('slug','session','template','breadcrumbs','meta_tags', 'pagination','form_validation')
+			array('slug','session','template','breadcrumbs','page_title','meta_tags', 'pagination','form_validation')
 		);
 
 		$this->load->helper(
-			array('text', 'form', 'language')
+			array('text', 'form', 'language','menus')
 		);
 
 		if($this->session->userdata('admin_login') == FALSE)  
 			redirect('administrator/auth');
+
+		$this->load->model(
+			array('menus', 'options','themes', 'tags','posts','category','user','polling','comment')
+		);
+
+		$this->breadcrumbs->unshift(0, 'Dashboard', "administrator");
 	}
 }
 

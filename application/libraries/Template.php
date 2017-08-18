@@ -24,6 +24,22 @@ class Template
             return $this->ci->load->view('index', $this->template);
         }
 	}
+
+    public function admin($content, $data = NULL)
+    {
+        if ( ! $content)
+        {
+            return NULL;
+        }  else  {
+            $this->template['header'] = $this->ci->load->view('administrator/header', $data, TRUE);
+            $this->template['navbar'] = $this->ci->load->view('administrator/navbar', $data, TRUE);
+            $this->template['leftsidebar'] = $this->ci->load->view('administrator/left_sidebar', $data, TRUE);
+            $this->template['content'] = $this->ci->load->view('administrator/pages/'.$content, $data, TRUE);
+            $this->template['footer'] = $this->ci->load->view('administrator/footer', $data, TRUE);
+
+            return $this->ci->load->view('administrator/index', $this->template);
+        }
+    }
 	
     public function alert($message, $config)
     {

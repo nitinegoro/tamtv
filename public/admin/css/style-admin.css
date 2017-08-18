@@ -1,0 +1,31 @@
+/*! 
+ Theme Name: Tamtv 1.0
+ Description: Login page styling.
+ *
+ * @author Vicky Nitinegoro [https://facebook.com/muh.azzain]
+ * @since 1.0 2017
+ */
+
+/* TABLE */
+td {
+	height: 50px;
+}
+td.td-action > div.button-action {
+	margin-top: 5px;
+	display: hidden;
+	font-size: 9pt;
+}
+td.td-action > div.button-action a {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+a.red {
+	color: #DD4B39
+}
+a.red:hover {
+	color: #E36B5C
+}
+ /*  HELPER */
+ .bottom2x {
+ 	margin-bottom: 20px;
+ }
