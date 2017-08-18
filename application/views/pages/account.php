@@ -14,19 +14,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container content-wrapper">
 		<section class="col-md-3">
 			<div id="sticker" class="box-sidebar top3x">
-				<div class="box-account">
-					<div class="account-avatar text-center">
-						<img class="img-circle" src="<?php echo base_url("public/image/avatar/author.png"); ?>" alt="avatar " width="100">
-					</div>
-					<div class="account-info">
-						<h1>Vicky Nitinegoro <br><small>@sira898</small></h1>
-					</div>
-				</div>
-				<ul class="menu-account">
-					<li><a href="">Profil Saya</a></li>
-					<li><a href="">Ganti Password</a></li>
-					<li><a href="">Logout</a></li>
-				</ul>
+				<?php  
+				/**
+				 * Load Sidebar user
+				 *
+				 **/
+				$this->load->view('box-elements/box-user-sidebar', $this->data);
+				?>
 			</div>
 		</section>
 		
@@ -42,27 +36,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					 * Loop lates your comments
 					 *
 					 * @param Integer (limit)
+					 * @param Integer (Offset)
 					 **/
-					
+					foreach( $this->comment->get_user_comments($this->per_page,  $this->page) as $row) :
+						$dateClass = new DateTime($row->comment_date);
 					?>
 						<div class="media">
 							<div class="media-body">
-								<a href="" class="media-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, quaerat.</a> <br>
-								<time itemprop="datePublished"><?php echo date('D, j F Y - g:i A'); ?></time>
-								<a href="" class="menu-comment text-danger"><i class="fa fa-trash-o"></i> Hapus</a>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, ducimus.</p>
+								<a href="<?php echo $this->posts->permalink($row->comment_post_ID) ?>" title="<?php echo $row->post_title; ?>" class="media-heading">
+									<?php echo $row->post_title; ?>
+								</a> <br>
+								<time itemprop="datePublished"><?php echo $dateClass->format('D, j F Y - g:i A'); ?></time>
+								<?php  
+									echo anchor(base_url("comments/delete/{$row->comment_id}?backTo=".current_url()), '<i class="fa fa-trash-o"></i> Hapus', array('class' => 'text-danger menu-comment'));
+								?>
+								<p><?php echo $row->comment_content ?></p>
 							</div>
 						</div>
-						<div class="media">
-							<div class="media-body">
-								<a href="" class="media-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, harum.</a> <br>
-								<time itemprop="datePublished"><?php echo date('D, j F Y - g:i A'); ?></time>
-								<a href="" class="menu-comment text-danger"><i class="fa fa-trash-o"></i> Hapus</a>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, ducimus.</p>
-							</div>
-						</div>
-					<?php  ?>
+					<?php endforeach; ?>
 					</div>
+				</div>
+				<div class="col-md-12 text-center">
+					<?php echo $this->pagination->create_links(); ?>
 				</div>
 			</div>
 		</div>

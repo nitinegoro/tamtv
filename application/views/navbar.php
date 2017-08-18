@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	        		<span class="caret"></span></a>
 	        		<ul class="dropdown-menu">
 	          			<li><a href="<?php echo base_url("me/{$this->session->userdata('user')->username}") ?>">Profil Saya</a></li>
-	          			<li><a href="<?php echo base_url("user/change_password"); ?>">Ganti Password</a></li>
+	          			<li><a href="<?php echo base_url("me/change_password"); ?>">Ganti Password</a></li>
 	          			<li><a href="<?php echo base_url("login/signout?back-to=".current_url()); ?>">Logout</a></li>
 	        		</ul>
 	      		</li>

@@ -30,6 +30,36 @@ class User extends CI_Model
 			);
 		}
 	}
+
+	public function getMe()
+	{
+		$this->db->select('ID, fullname, username, email, last_login, avatar, password');
+		
+		$this->db->where('ID', $this->session->userdata('user')->ID);
+
+		return $this->db->get('users')->row();
+	}
+
+	public function updateAccount()
+	{
+		if( $this->input->post('newpassword') )
+		{ 
+			$object = array(
+				'fullname' => $this->input->post('fullname'),
+				'username' => $this->input->post('username'),
+				'email' => $this->input->post('email'),
+				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+			);
+		} else {
+			$object = array(
+				'fullname' => $this->input->post('fullname'),
+				'username' => $this->input->post('username'),
+				'email' => $this->input->post('email'),
+			);
+		}
+
+		$this->db->update('users', $object, array('ID' => $this->session->userdata('user')->ID));
+	}
 	
 	public function get_user_login()
 	{
@@ -50,6 +80,50 @@ class User extends CI_Model
 		$this->db->update('users', array('last_login' => date('Y-m-d H:i:s')), array('ID' => $param));
 
 		return $this->db->affected_rows();
+	}
+
+	public function validate_password()
+	{
+		$akun = $this->getMe();
+
+		if( password_verify($this->input->post('oldpassword'), $akun->password) )
+		{
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	public function validate_email()
+	{
+		$akun = $this->getMe();
+
+		$this->db->where('email', $this->input->post('username') );
+
+		$this->db->where_not_in('ID', $this->session->userdata('user')->ID);
+		
+		if( $this->db->get('users')->num_rows() == FALSE )
+		{
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	public function validate_username()
+	{
+		$akun = $this->getMe();
+			
+		$this->db->where('username', $this->input->post('username') );
+
+		$this->db->where_not_in('ID', $this->session->userdata('user')->ID);
+
+		if( $this->db->get('users')->num_rows() == FALSE )
+		{
+			return TRUE;
+		} else {
+			return FALSE;
+		}
 	}
 }
 

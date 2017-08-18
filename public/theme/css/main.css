@@ -854,7 +854,7 @@ div.page-tag > p {
 }
 
 div.tag-content {
-  min-height: 500px;
+    min-height: 700px;
    border-left: 1.2px solid #EEEEEE;
 }
 div.page-tag > p {

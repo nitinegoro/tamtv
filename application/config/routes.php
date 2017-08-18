@@ -64,6 +64,8 @@ $route['comments/submit'] = 'main/set_comment';
 
 $route['comments/delete/([0-9])+'] = 'main/delete_comment/$1';
 
+$route['me/change_password'] = 'account/change_password';
+
 /**
  * Generate Route SEO Freindly
  * Inspiriration from
