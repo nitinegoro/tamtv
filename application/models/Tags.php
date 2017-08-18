@@ -26,7 +26,6 @@ class Tags extends CI_Model
 		return $this->db->get('tags')->row();
 	}
 
-
 	/**
 	 * Select distinct tag from posttags
 	 *
@@ -41,6 +40,21 @@ class Tags extends CI_Model
 			ORDER BY post DESC
 			LIMIT {$limit}
 		")->result();
+	}
+
+	public function getAll($limit = 20, $offset = 0, $type = 'result')
+	{
+		$this->db->like('name', $this->input->get('query'))
+				->or_like('description', $this->input->get('query'));
+
+		$this->db->order_by('tag_id', 'desc');
+
+		if( $type == 'num' )
+		{
+			return $this->db->get('tags')->num_rows();
+		} else {
+			return $this->db->get('tags', $limit, $offset)->result();
+		}
 	}
 
 }

@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	               		<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 	            	</a>
 	        	</li>
-	        	<li class="treeview <?php echo active_link_multiple(array('posts','tags','category')); ?>">
+	        	<li class="treeview <?php echo active_link_multiple(array('posts','post_tags','category')); ?>">
 	            	<a href="#">
 	               		<i class="fa fa-pencil"></i> <span>Berita</span>
 	               		<span class="pull-right-container">
@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            		<li class="<?php echo active_link_controller('penilaian') ?>">
 	              			<a href=""><i class="fa fa-angle-double-right"></i> Kategori</a>
 	            		</li>
-	            		<li class="<?php echo active_link_controller('tags') ?>">
+	            		<li class="<?php echo active_link_controller('post_tags') ?>">
 	              			<a href="<?php echo base_url("administrator/post_tags"); ?>"><i class="fa fa-angle-double-right"></i> Topik</a>
 	            		</li>
 	          		</ul>
