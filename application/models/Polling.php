@@ -9,6 +9,11 @@ class Polling extends CI_Model
 		return $this->db->get('pollingquestion')->row();
 	}
 
+	public function get_all_question()
+	{
+		return $this->db->get('pollingquestion')->result();
+	}
+
 	public function get_answers($param = 0)
 	{
 		$this->db->where('question_id', $param);

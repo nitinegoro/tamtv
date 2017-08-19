@@ -286,7 +286,7 @@ class Posts extends CI_Model
 
 		$this->db->where('post_id', $post);
 
-		$this->db->group_by('post_id');
+		$this->db->group_by('category_id');
 
 		return $this->db->get('categories')->result();
 	}
@@ -303,7 +303,7 @@ class Posts extends CI_Model
 
 		$this->db->order_by('post_date', 'desc');
 
-		$this->db->group_by('name');
+		$this->db->group_by('tag_id');
 		
 		return $this->db->get('posttags')->result();
 	}

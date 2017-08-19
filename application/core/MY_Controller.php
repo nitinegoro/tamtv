@@ -128,6 +128,7 @@ class Admin_panel extends CI_Controller
 		$this->breadcrumbs->unshift(0, 'Dashboard', "administrator");
 
 		$this->load->js(base_url("public/admin/app/dialog.js"));
+		$this->load->js(base_url("public/admin/app/editor.js"));
 	}
 }
 

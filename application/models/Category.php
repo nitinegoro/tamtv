@@ -46,6 +46,11 @@ class Category extends CI_Model
 		return $this->db->get_where('categories', array('parent' => 0))->result();
 	}
 
+	public function get_child( $parent = 0 )
+	{
+		return $this->db->get_where('categories', array('parent' => $parent))->result();
+	}
+
 	public function create()
 	{
 		$object = array(

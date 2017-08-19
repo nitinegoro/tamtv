@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("public/admin/js/jquery.tableCheckbox.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/theme/js/moment.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/theme/js/daterangepicker.js"); ?>"></script>
+  <script src="<?php echo base_url("public/tinymce/js/tinymce.min.js"); ?>"></script>
   <script type="text/javascript"> 
       var base_url   = '<?php echo site_url("administrator"); ?>';
       var base_path  = '<?php echo base_url('public'); ?>';

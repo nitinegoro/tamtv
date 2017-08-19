@@ -34,6 +34,10 @@ class Post extends Admin_panel
 		$this->author = $this->input->get('author');
 
 		$this->topik = $this->input->get('tag');
+
+		$this->load->model(array('cpost'));
+
+		$this->load->library('image_lib');
 	}
 
 	public function index()
@@ -65,12 +69,31 @@ class Post extends Admin_panel
 
 		$this->breadcrumbs->unshift(2, 'Tulis Berita', "administrator/posts/create");
 
+		$this->form_validation->set_rules('judul', 'Judul', 'trim|required|is_unique[posts.post_title]');
+		$this->form_validation->set_rules('slug', 'Slug', 'trim|is_unique[posts.post_slug]');
+		$this->form_validation->set_rules('content', 'Konten', 'trim');
+		$this->form_validation->set_rules('excerpt', 'Kutipan', 'trim');
+		$this->form_validation->set_rules('status', 'Status', 'trim');
+		$this->form_validation->set_rules('comment', 'Pengaktifan Komentar', 'trim');
+		$this->form_validation->set_rules('polling', 'Pengaktifan Polling', 'trim');
+		$this->form_validation->set_rules('pollingquestion', 'Pertanyaan Polling', 'trim');
+
+		if( $this->form_validation->run() == TRUE )
+		{
+			$this->cpost->create();
+
+			redirect(current_url());
+		} 
+
 		$this->data = array(
 			'title' => "Tulis Berita"
 		);
 
 		$this->template->admin('create-posts', $this->data);
 	}
+
+
+
 
 }
 

@@ -1,5 +1,5 @@
 <div class="row">
-	<?php echo form_open(current_url()); ?>
+	<?php echo form_open_multipart(current_url()); ?>
 	<div class="col-md-9">
 		<div class="form-group">
 			<div class="col-md-10 col-md-offset-2">
@@ -8,8 +8,8 @@
 		</div>
 		<div class="form-group">
 			<label>Judul</label>
-			<input type="text" name="nama" class="form-control" value="<?php echo set_value('nama') ?>" placeholder="Masukkan Judul Disini ..." autofocus>
-			<p class="help-block"><?php echo form_error('nama', '<small class="text-red">', '</small>'); ?></p>
+			<input type="text" name="judul" class="form-control" value="<?php echo set_value('judul') ?>" placeholder="Masukkan Judul Disini ..." autofocus>
+			<p class="help-block"><?php echo form_error('judul', '<small class="text-red">', '</small>'); ?></p>
 		</div>
 		<div class="form-group">
 			<label>Slug</label>
@@ -18,31 +18,33 @@
 			<p class="help-block"><small><i>"Slug" ialah versi ramah-URL dari nama. Biasanya seluruhnya merupakan huruf kecil dan hanya mengandung huruf, angka, dan tanda strip.</i></small></p>
 		</div>
 		<div class="form-group">
-			<label>Konten</label>
-			<textarea name="deskripsi" rows="8" class="form-control"><?php echo set_value('deskripsi'); ?></textarea>
-			<p class="help-block"><?php echo form_error('deskripsi', '<small class="text-red">', '</small>'); ?></p>
+			<textarea name="content" rows="20" class="tinymce"><?php echo set_value('content'); ?></textarea>
+			<p class="help-block"><?php echo form_error('content', '<small class="text-red">', '</small>'); ?></p>
 		</div>
 		<div class="form-group">
 			<label>Kutipan</label>
-			<textarea name="deskripsi" rows="3" class="form-control"><?php echo set_value('deskripsi'); ?></textarea>
-			<p class="help-block"><?php echo form_error('deskripsi', '<small class="text-red">', '</small>'); ?></p>
+			<textarea name="excerpt" rows="3" class="form-control"><?php echo set_value('excerpt'); ?></textarea>
+			<p class="help-block"><?php echo form_error('excerpt', '<small class="text-red">', '</small>'); ?></p>
 			<p class="help-block"><small><i>Ringkasan adalah tulisan ringkas buatan tangan opsional dari konten yang bisa Anda gunakan dalam tema.</i></small></p>
 		</div>
 		<div class="form-group">
 			 <div class="checkbox">
-			     <input id="checkbox1" type="checkbox"> <label for="checkbox1"><strong>Izinkan Komentar</strong></label>
+			     <input name="comment" <?php if(set_value('comment')=='open') echo 'checked'; ?> value="open" type="checkbox"> <label for="checkbox1"><strong>Izinkan Komentar</strong></label>
 			 </div>
 			 <div class="checkbox">
-			     <input id="checkbox1" type="checkbox"> <label for="checkbox1"><strong>Izinkan Pengambilan Polling</strong></label>
+			     <input name="polling" <?php if(set_value('polling')=='open') echo 'checked'; ?> value="open" type="checkbox"> <label for="checkbox1"><strong>Izinkan Pengambilan Polling</strong></label>
 			 </div>
-			<p class="help-block"><?php echo form_error('deskripsi', '<small class="text-red">', '</small>'); ?></p>
+			<p class="help-block"><?php echo form_error('polling', '<small class="text-red">', '</small>'); ?></p>
 		</div>
 		<div class="form-group">
 			<label>Pertanyaan Polling</label>
 			<select name="pollingquestion" id="inputPollingquestion" class="form-control" style="width:50%">
 				<option value="">-- PILIH --</option>
+			<?php foreach($this->polling->get_all_question() as $row) : ?>
+				<option value="<?php echo $row->question_id ?>" <?php if(set_value('pollingquestion') == $row->question_id) echo 'selected'; ?>><?php echo $row->question; ?></option>
+			<?php endforeach; ?>
 			</select>
-			<p class="help-block"><?php echo form_error('deskripsi', '<small class="text-red">', '</small>'); ?></p>
+			<p class="help-block"><?php echo form_error('pollingquestion', '<small class="text-red">', '</small>'); ?></p>
 			<p class="help-block"><small><i>Jika anda mengaktifkan pengambilan poliing, silahkan pilih pertanyaan berikut.</i></small></p>
 		</div>
 	</div>
@@ -59,22 +61,29 @@
 				<div class="form-group">
 					<label>Status</label>
 					<select name="status" id="inputStatus" class="form-control" required="required">
-						<option value="publish">Terbit</option>
+						<option value="publish" <?php if(set_value('status')=='publish') echo 'selected'; ?>>Terbit</option>
+						<option value="draft" <?php if(set_value('status')=='draft') echo 'selected'; ?>>Konsep</option>
+						<option value="pending" <?php if(set_value('status')=='pending') echo 'selected'; ?>>Menunggu</option>
 					</select>
 				</div>	
 				<div class="form-group">
 					<label>Kategori</label>
 					<div class="box-select-category">
-					<?php for($i=1; $i<=20; $i++) : ?>
-						<div class="checkbox <?php if(($i%3) == 0) echo 'left3x' ?>">
-						    <input type="checkbox"> <label>Izinkan Komentar</label>
+					<?php foreach( $this->category->get_parent() as $row)  : ?>
+						<div class="checkbox">
+						    <input type="checkbox" name="categories[]" value="<?php echo $row->category_id ?>"> <label><?php echo $row->name ?></label>
 						</div>
-					<?php endfor; ?>
+						<?php foreach( $this->category->get_child($row->category_id) as $child) : ?>
+						<div class="checkbox left3x">
+						    <input type="checkbox" name="categories[]" value="<?php echo $child->category_id ?>"> <label><?php echo $child->name ?></label>
+						</div>
+						<?php endforeach; ?>
+					<?php endforeach; ?>
 					</div>
 				</div>	
 				<div class="form-group">
 					<label>Topik</label>
-					<textarea name="" class="form-control" rows="4"></textarea>
+					<textarea name="topik" class="form-control" rows="4"></textarea>
 				</div>	
 			</div>
 		</div>
@@ -86,7 +95,7 @@
 			</div>
 			<div class="box-body">
 				<div class="form-group">
-					<input type="file" class="form-control">
+					<input type="file" name="gambar" class="form-control">
 				</div>	
 			</div>
 		</div>
