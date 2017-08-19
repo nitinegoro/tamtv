@@ -32,6 +32,18 @@ a.red:hover {
  .bottom2x {
  	margin-bottom: 20px;
  }
+ .left2x {
+ 	margin-left: 20px;
+ }
+  .left3x {
+ 	margin-left: 30px;
+ }
+ .top2x {
+ 	margin-top: 20px;
+ }
+ .top4x {
+ 	margin-top: 40px;
+ }
 
 .alert {
 	background-color: white !important;
@@ -82,4 +94,13 @@ a.red:hover {
     color: black;
     background-color: #D2D6DE;
     border-color: silver;
+}
+
+/*  BOX CATEGORY SELECT */
+div.box-select-category {
+	max-height: 250px;
+	background-color: #FDFDFD;
+	border:1.2px solid #DBDBDB;
+	overflow-y: scroll;
+	padding: 10px;
 }

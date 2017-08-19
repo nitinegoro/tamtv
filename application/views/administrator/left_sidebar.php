@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	               		<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 	            	</a>
 	        	</li>
-	        	<li class="treeview <?php echo active_link_multiple(array('posts','post_tags','category')); ?>">
+	        	<li class="treeview <?php echo active_link_multiple(array('post','post_tags','post_category')); ?>">
 	            	<a href="#">
 	               		<i class="fa fa-pencil"></i> <span>Berita</span>
 	               		<span class="pull-right-container">
@@ -18,14 +18,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	               		</span>
 	            	</a>
 	          		<ul class="treeview-menu">
-	            		<li class="<?php echo active_link_controller('setting') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Tulis Berita</a>
+	            		<li class="<?php echo active_link_method('create','post') ?>">
+	              			<a href="<?php echo base_url("administrator/post/create"); ?>"><i class="fa fa-angle-double-right"></i> Tulis Berita</a>
 	            		</li>
-	            		<li class="<?php echo active_link_controller('user') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Semua Berita</a>
+	            		<li class="<?php echo active_link_method('index','post') ?>">
+	              			<a href="<?php echo base_url("administrator/post") ?>"><i class="fa fa-angle-double-right"></i> Semua Berita</a>
 	            		</li>
-	            		<li class="<?php echo active_link_controller('penilaian') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Kategori</a>
+	            		<li class="<?php echo active_link_controller('post_category') ?>">
+	              			<a href="<?php echo base_url("administrator/post_category") ?>"><i class="fa fa-angle-double-right"></i> Kategori</a>
 	            		</li>
 	            		<li class="<?php echo active_link_controller('post_tags') ?>">
 	              			<a href="<?php echo base_url("administrator/post_tags"); ?>"><i class="fa fa-angle-double-right"></i> Topik</a>

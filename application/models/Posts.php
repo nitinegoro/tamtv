@@ -14,6 +14,43 @@ class Posts extends CI_Model
 		$this->permalink_page = $this->uri->segment(2);
 	}
 
+	public function getall($limit = 20, $offset = 0, $type = 'result')
+	{
+		$this->db->select('post_title, fullname, post_date, posts.ID, users.ID AS user_id ');
+
+		$this->db->join('users', 'posts.post_author = users.ID', 'left');
+
+		$this->db->join('postcategory', 'posts.ID = postcategory.post_id', 'left');
+
+		$this->db->join('posttags', 'posts.ID = posttags.post_id', 'left');
+
+		if( $this->input->get('query') != '')
+			$this->db->like('post_title', $this->input->get('query'))
+				->or_like('post_excerpt', $this->input->get('query'));
+				
+		if( $this->input->get('category') != '')
+			$this->db->where_in('category_id', $this->input->get('category'));
+
+		if( $this->input->get('tag') != '')
+			$this->db->where_in('tag_id', $this->input->get('tag'));
+
+		if( $this->input->get('author') != '')
+			$this->db->where('post_author', $this->input->get('author'));
+
+		$this->db->where('post_type !=', 'page');
+
+		$this->db->order_by('ID', 'desc');
+
+		$this->db->group_by('ID');
+
+		if( $type == 'num' )
+		{
+			return $this->db->get('posts')->num_rows();
+		} else {
+			return $this->db->get('posts', $limit, $offset)->result();
+		}
+	}
+
 	public function get()
 	{
 		$this->db->select('
@@ -230,7 +267,7 @@ class Posts extends CI_Model
 
 	public function get_post_category($post = 0)
 	{
-		$this->db->select('name, slug');
+		$this->db->select('name, slug, categories.category_id');
 
 		$this->db->join('postcategory', 'categories.category_id = postcategory.category_id', 'left');
 
@@ -239,6 +276,19 @@ class Posts extends CI_Model
 		$this->db->group_by('post_id');
 
 		return $this->db->get('categories')->row();
+	}
+
+	public function get_post_categories($post = 0)
+	{
+		$this->db->select('name, slug, categories.category_id');
+
+		$this->db->join('postcategory', 'categories.category_id = postcategory.category_id', 'left');
+
+		$this->db->where('post_id', $post);
+
+		$this->db->group_by('post_id');
+
+		return $this->db->get('categories')->result();
 	}
 
 	public function get_post_tags($post = 0)

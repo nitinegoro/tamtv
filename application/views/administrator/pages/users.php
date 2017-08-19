@@ -20,7 +20,7 @@
 		</div>
 		<div class="col-md-4 pull-right">
             <div class="input-group input-group-sm">
-            	<input type="text" name="query" class="form-control" name="<?php echo $this->input->get('query') ?>" placeholder="Pencarian ...">
+            	<input type="text" name="query" class="form-control" value="<?php echo $this->input->get('query') ?>" placeholder="Pencarian ...">
             	<div class="input-group-btn">
                   	<button type="submit" class="btn btn-default"><i class="fa fa-search"></i> Cari pengguna</button>
             	</div>
@@ -125,7 +125,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Batal</button>
-				<a href="" id="btn-delete" class="btn btn-outline">Hapus</a>
+				<a href="#" id="btn-delete" class="btn btn-outline">Hapus</a>
 			</div>
 		</div>
 	</div>
