@@ -599,6 +599,10 @@ article.content-news > section > p {
   line-height: 1.5em;
 }
 
+article.content-news > section > p img.pull-right {
+  margin: 20px 0px 20px 20px;
+}
+
 article.content-news > section > ul, 
 article.content-news > ol {
   margin-left: -20px;
@@ -1047,3 +1051,19 @@ section.comment-list > div.media > div.media-body > a {
   padding-left: 10px;
 
 }
+ /*  HELPER */
+ .bottom2x {
+  margin-bottom: 20px;
+ }
+ .left2x {
+  margin-left: 20px;
+ }
+  .left3x {
+  margin-left: 30px;
+ }
+ .top2x {
+  margin-top: 20px;
+ }
+ .top4x {
+  margin-top: 40px;
+ }

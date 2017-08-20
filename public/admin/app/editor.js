@@ -22,24 +22,17 @@ $(function()
 		"alignleft aligncenter alignright alignjustify | "+
 		"bullist numlist outdent indent  | link image media table insertdatetime | code visualblocks ",
 		image_advtab: true,
-		style_formats: [
-			{title: 'Bold text', format: 'h1'},
-			{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-			{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-			{title: 'Example 1', inline: 'span', classes: 'example1'},
-			{title: 'Example 2', inline: 'span', classes: 'example2'},
-			{title: 'Table styles'},
-			{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-		],
-
 		link_class_list: [
-			{title: 'Example 1', value: 'example1'},
-			{title: 'Example 2', value: 'example2'}
+			{title: 'Green', value: 'example1'},
+			{title: 'Red', value: 'example2'},
+			{title: 'Yellow', value: 'example2'},
+			{title: 'Grey', value: 'example2'}
 		],
-
 		image_class_list: [
 			{title: 'Responsive', value: 'img-responsive'},
-			{title: 'Rounded', value: 'img-rounded'}
+			{title: 'Rounded', value: 'img-rounded'},
+			{title: 'Responsive Right', value: 'img-responsive pull-right'},
+			{title: 'Responsive Left', value: 'img-responsive pull-left'}
 		]
 	});
 

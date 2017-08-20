@@ -49,7 +49,7 @@ $author = $this->posts->get_post_author($post->ID);
 				<?php  
 				if( $post->image ) :
 				?>
-				<figure>
+				<figure class="top2x">
 				  	<img src="<?php echo $this->posts->get_thumbnail($post->image) ?>" alt="" class="img-responsive">
 				  	<figcaption><?php echo $post->post_excerpt; ?> </figcaption>
 				</figure>

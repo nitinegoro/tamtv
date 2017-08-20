@@ -82,7 +82,7 @@ class Post extends Admin_panel
 		{
 			$post = $this->cpost->create();
 
-			redirect(current_url("administrator/post/update/{$post}"));
+			redirect(base_url("administrator/post/update/{$post}"));
 		} 
 
 		$this->data = array(

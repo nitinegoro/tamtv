@@ -227,9 +227,9 @@ class Cpost extends CI_Model
 	{
 		$config['upload_path'] = './public/image/news';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']  = '3000';
-		$config['max_width']  = '3072';
-		$config['max_height']  = '2160';
+		$config['max_size']  = '4000';
+		$config['max_width']  = '4000';
+		$config['max_height']  = '3000';
 		$config['overwrite'] = TRUE;
 		$config['file_name'] = $this->create_post_slug();
 
@@ -251,6 +251,13 @@ class Cpost extends CI_Model
 			{
 				$post = $this->get( $param );
 
+				$this->set_watermark($post->image);
+
+				$this->create_thumb($post->image, 'large');
+
+				$this->create_thumb($post->image, 'small');
+
+				$this->create_thumb($post->image, 'x-small');
 				return $post->image;
 			}
 		}
