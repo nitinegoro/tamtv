@@ -3,7 +3,7 @@
 	     	<div class="collapse navbar-collapse">
 	    		<ul class="nav navbar-nav navbar-primary text-center">
 	    			<li>
-	    				<a href="" class="sticky-logo">
+	    				<a href="<?php echo base_url(); ?>" class="sticky-logo">
 			      		<?php  
 			    		/**
 			    		 * Displayed small logo

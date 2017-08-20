@@ -41,7 +41,7 @@
 			<select name="pollingquestion" id="inputPollingquestion" class="form-control" style="width:50%">
 				<option value="">-- PILIH --</option>
 			<?php foreach($this->polling->get_all_question() as $row) : ?>
-				<option value="<?php echo $row->question_id ?>" <?php echo $this->cpost->valid_question($post->ID, $row->question_id); ?>><?php echo $row->question; ?></option>
+				<option value="<?php echo $row->question_id ?>" <?php $this->cpost->valid_question($post->ID, $row->question_id); ?>><?php echo $row->question; ?></option>
 			<?php endforeach; ?>
 			</select>
 			<p class="help-block"><?php echo form_error('pollingquestion', '<small class="text-red">', '</small>'); ?></p>

@@ -21,6 +21,7 @@ $inputTags = array_map(function ($object) {
 );
 
 $tags = implode(', ', $inputTags);
+if( $this->posts->similar($tags, $post->ID, $value->limit, NULL) ) :
 ?>
 <div class="box-thumbnail">
 	<?php  
@@ -53,5 +54,6 @@ $tags = implode(', ', $inputTags);
 	<?php endforeach; ?>
 </div>
 <?php
+endif;
 /* End of file similar-one.php */
 /* Location: ./application/views/box-elements/similar-one.php */

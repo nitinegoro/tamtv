@@ -80,9 +80,9 @@ class Post extends Admin_panel
 
 		if( $this->form_validation->run() == TRUE )
 		{
-			$this->cpost->create();
+			$post = $this->cpost->create();
 
-			redirect(current_url());
+			redirect(current_url("administrator/post/update/{$post}"));
 		} 
 
 		$this->data = array(
@@ -127,7 +127,28 @@ class Post extends Admin_panel
 		$this->template->admin('update-post', $this->data);
 	}
 
+	public function delete($param = 0)
+	{
+		$this->cpost->delete( $param );
 
+		redirect('administrator/post');
+	}
+
+	public function bulkaction()
+	{
+		switch ($this->input->post('action')) 
+		{
+			case 'delete':
+				$this->cpost->delete_multiple();
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+
+		redirect(base_url("administrator/post"));
+	}
 }
 
 /* End of file Post.php */

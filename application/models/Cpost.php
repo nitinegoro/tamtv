@@ -43,6 +43,19 @@ class Cpost extends CI_Model
 
 		$this->insert_polling($post);
 
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Berita berhasil ditambahkan.'.anchor(base_url("administrator/post"), 'kembali ke Berita', array('class' => 'text-green')),  
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Gagal saat menyimpan data.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
+
 		return $post;
 	}
 
@@ -69,7 +82,18 @@ class Cpost extends CI_Model
 
 		$this->insert_polling($param);
 
-		return $param;
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Berita berhasil diperbarui.'.anchor(base_url("administrator/post"), 'kembali ke Berita', array('class' => 'text-green')),  
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Gagal saat menyimpan data.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
 	}
 	
 	public function insert_polling($post = 0)
@@ -101,6 +125,17 @@ class Cpost extends CI_Model
 				);
 
 				$this->db->insert('pollingpost', $object);
+			} else {
+				$this->db->update('pollingpost', 
+					array(
+						'polling_status' => 'active'
+					),
+					array(
+						'post_id' => $post,
+						'question_id' => $this->input->post('pollingquestion'),
+						'polling_status' => 'deactive'
+					)
+				);
 			}
 		}
 	}
@@ -312,6 +347,75 @@ class Cpost extends CI_Model
 
 		if( $query )
 			echo "selected";
+	}
+
+	public function delete($param = 0)
+	{
+		$post = $this->get( $param );
+
+		if( $post->image != FALSE)
+		{
+			@unlink("./public/image/news/{$post->image}");
+			@unlink("./public/image/news/small/{$post->image}");
+			@unlink("./public/image/news/x-small/{$post->image}");
+		}
+
+		$this->db->delete('posttags', array('post_id' => $param));
+
+		$this->db->delete('pollingpost', array('post_id' => $param));
+
+		$this->db->delete('postcategory', array('post_id' => $param));
+
+		$this->db->delete('pollingrespondent', array('pollingpost_id' => $param));
+
+		$this->db->delete('comments', array('comment_post_ID' => $param));
+
+		$this->db->delete('posts', array('ID' => $param));
+
+		$this->template->alert(
+			' Berita berhasil dihapus. ', 
+			array('type' => 'success','icon' => 'check')
+		);
+	}
+
+	public function delete_multiple()
+	{
+		if( is_array($this->input->post('posts')))
+		{
+			foreach( $this->input->post('posts') as $key => $value) 
+			{
+				$post = $this->get( $value );
+
+				if( $post->image != FALSE)
+				{
+					@unlink("./public/image/news/{$post->image}");
+					@unlink("./public/image/news/small/{$post->image}");
+					@unlink("./public/image/news/x-small/{$post->image}");
+				}
+
+				$this->db->delete('posttags', array('post_id' => $value));
+
+				$this->db->delete('pollingpost', array('post_id' => $value));
+
+				$this->db->delete('postcategory', array('post_id' => $value));
+
+				$this->db->delete('pollingrespondent', array('pollingpost_id' => $value));
+
+				$this->db->delete('comments', array('comment_post_ID' => $value));
+
+				$this->db->delete('posts', array('ID' => $value));
+			}
+
+			$this->template->alert(
+				' Berita berhasil dihapus. ', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Tidak ada berita yang dipilih. ', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
 	}
 }
 
