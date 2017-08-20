@@ -25,6 +25,10 @@ jQuery(function($) {
 				$('#modal-delete-post').modal('show');
 				$('a#btn-delete').attr('href', base_url + '/post/delete/' + $(this).data('id'));
 				break;
+			case 'page':
+				$('#modal-delete-page').modal('show');
+				$('a#btn-delete').attr('href', base_url + '/pages/delete/' + $(this).data('id'));
+				break;
 			default:
 				alert('Please input data-key="example-key" in attribut button.');
 			break;

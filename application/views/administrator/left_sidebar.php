@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            		</li>
 	          		</ul>
 	        	</li>
-	        	<li class="treeview <?php echo active_link_multiple(array('setting','role','penilaian', 'user')); ?>">
+	        	<li class="treeview <?php echo active_link_controller('pages') ?>">
 	            	<a href="#">
 	               		<i class="fa fa-file-text"></i> <span>Halaman</span>
 	               		<span class="pull-right-container">
@@ -40,11 +40,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	               		</span>
 	            	</a>
 	          		<ul class="treeview-menu">
-	            		<li class="<?php echo active_link_controller('setting') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Buat Baru</a>
+	            		<li class="<?php echo active_link_method('create', 'pages') ?>">
+	              			<a href="<?php echo base_url("administrator/pages/create"); ?>"><i class="fa fa-angle-double-right"></i> Buat Baru</a>
 	            		</li>
-	            		<li class="<?php echo active_link_controller('user') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Semua Halaman</a>
+	            		<li class="<?php echo active_link_method('index', 'pages') ?>">
+	              			<a href="<?php echo base_url("administrator/pages"); ?>"><i class="fa fa-angle-double-right"></i> Semua Halaman</a>
 	            		</li>
 	          		</ul>
 	        	</li>
