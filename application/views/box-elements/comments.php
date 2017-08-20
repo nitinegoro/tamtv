@@ -93,6 +93,7 @@ $author = $this->posts->get_post_author($post->ID);
 		<?php endif; ?>
 	</form>
 </section>
+<div class="clearfix"></div>
 <?php
 /* End of file comments.php */
 /* Location: ./application/views/box-elements/comments.php */

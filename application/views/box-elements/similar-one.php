@@ -34,7 +34,9 @@ $tags = implode(', ', $inputTags);
 	 *
 	 * @param String (IN tag_id)
 	 **/
-	foreach( $this->posts->similar($tags, $post->ID, $value->limit, NULL) as $row) :
+	foreach( $this->posts->similar($tags, $post->ID, $value->limit, NULL) as $key => $row) :
+		if($key % 3 == 0 )
+			echo '<div class="clearfix"></div>';
 	?> 
 	<div class="box-category-1 c3">
 		<a href="<?php echo $this->posts->permalink($row->ID) ?>" title="<?php echo $row->post_title; ?>">

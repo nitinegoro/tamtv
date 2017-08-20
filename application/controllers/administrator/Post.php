@@ -92,7 +92,40 @@ class Post extends Admin_panel
 		$this->template->admin('create-posts', $this->data);
 	}
 
+	public function update($param = 0)
+	{
+		$post = $this->cpost->get( $param );
 
+		if( $post == FALSE )
+			show_404();
+
+		$this->page_title->push('Berita', 'Edit Berita');
+
+		$this->breadcrumbs->unshift(2, 'Edit Berita', "administrator/post/update/{$param}");
+
+		$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
+		$this->form_validation->set_rules('slug', 'Slug', 'trim');
+		$this->form_validation->set_rules('content', 'Konten', 'trim');
+		$this->form_validation->set_rules('excerpt', 'Kutipan', 'trim');
+		$this->form_validation->set_rules('status', 'Status', 'trim');
+		$this->form_validation->set_rules('comment', 'Pengaktifan Komentar', 'trim');
+		$this->form_validation->set_rules('polling', 'Pengaktifan Polling', 'trim');
+		$this->form_validation->set_rules('pollingquestion', 'Pertanyaan Polling', 'trim');
+
+		if( $this->form_validation->run() == TRUE )
+		{
+			$this->cpost->update( $param );
+
+			redirect(current_url());
+		} 
+
+		$this->data = array(
+			'title' => "Edit Berita",
+			'post' => $post
+		);
+
+		$this->template->admin('update-post', $this->data);
+	}
 
 
 }

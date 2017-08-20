@@ -25,7 +25,7 @@ class Cpost extends CI_Model
 			'post_content' => $this->input->post('content'),
 			'post_status' => $this->input->post('status'),
 			'comment_status' => (!$this->input->post('comment')) ? 'close' : $this->input->post('comment'),
-			'poll_status' => (!$this->input->post('polling') )? 'close' : $this->input->post('polling'),
+			'poll_status' => (!$this->input->post('polling') ) ? 'close' : $this->input->post('polling'),
 			'post_modified' => date('Y-m-d H:i:s'),
 			'post_type' => 'default',
 			'image' => $this->upload_image(),
@@ -41,9 +41,70 @@ class Cpost extends CI_Model
 
 		$this->insert_tags($post);
 
+		$this->insert_polling($post);
+
 		return $post;
 	}
+
+
+	public function update( $param  = 0)
+	{
+		$object = array(
+			'post_title' => $this->input->post('judul'), 
+			'post_slug' => $this->create_post_slug( $param ),
+			'post_excerpt' => $this->input->post('excerpt'),
+			'post_content' => $this->input->post('content'),
+			'post_status' => $this->input->post('status'),
+			'comment_status' => (!$this->input->post('comment')) ? 'close' : $this->input->post('comment'),
+			'poll_status' => (!$this->input->post('polling') ) ? 'close' : $this->input->post('polling'),
+			'post_modified' => date('Y-m-d H:i:s'),
+			'image' => $this->upload_image( $param ),
+		);
+
+		$this->db->update('posts', $object, array('ID' => $param));
+
+		$this->insert_categories($param);
+
+		$this->insert_tags($param);
+
+		$this->insert_polling($param);
+
+		return $param;
+	}
 	
+	public function insert_polling($post = 0)
+	{
+		if( $this->input->post('polling') == 'open' AND $this->input->post('pollingquestion') != FALSE)
+		{
+			$this->db->update('pollingpost', 
+				array(
+					'polling_status' => 'deactive'
+				),
+				array(
+					'post_id' => $post
+				)
+			);
+
+			$query = $this->db->get_where('pollingpost', 
+				array(
+					'post_id' => $post,
+					'question_id' => $this->input->post('pollingquestion'),
+				)
+			);
+
+			if( $query->num_rows() == FALSE )
+			{
+				$object = array(
+					'post_id' => $post,
+					'question_id' => $this->input->post('pollingquestion'),
+					'polling_status' => 'active'
+				);
+
+				$this->db->insert('pollingpost', $object);
+			}
+		}
+	}
+
 	public function insert_categories($post = 0)
 	{
 		if( is_array($this->input->post('categories')) )
@@ -52,6 +113,11 @@ class Cpost extends CI_Model
 
 			foreach( $this->input->post('categories') as $key => $value)
 			{
+				$this->db->delete('postcategory', array(
+					'post_id' => $post,
+					'category_id != ' => $value 
+				));
+
 				$object[] = array(
 					'post_id' => $post,
 					'category_id' => $value 
@@ -61,12 +127,40 @@ class Cpost extends CI_Model
 			$this->db->insert_batch('postcategory', $object);
 
 			return TRUE;
+		} else {
+			$this->db->delete('postcategory', array(
+				'post_id' => $post
+			));
 		}
 	}
 
 	public function insert_tags($post = 0)
 	{
-		# code...
+		if( is_array($this->input->post('topik')) )
+		{
+			$object = array();
+
+			foreach ($this->input->post('topik') as $key => $value) 
+			{
+				$this->db->delete('posttags', array(
+					'post_id' => $post,
+					'tag_id != ' => $value 
+				));
+
+				$object[] = array(
+					'post_id' => $post,
+					'tag_id' => $value 
+				);
+			}
+
+			$this->db->insert_batch('posttags', $object);
+
+			return TRUE;
+		} else {
+			$this->db->delete('posttags', array(
+				'post_id' => $post
+			));
+		} 
 	}
 
 	public function create_post_slug( $param = 0)
@@ -106,22 +200,24 @@ class Cpost extends CI_Model
 
 		$this->upload->initialize( $config);
 
-		if( $param == FALSE)
+		if ( $this->upload->do_upload('gambar') == TRUE )
 		{
-			if ( $this->upload->do_upload('gambar') == TRUE )
-			{
-				$this->set_watermark($this->upload->file_name);
+			$this->set_watermark($this->upload->file_name);
 
-				$this->create_thumb($this->upload->file_name, 'large');
+			$this->create_thumb($this->upload->file_name, 'large');
 
-				$this->create_thumb($this->upload->file_name, 'small');
+			$this->create_thumb($this->upload->file_name, 'small');
 
-				$this->create_thumb($this->upload->file_name, 'x-small');
+			$this->create_thumb($this->upload->file_name, 'x-small');
 
-				return $this->upload->file_name;
-			}
+			return $this->upload->file_name;
 		} else {
+			if( $param == TRUE )
+			{
+				$post = $this->get( $param );
 
+				return $post->image;
+			}
 		}
 	}
 
@@ -188,6 +284,34 @@ class Cpost extends CI_Model
 		$this->image_lib->initialize($imgConfig);
 			                        
 		$this->image_lib->watermark();
+	}
+
+	public function valid_category($post = 0, $category = 0)
+	{
+		$query = $this->db->get_where('postcategory', array('post_id' => $post, 'category_id' => $category))->num_rows();
+
+		if( $query )
+			echo "checked";
+	}
+
+	public function valid_topik($post = 0, $topik = 0)
+	{
+		$query = $this->db->get_where('posttags', array('post_id' => $post, 'tag_id' => $topik))->num_rows();
+
+		if( $query )
+			echo "selected";
+	}
+
+	public function valid_question($post = 0, $question = 0)
+	{
+		$query = $this->db->get_where('pollingpost', array(
+			'post_id' => $post, 
+			'question_id' => $question,
+			'polling_status' => 'active'
+		))->num_rows();
+
+		if( $query )
+			echo "selected";
 	}
 }
 

@@ -55,7 +55,7 @@ $author = $this->posts->get_post_author($post->ID);
 				</figure>
 				<?php endif; ?>
 				<section itemprop="description">
-					<?php echo str_replace('[related_news]', $this->content_parser->related_news($post->ID, 4), $post->post_content); ?>
+					<?php echo str_replace('<p>[related_news]</p>', $this->content_parser->related_news($post->ID, 4), $post->post_content); ?>
 				</section>
 				<section class="box-tag">
 					<ul class="list-tag">
@@ -71,6 +71,7 @@ $author = $this->posts->get_post_author($post->ID);
 					</ul>
 				</section>
 			</article>
+			<div class="clearfix"></div>
 			<div class="author-box">
 				<div class="media">
 					<?php if($this->posts->get_post_author($post->ID)) : ?>
@@ -90,6 +91,7 @@ $author = $this->posts->get_post_author($post->ID);
 				</div>
 				<div class="sharethis-inline-share-buttons"></div> <hr>
 			</div>
+			<div class="clearfix"></div>
 			<?php  
 			/**
 			 * Polling Elements

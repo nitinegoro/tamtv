@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/bootstraps/css/bootstrap.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/admin/css/style-admin.css"); ?>"> 
   <link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("public/plugins/select2/select2.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/admin/css/AdminLTE.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/admin/css/style-admin.css"); ?>"> 
   <link rel="stylesheet" href="<?php echo base_url("public/admin/css/skins/skin-black-light.min.css"); ?>">
@@ -26,6 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("public/theme/js/moment.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/theme/js/daterangepicker.js"); ?>"></script>
   <script src="<?php echo base_url("public/tinymce/js/tinymce.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/select2/select2.full.min.js"); ?>"></script>
   <script type="text/javascript"> 
       var base_url   = '<?php echo site_url("administrator"); ?>';
       var base_path  = '<?php echo base_url('public'); ?>';

@@ -255,7 +255,7 @@ h1.live-title {
 .featured-news {
   width: 100%;
   margin-top: 15px;
-  min-height: 570px;
+  min-height: 300px;
 }
 
 .item-box-related {
@@ -332,6 +332,7 @@ h1.live-title {
 .box-topic-tag,
 .box-category-1 {
   float: left;
+  letter-spacing: 0.3px;
 }
 .box-adsvertising {
   margin-top: -20px;
@@ -546,6 +547,7 @@ article.content-news > h1 {
 
 /*  BREADCRUMBS */
 .content-breadcrumb > ul.breadcrumb {
+  font-size: 9pt;
   background-color: transparent;
   font-family: 'Cabin', sans-serif;
   margin-left: -13px;

@@ -51,3 +51,4 @@ $value = json_decode($box->meta_value);
 		</ul>
 	</div>
 </div>
+<div class="clearfix"></div>

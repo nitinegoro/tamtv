@@ -1,5 +1,7 @@
 $(function() 
 {
+	$('#select-topik').select2();
+
 	tinymce.init({
 		selector: ".tinymce",
 		toolbar_items_size: 'small',

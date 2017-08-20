@@ -59,6 +59,13 @@ class Tags extends CI_Model
 		}
 	}
 
+	public function get_all()
+	{
+		$this->db->select('tag_id, name');
+		
+		return $this->db->get('tags')->result();
+	}
+
 	public function count_posttags($tag = 0)
 	{
 		return $this->db->query("
