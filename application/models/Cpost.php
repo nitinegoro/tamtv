@@ -251,7 +251,14 @@ class Cpost extends CI_Model
 			{
 				$post = $this->get( $param );
 
-				$this->set_watermark($post->image);
+				if( $post->image != FALSE)
+				{
+					@unlink("./public/image/news/{$post->image}");
+					@unlink("./public/image/news/small/{$post->image}");
+					@unlink("./public/image/news/x-small/{$post->image}");
+				}
+
+				//$this->set_watermark($post->image);
 
 				$this->create_thumb($post->image, 'large');
 
@@ -317,9 +324,9 @@ class Cpost extends CI_Model
 		$imgConfig['wm_overlay_path'] = './public/image/site/logo-watermark.png';            
 		$imgConfig['wm_type'] = 'overlay';
 
-        $imgConfig['padding'] = 20;
-		$imgConfig['wm_hor_offset'] = 5;
-		$imgConfig['wm_vrt_offset'] = 5;
+        $imgConfig['padding'] = 100;
+		$imgConfig['wm_hor_offset'] = 20;
+		$imgConfig['wm_vrt_offset'] = 20;
 		$imgConfig['wm_vrt_alignment'] = 'bottom';
 		$imgConfig['wm_hor_alignment'] = 'right';
 			                        

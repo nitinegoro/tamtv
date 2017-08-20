@@ -34,13 +34,13 @@ div.c3 {
   background-color: white;
 }
 .navbar-brand > img.main-logo {
-	width: 140px;
-	margin-top: -12px;
+	width: 200px;
+	margin-top: -5px;
 }
 
 
 .navbar-form {
-  margin-left: 75px;
+  margin-left: 0px;
   margin-right: -15px;
 }
 .navbar-form > .form-group {
@@ -53,35 +53,23 @@ div.c3 {
 	-webkit-box-shadow: none;
 	border-radius: 0px;
 }
-.navbar-form > .form-group > input.form-control::-webkit-input-placeholder { 
-	/* Chrome/Opera/Safari */
-  	color: grey;
-  	font-size: 11px;
-}
-.navbar-form > .form-group > input.form-control::-moz-placeholder { 
-	/* Firefox 19+ */
-  	color: grey;
-  	font-size: 11px;
-}
-.navbar-form > .form-group > input.form-control:-ms-input-placeholder { 
-	/* IE 10+ */
-  	color: grey;
-  	font-size: 11px;
-}
+.navbar-form > .form-group > input.form-control::-webkit-input-placeholder,
+.navbar-form > .form-group > input.form-control::-moz-placeholder,
+.navbar-form > .form-group > input.form-control:-ms-input-placeholder,
 .navbar-form > .form-group > input.form-control:-moz-placeholder { 
 	/* Firefox 18- */
   	color: grey;
-  	font-size: 11px;
+  	font-size: 12px;
 }
 .navbar-form > button.btn-default {
 	text-transform: uppercase;
-	font-weight: 500;
-	background-color: #060581;
+	font-weight: 600;
+	background-color: #0000E5;
 	color: white;
 	border: none;
 	font-size: 13px;
 	border-radius: 0px;
-	padding: 7.5px 24px 7.5px 24px;
+	padding: 8px 24px 8px 24px;
 }
 .navbar-default  .navbar-nav,
 .navbar-default  .navbar-nav .navbar-right
@@ -192,7 +180,7 @@ nav.navbar-default  .navbar-nav > .disabled > a:focus {
   padding-bottom: 5px;
   margin-top: 10px;
   padding: 5px;
-  background-color: #010080;
+  background-color:  #0000E5/*#F60000 */;
 }
 .navbar-default .navbar-nav > li.live-menu > a  {
   padding: -0px ;
@@ -220,7 +208,7 @@ nav.navbar-default  .navbar-nav > .disabled > a:focus {
 /*  NAVBAR STICKy */
 a.sticky-logo > img.main-logo {
   margin-top: -4px;
-  width: 80px;
+  width: 100px;
 }
 .navbar-sticky {
   background-color: white;
