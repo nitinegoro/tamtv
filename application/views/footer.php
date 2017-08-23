@@ -1,7 +1,7 @@
 	<nav class="navbar navbar-default" id="sticky-navbar" style="background-color: white; margin-top: 0px;">
 	  	<div class="container navbar-sticky">
 	     	<div class="collapse navbar-collapse">
-	    		<ul class="nav navbar-nav navbar-primary text-center">
+	    		<ul class="nav navbar-nav coloring navbar-primary text-center">
 	    			<li>
 	    				<a href="<?php echo base_url(); ?>" class="sticky-logo">
 			      		<?php  

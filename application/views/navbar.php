@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      		/* End user menu */
 	      		?>
     		</ul>
-    		<ul class="nav navbar-nav navbar-primary text-center" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    		<ul class="nav navbar-nav coloring navbar-primary text-center" itemscope itemtype="https://schema.org/SiteNavigationElement">
     		<?php  
     		/**
     		 * Displayed Queries menu
