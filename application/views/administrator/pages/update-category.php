@@ -35,7 +35,7 @@
 				}
 				?>
 				</select>
-				<p class="help-block"><?php echo form_error('slug', '<small class="text-red">', '</small>'); ?></p>
+				<p class="help-block"><?php echo form_error('parent', '<small class="text-red">', '</small>'); ?></p>
 				<p class="help-block"><small><i>Anda boleh saja mempuanya kategori Berita dan di bawahnya ada kategori Politik dan Kriminal.</i></small></p>
 			</div>
 		</div>
