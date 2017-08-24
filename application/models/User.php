@@ -153,6 +153,17 @@ class User extends CI_Model
 		return $this->db->get('users')->row();
 	}
 
+	public function get_user_email()
+	{
+		$this->db->where('email', $this->input->post('email'));
+
+		$this->db->where('status', 1);
+
+		$this->db->where('user_type =', 'reader');
+
+		return $this->db->get('users')->row();
+	}
+
 	public function get_admin_login()
 	{
 		if (filter_var($this->input->post('username'), FILTER_VALIDATE_EMAIL)) 
@@ -168,6 +179,7 @@ class User extends CI_Model
 
 		return $this->db->get('users')->row();
 	}
+
 
 	public function update_last_login($param = 0)
 	{

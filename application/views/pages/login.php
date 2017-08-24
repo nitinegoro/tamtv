@@ -19,9 +19,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<h1>Masuk</h1>
 				<p>Gunakan akun media sosial Anda untuk dapat mengakses seluruh fitur.</p>
 				<div class="btn-social">
-					<a href="" class="btn btn-primary btn-social">
+					<button type="button" class="btn btn-primary btn-social login-facebook">
 						<i class="fa fa-facebook"></i> Facebook
-					</a>
+					</button>
 					<a href="" class="btn btn-danger btn-social">
 						<i class="fa fa-google-plus"></i> Google
 					</a>

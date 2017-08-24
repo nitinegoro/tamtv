@@ -73,7 +73,7 @@ class Login extends Web
 	{
 		$this->session->sess_destroy();
 
-		redirect($this->input->get('back-to'));
+		redirect(base_url());
 	}
 
 	public function signup()
