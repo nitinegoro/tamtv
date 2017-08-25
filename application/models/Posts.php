@@ -79,7 +79,7 @@ class Posts extends CI_Model
 		return $this->db->affected_rows();
 	}
 
-	public function get_type($param = NULL, $limit = 6, $offset = 0, $type = 'num')
+	public function get_type($param = NULL, $limit = 6, $offset = 0, $type = 'result')
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
 

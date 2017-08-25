@@ -15,7 +15,7 @@ class Themes extends CI_Model
 	public function get($param = '')
 	{
 		return $this->db->query("
-			SELECT meta_name, meta_key, meta_value FROM themesmeta WHERE meta_key = '{$param}' AND status = 'yes'
+			SELECT meta_name, meta_key, meta_value, status FROM themesmeta WHERE meta_key = '{$param}' AND status = 'yes'
 		")->row();
 	}
 }

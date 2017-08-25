@@ -326,7 +326,6 @@ h1.live-title {
 /*  SIDEBAR */
 .box-sidebar {
   margin-top: 15px;
-  background-color: white;
 }
 .box-topic-tag,
 .box-category-1 {
@@ -487,6 +486,7 @@ footer {
   width: 100%;
   min-height: 80px;
   background-color: #F5F5F5;
+  z-index: 10;
 }
 
 div.navigation-footer {
@@ -1066,3 +1066,23 @@ section.comment-list > div.media > div.media-body > a {
  .top4x {
   margin-top: 40px;
  }
+
+ /*  ADS */
+div.ads-left {
+  position:fixed;
+  top:70px;
+  margin-left :-135px;
+  float:left;
+  z-index:10;
+}
+div.ads-left .iklankiri {
+float:right;
+clear:both;
+}
+div.ads-right {
+  position:fixed;
+  top:70px;
+  margin-left :970px;
+  float:right;
+  z-index:10;
+}

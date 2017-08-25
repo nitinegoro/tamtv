@@ -23,7 +23,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->latest(1, 0) as $post) :
+	foreach( $this->posts->get_type('headline', 1, 0, 'result') as $post) :
 	?>
 	<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
 		<img src="<?php echo $this->posts->get_thumbnail($post->image); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
@@ -34,14 +34,14 @@ $value = json_decode($box->meta_value);
 			<a href="<?php echo $this->posts->permalink($post->ID) ?>" itemprop="name" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
 		</h3>
 		<div class="item-content">
-			<p><?php echo strip_tags(word_limiter($post->post_content, 15)) ?></p>
+			<p><?php echo strip_tags(word_limiter($post->post_content, 15, 'result')) ?></p>
 		</div>
 	</div>
 	<?php endforeach;  ?>
 	<div class="item-box-related">
 		<h4 class="related-heading"><?php echo $box->meta_name; ?></h4>
 		<ul class="list-related">
-			<?php foreach( $this->posts->latest((--$value->limit), 1) as $row) : ?>
+			<?php foreach( $this->posts->get_type('headline', (--$value->limit), 1) as $row) : ?>
 			<li>
 				<a href="<?php echo $this->posts->permalink($row->ID) ?>" itemprop="relatedLink" title="<?php echo $row->post_title; ?>">
 					<?php echo $row->post_title; ?>

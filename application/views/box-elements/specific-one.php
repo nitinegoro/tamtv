@@ -10,10 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
-$box = $this->themes->get('specific-two');
+$box = $this->themes->get('specific-one');
 
 $value = json_decode($box->meta_value);
 ?>
+<div id="<?php if($value->sticky == 'yes') echo 'sticker'; ?>">
 <div class="box-category-1" itemscope itemtype="http://schema.org/Article">
 	<?php  
 	/**
@@ -56,6 +57,7 @@ $value = json_decode($box->meta_value);
 	<?php endforeach; ?>
 	</div>
 </div>
+</div>
 <?php
-/* End of file specific-two.php */
-/* Location: ./application/views/box-elements/specific-two.php */
+/* End of file specific-one.php */
+/* Location: ./application/views/box-elements/specific-one.php */

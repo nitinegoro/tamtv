@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            		</li>
 	          		</ul>
 	        	</li>
-	        	<li class="treeview <?php echo active_link_multiple(array('setting','role','penilaian', 'user')); ?>">
+	        	<li class="treeview <?php echo active_link_multiple(array('menu')); ?>">
 	            	<a href="#">
 	               		<i class="fa fa-wrench"></i> <span>Pengaturan</span>
 	               		<span class="pull-right-container">
@@ -98,6 +98,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	          		<ul class="treeview-menu">
 	            		<li class="<?php echo active_link_controller('setting') ?>">
 	              			<a href=""><i class="fa fa-angle-double-right"></i> Umum</a>
+	            		</li>
+	            		<li class="<?php echo active_link_controller('menu') ?>">
+	              			<a href="<?php echo base_url("administrator/menu") ?>"><i class="fa fa-angle-double-right"></i> Menu Navigasi</a>
 	            		</li>
 	            		<li class="<?php echo active_link_controller('setting') ?>">
 	              			<a href=""><i class="fa fa-angle-double-right"></i> Sosial Media</a>
