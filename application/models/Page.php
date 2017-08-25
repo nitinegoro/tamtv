@@ -102,6 +102,12 @@ class Page extends CI_Model
 		}
 	}
 
+	public function getall()
+	{
+		$this->db->where('post_type', 'page');
+		return $this->db->get('posts')->result();
+	}
+
 	public function create_post_slug( $param = 0)
 	{
 		$string = ( $this->input->post('slug') == FALSE ) ? $this->input->post('judul') : $this->input->post('slug');
