@@ -67,6 +67,13 @@
 					</select>
 				</div>	
 				<div class="form-group">
+					<label>Tipe Berita</label>
+					<select name="type" id="inputStatus" class="form-control" required="required">
+						<option value="default" <?php if(set_value('type')=='default') echo 'selected'; ?>>Standar</option>
+						<option value="headline" <?php if(set_value('type')=='headline') echo 'selected'; ?>>Utama</option>
+					</select>
+				</div>	
+				<div class="form-group">
 					<label>Kategori</label>
 					<div class="box-select-category">
 					<?php foreach( $this->category->get_parent() as $row)  : ?>

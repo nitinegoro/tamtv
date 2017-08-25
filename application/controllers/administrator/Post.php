@@ -74,6 +74,7 @@ class Post extends Admin_panel
 		$this->form_validation->set_rules('content', 'Konten', 'trim');
 		$this->form_validation->set_rules('excerpt', 'Kutipan', 'trim');
 		$this->form_validation->set_rules('status', 'Status', 'trim');
+		$this->form_validation->set_rules('type', 'Tipe', 'trim');
 		$this->form_validation->set_rules('comment', 'Pengaktifan Komentar', 'trim');
 		$this->form_validation->set_rules('polling', 'Pengaktifan Polling', 'trim');
 		$this->form_validation->set_rules('pollingquestion', 'Pertanyaan Polling', 'trim');
@@ -108,6 +109,7 @@ class Post extends Admin_panel
 		$this->form_validation->set_rules('content', 'Konten', 'trim');
 		$this->form_validation->set_rules('excerpt', 'Kutipan', 'trim');
 		$this->form_validation->set_rules('status', 'Status', 'trim');
+		$this->form_validation->set_rules('type', 'Tipe', 'trim');
 		$this->form_validation->set_rules('comment', 'Pengaktifan Komentar', 'trim');
 		$this->form_validation->set_rules('polling', 'Pengaktifan Polling', 'trim');
 		$this->form_validation->set_rules('pollingquestion', 'Pertanyaan Polling', 'trim');

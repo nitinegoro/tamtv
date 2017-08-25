@@ -27,7 +27,7 @@ class Cpost extends CI_Model
 			'comment_status' => (!$this->input->post('comment')) ? 'close' : $this->input->post('comment'),
 			'poll_status' => (!$this->input->post('polling') ) ? 'close' : $this->input->post('polling'),
 			'post_modified' => date('Y-m-d H:i:s'),
-			'post_type' => 'default',
+			'post_type' => $this->input->post('type'),
 			'image' => $this->upload_image(),
 			'post_author' => $this->session->userdata('user')->ID,
 			'viewer' => 0
@@ -68,6 +68,7 @@ class Cpost extends CI_Model
 			'post_excerpt' => $this->input->post('excerpt'),
 			'post_content' => $this->input->post('content'),
 			'post_status' => $this->input->post('status'),
+			'post_type' => $this->input->post('type'),
 			'comment_status' => (!$this->input->post('comment')) ? 'close' : $this->input->post('comment'),
 			'poll_status' => (!$this->input->post('polling') ) ? 'close' : $this->input->post('polling'),
 			'post_modified' => date('Y-m-d H:i:s'),
