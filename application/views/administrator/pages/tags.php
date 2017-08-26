@@ -77,7 +77,7 @@
 						<td><small><?php echo $row->description ?></small></td>
 						<td><?php echo $row->slug ?></td>
 						<td class="text-center">
-							<?php echo anchor(base_url("administrator/posts?tag={$row->tag_id}"), $this->tags->count_posttags($row->tag_id)); ?>	
+							<?php echo anchor(base_url("administrator/post?tag={$row->tag_id}"), $this->tags->count_posttags($row->tag_id)); ?>	
 						</td>
 					</tr>
 				<?php endforeach; 

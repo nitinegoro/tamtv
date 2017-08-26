@@ -106,9 +106,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	              			<a href=""><i class="fa fa-angle-double-right"></i> Sosial Media</a>
 	            		</li>
 	            		<li class="<?php echo active_link_controller('setting') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Live Sreaming</a>
-	            		</li>
-	            		<li class="<?php echo active_link_controller('setting') ?>">
 	              			<a href=""><i class="fa fa-angle-double-right"></i> Permalink</a>
 	            		</li>
 	            		<li class="<?php echo active_link_controller('user') ?>">

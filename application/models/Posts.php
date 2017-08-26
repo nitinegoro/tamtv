@@ -209,11 +209,11 @@ class Posts extends CI_Model
 		if($type == 'num')
 		{
 			$query = $this->db->query("
-				SELECT ID, post_date, post_title, post_excerpt, post_content, image,
-					MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE) AS relevance
+				SELECT ID, post_date, post_title, post_excerpt, post_content, image
 				FROM postcategory 
 					INNER JOIN posts ON postcategory.post_id = posts.ID
-				WHERE MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE)	
+				WHERE
+					post_title LIKE '%{$keyword}%'
 					{$category}	
 					{$from_date} 
 					{$to_date}		
@@ -222,11 +222,11 @@ class Posts extends CI_Model
 			return $query->num_rows();
 		} else {
 			$query = $this->db->query("
-				SELECT ID, post_date, post_title, post_excerpt, post_content, image,
-					MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE) AS relevance
+				SELECT ID, post_date, post_title, post_excerpt, post_content, image
 				FROM postcategory 
 					INNER JOIN posts ON postcategory.post_id = posts.ID
-				WHERE MATCH(post_title, post_excerpt, post_content) AGAINST ('{$keyword}' IN BOOLEAN MODE)
+				WHERE
+					post_title LIKE '%{$keyword}%'
 					{$category}
 					{$from_date} 
 					{$to_date}

@@ -18,6 +18,13 @@ class Options extends CI_Model
 		}
 	}
 
+	public function update($paramater = '', $value = '')
+	{
+		$this->db->update('options', array('option_value' => $value), array('option_name' => $paramater));
+
+		return $this->db->affected_rows();
+	}
+
 }
 
 /* End of file Options.php */

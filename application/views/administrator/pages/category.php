@@ -91,7 +91,7 @@
 						<td><small><?php echo $row->description ?></small></td>
 						<td><?php echo $row->slug ?></td>
 						<td class="text-center">
-							<?php echo anchor(base_url("administrator/posts?category={$row->category_id}"), $this->category->count_postcategory($row->category_id)); ?>	
+							<?php echo anchor(base_url("administrator/post?category={$row->category_id}"), $this->category->count_postcategory($row->category_id)); ?>	
 						</td>
 					</tr>
 				<?php endforeach; 

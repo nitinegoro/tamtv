@@ -123,14 +123,17 @@ class Main extends Web
 		$config['base_url'] = site_url("live");
 
 		$config['per_page'] = $this->per_page;
-		$config['total_rows'] = ($this->posts->get_type('vidio', null, null, 'num') - 8);
+		$config['total_rows'] = $this->posts->get_type('vidio', null, null, 'num');
+		// $config['total_rows'] = ($this->posts->get_type('vidio', null, null, 'num') - 8);
 
 		$this->pagination->initialize($config);
 
 		$this->data = array(
 			'title' => "Live Streaming TV Lokal ",
-			'vidio_posts' => $this->posts->get_type('vidio', $this->per_page, ($this->page+8), 'results')
+			'vidio_posts' => $this->posts->get_type('vidio', $this->per_page, $this->page, 'results')
 		);
+
+		//$this->posts->get_type('vidio', $this->per_page, ($this->page+8), 'results')
 
 		$this->template->view('live-streaming', $this->data);
 	}
