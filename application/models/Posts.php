@@ -410,6 +410,11 @@ class Posts extends CI_Model
 
 		return $this->db->get('pollingpost')->row();
 	}
+
+	public function getmeta($meta = '', $post = 0)
+	{
+		return $this->db->get_where('postmeta', array('meta_key' => $meta, 'post_id' => $post))->row('meta_value');
+	}
 }
 
 /* End of file Posts.php */

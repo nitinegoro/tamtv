@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php endforeach; ?>
 		</div>
 		<div class="col-xs-8 col-md-8 col-lg-8">
-			<iframe width="100%" height="550" src="https://www.youtube.com/embed/9zsOo1yvgzI?autoplay=1" frameborder="0" allowfullscreen></iframe>
+			<iframe width="100%" height="550" src="https://www.youtube.com/embed/d8Bc-c9m6A4?autoplay=1" frameborder="0" allowfullscreen></iframe>
 			<div class="col-md-8">
 				<h1 class="live-title">LIVE STREAMING</h1>
 			</div>

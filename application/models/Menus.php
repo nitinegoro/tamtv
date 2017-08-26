@@ -41,6 +41,85 @@ class Menus extends CI_Model
 		$this->db->update('menus', $object, array('ID' => $param));
 	}
 
+	public function delete($param = 0)
+	{
+		$this->db->delete('menus', array('ID' => $param));
+
+		$this->db->update('menus', array('parent' => 0), array('parent' => $param));
+
+		return TRUE;
+	}
+
+	public function create_custom()
+	{
+		$object = array(
+			'key_menu' => $this->input->post('key'), 
+			'parent' => 0,
+			'label' => $this->input->post('label'),
+			'url' => $this->input->post('url'),
+			'target' => $this->input->post('target'),
+			'position' => $this->last_position($this->input->post('key'))
+		);
+
+		$this->db->insert('menus', $object);
+	}
+
+	public function create_category()
+	{
+		if( is_array($this->input->post('categories')))
+		{
+			$object = array();
+
+			foreach( $this->input->post('categories') as $key => $value)
+			{
+				$category = $this->db->query("SELECT name, slug FROM categories WHERE category_id = '{$value}'")->row();
+
+				$object[] = array(
+					'key_menu' => $this->input->post('key'), 
+					'parent' => 0,
+					'label' => $category->name,
+					'url' => base_url("kategori/{$category->slug}"),
+					'target' => '_self',
+					'position' => $this->last_position($this->input->post('key'))
+				);	
+			}
+
+			$this->db->insert_batch('menus', $object);
+		}
+	}
+
+	public function create_page()
+	{
+		if( is_array($this->input->post('pages')))
+		{
+			$object = array();
+
+			foreach( $this->input->post('pages') as $key => $value)
+			{
+				$page = $this->db->query("SELECT post_title, post_slug FROM posts WHERE ID = '{$value}'")->row();
+
+				$object[] = array(
+					'key_menu' => $this->input->post('key'), 
+					'parent' => 0,
+					'label' => $page->post_title,
+					'position' => $this->last_position($this->input->post('key'))
+				);	
+			}
+
+			$this->db->insert_batch('menus', $object);
+		}
+	}
+
+	private function last_position($key = 'primary_menu')
+	{
+		$lastposition = $this->db->query("SELECT MAX(position) AS lastposition FROM menus WHERE key_menu = '{$key}'")->row('lastposition');
+
+		if( $lastposition == FALSE)
+			return 1;
+
+		return $lastposition;
+	}
+
 	/**
 	 * Update Structure menu
 	 *

@@ -17,11 +17,28 @@ class Menu extends Admin_panel
 
 	public function index()
 	{
+		if( $this->input->post('action'))
+		{
+			switch ($this->input->post('action')) 
+			{
+				case 'custom':
+					$this->menus->create_custom();
+					break;
+				case 'category':
+					$this->menus->create_category();
+					break;
+				case 'page':
+					$this->menus->create_page();
+					break;
+			}
+			
+			redirect('administrator/menu?menu='.array_search($this->input->post('key'), $this->menus->menu_type) );
+		}
 
 		$this->data = array(
 			'title' => "Menu Navigasi"
 		);
-
+		
 		$this->template->admin('menus', $this->data);
 	}
 
@@ -36,7 +53,19 @@ class Menu extends Admin_panel
 		{
 			$this->menus->update( $param );
 
-			$this->data = array('stutus' => 'success', 'data' => $this->input->post());
+			$this->data = array('stutus' => 'success');
+		} else {
+			$this->data = array('stutus' => 'failed');
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+	}
+
+	public function delete($param = 0)
+	{
+		if( $this->menus->delete($param) != FALSE)
+		{
+			$this->data = array('stutus' => 'success');
 		} else {
 			$this->data = array('stutus' => 'failed');
 		}

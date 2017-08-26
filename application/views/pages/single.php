@@ -16,6 +16,9 @@ $author = $this->posts->get_post_author($post->ID);
 $adsleft = $this->themes->get('ads-120x600-left');
 
 $asdtop = $this->themes->get('ads-980x90');
+
+if( $this->posts->getmeta('vidio', $post->ID) != '') 
+	$this->load->view('box-elements/single-vidio', $this->data);
 ?>
 	<div class="container content-wrapper">
         <?php
@@ -27,7 +30,7 @@ $asdtop = $this->themes->get('ads-980x90');
         	</div>
         </div>
         <?php endif;  
-        if( $adsleft->status == 'yes') : ?>
+        if( $adsleft->status == 'yes' AND $this->posts->getmeta('vidio', $post->ID) == FALSE) : ?>
 		<div class="ads-left">
 			<img src="<?php echo base_url("public/image/ads/120x600.gif"); ?>" alt="">
 		</div>

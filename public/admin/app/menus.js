@@ -13,14 +13,14 @@ jQuery(function($) {
 
 	updateOutput($('#nestable2').data('output', $('#nestable-output')));
 
-	$('form').submit(function(event) 
+	$('form#save-menu').submit(function(event) 
 	{
 		event.preventDefault(); 
 
 		var ID = $(this).data('id');
 
 	    $(document).ajaxStart(function(e, xhr, opt){
-	        $('button[data-id="'+ID+'"]').html("Simpan <i class='fa fa-spinner fa-spin fa-fw'></i><span class='sr-only'>Loading...</span>");
+	        $('button#save-menu[data-id="'+ID+'"]').html("Simpan <i class='fa fa-spinner fa-spin fa-fw'></i><span class='sr-only'>Loading...</span>");
 	    });
 
 		$.post(base_url + '/menu/ajaxupdate/' + ID, 
@@ -36,8 +36,8 @@ jQuery(function($) {
 		});
 
 	    $(document).ajaxComplete(function(e, xhr, opt){
-	        $('button[data-id="'+ID+'"]').html("Simpan");
-	        $(".collapse").collapse('hide');
+	        $('button#save-menu[data-id="'+ID+'"]').html("Simpan");
+	        $("#collapse-" + ID).collapse('hide');
 	    });
 
 		return false;

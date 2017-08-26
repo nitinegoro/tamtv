@@ -29,6 +29,7 @@ $menu_type = ( $this->input->get('menu') != '') ? $this->menus->menu_type[$this-
 			<div class="list-group">
 			  	<a data-toggle="collapse" data-target="#page" class="list-group-item"><strong>Halaman</strong></a>
 			  	<div id="page" class="collapse pad">
+			  		<form action="<?php echo current_url() ?>" method="post">
 					<div class="box-select-category">
 					<?php foreach( $this->page->getall() as $row)  : ?>
 						<div class="checkbox">
@@ -36,10 +37,13 @@ $menu_type = ( $this->input->get('menu') != '') ? $this->menus->menu_type[$this-
 						</div>
 					<?php endforeach; ?>
 					</div>
-					<button type="submit" class="btn btn-default top2x">Tambahkan ke menu</button>
+					<?php echo form_hidden('key', $menu_type); ?>
+					<button type="submit" name="action" value="page" class="btn btn-default top2x">Tambahkan ke menu</button>
+					</form>
 			  	</div>
 			  	<a data-toggle="collapse" data-target="#category" class="list-group-item"><strong>Kategori</strong></a>
 			  	<div id="category" class="collapse pad">
+			  		<form action="<?php echo current_url() ?>" method="post">
 					<div class="box-select-category">
 					<?php foreach( $this->category->get_parent() as $row)  : ?>
 						<div class="checkbox">
@@ -52,13 +56,16 @@ $menu_type = ( $this->input->get('menu') != '') ? $this->menus->menu_type[$this-
 						<?php endforeach; ?>
 					<?php endforeach; ?>
 					</div>
-					<button type="submit" class="btn btn-default top2x">Tambahkan ke menu</button>
+					<?php echo form_hidden('key', $menu_type); ?>
+					<button type="submit" name="action" value="category" class="btn btn-default top2x">Tambahkan ke menu</button>
+					</form>
 			  	</div>
 			  	<a data-toggle="collapse" data-target="#custom" class="list-group-item"><strong>Kustomisasi</strong></a>
 			  	<div id="custom" class="collapse pad in">
+			  		<form action="<?php echo current_url() ?>" method="post">
 					<div class="form-group">
 						<small><i>Label</i></small>
-						<input type="text" name="label" class="form-control input-sm">
+						<input type="text" name="label" class="form-control input-sm" required>
 					</div>
 					<div class="form-group">
 						<small><i>Target</i></small>
@@ -71,7 +78,9 @@ $menu_type = ( $this->input->get('menu') != '') ? $this->menus->menu_type[$this-
 						<small><i>Url</i></small>
 						<input type="url" name="url" class="form-control input-sm" placeholder="http://">
 					</div>
-					<button type="submit" class="btn btn-default top2x">Tambahkan ke menu</button>
+					<?php echo form_hidden('key', $menu_type); ?>
+					<button type="submit" name="action" value="custom" class="btn btn-default top2x">Tambahkan ke menu</button>
+					</form>
 			  	</div>
 			</div>
 		</div>
@@ -99,7 +108,7 @@ $menu_type = ( $this->input->get('menu') != '') ? $this->menus->menu_type[$this-
 						</div>
                     </div>
                     <div id="collapse-<?php echo $row->ID; ?>" class="collapse">
-                    	<form data-id="<?php echo $row->ID; ?>" method="post">
+                    	<form id="save-menu" data-id="<?php echo $row->ID; ?>" method="post">
 						<div class="form-group">
 							<small>Label</small>
 							<input type="text" name="label" id="label-<?php echo $row->ID; ?>" class="form-control input-sm" onkeyup=" return getlabelstring('<?php echo $row->ID; ?>', this.value)" value="<?php echo $row->label; ?>">
@@ -116,7 +125,7 @@ $menu_type = ( $this->input->get('menu') != '') ? $this->menus->menu_type[$this-
 							<input type="url" name="url" id="url-<?php echo $row->ID; ?>" class="form-control input-sm" placeholder="http://" value="<?php echo $row->url; ?>">
 						</div>
 						<div class="form-group">
-							<button type="submit" data-id="<?php echo $row->ID; ?>" class="btn btn-default">Simpan</button>
+							<button id="save-menu" type="submit" data-id="<?php echo $row->ID; ?>" class="btn btn-default">Simpan</button>
 							<a href="#" data-action="delete" data-key="menu" data-id="<?php echo $row->ID ?>" class="text-red left2x">Hapus</a>
 						</div>
  						</form>
@@ -140,7 +149,7 @@ $menu_type = ( $this->input->get('menu') != '') ? $this->menus->menu_type[$this-
 							</div>
 						</div>
 		                <div id="collapse-<?php echo $child->ID; ?>" class="collapse">
-		                   	<form data-id="<?php echo $child->ID; ?>" method="post">
+		                   	<form id="save-menu" data-id="<?php echo $child->ID; ?>" method="post">
 							<div class="form-group">
 								<small>Label</small>
 								<input type="text" name="label" id="label-<?php echo $child->ID; ?>" class="form-control input-sm" onkeyup=" return getlabelstring('<?php echo $child->ID; ?>', this.value)" value="<?php echo $child->label; ?>">
@@ -157,7 +166,7 @@ $menu_type = ( $this->input->get('menu') != '') ? $this->menus->menu_type[$this-
 								<input type="url" name="url" id="url-<?php echo $child->ID; ?>" class="form-control input-sm" placeholder="http://" value="<?php echo $child->url; ?>">
 							</div>
 							<div class="form-group">
-								<button type="submit" data-id="<?php echo $child->ID; ?>" class="btn btn-default">Simpan</button>
+								<button id="save-menu" type="submit" data-id="<?php echo $child->ID; ?>" class="btn btn-default">Simpan</button>
 								<a href="#" data-action="delete" data-key="menu" data-id="<?php echo $child->ID ?>" class="text-red left2x">Hapus</a>
 							</div>
 		 					</form>
@@ -183,7 +192,7 @@ $menu_type = ( $this->input->get('menu') != '') ? $this->menus->menu_type[$this-
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Batal</button>
-				<a href="#" id="btn-delete" class="btn btn-outline">Hapus</a>
+				<a id="btn-delete" class="btn btn-outline">Hapus</a>
 			</div>
 		</div>
 	</div>

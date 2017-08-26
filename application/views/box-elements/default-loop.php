@@ -26,7 +26,7 @@ $valhead = json_decode($boxhead->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->latest($value->limit, $valhead->limit) as $key => $post) :
+	foreach( $this->posts->latest($value->limit, 0) as $key => $post) :
 	?>
 	<div class="big-loop-item">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
@@ -51,7 +51,7 @@ $valhead = json_decode($boxhead->meta_value);
 			<time class="timeago" datetime="<?php echo $post->post_date; ?>"></time>
 			<h4 class="item-heading">
 				<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
-					<?php echo $post->post_title; ?>
+					<?php if($this->posts->getmeta('vidio', $post->ID)) echo '<i class="fa fa-play-circle-o"></i> '; echo $post->post_title; ?>
 				</a>
 			</h4>
 			<p><?php echo strip_tags(word_limiter($post->post_content, 10)) ?></p>

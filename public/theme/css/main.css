@@ -388,6 +388,8 @@ span.more-heading {
 .box-category-1 > .item-featured {
   width: 100%;
   margin-top: 0px;
+  border-bottom: 1.2px solid #EEEEEE;
+  margin-bottom: 10px;
 }
 .box-category-1 > .item-featured > h4.item-heading,
 .box-category-1 > .media-news > .media-item > .media-content h4.media-title {
@@ -443,12 +445,14 @@ span.more-heading {
   border-bottom: 1.2px solid #EEEEEE;
   margin-bottom: 10px;
   display: inline-block;
+  overflow:hidden;
 }
 .box-big-loop > .big-loop-item > a img {
     float: left;
     width: 31%;
     padding-bottom: 20px;
 }
+
 .big-loop-item > .item-content  {
   width: 67%;
   float: right;
@@ -751,6 +755,9 @@ a.btn-social > i.fa {
 /* HELPER */
 div.left-pad {
   padding-left: -70px;
+}
+.text-white {
+  color: white;
 }
 
 .btn {
@@ -1086,3 +1093,6 @@ div.ads-right {
   float:right;
   z-index:10;
 }
+
+
+/* IMAGE HOVER */

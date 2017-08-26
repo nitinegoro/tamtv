@@ -31,7 +31,21 @@ jQuery(function($) {
 				break;
 			case 'menu':
 				$('#modal-delete-menu').modal('show');
-				$('a#btn-delete').attr('href', base_url + '/menu/delete/' + $(this).data('id'));
+
+				var ID = $(this).data('id');
+
+				$('a#btn-delete').on('click', function() 
+				{
+					$.get(base_url + '/menu/delete/' + ID);
+					
+				    $(document).ajaxComplete(function(e, xhr, opt)
+				    {
+				       	$('#modal-delete-menu').modal('hide');
+				       	$('li.dd-item[data-id="'+ID+'"]').remove();
+				    });
+					
+				});
+
 				break;
 			default:
 				alert('Please input data-key="example-key" in attribut button.');

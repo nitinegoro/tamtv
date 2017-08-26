@@ -71,6 +71,7 @@
 					<select name="type" id="inputStatus" class="form-control" required="required">
 						<option value="default" <?php if($post->post_type=='default') echo 'selected'; ?>>Standar</option>
 						<option value="headline" <?php if($post->post_type=='headline') echo 'selected'; ?>>Utama</option>
+						<option value="vidio" <?php if($post->post_type=='vidio') echo 'selected'; ?>>Vidio</option>
 					</select>
 				</div>	
 				<div class="form-group">
@@ -102,7 +103,13 @@
 	<div class="col-md-3">
 		<div class="box box-default">
 			<div class="box-header with-border">
-				<strong class="box-heading">Gambar Utama</strong>
+				<strong class="box-heading">Konten Visual</strong>
+			</div>
+			<div class="box-body with-border">
+				<div class="form-group">
+					<label>Vidio </label>
+					<input type="text" name="vidio" class="form-control" value="<?php echo (set_value('vidio')) ? set_value('vidio') : $this->posts->getmeta('vidio', $post->ID); ?>">
+				</div>	
 			</div>
 			<div class="box-body">
 				<div class="form-group">

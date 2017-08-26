@@ -33,9 +33,14 @@ class Cpost extends CI_Model
 			'viewer' => 0
 		);
 
+		if( $this->input->post('type') == 'headline')
+			$this->db->update('posts', array('post_type' => 'default'), array('post_type' => 'headline'));
+
 		$this->db->insert('posts', $object);
 
 		$post = $this->db->insert_id();
+
+		$this->insert_vidio($post);
 
 		$this->insert_categories($post);
 
@@ -75,9 +80,14 @@ class Cpost extends CI_Model
 			'image' => $this->upload_image( $param ),
 		);
 
+		if( $this->input->post('type') == 'headline')
+			$this->db->update('posts', array('post_type' => 'default'), array('post_type' => 'headline'));
+
 		$this->db->update('posts', $object, array('ID' => $param));
 
 		$this->insert_categories($param);
+
+		$this->insert_vidio($param);
 
 		$this->insert_tags($param);
 
@@ -94,6 +104,31 @@ class Cpost extends CI_Model
 				' Gagal saat menyimpan data.', 
 				array('type' => 'warning','icon' => 'warning')
 			);
+		}
+	}
+
+	public function insert_vidio($post = 0)
+	{
+		if( $this->input->post('vidio') != '' ) 
+		{
+			if( $this->db->get_where('postmeta', array('post_id' => $post,'meta_key' => 'vidio'))->num_rows() == FALSE ) 
+			{
+				$this->db->insert('postmeta', array(
+					'post_id' => $post,
+					'meta_key' => 'vidio',
+					'meta_value' => $this->input->post('vidio')
+					)
+				);
+			} else {
+				$this->db->update('postmeta', array(
+						'meta_value' => $this->input->post('vidio')
+					),
+					array(
+						'post_id' => $post,
+						'meta_key' => 'vidio'
+					)
+				);
+			}
 		}
 	}
 	
@@ -154,13 +189,17 @@ class Cpost extends CI_Model
 					'category_id != ' => $value 
 				));
 
+				if( $this->db->get_where('postcategory', array('post_id' => $post,'category_id' => $value ))->num_rows() )
+					continue;
+
 				$object[] = array(
 					'post_id' => $post,
 					'category_id' => $value 
 				);
 			}
 
-			$this->db->insert_batch('postcategory', $object);
+			if( count($object) >= 1)
+				$this->db->insert_batch('postcategory', $object);
 
 			return TRUE;
 		} else {
@@ -183,13 +222,17 @@ class Cpost extends CI_Model
 					'tag_id != ' => $value 
 				));
 
+				if( $this->db->get_where('posttags', array('post_id' => $post,'tag_id' => $value ))->num_rows() )
+					continue;
+
 				$object[] = array(
 					'post_id' => $post,
 					'tag_id' => $value 
 				);
 			}
 
-			$this->db->insert_batch('posttags', $object);
+			if( count($object) >= 1)
+				$this->db->insert_batch('posttags', $object);
 
 			return TRUE;
 		} else {
@@ -252,7 +295,7 @@ class Cpost extends CI_Model
 			{
 				$post = $this->get( $param );
 
-				if( $post->image != FALSE)
+				if( $post->image != FALSE AND $this->upload->do_upload('gambar') == TRUE)
 				{
 					@unlink("./public/image/news/{$post->image}");
 					@unlink("./public/image/news/small/{$post->image}");
@@ -266,6 +309,7 @@ class Cpost extends CI_Model
 				$this->create_thumb($post->image, 'small');
 
 				$this->create_thumb($post->image, 'x-small');
+
 				return $post->image;
 			}
 		}
@@ -298,7 +342,6 @@ class Cpost extends CI_Model
 				$this->image_lib->resize();
 
 				$this->image_lib->clear();
-		
 				break;
 			case 'large':
 				$config['image_library'] = 'GD2';
