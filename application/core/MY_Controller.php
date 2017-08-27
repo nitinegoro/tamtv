@@ -26,7 +26,7 @@ class Web extends MY_Controller
 		parent::__construct();
 
 		$this->load->library(
-			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser', 'pagination','form_validation','cart')
+			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser', 'pagination','form_validation','cart', 'user_agent')
 		);
 		
 		$this->load->model(
@@ -45,6 +45,9 @@ class Web extends MY_Controller
 		);
 
 		$this->breadcrumbs->unshift(0, 'Home', "/");
+
+		if( $this->agent->is_mobile() )
+			redirect(base_url("mobile"));
 	}
 
 	/**
@@ -100,6 +103,38 @@ class Web extends MY_Controller
 }
 
 /**
+* 
+*/
+class Mobile_site extends MY_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+		
+		$this->load->library(
+			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser', 'pagination','form_validation','cart', 'user_agent')
+		);
+		
+		$this->load->model(
+			array('menus', 'options','themes', 'tags','posts','category','user','polling','comment')
+		);
+
+		if($this->session->userdata('user_login') != FALSE)  
+		{
+			$this->user_login = $this->session->userdata('user');
+
+			$this->polling->save_polling_session();
+		}
+
+		$this->load->helper(
+			array('text', 'form', 'language')
+		);
+
+		$this->breadcrumbs->unshift(0, 'Home', "/");
+	}
+}
+
+/**
 * Extends Class Admin_panel
 *
 * @author Vicky Nitinegoro <pkpvicky@gmail.com>
@@ -131,6 +166,8 @@ class Admin_panel extends CI_Controller
 		$this->load->js(base_url("public/admin/app/editor.js"));
 	}
 }
+
+
 
 /* End of file MY_Controller.php */
 /* Location: ./application/core/MY_Controller.php */

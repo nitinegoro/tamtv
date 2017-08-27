@@ -10,7 +10,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @since Tamtv 1.0
  */
 ?>
-	<div class="container">
 		<nav class="navbar navbar-default">
 	    	<div class="navbar-header">
 	      		<a class="navbar-brand" href="<?php echo base_url(); ?>">
@@ -101,7 +100,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     			</li>
     		</ul>
 		</nav>
-	</div>
 <?php
 /* End of file navbar.php */
 /* Location: ./application/views/navbar.php */

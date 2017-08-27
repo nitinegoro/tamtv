@@ -1,0 +1,159 @@
+body {
+  background-color: #F7F7F7
+}
+/*  NAVBAR  */
+nav.navbar {
+  background-color: white;
+  font-family: 'PT Sans Narrow', sans-serif;
+  max-height: 50px;
+}
+.navbar-header {
+  border-bottom: 1.5px solid #0000e5;
+}
+.navbar-toggle:focus {
+  background-color: none;
+}
+.navbar-default .navbar-toggle {
+  border-color: #0000e5;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #0000e5;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #0000e5;
+  border: none;
+}
+.navbar-toggle:hover .icon-bar {
+    background-color: white;
+    border: none;
+}
+.navbar-collapse {
+  background-color: #F9F9F9
+}
+.navbar-collapse > .navbar-form {
+  border:none;
+  padding-top: 5px;
+}
+.navbar-form > .input-group > input.form-control {
+  width: 100%;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  border-radius: 0px;
+}
+.form-control:focus{
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.navbar-form > .input-group > input.form-control::-webkit-input-placeholder,
+.navbar-form > .input-group > input.form-control::-moz-placeholder,
+.navbar-form > .input-group > input.form-control:-ms-input-placeholder,
+.navbar-form > .input-group > input.form-control:-moz-placeholder { 
+    color: grey;
+    font-size: 9pt;
+}
+.navbar-form > button.btn-default {
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: #0000E5;
+  color: white;
+  border: none;
+  font-size: 13px;
+  border-radius: 0px;
+  padding: 8px 24px 8px 24px;
+}
+.user-menu > div.avatar {
+  margin-top: 10px;
+  width: 40%;
+  font-size: 7pt;
+}
+.user-menu > div.avatar > span {
+  margin-left: 10px;
+}
+.user-menu > div.avatar > img.img-circle {
+  width: 30px;
+}
+.user-menu > ul.menu {
+  margin-top: 5px;
+  float: right;
+}
+.user-menu > ul.menu > li {
+  display: inline;
+  margin-right: 10px;
+}
+.user-menu > ul.menu > li a {
+  color: #727272;
+  font-weight: bold;
+}
+
+/* MENU LIST */
+.navbar-nav li:nth-of-type(1) {
+  border: none;
+  box-shadow: none;
+}
+.navbar-nav li {
+  border-bottom: 1px solid #F0F0F0;
+  box-shadow: 0px 0px 1px #F0F0F0;
+}
+.navbar-nav li a {
+  font-weight: bold;
+}
+div.start {
+  height: 50px;
+  width: 100%;
+}
+.container-fluid {
+  
+}
+/*  HELPER COLOR  */
+.bg-red {
+  background-color: #f60000;
+}
+.bg-blue {
+  background-color: #0000E5;
+}
+/* CONTENT 
+
+   TAGS 
+*/
+ul.top-trending-tags {
+  font-size: 7pt;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  margin-left: -25px;
+  list-style: none;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+ul.top-trending-tags > li a:before{
+  content: '#';
+}
+ul.top-trending-tags > li {
+  display: inline-block;
+  margin-right: 5px;
+ /*  border: .1px white solid;
+ border-radius: 5px; */
+  padding: 2px 5px 2px 5px;
+}
+ul.top-trending-tags > li a {
+  color: white;
+}
+div.headline-news {
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+div.headline-news > .content-headline {
+  padding: 0px 10px 10px 10px;
+  color: white;
+}
+div.headline-news > .content-headline a h1 {
+  font-size: 15pt;
+  font-weight: 600;
+  color: #e4e500;
+  margin-top: 7px;
+  margin-bottom: 0px;
+}
+div.headline-news > .content-headline > div.desc {
+  font-size: 8pt;
+}
