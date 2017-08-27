@@ -28,7 +28,7 @@ $box = $this->themes->get('ads-120x600-right');
 		</div>
 		<?php if( $box->status == 'yes' AND $this->posts->getmeta('vidio', @$post->ID) == FALSE) : ?>
 		<div class="ads-right">
-			<img src="<?php echo base_url("public/image/ads/120x600.gif"); ?>" alt="">
+			<?php echo $box->meta_value ?>
 		</div>
 		<?php endif; ?>
 	</div>

@@ -18,7 +18,7 @@ $asdtop = $this->themes->get('ads-980x90');
 	<div class="container content-wrapper" id="infinite">
         <?php if( $adsleft->status == 'yes') : ?>
 		<div class="ads-left">
-			<img src="<?php echo base_url("public/image/ads/120x600.gif"); ?>" alt="">
+			<?php echo $adsleft->meta_value ?>
 		</div>
 		<?php endif; ?>
 		<div class="col-xs-8">

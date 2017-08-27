@@ -26,7 +26,7 @@ $asdtop = $this->themes->get('ads-980x90');
         <?php endif; 
         if( $adsleft->status == 'yes') : ?>
 		<div class="ads-left">
-			<img src="<?php echo base_url("public/image/ads/120x600.gif"); ?>" alt="">
+			<?php echo $adsleft->meta_value ?>
 		</div>
 		<?php endif; ?>
 		<div class="col-xs-8">
