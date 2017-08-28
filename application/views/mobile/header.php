@@ -64,6 +64,7 @@
     
     <script src="<?php echo base_url("public/theme/js/jquery-3.2.1.min.js"); ?>"></script>
     <script src="<?php echo base_url("public/bootstraps/js/bootstrap.min.js"); ?>"></script>
+    <script src="<?php echo base_url("public/theme/js/jquery.timeago.js");?>" type="text/javascript"></script>
     <script src="<?php echo base_url("public/mobile/js/component.js"); ?>"></script>
     <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=59227929b27f700011ad0da3&product=inline-share-buttons' async='async'></script>
     <script type="text/javascript">

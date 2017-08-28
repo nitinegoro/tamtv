@@ -45,9 +45,6 @@ class Web extends MY_Controller
 		);
 
 		$this->breadcrumbs->unshift(0, 'Home', "/");
-
-		if( $this->agent->is_mobile() )
-			redirect(base_url("mobile"));
 	}
 
 	/**
@@ -102,37 +99,6 @@ class Web extends MY_Controller
 	}
 }
 
-/**
-* 
-*/
-class Mobile_site extends MY_Controller
-{
-	public function __construct()
-	{
-		parent::__construct();
-		
-		$this->load->library(
-			array('slug','session','template','breadcrumbs','meta_tags', 'content_parser', 'pagination','form_validation','cart', 'user_agent')
-		);
-		
-		$this->load->model(
-			array('menus', 'options','themes', 'tags','posts','category','user','polling','comment')
-		);
-
-		if($this->session->userdata('user_login') != FALSE)  
-		{
-			$this->user_login = $this->session->userdata('user');
-
-			$this->polling->save_polling_session();
-		}
-
-		$this->load->helper(
-			array('text', 'form', 'language')
-		);
-
-		$this->breadcrumbs->unshift(0, 'Home', "/");
-	}
-}
 
 /**
 * Extends Class Admin_panel
@@ -144,9 +110,6 @@ class Admin_panel extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
-		if( $this->agent->is_mobile() == FALSE)
-			redirect(base_url());
 
 		$this->load->library(
 			array('slug','session','template','breadcrumbs','page_title','meta_tags', 'pagination','form_validation')

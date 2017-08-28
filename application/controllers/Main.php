@@ -62,7 +62,12 @@ class Main extends Web
 			'title' => $this->options->get('sitename')	
 		);
 
-		$this->template->view('index', $this->data);
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('index', $this->data);
+		} else {
+			$this->load->view('mobile/main', $this->data);
+		}
 	}
 
 	/**
