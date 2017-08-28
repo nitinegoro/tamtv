@@ -145,6 +145,9 @@ class Admin_panel extends CI_Controller
 	{
 		parent::__construct();
 
+		if( $this->agent->is_mobile() == FALSE)
+			redirect(base_url());
+
 		$this->load->library(
 			array('slug','session','template','breadcrumbs','page_title','meta_tags', 'pagination','form_validation')
 		);

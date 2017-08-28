@@ -188,10 +188,11 @@ class Posts extends CI_Model
 				$order_by .= ' ORDER BY post_date DESC ';
 				break;
 			case 'relevance':
-				$order_by .= ' ORDER BY relevance DESC ';
-				break;
 			case 'popular':
 				$order_by .= ' ORDER BY viewer DESC ';
+				break;
+			default:
+				$order_by .= ' ORDER BY post_date DESC ';
 				break;
 		}
 
