@@ -145,8 +145,12 @@ class Main extends Web
 		);
 
 		//$this->posts->get_type('vidio', $this->per_page, ($this->page+8), 'results')
-
-		$this->template->view('live-streaming', $this->data);
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('live-streaming', $this->data);
+		} else {
+			redirect(base_url());
+		}
 	}
 
 	/**
@@ -186,7 +190,12 @@ class Main extends Web
 			'categories' => $this->posts->category($category->category_id, $this->per_page, ($this->page+6), 'results')
 		);
 
-		$this->template->view('category', $this->data);
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('category', $this->data);
+		} else {
+			redirect(base_url());
+		}
 	}
 
 	/**
@@ -218,7 +227,12 @@ class Main extends Web
 			'posttags'=>  $this->posts->tags($tag->tag_id, $this->per_page, $this->page, 'results')
 		);
 
-		$this->template->view('tags', $this->data);
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('tags', $this->data);
+		} else {
+			redirect(base_url());
+		}
 	}
 
 	/**
@@ -266,7 +280,12 @@ class Main extends Web
 			'post' => $post
 		);
 
-		$this->template->view('page', $this->data);
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('page', $this->data);
+		} else {
+			$this->load->view('mobile/single-page', $this->data);
+		}
 	}
 
 	public function update($value='')

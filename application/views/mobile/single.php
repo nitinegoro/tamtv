@@ -54,6 +54,7 @@ $author = $this->posts->get_post_author($post->ID);
 	<section class="padding" itemprop="description">
 		<?php echo str_replace('<p>[related_news]</p>', $this->content_parser->related_news($post->ID, 4), $post->post_content); ?>
 	</section>
+	
 	<section class="box-tag padding">
 		<ul class="list-tag">
 		<?php  
