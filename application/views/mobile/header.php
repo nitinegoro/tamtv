@@ -44,9 +44,10 @@
   	<meta name="twitter:image" content="">
   	<meta name="twitter:site" content="@TAMTVBabel"/>
   	<meta name="twitter:creator" content="@TAMTVBabel"/>
-
+    <?php if($this->router->fetch_method() == 'index' AND $this->router->fetch_class() == 'main') : ?>
   	<meta name="msapplication-TileColor" content="#0000e5">
   	<meta name="theme-color" content="#0000e5">
+    <?php endif; ?>
   	<meta name="mobile-web-app-capable" content="yes">
   	<meta name="apple-mobile-web-app-capable" content="yes">
   	<meta name="apple-mobile-web-app-title" content="Tempayan">
@@ -55,7 +56,6 @@
   	<meta name="HandheldFriendly" content="true">
 
     <link rel="dns-prefetch" href="https://api-read.facebook.com" />
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
     <link rel="shortcut icon" href="<?php echo base_url("public/image/site/favicon.png"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("public/mobile/css/style.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("public/bootstraps/css/bootstrap.min.css"); ?>">
@@ -97,7 +97,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?php echo base_url() ?>">
                 <?php  
                 /**
                  * Displayed main logo

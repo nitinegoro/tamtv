@@ -102,16 +102,22 @@ class Main extends Web
 		if( $category )
 			$this->breadcrumbs->unshift(1, $category->name, "kategori/{$category->slug}");
 
-		$this->breadcrumbs->unshift(2, $post->post_title, "/");
-
 		$this->data = array(
 			'title' => $post->post_title,
 			'post' => $post,
 			'news_keyword' => $tags,
-			'metacategory' =>  $category ? $category->name : ''
+			'metacategory' =>  $category ? $category->name : '',
+			'nextpost' => $this->posts->next($post->ID),
+			'prevpost' => $this->posts->prev($post->ID)
 		);
 
-		$this->template->view('single', $this->data);
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->breadcrumbs->unshift(2, $post->post_title, "/");
+			$this->template->view('single', $this->data);
+		} else {
+			$this->load->view('mobile/single', $this->data);
+		}
 	}
 
 	/**

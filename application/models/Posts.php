@@ -279,6 +279,28 @@ class Posts extends CI_Model
 		return $this->db->get('categories')->row();
 	}
 
+	public function next($post = 0)
+	{
+		$this->db->select('ID, post_title, post_slug');
+
+		$this->db->where('ID >', $post);
+
+		$this->db->order_by('post_date', 'desc');
+
+		return $this->db->get('posts')->row();
+	}
+
+	public function prev($post = 0)
+	{
+		$this->db->select('ID, post_title, post_slug');
+
+		$this->db->where('ID <', $post);
+
+		$this->db->order_by('post_date', 'desc');
+
+		return $this->db->get('posts')->row();
+	}
+
 	public function get_post_categories($post = 0)
 	{
 		$this->db->select('name, slug, categories.category_id');

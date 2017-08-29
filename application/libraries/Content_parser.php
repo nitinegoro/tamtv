@@ -32,7 +32,7 @@ class Content_parser
 		 **/
 		foreach( $this->ci->posts->similar($tags, $post, $limit, NULL) as $row) 
 		{
-			$content .= '<div class="media-news"><div class="media-item"><div class="media-image">';
+			$content .= '<div class="media-news"><div class="media-item"><div class="media-image hidden-xs">';
 			$content .= '<a href="'.$this->ci->posts->permalink($row->ID).'" title="'.$row->post_title.'">';
 			$content .='<img src="'.$this->ci->posts->get_thumbnail($row->image, 'x-small').'" alt="'.$row->post_title.'" class="img-responsive"></a>';
 			$content .=	'</div> <div class="media-content">';
