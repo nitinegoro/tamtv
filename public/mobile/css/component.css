@@ -1,6 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin:300,400,500,600+Roboto|Raleway|PT+Sans+Narrow');
+@import url('https://fonts.googleapis.com/css?family=Cabin:300,400,500,600+Roboto|Raleway|PT+Sans+Narrow|Baloo+Bhaijaan');
 body {
 
+}
+.container-fluid {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 /*  NAVBAR  */
 nav.navbar {
@@ -114,7 +119,7 @@ div.start {
   color: white;
 }
 .bg-blue {
-  background-color: #0000E5;
+  background-color:#0014A7;
   color: white;
 }
 .bg-white {
@@ -141,6 +146,7 @@ ul.top-trending-tags {
   margin-left: -25px;
   list-style: none;
   font-family: 'PT Sans Narrow', sans-serif;
+  padding-top: 6px;
 }
 ul.top-trending-tags > li a:before{
   content: '#';
@@ -150,7 +156,7 @@ ul.top-trending-tags > li {
   margin-right: 5px;
  /*  border: .1px white solid;
  border-radius: 5px; */
-  padding: 2px 5px 2px 5px;
+  padding: 2px 5px 0px 0px;
 }
 ul.top-trending-tags > li a {
   color: white;
@@ -166,7 +172,7 @@ div.headline-news > .content-headline a h1 {
   font-size: 15pt;
   font-weight: 600;
   color: #e4e500;
-  margin-top: 7px;
+  margin-top: 5px;
   margin-bottom: 0px;
 }
 div.headline-news > .content-headline > div.desc {
@@ -201,23 +207,35 @@ div.headline-news > .content-headline > div.desc {
   margin-left: 10px;
   font-style: italic;
 }
+.media-body > time.no-left {
+  margin-left: 0px !important;
+}
 .media {
   padding-top: 5px;
   padding-bottom: 5px;
   border-bottom: 1px solid #F0F0F0;
 }
+.border-top {
+  border-top: 1px solid #F0F0F0;
+}
 /* BOX */
 div.box {
-
+  font-family: 'Roboto', sans-serif;
 }
 div.box > h3.box-heading {
-    font-family: 'Roboto', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 12pt;
   color: white;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+div.box > h3.no-padding {
+  margin-top: 10px;
+  margin-bottom:5px !important;
+}
+div.box > p.category-description {
+  font-size: 7pt;
 }
 div.box > a.more-button-icon {
   float: right;
@@ -624,3 +642,60 @@ section.pager div.col-xs-6 span.news-title {
   font-weight: 400;
 }
 
+/*  TAGS PAGE */
+div.tag-header {
+  font-family: 'Cabin', sans-serif;
+}
+div.tag-header > h1.tag-heading:before {
+  content: '#';
+}
+div.tag-header > h1.tag-heading {
+    text-align: center;
+    font-size: 13pt;
+    line-height: 44px;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    left: 0;
+    right: 0;
+    top: 75px;
+    bottom: 20px;
+    height: 40px;
+}
+div.tag-header > p.tag-description {
+    text-align: center;
+    font-size: 8pt;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    left: 0;
+    right: 0;
+    top: 100px;
+    bottom: 20px;
+    height: 40px;
+    padding: 10px;
+}
+div.tag-header > ul.tag-cloud-image {
+    display: block;
+    list-style: none;
+    list-style-position: inside;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 90px;
+    background-color: #000072
+}
+div.tag-header > ul.tag-cloud-image > li {
+    width:20%;
+    height: 90px;
+    float: left;
+    display: block;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    opacity: 0.4;
+}

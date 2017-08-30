@@ -180,21 +180,29 @@ class Main extends Web
 		$config['base_url'] = site_url("kategori/{$category->slug}");
 
 		$config['per_page'] = $this->per_page;
-		$config['total_rows'] = ($this->posts->category($category->category_id, null, null, 'num') - 6);
+
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$config['total_rows'] = ($this->posts->category($category->category_id, null, null, 'num') - 6);
+			$categories = $this->posts->category($category->category_id, $this->per_page, ($this->page+6), 'results');
+		} else {
+			$config['total_rows'] = ($this->posts->category($category->category_id, null, null, 'num') - 1);
+			$categories = $this->posts->category($category->category_id, $this->per_page, ($this->page+1), 'results');
+		}
 
 		$this->pagination->initialize($config);
 
 		$this->data = array(
-			'title' => $category->name,
+			'title' => $category->name. " :: ". $this->options->get('sitename'),
 			'category' => $category,
-			'categories' => $this->posts->category($category->category_id, $this->per_page, ($this->page+6), 'results')
+			'categories' => $categories
 		);
 
 		if( $this->agent->is_mobile() == FALSE) 
 		{
 			$this->template->view('category', $this->data);
 		} else {
-			redirect(base_url());
+			$this->load->view("mobile/category", $this->data);
 		}
 	}
 
@@ -222,7 +230,7 @@ class Main extends Web
 		$this->pagination->initialize($config);
 
 		$this->data = array(
-			'title' => "Topik : ".$tag->name,
+			'title' => "Topik : ".$tag->name. " :: ". $this->options->get('sitename'),
 			'tag' => $tag,
 			'posttags'=>  $this->posts->tags($tag->tag_id, $this->per_page, $this->page, 'results')
 		);
@@ -231,7 +239,7 @@ class Main extends Web
 		{
 			$this->template->view('tags', $this->data);
 		} else {
-			redirect(base_url());
+			$this->load->view("mobile/tags", $this->data);
 		}
 	}
 

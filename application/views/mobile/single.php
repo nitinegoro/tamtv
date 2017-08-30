@@ -68,7 +68,9 @@ $author = $this->posts->get_post_author($post->ID);
 		?>
 		</ul>
 	</section>
+	<?php if( str_word_count($post->post_content) >= 100) : ?>
 	<div class="sharethis-inline-share-buttons padding"></div>
+	<?php endif; ?>
 	<section class="pager">
 		<div class="col-xs-6">
 			<?php if($prevpost) : ?>

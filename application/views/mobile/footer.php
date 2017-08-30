@@ -11,7 +11,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  **/
 ?>
 	<footer>
-		<hr>
 		<div class="container-fluid text-center">
 			<div class="navigation-footer">	
 				<ul class="navigation">

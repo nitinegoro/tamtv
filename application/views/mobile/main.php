@@ -14,15 +14,14 @@ $this->load->view('mobile/header', $this->data);
 ?>
 <div class="start"></div>
 <div class="bg-blue">
-	<ul class="top-trending-tags">
-		<?php  
-			foreach ($this->tags->box(3) as $row) 
-			{
-				echo '<li><a href="'.base_url("tag/{$row->slug}").'">'.$row->name.'</a></li>';
-			}
-		?>
-	</ul>
 	<?php  
+	/**
+	 * Trending Topik
+	 *
+	 * @var string
+	 **/
+	$this->load->view('mobile/box/topic-trend-top', $this->data );
+	
 	/**
 	 * Headline News
 	 *

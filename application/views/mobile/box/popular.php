@@ -25,7 +25,7 @@ foreach($this->posts->most_viewer(1, 0) as $key => $post) :
 	</div>
 <?php endforeach; ?>
 </div>
-<div class="container-fluid">
+<div class="container-fluid padding">
 	<?php  
 	/**
 	 * Get Latest Post
