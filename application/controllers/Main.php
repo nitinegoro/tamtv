@@ -26,7 +26,7 @@ class Main extends Web
 
 		$this->page = $this->input->get('page');
 
-		$this->per_page = 16;
+		$this->per_page = 20;
 
 		$this->query = $this->input->get('q');
 
@@ -260,15 +260,23 @@ class Main extends Web
 		$config['per_page'] = $this->per_page;
 		$config['total_rows'] = $this->posts->search(null, null, 'num');
 
+		$this->pagination->initialize($config);
+
 		if(!$this->page)
 			$this->page = 0;
 
 		$this->data = array(
 			'title' => $this->options->get('sitename'),
-			'contents'=>  $this->posts->search($this->per_page, $this->page, 'results')
+			'contents'=>  $this->posts->search($this->per_page, $this->page, 'results'),
+			'results_count' => $config['total_rows']
 		);
 
-		$this->template->view('search', $this->data);
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('search', $this->data);
+		} else {
+			$this->load->view("mobile/search", $this->data);
+		}
 	}
 
 	public function page()

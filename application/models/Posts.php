@@ -163,12 +163,7 @@ class Posts extends CI_Model
 		}
 	}
 
-	/**
-	 * Fulltext searching
-	 *
-	 * @see http://www.vionblog.com/mysql-full-text-search-with-multiple-words/
-	 **/
-	public function search($limit = 0, $offset = 0, $type = 'num')
+	public function search($limit = 16, $offset = 0, $type = 'num')
 	{
 		$keyword = $this->clean_string($this->input->get('q'));
 

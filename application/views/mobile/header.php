@@ -121,7 +121,7 @@
                     <span>Halo Sobat pembaca</span>
                 </div>
             </div>
-            <form class="navbar-form" role="search">
+            <form class="navbar-form" action="<?php echo base_url("search"); ?>" role="search">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Berita apa yang ingin anda baca hari ini?" name="q">
                 <div class="input-group-btn">

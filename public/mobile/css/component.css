@@ -13,6 +13,11 @@ nav.navbar {
   font-family: 'PT Sans Narrow', sans-serif;
   max-height: 50px;
 }
+.navbar-collapse.in{
+    overflow-y: hidden;
+    max-height: none !important;
+    height: auto !important;
+}
 .navbar-header {
   /* border-bottom: 1.5px solid #0000e5; */
 }
@@ -288,6 +293,10 @@ div.box > ol.list-article > li a:hover {
   color: #6666B2;
 }
 /* FOOTER  */
+footer {
+  margin-top: 20px;
+  background-color: #f5f5f5;
+}
 div.navigation-footer {
   margin-top: 20px;
   font-size: 8pt;
@@ -441,7 +450,8 @@ section.box-tag > ul.list-tag > li a {
 
 /* BOX NEWS */
 .box-sidebar {
-  background-color: #F7F7F7
+  background-color: #F7F7F7;
+  margin: 10px;
 }
 .box-sidebar > .box-topic-tag > h3.sidebar-heading,
 .box-sidebar > .box-category-1 > h3.sidebar-heading,
@@ -645,6 +655,7 @@ section.pager div.col-xs-6 span.news-title {
 /*  TAGS PAGE */
 div.tag-header {
   font-family: 'Cabin', sans-serif;
+  height: auto;
 }
 div.tag-header > h1.tag-heading:before {
   content: '#';
@@ -659,7 +670,7 @@ div.tag-header > h1.tag-heading {
     display: inline-block;
     left: 0;
     right: 0;
-    top: 75px;
+    top: 80px;
     bottom: 20px;
     height: 40px;
 }
@@ -672,7 +683,7 @@ div.tag-header > p.tag-description {
     display: inline-block;
     left: 0;
     right: 0;
-    top: 100px;
+    top: 105px;
     bottom: 20px;
     height: 40px;
     padding: 10px;
@@ -698,4 +709,36 @@ div.tag-header > ul.tag-cloud-image > li {
     justify-content: center;
     margin: 0 auto;
     opacity: 0.4;
+}
+
+div.results {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 8pt;
+}
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 3;
+    color: #283593;
+    background-color: transparent;
+    border-color: #283593;
+}
+
+.pagination > li > a:first-child,
+.pagination > li > a,
+.pagination > li > a span {
+  font-weight:bold;
+  margin-right: 5px;
+  border-radius: 50px;
+  transition: all 0.5s ease;
+}
+
+.pagination > li.active > a,
+.pagination > li.active > a:hover {
+   z-index: 3;
+    color: white;
+    background-color: #283593;
+    border-color: #283593;
 }

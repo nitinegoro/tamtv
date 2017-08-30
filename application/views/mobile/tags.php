@@ -76,5 +76,5 @@ $this->load->view('mobile/header', $this->data);
 </div>
 <?php
 $this->load->view('mobile/footer', $this->data);
-/* End of file main.php */
-/* Location: ./application/views/mobile/main.php */
+/* End of file tags.php */
+/* Location: ./application/views/mobile/tags.php */
