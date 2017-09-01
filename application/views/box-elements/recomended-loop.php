@@ -9,11 +9,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage Tamtv Template
  * @since Tamtv 1.0
  */
-$box = $this->themes->get('most-viewer');
+$box = $this->themes->get('recomended-loop');
 
 $value = json_decode($box->meta_value);
 ?>
-<div class="clearfix"></div>
 <div class="box-thumbnail">
 	<div class="block-box">
 		<h3 class="featured-heading"> <?php echo $box->meta_name ?> </h3> 
@@ -27,8 +26,8 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->most_viewer($value->limit, 0) as $key => $post) :
-		if( $key % 3 == 0)
+	foreach( $this->posts->get_type('recomended', $value->limit, 0, 'results') as $key => $post) :
+		if( $key++ == 3 )
 			echo '<div class="clearfix"></div>';
 	?>
 	<div class="box-category-1 c3">
@@ -45,4 +44,3 @@ $value = json_decode($box->meta_value);
 	</div>
 	<?php endforeach; ?>
 </div>
-<div class="clearfix"></div>

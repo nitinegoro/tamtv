@@ -14,6 +14,8 @@ $box = $this->themes->get('headline-news');
 
 $value = json_decode($box->meta_value);
 ?>
+
+<div class="clearfix"></div>
 <div class="featured-news" itemscope itemtype="http://schema.org/Article">
 	<?php  
 	/**
