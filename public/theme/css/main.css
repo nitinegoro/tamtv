@@ -504,6 +504,7 @@ span.more-heading {
 .big-loop-item > .item-content > a span.category-title:hover {
   color: #6666B2;
   text-decoration: none;
+  border-color: #6666B2;
 }
 .big-loop-item > .item-content > p {
   font-size: 9pt;
@@ -1174,4 +1175,127 @@ div.headline-slider .headline-slider-item {
 .headline-slider-item a > .media > .media-body > time.timeago {
   font-size: 8pt;
   color: grey;
+}
+
+/* BOX FOTO */
+.box-foto {
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.box-foto .left-foto .text-foto {
+    background: rgba(0,0,0,0.5);
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(90%, rgba(0,0,0,1)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#111111', GradientType=1 );
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 30px 15px 15px;
+    z-index: 2;
+}
+.box-foto .left-foto {
+    width: 50%;
+    float: left;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+.box-foto .left-foto img {
+    width: 100%;
+    display: block;
+}
+.box-foto .left-foto .foto-icon, 
+.cover-foto .foto-icon {
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    z-index: 3;
+    cursor: pointer;
+}
+.cover-foto .foto-icon img {
+  margin-top: -3px;
+}
+.box-foto .left-foto .foto-icon:before, 
+.cover-foto .foto-icon:before {
+    content: '';
+    border-style: solid;
+    border-width: 5px 20px 0px 0px;
+    border-color: transparent #fff transparent transparent;
+    position: absolute;
+    top: -4px;
+    left: 0;
+}
+
+.box-foto .left-foto .text-foto h2.title {
+    font-size: 18px;
+    line-height: 22px;
+}
+.box-foto .left-foto .text-foto h2.title a {
+    color: #fff;
+}
+.box-foto .left-foto .text-foto h2.title a:hover {
+      box-sizing: border-box;
+}
+.box-foto .right-foto {
+    width: 50%;
+    float: left;
+    display: block;
+    padding: 0;
+    position: relative;
+}
+.box-foto .right-foto ul.foto-other {
+    list-style: none;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.box-foto .right-foto ul.foto-other li:first-child {
+    padding-top: 0;
+}
+.box-foto .right-foto ul.foto-other li {
+    margin: 0;
+    padding: 8px 0 8px 16px;
+    display: block;
+    overflow: hidden;
+    height: 105px;
+}
+.box-foto .right-foto ul.foto-other li .cover-foto {
+    width: 140px;
+    height: 100px;
+    display: block;
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+}
+.box-foto .right-foto ul.foto-other li .cover-foto img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.box-foto .right-foto ul.foto-other li h2.title {
+    min-height: 109px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 11pt;
+    line-height: 15px;
+    flex-direction: column;
+    display: block
+}
+.box-foto .right-foto ul.foto-other li h2.title a {
+    color: black;
 }

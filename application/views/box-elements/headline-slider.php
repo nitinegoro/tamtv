@@ -38,3 +38,7 @@ $value = json_decode($box->meta_value);
 	<?php endforeach; ?>
 	</div>
 </div>
+
+<?php
+/* End of file headline-slider.php */
+/* Location: ./application/views/box-elements/headline-slider.php */
