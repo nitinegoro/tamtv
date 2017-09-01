@@ -381,6 +381,7 @@ span.more-heading {
   text-transform: normal;
 }
 
+
 .box-topic-tag > ul.list-topic-tag {
   font-size: 10pt;
   line-height: 1.5em;
@@ -489,10 +490,13 @@ span.more-heading {
 }
 .big-loop-item > .item-content > a span.category-title {
   font-family: 'Roboto', sans-serif;
-  font-size: 9pt;
+  font-size: 7pt;
+  padding: 2px;
   font-weight: bold;
   color: #F60000;
   text-transform: uppercase;
+  border-radius: 3px;
+  border: 1px solid #F60000;
 }
 .big-loop-item > .item-content > a {
   text-decoration: none;

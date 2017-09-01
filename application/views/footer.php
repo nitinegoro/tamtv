@@ -44,6 +44,7 @@
 		    		}
 		    		?>
 	    		</ul>
+	    		<?php if( $this->router->fetch_class() == 'main' AND $this->router->fetch_method() != 'live') : ?>
 	    		<ul class="nav navbar-nav navbar-right navbar-live">
 	    			<li class="live-menu">
 	    				<a href="<?php echo base_url("live"); ?>">
@@ -52,6 +53,7 @@
 	    				</a>
 	    			</li>
 	    		</ul>
+	    		<?php endif; ?>
 	     	</div>
 	  	</div>
 	</nav>
