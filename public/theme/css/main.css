@@ -1299,3 +1299,44 @@ div.headline-slider .headline-slider-item {
 .box-foto .right-foto ul.foto-other li h2.title a {
     color: black;
 }
+/* BOX VIDEO */
+
+.box-video-thumbnail {
+
+}
+.box-video-thumbnail > div.video-thumbnail {
+  float: left
+} 
+div.video-thumbnail > div.video-item {
+  float: left;
+  margin-right: 10px;
+  width: 140px;
+}
+div.video-item > .video-cover > a img {
+  width: 100%;
+}
+div.video-item > .video-cover > a img:hover .video-icon {
+  display: block;
+}
+div.video-item > .video-cover > .video-icon {
+    display: block;
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+    margin-top:-60px;
+    margin-left: 55px;
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+div.video-item > .video-cover > .video-icon img {
+  width: 100%;
+}
+div.video-item > div.video-title > a {
+    font-size: 9.5pt;
+    line-height: 5px !important;
+    text-align: justify-all;
+    font-weight: bold;
+    font-family: 'Cabin', sans-serif;
+    color: black;
+} 

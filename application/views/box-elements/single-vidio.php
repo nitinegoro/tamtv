@@ -28,7 +28,7 @@ $tags = implode(', ', $inputTags);
 		</div>
 		<div class="col-xs-8 col-md-8 col-lg-8">
 			<!-- <h1 class="live-title"><?php echo $post->post_title ?></h1> -->
-			<iframe width="100%" height="550" src="https://www.youtube.com/embed/<?php echo $this->posts->getmeta('vidio', $post->ID) ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
+			<iframe width="100%" height="550" src="https://www.youtube.com/embed/<?php echo $this->posts->getmeta('video', $post->ID) ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
 			<div class="col-md-8 text-white">
 				<p><?php echo $post->post_excerpt ?></p>
 			</div>
@@ -41,3 +41,8 @@ $tags = implode(', ', $inputTags);
 		</div>
 	</div>
 </div>
+<style>
+	.ads-left, .ads-right {
+		top:130px !important;
+	} 
+</style>

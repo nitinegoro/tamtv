@@ -113,7 +113,7 @@ class Posts extends CI_Model
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
 
-		$this->db->where_not_in('post_type', 'page');
+		$this->db->where_not_in('post_type', array('page', 'video', 'photo'));
 
 		$this->db->order_by('post_date', 'desc');
 		

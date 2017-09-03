@@ -13,53 +13,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $box = $this->themes->get('box-thumbnail-foto');
 
 $value = json_decode($box->meta_value);
+
+if( $this->posts->get_type('photo', 1, 0, 'result') ) :
 ?>
 <section class="box-foto">
 	<div class="block-box">
 		<h3 class="featured-heading"> <?php echo $box->meta_name ?> </h3> 
 		<div class="line"></div>
 	</div>
+	<?php foreach( $this->posts->get_type('photo', 1, 0, 'result') as $post) : ?>
 	<div class="left-foto">
 		<div class="foto-icon">
-			<img src="https://cf.dvh.bz/v2/images/foto-b.png" width="12" height="12">
+			<img src="<?php echo base_url("public/image/site/foto-icon.png"); ?>" alt="<?php echo $post->post_title; ?>" width="12" height="12">
 		</div>
-		<a href="" title="HUT Ke-72, DPR Gelar Pameran Foto Warna-warni Parlemen">
-			<img alt="" src="https://cf.dvh.bz/library/3/1/9/8/3/31983_300x206.JPG">
+		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
+			<img alt="<?php echo $post->post_title; ?>" src="<?php echo $this->posts->get_thumbnail($post->image); ?>">
 		</a>
 		<div class="text-foto">
             <h2 class="title">
-            	<a href=""> HUT Ke-72, DPR Gelar Pameran Foto Warna-warni Parlemen </a>
+            	<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>"> <?php echo $post->post_title; ?> </a>
             </h2>
         </div>
 	</div>
+	<?php  
+	endforeach;
+	?>
 	<div class="right-foto">
 		<ul class="foto-other">
+			<?php foreach( $this->posts->get_type('photo', 2, 1, 'result') as $post) : ?>
 			<li>
                 <div class="cover-foto">
                     <div class="foto-icon">
-                    	<img src="https://cf.dvh.bz/v2/images/foto-b.png" width="12" height="12">
+                    	<img src="<?php echo base_url("public/image/site/foto-icon.png"); ?>" alt="<?php echo $post->post_title; ?>"  width="12" height="12">
                     </div>
-                    <a href="" title="Blusukan di Tanah Suci, Memantau Pelayanan Haji">
-                    	<img alt="Blusukan di Tanah Suci, Memantau Pelayanan Haji" src="https://cf.dvh.bz/library/3/1/8/3/4/31834_224x153.jpeg">
+                    <a href="<?php echo $post->post_title; ?>" title="<?php echo $post->post_title; ?>">
+                    	<img alt="<?php echo $post->post_title; ?>" src="<?php echo $this->posts->get_thumbnail($post->image, 'x-small'); ?>">
                     </a>
                 </div>
                 <h2 class="title">
-                   <a href="" title="">Blusukan di Tanah Suci, Memantau Pelayanan Haji</a>
+                   <a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
                 </h2>
             </li>
-			<li>
-                <div class="cover-foto">
-                    <div class="foto-icon">
-                    	<img src="https://cf.dvh.bz/v2/images/foto-b.png" width="12" height="12">
-                    </div>
-                    <a href="" title="Blusukan di Tanah Suci, Memantau Pelayanan Haji">
-                    	<img alt="Blusukan di Tanah Suci, Memantau Pelayanan Haji" src="https://cf.dvh.bz/library/3/1/8/3/4/31834_224x153.jpeg">
-                    </a>
-                </div>
-                <h2 class="title">
-                   <a href="" title="">Blusukan di Tanah Suci, Memantau Pelayanan Haji</a>
-                </h2>
-            </li>
+        	<?php endforeach; ?>
 		</ul>
 	</div>
 </section>
+
+<?php
+endif;
+/* End of file box-thumbnail-foto.php */
+/* Location: ./application/views/box-elements/box-thumbnail-foto.php */
