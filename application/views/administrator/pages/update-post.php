@@ -89,7 +89,28 @@
 						<?php endforeach; ?>
 					<?php endforeach; ?>
 					</div>
+					<div class="form-group pad">
+						<a  data-toggle="collapse" data-target="#add-category">+ Tambah Kategori Baru</a>
+					</div>
+					<div id="add-category" class="collapse">
+						<div class="form-group">
+							<input type="text" name="cat-new" class="form-control input-xs" placeholder="Nama Kategori">
+						</div>
+						<div class="form-group">
+							<select name="cat-parent" class="form-control input-xs">
+								<option value="">-- Kategori Induk --</option>
+							<?php foreach( $this->category->get_parent() as $row)  : ?>
+								<option value="<?php echo $row->category_id ?>"><?php echo $row->name; ?></option>
+							<?php endforeach; ?>
+							</select>
+						</div>
+						<div class="form-group">
+							<button type="button" id="save-category" class="btn btn-primary pull-right">Simpan</button>
+						</div>
+					</div>
 				</div>	
+				<div class="clearfix"></div>
+
 				<div class="form-group">
 					<label>Topik</label>
 					<select name="topik[]" id="select-topik" class="form-control" multiple="multiple" data-placeholder="Masukkan Topik berita ...">
@@ -97,7 +118,18 @@
 						<option value="<?php echo $row->tag_id; ?>" <?php echo $this->cpost->valid_topik($post->ID, $row->tag_id) ?>><?php echo $row->name; ?></option>
 						<?php endforeach; ?>
 					</select>
+					<div class="form-group pad">
+						<a  data-toggle="collapse" data-target="#add-topik">+ Tambah Topik Baru</a>
+					</div>
 				</div>	
+				<div id="add-topik" class="collapse">
+					<div class="form-group">
+						<input type="text" name="tag-new" class="form-control input-xs" placeholder="Nama Topik ...">
+					</div>
+					<div class="form-group">
+						<button type="button" id="save-topik" class="btn btn-primary pull-right">Simpan</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -116,6 +148,9 @@
 				<div class="form-group">
 					<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="Gambar Utama" class="img-responsive">
 				</div>
+				<div class="form-group">
+					<input type="text" name="figure_caption" value="<?php echo (set_value('figure_caption')) ? set_value('figure_caption') : $this->posts->getmeta('figure_caption', $post->ID); ?>" placeholder="Keterangan gambar . . ." class="form-control">
+				</div>	
 				<div class="form-group">
 					<input type="file" name="gambar" class="form-control">
 				</div>	

@@ -72,7 +72,7 @@ if( $this->posts->getmeta('video', $post->ID) != '')
 				?>
 				<figure class="top2x">
 				  	<img src="<?php echo $this->posts->get_thumbnail($post->image) ?>" alt="" class="img-responsive">
-				  	<figcaption><?php echo $post->post_excerpt; ?> </figcaption>
+				  	<figcaption><?php echo $this->posts->getmeta('figure_caption', $post->ID); ?> </figcaption>
 				</figure>
 				<?php endif; ?>
 				<section itemprop="description">

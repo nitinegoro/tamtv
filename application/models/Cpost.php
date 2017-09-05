@@ -115,12 +115,24 @@ class Cpost extends CI_Model
 	{
 		if( $this->input->post('figure_caption') != '')
 		{
-			$this->db->insert('postmeta', array(
-				'post_id' => $post,
-				'meta_key' => 'figure_caption',
-				'meta_value' => $this->input->post('figure_caption')
-				)
-			);
+			if( $this->db->get_where('postmeta', array('post_id' => $post,'meta_key' => 'figure_caption'))->num_rows() == FALSE ) 
+			{
+				$this->db->insert('postmeta', array(
+					'post_id' => $post,
+					'meta_key' => 'figure_caption',
+					'meta_value' => $this->input->post('figure_caption')
+					)
+				);
+			} else {
+				$this->db->update('postmeta', array(
+						'meta_value' => $this->input->post('figure_caption')
+					),
+					array(
+						'post_id' => $post,
+						'meta_key' => 'figure_caption'
+					)
+				);
+			}
 		}
 	}
 
@@ -128,7 +140,7 @@ class Cpost extends CI_Model
 	{
 		if( $this->input->post('vidio') != '' ) 
 		{
-			if( $this->db->get_where('postmeta', array('post_id' => $post,'meta_key' => 'vidio'))->num_rows() == FALSE ) 
+			if( $this->db->get_where('postmeta', array('post_id' => $post,'meta_key' => 'video'))->num_rows() == FALSE ) 
 			{
 				$this->db->insert('postmeta', array(
 					'post_id' => $post,
@@ -142,7 +154,7 @@ class Cpost extends CI_Model
 					),
 					array(
 						'post_id' => $post,
-						'meta_key' => 'vidio'
+						'meta_key' => 'video'
 					)
 				);
 			}
