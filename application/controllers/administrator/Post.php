@@ -80,6 +80,7 @@ class Post extends Admin_panel
 		$this->form_validation->set_rules('polling', 'Pengaktifan Polling', 'trim');
 		$this->form_validation->set_rules('pollingquestion', 'Pertanyaan Polling', 'trim');
 		$this->form_validation->set_rules('figure_caption', 'Caption', 'trim');
+		$this->form_validation->set_rules('watermark', 'Watermark', 'trim');
 
 		if( $this->form_validation->run() == TRUE )
 		{
@@ -116,6 +117,8 @@ class Post extends Admin_panel
 		$this->form_validation->set_rules('comment', 'Pengaktifan Komentar', 'trim');
 		$this->form_validation->set_rules('polling', 'Pengaktifan Polling', 'trim');
 		$this->form_validation->set_rules('pollingquestion', 'Pertanyaan Polling', 'trim');
+		$this->form_validation->set_rules('figure_caption', 'Caption', 'trim');
+		$this->form_validation->set_rules('watermark', 'Watermark', 'trim');
 
 		if( $this->form_validation->run() == TRUE )
 		{
@@ -193,6 +196,11 @@ class Post extends Admin_panel
 		}
 
 		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+	}
+
+	public function image($value='')
+	{
+
 	}
 }
 

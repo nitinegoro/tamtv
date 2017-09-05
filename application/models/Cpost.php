@@ -310,7 +310,8 @@ class Cpost extends CI_Model
 
 		if ( $this->upload->do_upload('gambar') == TRUE )
 		{
-			$this->set_watermark($this->upload->file_name);
+			if( $this->input->post('watermark') != 'no')	
+				$this->set_watermark($this->upload->file_name);
 
 			$this->create_thumb($this->upload->file_name, 'large');
 
@@ -351,9 +352,11 @@ class Cpost extends CI_Model
 			case 'small':
 				$config['image_library'] = 'GD2';
 				$config['source_image'] = './public/image/news/'.$source;
+				$config['maintain_ratio'] = FALSE;
 				$config['new_image'] = './public/image/news/small/'.$source;
 				$config['width'] = 350;
 				$config['height'] = 200;
+				$config['quality'] = '70%';
 				$this->image_lib->initialize($config);
 
 				$this->image_lib->resize();
@@ -363,9 +366,11 @@ class Cpost extends CI_Model
 			case 'x-small':
 				$config['image_library'] = 'GD2';
 				$config['source_image'] = './public/image/news/'.$source;
+				$config['maintain_ratio'] = FALSE;
 				$config['new_image'] = './public/image/news/x-small/'.$source;
 				$config['width'] = 100;
-				$config['height'] = 70;
+				$config['height'] = 60;
+				$config['quality'] = '70%';
 				$this->image_lib->initialize($config);
 
 				$this->image_lib->resize();
@@ -376,8 +381,8 @@ class Cpost extends CI_Model
 				$config['image_library'] = 'GD2';
 				$config['source_image'] = './public/image/news/'.$source;
 				$config['new_image'] = './public/image/news/'.$source;
-				$config['width'] = 600;
-				$config['height'] = 400;
+				$config['width'] = 1080;
+				$config['height'] = 720;
 				$this->image_lib->initialize($config);
 
 				$this->image_lib->resize();
@@ -393,8 +398,21 @@ class Cpost extends CI_Model
 	public function set_watermark($source = '')
 	{
 		$imgConfig['image_library']   = 'GD2';                    
-		$imgConfig['source_image'] = './public/image/news/'.$source;       
-		$imgConfig['wm_overlay_path'] = './public/image/site/logo-watermark.png';            
+		$imgConfig['source_image'] = './public/image/news/'.$source;   
+
+		switch ($this->input->post('watermark')) 
+		{
+		  	case 'putih':
+		  		$imgConfig['wm_overlay_path'] = './public/image/site/logo-watermark-putih.png';   
+		  		break;
+		  	case 'abu-abu':
+		  		$imgConfig['wm_overlay_path'] = './public/image/site/logo-watermark-abu.png';  
+		  		break;
+		  	case 'hitam':
+		  		$imgConfig['wm_overlay_path'] = './public/image/site/logo-watermark-hitam.png';  
+		  		break;
+		  }  
+		         
 		$imgConfig['wm_type'] = 'overlay';
 
         $imgConfig['padding'] = 100;

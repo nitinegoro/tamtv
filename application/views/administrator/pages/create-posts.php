@@ -152,6 +152,14 @@
 				<div class="form-group">
 					<input type="file" name="gambar" class="form-control">
 				</div>	
+				<div class="form-group">
+					<select name="watermark" id="inputStatus" class="form-control" required="required">
+						<option value="no" <?php if(set_value('watermark')=='no') echo 'selected'; ?>>Tanpa Watermark</option>
+						<option value="putih" <?php if(set_value('watermark')=='putih') echo 'selected'; ?>>Watermark Putih</option>
+						<option value="abu-abu" <?php if(set_value('watermark')=='abu-abu') echo 'selected'; ?>>Watermark Abu-abu</option>
+						<option value="hitam" <?php if(set_value('watermark')=='hitam') echo 'selected'; ?>>Watermark Hitam</option>
+					</select>
+				</div>
 			</div>
 		</div>
 	</div>
