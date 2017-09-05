@@ -75,10 +75,11 @@ class Post extends Admin_panel
 		$this->form_validation->set_rules('excerpt', 'Kutipan', 'trim');
 		$this->form_validation->set_rules('status', 'Status', 'trim');
 		$this->form_validation->set_rules('type', 'Tipe', 'trim');
-		$this->form_validation->set_rules('vidio', 'Vidio', 'trim');
+		$this->form_validation->set_rules('video', 'Video', 'trim');
 		$this->form_validation->set_rules('comment', 'Pengaktifan Komentar', 'trim');
 		$this->form_validation->set_rules('polling', 'Pengaktifan Polling', 'trim');
 		$this->form_validation->set_rules('pollingquestion', 'Pertanyaan Polling', 'trim');
+		$this->form_validation->set_rules('figure_caption', 'Caption', 'trim');
 
 		if( $this->form_validation->run() == TRUE )
 		{
@@ -110,7 +111,7 @@ class Post extends Admin_panel
 		$this->form_validation->set_rules('content', 'Konten', 'trim');
 		$this->form_validation->set_rules('excerpt', 'Kutipan', 'trim');
 		$this->form_validation->set_rules('status', 'Status', 'trim');
-		$this->form_validation->set_rules('vidio', 'Vidio', 'trim');
+		$this->form_validation->set_rules('video', 'Video', 'trim');
 		$this->form_validation->set_rules('type', 'Tipe', 'trim');
 		$this->form_validation->set_rules('comment', 'Pengaktifan Komentar', 'trim');
 		$this->form_validation->set_rules('polling', 'Pengaktifan Polling', 'trim');
@@ -152,6 +153,46 @@ class Post extends Admin_panel
 		}
 
 		redirect(base_url("administrator/post"));
+	}
+
+	public function add_new_category()
+	{
+		if( $this->input->post() )
+		{
+			$category = $this->cpost->add_new_category();
+
+			$this->data = array(
+				'status' => 'success',
+				'result_id' => $category,
+				'result' => $this->input->post()
+			);
+		} else {
+			$this->data = array(
+				'status' => 'failed'
+			);
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+	}
+
+	public function add_new_tag()
+	{
+		if( $this->input->post() )
+		{
+			$tag = $this->cpost->add_new_tag();
+
+			$this->data = array(
+				'status' => 'success',
+				'result_id' => $tag,
+				'result' => $this->input->post()
+			);
+		} else {
+			$this->data = array(
+				'status' => 'failed'
+			);
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
 	}
 }
 

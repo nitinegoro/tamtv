@@ -5,6 +5,82 @@
 
 jQuery(function($) {
 
+	$('button#save-category').on( 'click', function() 
+	{
+	    $(document).ajaxStart(function(e, xhr, opt){
+	        $('button#save-category').html("Simpan <i class='fa fa-spinner fa-spin fa-fw'></i><span class='sr-only'>Loading...</span>");
+	    });
+
+	    if( $('input[name="cat-new"]').val() === '')
+	    {
+	    	alert('Nama kategori harus diisi!');
+	    } else {
+			$.post(base_url + '/post/add_new_category/', 
+			{ 
+				nama : $('input[name="cat-new"]').val(),
+				parent : $('select[name="cat-parent"]').val()
+			}, 
+			function(data) 
+			{
+				if( data.status === 'failed')
+					alert("Failed when saving data!");   
+
+				if( data.result.parent ) 
+				{
+					var html = '<div class="checkbox">';
+						html += '<input type="checkbox" name="categories[]" value="'+data.result_id+'" checked> <label>'+ data.result.nama +'</label>';
+						html += '</div>';
+					$('div.parent-'+data.result.parent ).append(html);
+				} else {
+					var html = '<div class="checkbox">';
+						html += '<input type="checkbox" name="categories[]" value="'+data.result_id+'" checked> <label>'+ data.result.nama +'</label>';
+						html += '</div>';
+					$('div.box-select-category').append(html);
+				}           
+			});
+	    }
+
+		$(document).ajaxComplete(function(e, xhr, opt)
+		{
+			$('button#save-category').html("Simpan");
+			$('#add-category').collapse('hide');
+		});
+	});
+
+
+	$('button#save-topik').on( 'click', function() 
+	{
+	    $(document).ajaxStart(function(e, xhr, opt){
+	        $('button#save-topik').html("Simpan <i class='fa fa-spinner fa-spin fa-fw'></i><span class='sr-only'>Loading...</span>");
+	    });
+
+	    if( $('input[name="tag-new"]').val() === '')
+	    {
+	    	alert('Nama Topik harus diisi!');
+	    } else {
+			$.post(base_url + '/post/add_new_tag/', 
+			{ 
+				nama : $('input[name="tag-new"]').val()
+			}, 
+			function(data) 
+			{
+				if( data.status === 'failed')
+					alert("Failed when saving data!");   
+
+				$('input[name="tag-new"]').val('')
+
+				var html = '<option value="'+data.result_id+'" selected>' + data.result.nama + '</option>';
+				$('select#select-topik').append(html);        
+			});
+	    }
+
+		$(document).ajaxComplete(function(e, xhr, opt)
+		{
+			$('button#save-topik').html("Simpan");
+			$('#add-topik').collapse('hide');
+		});
+	});
+
 	$('a[data-action="delete"]').click( function() 
 	{
 		switch($(this).data('key'))

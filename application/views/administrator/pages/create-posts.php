@@ -71,7 +71,8 @@
 					<select name="type" id="inputStatus" class="form-control" required="required">
 						<option value="default" <?php if(set_value('type')=='default') echo 'selected'; ?>>Standar</option>
 						<option value="headline" <?php if(set_value('type')=='headline') echo 'selected'; ?>>Utama</option>
-						<option value="vidio" <?php if(set_value('type')=='vidio') echo 'selected'; ?>>Vidio</option>
+						<option value="vidio" <?php if(set_value('type')=='video') echo 'selected'; ?>>Video</option>
+						<option value="photo" <?php if(set_value('type')=='photo') echo 'selected'; ?>>Photo</option>
 					</select>
 				</div>	
 				<div class="form-group">
@@ -81,14 +82,36 @@
 						<div class="checkbox">
 						    <input type="checkbox" name="categories[]" value="<?php echo $row->category_id ?>"> <label><?php echo $row->name ?></label>
 						</div>
+						<div class="left3x parent-<?php echo $row->category_id ?>">
 						<?php foreach( $this->category->get_child($row->category_id) as $child) : ?>
-						<div class="checkbox left3x">
-						    <input type="checkbox" name="categories[]" value="<?php echo $child->category_id ?>"> <label><?php echo $child->name ?></label>
-						</div>
+							<div class="checkbox">
+							    <input type="checkbox" name="categories[]" value="<?php echo $child->category_id ?>"> <label><?php echo $child->name ?></label>
+							</div>
 						<?php endforeach; ?>
+					</div>
 					<?php endforeach; ?>
 					</div>
+					<div class="form-group pad">
+						<a  data-toggle="collapse" data-target="#add-category">+ Tambah Kategori Baru</a>
+					</div>
+					<div id="add-category" class="collapse">
+						<div class="form-group">
+							<input type="text" name="cat-new" class="form-control input-xs" placeholder="Nama Kategori">
+						</div>
+						<div class="form-group">
+							<select name="cat-parent" class="form-control input-xs">
+								<option value="">-- Kategori Induk --</option>
+							<?php foreach( $this->category->get_parent() as $row)  : ?>
+								<option value="<?php echo $row->category_id ?>"><?php echo $row->name; ?></option>
+							<?php endforeach; ?>
+							</select>
+						</div>
+						<div class="form-group">
+							<button type="button" id="save-category" class="btn btn-primary pull-right">Simpan</button>
+						</div>
+					</div>
 				</div>	
+				<div class="clearfix"></div>
 				<div class="form-group">
 					<label>Topik</label>
 					<select name="topik[]" id="select-topik" class="form-control" multiple="multiple" data-placeholder="Masukkan Topik berita ...">
@@ -96,7 +119,18 @@
 						<option value="<?php echo $row->tag_id; ?>"><?php echo $row->name; ?></option>
 						<?php endforeach; ?>
 					</select>
+					<div class="form-group pad">
+						<a  data-toggle="collapse" data-target="#add-topik">+ Tambah Topik Baru</a>
+					</div>
 				</div>	
+				<div id="add-topik" class="collapse">
+					<div class="form-group">
+						<input type="text" name="tag-new" class="form-control input-xs" placeholder="Nama Topik ...">
+					</div>
+					<div class="form-group">
+						<button type="button" id="save-topik" class="btn btn-primary pull-right">Simpan</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -107,11 +141,14 @@
 			</div>
 			<div class="box-body with-border">
 				<div class="form-group">
-					<label>Vidio </label>
-					<input type="text" name="vidio" value="<?php echo set_value('vidio'); ?>" class="form-control">
+					<label>Video </label>
+					<input type="text" name="video" value="<?php echo set_value('video'); ?>" class="form-control">
 				</div>	
 			</div>
 			<div class="box-body">
+				<div class="form-group">
+					<input type="text" name="figure_caption" value="<?php echo set_value('figure_caption'); ?>" placeholder="Keterangan gambar . . ." class="form-control">
+				</div>	
 				<div class="form-group">
 					<input type="file" name="gambar" class="form-control">
 				</div>	

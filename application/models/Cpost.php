@@ -48,6 +48,8 @@ class Cpost extends CI_Model
 
 		$this->insert_polling($post);
 
+		$this->insert_image_caption($post);
+
 		if($this->db->affected_rows())
 		{
 			$this->template->alert(
@@ -93,6 +95,8 @@ class Cpost extends CI_Model
 
 		$this->insert_polling($param);
 
+		$this->insert_image_caption($param);
+
 		if($this->db->affected_rows())
 		{
 			$this->template->alert(
@@ -107,6 +111,19 @@ class Cpost extends CI_Model
 		}
 	}
 
+	public function insert_image_caption($post = 0)
+	{
+		if( $this->input->post('figure_caption') != '')
+		{
+			$this->db->insert('postmeta', array(
+				'post_id' => $post,
+				'meta_key' => 'figure_caption',
+				'meta_value' => $this->input->post('figure_caption')
+				)
+			);
+		}
+	}
+
 	public function insert_vidio($post = 0)
 	{
 		if( $this->input->post('vidio') != '' ) 
@@ -115,13 +132,13 @@ class Cpost extends CI_Model
 			{
 				$this->db->insert('postmeta', array(
 					'post_id' => $post,
-					'meta_key' => 'vidio',
-					'meta_value' => $this->input->post('vidio')
+					'meta_key' => 'video',
+					'meta_value' => $this->input->post('video')
 					)
 				);
 			} else {
 				$this->db->update('postmeta', array(
-						'meta_value' => $this->input->post('vidio')
+						'meta_value' => $this->input->post('video')
 					),
 					array(
 						'post_id' => $post,
@@ -474,6 +491,41 @@ class Cpost extends CI_Model
 				array('type' => 'warning','icon' => 'warning')
 			);
 		}
+	}
+
+	public function add_new_category()
+	{
+        $CI =& get_instance();
+
+        $CI->load->model('category');
+
+		$object = array(
+			'name' => $this->input->post('nama'),
+			'slug' => $CI->category->create_new_slug(),
+			'description' => null,
+			'parent' => $this->input->post('parent')
+		);
+
+		$this->db->insert('categories', $object);
+
+		return $this->db->insert_id();
+	}
+
+	public function add_new_tag()
+	{
+        $CI =& get_instance();
+
+        $CI->load->model('tags');
+
+		$object = array(
+			'name' => $this->input->post('nama'),
+			'slug' => $CI->tags->create_new_slug(),
+			'description' => null
+		);
+
+		$this->db->insert('tags', $object);
+
+		return $this->db->insert_id();
 	}
 }
 

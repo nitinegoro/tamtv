@@ -1340,3 +1340,6 @@ div.video-item > div.video-title > a {
     font-family: 'Cabin', sans-serif;
     color: black;
 } 
+div.video-item > div.video-title > a:hover {
+  color: #6666B2;
+}
