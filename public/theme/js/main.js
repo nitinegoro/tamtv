@@ -71,13 +71,19 @@ $(document).ready(function()
     });
 
     /* BX SLIDER */
-  $('.headline-slider').bxSlider({
-    slideWidth: 400,
-    minSlides: 2,
-    maxSlides: 2,
-    slideMargin: 10,
-    auto:true
-  });
+    $('.headline-slider').bxSlider({
+        slideWidth: 400,
+        minSlides: 2,
+        maxSlides: 2,
+        slideMargin: 10,
+        auto:true
+    });
+
+    /* VIEWER */
+    $('.galery').viewer({
+        rotatable:false,
+        scalable:false
+    });
 });
 
 console.log("%cHey, what are you doing?%c\nAre you a JavaScript developer? We want you! visit http://teitramega.co.id/career","font-family:sans-serif;font-size: 56px; color: #010080;text-shadow: 0 3px #cecece; webkit-text-stroke: 1px #d87d02;","font-family:sans-serif;font-size:18px;font-weight:600;color:#CDCDCD;");

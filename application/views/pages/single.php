@@ -67,14 +67,25 @@ if( $this->posts->getmeta('video', $post->ID) != '')
 					</div>
 					<div class="sharethis-inline-share-buttons"></div>
 				</div>
+				<?php if( $post->post_type == 'photo') echo '<div class="galery">'; ?>
 				<?php  
 				if( $post->image ) :
 				?>
 				<figure class="top2x">
-				  	<img src="<?php echo $this->posts->get_thumbnail($post->image) ?>" alt="" class="img-responsive">
+				  	<img src="<?php echo $this->posts->get_thumbnail($post->image) ?>" alt="<?php echo $post->post_title ?>" class="img-responsive">
 				  	<figcaption><?php echo $this->posts->getmeta('figure_caption', $post->ID); ?> </figcaption>
-				</figure>
+				</figure>	
 				<?php endif; ?>
+				<?php
+					foreach( $this->posts->getphoto($post->ID) as $row) :
+						$img = json_decode($row->meta_value);
+				?>
+				<figure class="top2x">
+					<img src="<?php echo base_url("public/image/news/photos/$img->image") ?>" alt="<?php echo $img->caption; ?>" class="img-responsive">
+					<figcaption><?php echo $img->caption; ?> </figcaption>
+				</figure>
+				<?php endforeach; ?>
+				<?php if( $post->post_type == 'photo') echo '</div>'; ?>
 				<section itemprop="description">
 					<?php echo str_replace('<p>[related_news]</p>', $this->content_parser->related_news($post->ID, 4), $post->post_content); ?>
 				</section>

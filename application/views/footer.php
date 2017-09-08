@@ -95,6 +95,7 @@
 	<script src="<?php echo base_url("public/theme/js/moment.min.js"); ?>"></script>
 	<script src="<?php echo base_url("public/theme/js/daterangepicker.js"); ?>"></script>
 	<script src="<?php echo base_url("public/bxslider/jquery.bxslider.min.js"); ?>"></script>
+	<script src="<?php echo base_url("public/viewer/viewer.min.js"); ?>"></script>
 	<script>
 		var base_url = '<?php echo base_url(); ?>',
 			current_url = '<?php echo current_url(); ?>',

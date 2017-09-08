@@ -22,9 +22,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<button type="button" class="btn btn-primary btn-social login-facebook">
 						<i class="fa fa-facebook"></i> Facebook
 					</button>
-					<a href="" class="btn btn-danger btn-social">
-						<i class="fa fa-google-plus"></i> Google
-					</a>
+<!-- 					<a href="" class="btn btn-danger btn-social">
+	<i class="fa fa-google-plus"></i> Google
+</a> -->
 				</div>
 				<p>Atau masuk dengan akun yang sudah ada :</p>
 				<div class="col-md-12 text-left">

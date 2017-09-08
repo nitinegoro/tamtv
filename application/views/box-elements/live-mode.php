@@ -15,7 +15,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container-fluid">
 		<div class="col-xs-2"> </div>
 		<div class="col-xs-8 col-md-8 col-lg-8">
-			<iframe width="100%" height="550" src="https://www.youtube.com/embed/<?php echo $this->options->get('live-streaming') ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
+<!-- 			<iframe width="100%" height="550" src="https://www.youtube.com/embed/<?php echo $this->options->get('live-streaming') ?>?autoplay=1" frameborder="0" allowfullscreen></iframe> -->
+			<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+			<video id="video"></video>
+			<script>
+			  if(Hls.isSupported()) {
+			    var video = document.getElementById('video');
+			    var hls = new Hls();
+			    hls.loadSource('<?php echo $this->options->get('live-streaming') ?>');
+			    hls.attachMedia(video);
+			    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+			      video.play();
+			  });
+			 }
+			</script>
 			<div class="col-md-8">
 				<h1 class="live-title">LIVE STREAMING</h1>
 			</div>

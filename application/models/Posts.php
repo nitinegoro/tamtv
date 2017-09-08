@@ -433,6 +433,11 @@ class Posts extends CI_Model
 	{
 		return $this->db->get_where('postmeta', array('meta_key' => $meta, 'post_id' => $post))->row('meta_value');
 	}
+
+	public function getphoto($post = 0)
+	{
+		return $this->db->get_where('postmeta', array('meta_key' => 'photo', 'post_id' => $post))->result();
+	}
 }
 
 /* End of file Posts.php */

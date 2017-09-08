@@ -36,7 +36,8 @@ class Cpost extends CI_Model
 		if( $this->input->post('type') == 'headline')
 			$this->db->update('posts', array('post_type' => 'default'), array('post_type' => 'headline'));
 
-		$this->db->insert('posts', $object);
+
+		$this->db->insert('posts', $object); 
 
 		$post = $this->db->insert_id();
 
@@ -48,7 +49,9 @@ class Cpost extends CI_Model
 
 		$this->insert_polling($post);
 
-		$this->insert_image_caption($post);
+		$this->insert_image_caption($post); 
+
+		$this->insert_image_galery($post);
 
 		if($this->db->affected_rows())
 		{
@@ -96,6 +99,8 @@ class Cpost extends CI_Model
 		$this->insert_polling($param);
 
 		$this->insert_image_caption($param);
+
+		$this->insert_image_galery($param);
 
 		if($this->db->affected_rows())
 		{
@@ -345,6 +350,73 @@ class Cpost extends CI_Model
 		}
 	}
 
+	public function insert_image_galery($post = 0)
+	{
+	    $jumlahfiles = count($_FILES['photo']['name']);
+	    // Faking upload calls to $_FILE
+	    for ($i = 0; $i < $jumlahfiles; $i++) 
+	    {
+	    	$_FILES['userfile']['name']     = $_FILES['photo']['name'][$i];
+	    	$_FILES['userfile']['type']     = $_FILES['photo']['type'][$i];
+	    	$_FILES['userfile']['tmp_name'] = $_FILES['photo']['tmp_name'][$i];
+	    	$_FILES['userfile']['error']    = $_FILES['photo']['error'][$i];
+	    	$_FILES['userfile']['size']     = $_FILES['photo']['size'][$i];
+	    	$config = array(
+	        	'file_name'     => $_FILES['photo']['name'][$i],
+	        	'allowed_types' => 'jpg|jpeg|png|gif',
+	        	'max_size'      => 20000,
+	        	'overwrite'     => FALSE,
+	        	'upload_path' =>'./public/image/news/photos'
+	    	);
+	      
+	      	$this->upload->initialize($config);
+	      
+	      	if ( ! $this->upload->do_upload()) 
+	      	{
+		        continue;
+	      	} else {
+	      		$hasilUpload[] = $this->upload->data();
+
+				if( $this->input->post('watermark') != 'no')	
+					$this->set_watermark($hasilUpload[$i]['file_name'], TRUE);
+
+				$config['image_library'] = 'GD2';
+				$config['source_image'] = './public/image/news/photos/'.$hasilUpload[$i]['file_name'];
+				$config['new_image'] = './public/image/news/photos/'.$hasilUpload[$i]['file_name'];
+				$config['width'] = 1080;
+				$config['height'] = 720;
+				$this->image_lib->initialize($config);
+
+				$this->image_lib->resize();
+
+				$this->image_lib->clear();
+
+				$this->db->insert('postmeta', array(
+					'post_id' => $post,
+					'meta_key' => 'photo',
+					'meta_value' => json_encode(array(
+							'image' => $hasilUpload[$i]['file_name'],
+							'caption' => $this->input->post('caption')[$i]
+						))
+					)
+				);
+	      	}
+	    }
+	}
+
+	public function delete_image_in_galery($param = 0)
+	{
+		$photo = $this->db->get_where('postmeta', array('meta_id' => $param))->row('meta_value');
+
+		$img = json_decode($photo);
+
+		@unlink("./public/image/news/photos/{$img->image}");
+
+		$this->db->delete('postmeta', array('meta_id' => $param));
+
+		return $this->db->affected_rows();
+	}
+
 	public function create_thumb($source = '', $type = 'large')
 	{
 		switch ($type) 
@@ -395,10 +467,16 @@ class Cpost extends CI_Model
 		}
 	}
 
-	public function set_watermark($source = '')
+	public function set_watermark($source = '', $photo = FALSE)
 	{
 		$imgConfig['image_library']   = 'GD2';                    
-		$imgConfig['source_image'] = './public/image/news/'.$source;   
+		
+		if( $photo == TRUE) 
+		{
+			$imgConfig['source_image'] = './public/image/news/photos/'.$source; 
+		} else {
+			$imgConfig['source_image'] = './public/image/news/'.$source; 
+		}
 
 		switch ($this->input->post('watermark')) 
 		{
@@ -476,6 +554,19 @@ class Cpost extends CI_Model
 		$this->db->delete('comments', array('comment_post_ID' => $param));
 
 		$this->db->delete('posts', array('ID' => $param));
+
+        $CI =& get_instance();
+
+        $CI->load->model('posts');
+
+        foreach( $CI->posts->getphoto($param) as $row)
+        {
+        	$img = json_decode($row->meta_value);
+
+        	@unlink("./public/image/news/photos/{$img->image}");
+        }
+
+        $this->db->delete('postmeta', array('post_id' => $param));
 
 		$this->template->alert(
 			' Berita berhasil dihapus. ', 

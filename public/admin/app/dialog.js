@@ -81,6 +81,28 @@ jQuery(function($) {
 		});
 	});
 
+	var counter = 5;
+
+	$('button#add-file').on('click', function()
+	{
+		var html =  '<div class="margin-bottom" id="photo-'+counter+'">';
+			html += '<button type="button" id="delete-file" data-id="'+counter+'" class="btn btn-xs pull-right"><i class="fa fa-times"></i> Hapus</button>';
+			html += '<input name="photo[]" type="file">';
+			html += '<textarea class="form-control top2x" name="caption[]" placeholder="Keterangan gambar ..."></textarea>';
+			html += '</div>';
+
+		$(html).appendTo('.galery').hide().fadeIn(500);
+
+		$('button#delete-file').on('click', function()
+		{
+			counter--;
+			$('div#photo-'+$(this).data('id')).fadeOut(300, function() {
+				$(this).remove();
+			});
+		});
+		counter++;
+	});
+
 	$('a[data-action="delete"]').click( function() 
 	{
 		switch($(this).data('key'))
@@ -121,6 +143,24 @@ jQuery(function($) {
 				    });
 					
 				});
+				break;
+			case 'photo':
+				var ID = $(this).data('id');
+				$.post(base_url + '/post/delete_galery/' + ID, function(result) 
+				{
+					$(document).ajaxComplete(function(e, xhr, opt)
+					{
+						if( result.status === 'success')
+						{
+							$('div#photo-' + ID).fadeOut(300, function() {
+								$(this).remove();
+							});
+						} else {
+							alert("Terjadi kesalahan saat menhapus data!");
+						}
+					});
+				});
+					
 
 				break;
 			default:

@@ -47,6 +47,28 @@
 			<p class="help-block"><?php echo form_error('pollingquestion', '<small class="text-red">', '</small>'); ?></p>
 			<p class="help-block"><small><i>Jika anda mengaktifkan pengambilan poliing, silahkan pilih pertanyaan berikut.</i></small></p>
 		</div>
+		<div class="form-group">
+			<label class="margin-bottom">Galery</label>
+			<div class="clearfix"></div>
+			<div class="galery" style="width: 50%; float: left">
+				<div class="margin-bottom">
+					 <button type="button" id="add-file" class="btn btn-xs pull-right"><i class="fa fa-plus"></i> Tambah</button>
+					<input type="file" name="photo[]" style="width: 80%">
+					<textarea class="form-control top2x" name="caption[]" placeholder="Keterangan gambar ..."></textarea>
+				</div>
+			</div>
+			<div style="width: 40%; float: right;">
+				<?php
+					foreach( $this->posts->getphoto($post->ID) as $row) :
+						$img = json_decode($row->meta_value);
+				?>
+					<div class="col-md-4 text-center" id="photo-<?php echo $row->meta_id; ?>">
+						<a data-action="delete" data-key="photo" data-id="<?php echo $row->meta_id; ?>" class="text-red"><i class="fa fa-trash-o"></i> Hapus</a>
+						<img src="<?php echo base_url("public/image/news/photos/$img->image") ?>" alt="<?php echo $img->caption; ?>" width="100">
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
 	</div>
 	<div class="col-md-3 top4x">
 		<div class="form-group text-center">

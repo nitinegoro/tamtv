@@ -126,6 +126,8 @@ class Main extends Web
 	 **/
 	public function live()
 	{
+		header('Access-Control-Allow-Origin: *');
+		
 		$this->meta_tags->set_meta_tag('title', $this->options->get('sitename') );
 		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
 

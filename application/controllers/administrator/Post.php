@@ -198,9 +198,20 @@ class Post extends Admin_panel
 		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
 	}
 
-	public function image($value='')
+	public function delete_galery($param = 0)
 	{
+		if( $this->cpost->delete_image_in_galery( $param ) == TRUE )
+		{
+			$this->data = array(
+				'status' => 'success'
+			);
+		} else {
+			$this->data = array(
+				'status' => 'failed'
+			);
+		}
 
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
 	}
 }
 

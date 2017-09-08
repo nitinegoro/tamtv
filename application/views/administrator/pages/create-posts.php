@@ -47,6 +47,28 @@
 			<p class="help-block"><?php echo form_error('pollingquestion', '<small class="text-red">', '</small>'); ?></p>
 			<p class="help-block"><small><i>Jika anda mengaktifkan pengambilan poliing, silahkan pilih pertanyaan berikut.</i></small></p>
 		</div>
+		<div class="form-group">
+			<label class="margin-bottom">Galery</label>
+			<div class="galery" style="width: 50%">
+				<div class="margin-bottom">
+					<input type="file" name="photo[]">
+					<textarea class="form-control top2x" name="caption[]" placeholder="Keterangan gambar ..."></textarea>
+				</div>
+				<div class="margin-bottom">
+					<input type="file" name="photo[]">
+					<textarea class="form-control top2x" name="caption[]" placeholder="Keterangan gambar ..."></textarea>
+				</div>
+				<div class="margin-bottom">
+					<input type="file" name="photo[]">
+					<textarea class="form-control top2x" name="caption[]" placeholder="Keterangan gambar ..."></textarea>
+				</div>
+				<div class="margin-bottom">
+					 <button type="button" id="add-file" class="btn btn-xs pull-right"><i class="fa fa-plus"></i> Tambah</button>
+					<input type="file" name="photo[]" style="width: 80%">
+					<textarea class="form-control top2x" name="caption[]" placeholder="Keterangan gambar ..."></textarea>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="col-md-3 top4x">
 		<div class="form-group text-center">

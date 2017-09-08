@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-checkbox/awesome-bootstrap-checkbox.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/admin/css/animate.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/theme/css/daterangepicker-bs3.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("public/theme/css/daterangepicker-bs3.css"); ?>">
   <link rel="shortcut icon" href="<?php echo base_url("public/image/site/favicon.png"); ?>">
   <script src="<?php echo base_url("public/theme/js/jquery-3.2.1.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/bootstraps/js/bootstrap.min.js"); ?>"></script>
@@ -27,6 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("public/theme/js/moment.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/theme/js/daterangepicker.js"); ?>"></script>
   <script src="<?php echo base_url("public/tinymce/js/tinymce.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/select2/select2.full.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/select2/select2.full.min.js"); ?>"></script>
   <script type="text/javascript"> 
       var base_url   = '<?php echo site_url("administrator"); ?>';

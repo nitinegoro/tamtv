@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/main.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/daterangepicker-bs3.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/bxslider/jquery.bxslider.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("public/viewer/viewer.min.css"); ?>">
 	<?php  
 	/*
 	*  Meta Tags
