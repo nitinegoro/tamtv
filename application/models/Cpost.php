@@ -143,7 +143,7 @@ class Cpost extends CI_Model
 
 	public function insert_vidio($post = 0)
 	{
-		if( $this->input->post('vidio') != '' ) 
+		if( $this->input->post('video') != '' ) 
 		{
 			if( $this->db->get_where('postmeta', array('post_id' => $post,'meta_key' => 'video'))->num_rows() == FALSE ) 
 			{

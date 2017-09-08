@@ -16,7 +16,7 @@ $asdtop = $this->themes->get('ads-980x90');
 ?>	
 	<div class="container content-wrapper">
         <?php
-        if( $asdtop->status == 'yes') :
+        if( $asdtop ) :
         ?>
         <div class="col-xs-12 text-center">
         	<div class="adsvertising">
@@ -24,7 +24,7 @@ $asdtop = $this->themes->get('ads-980x90');
         	</div>
         </div>
         <?php endif; 
-        if( $adsleft->status == 'yes') : ?>
+        if( $adsleft ) : ?>
 		<div class="ads-left">
 			<?php echo $adsleft->meta_value ?>
 		</div>

@@ -48,8 +48,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            		</li>
 	          		</ul>
 	        	</li>
-	        	<li class="treeview <?php echo active_link_multiple(array('setting','role','penilaian', 'user')); ?>">
-	            	<a href="#">
+	        	<li class="treeview <?php echo active_link_controller('cm'); ?>">
+	            	<a href="<?php echo base_url("administrator/cm"); ?>">
 	               		<i class="fa fa-comments"></i> <span>Komentar</span>
 	            	</a>
 	        	</li>
