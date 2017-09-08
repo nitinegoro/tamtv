@@ -3,9 +3,9 @@
 	<?php echo form_open(current_url(), array('method' => 'get')); ?>
 	<div class="col-md-12 bottom2x">
 		<div class="col-md-4">
-			<a href="" class="btn btn-link">(2) Semua</a> |
-			<a href="" class="btn btn-link">(2) Tertunda</a> |
-			<a href="" class="btn btn-link">(2) Disetujui</a> 
+			<a href="<?php echo base_url("administrator/cm?order_by=all"); ?>" class="btn btn-link">(2) Semua</a> |
+			<a href="<?php echo base_url("administrator/cm?order_by=pending"); ?>" class="btn btn-link">(2) Tertunda</a> |
+			<a href="<?php echo base_url("administrator/cm?order_by=approve"); ?>" class="btn btn-link">(2) Disetujui</a> 
 		</div>
 		<div class="col-md-4 pull-right">
             <div class="input-group input-group-sm">
@@ -19,7 +19,7 @@
 	<?php echo form_close(); ?>
 	<div class="col-md-12">
 		<div class="box box-default">
-		<?php echo form_open(base_url("administrator/post/bulkaction")); ?>
+		<?php echo form_open(base_url("administrator/cm/bulkaction")); ?>
 			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
@@ -35,35 +35,46 @@
 					</tr>
 				</thead>
 				<tbody>
-
+				<?php  
+				foreach( $comments as $row) :
+				?>
 					<tr>
 						<td>
 			                 <div class="checkbox checkbox-inline">
 			                     <input id="checkbox1" type="checkbox" name="posts[]" value=""> <label for="checkbox1"></label>
 			                 </div>
 						</td>
+						<td width="200"> <strong><?php echo $row->fullname ?></strong> </td>
 						<td class="td-action">
-							<strong>
-
-							</strong>
+								<small>	<?php 	echo $row->comment_content ?></small>
 							<div class="button-action">
-								<a href="<?php echo base_url("administrator/post/update/{}") ?>">Edit</a> |
-								<a href="#" data-action="delete" data-key="post" data-id="" class="red">Hapus</a> |
-								<a href="">Lihat</a> 
+								<a href="<?php echo base_url("administrator/post/update/{}") ?>" class="text-yellow">Tolak</a> |
+								<a data-toggle="collapse" data-target="#reply-<?php echo $row->comment_id ?>">Balas</a> |
+								<a href="#" data-action="delete" data-key="post" data-id="" class="red">Hapus</a>
+							</div>
+							<div id="reply-<?php echo $row->comment_id ?>" class="collapse pad">
+								<textarea name="comment_reply" cols="30" rows="6" class="form-control"></textarea>
+								<div class="pad">	
+									<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#reply-<?php echo $row->comment_id ?>">Batal</button>
+									<button id="set-reply" class="btn btn-primary pull-right" data-id="<?php echo $row->comment_id ?>" data-post="<?php echo $row->comment_post_ID ?>" type="button">Balas</button>
+								</div>
 							</div>
 						</td>
-						<td width="150"></td>
-						<td width="200">
-
+						<td width="300">
+							<strong>	
+								<?php echo anchor(base_url("administrator/post/update/{$row->comment_post_ID}"), $row->post_title); ?>
+							</strong>
 						</td>
 						<td width="180">
 							<small>
-								<time></time><br>
+								<time><?php echo $this->posts->date_format($row->comment_date); ?></time><br>
 							</small>
 						</td>
 					</tr>
 				<?php
-				echo '<tr><td colspan="6">Tidak ada pengguna yang ditemukan.</td></tr>';
+				endforeach;
+				if( $comments == FALSE )
+						echo '<tr><td colspan="6">Tidak ada komentar yang ditemukan.</td></tr>';
 				?>
 				</tbody>
 				<tfoot>
@@ -71,7 +82,7 @@
 						<td colspan="6">
 							<label>Yang terpilih :</label>
 							<a class="btn btn-xs btn-round btn-danger" data-toggle="modal" data-target="#modal-delete-post-selected"><i class="fa fa-trash-o"></i> Hapus</a>
-							<small class="pull-right"><?php echo 2 ?> dari <?php echo 3 ?> data.</small>
+							<small class="pull-right"><?php echo count($comments) ?> dari <?php echo $this->comment->getall(null, null, 'num') ?> data.</small>
 						</td>
 					</tr>
 				</tfoot>
@@ -114,3 +125,5 @@
 		</div>
 	</div>
 </div>
+
+

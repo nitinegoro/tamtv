@@ -31,7 +31,7 @@
 	<div class="col-md-12">
 		<div class="box box-default">
 		<?php echo form_open(base_url("administrator/users/bulkaction")); ?>
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover checked">
 				<thead>
 					<tr>
 						<th width="30">

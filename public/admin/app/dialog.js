@@ -4,7 +4,9 @@
 */
 
 jQuery(function($) {
-
+	/*
+	*  ADD CATEGORY IN CREATE/UPDATE POST
+	*/
 	$('button#save-category').on( 'click', function() 
 	{
 	    $(document).ajaxStart(function(e, xhr, opt){
@@ -47,7 +49,9 @@ jQuery(function($) {
 		});
 	});
 
-
+	/*
+	*  ADD TAGS IN CREATE/UPDATE POST
+	*/
 	$('button#save-topik').on( 'click', function() 
 	{
 	    $(document).ajaxStart(function(e, xhr, opt){
@@ -81,6 +85,9 @@ jQuery(function($) {
 		});
 	});
 
+	/*
+	*  ADD PHOTOS IN CREATE/UPDATE POST
+	*/
 	var counter = 5;
 
 	$('button#add-file').on('click', function()
@@ -101,6 +108,41 @@ jQuery(function($) {
 			});
 		});
 		counter++;
+	});
+
+	/* COMMENT REPLY  */
+	$('button#set-reply').on('click', function(argument) 
+	{
+	    $(document).ajaxStart(function(e, xhr, opt){
+	        $('button#set-reply').html("Mengirim... <i class='fa fa-spinner fa-spin fa-fw'></i><span class='sr-only'></span>");
+	    });
+
+	    if( $('textarea[name="comment_reply"]').val() === '')
+	    {
+	    	alert('Balasan tidak boleh kosong!');
+
+	    	$('textarea[name="comment_reply"]').focus()
+	    } else {
+			$.post(base_url + '/cm/reply/', 
+			{ 
+				comment_reply : $('textarea[name="comment_reply"]').val(),
+				comment_post : $(this).data('post'),
+				parent : $(this).data('id')
+			}, 
+			function(data) 
+			{
+				if( data.status === 'failed')
+					alert("Failed when saving data!");   
+
+				$('textarea[name="comment_reply"]').val();     
+			});
+	    }
+
+		$(document).ajaxComplete(function(e, xhr, opt)
+		{
+			$('button#set-reply').html("Balas");
+			$('#reply-' + $(this).data('id')).collapse('hide');
+		});
 	});
 
 	$('a[data-action="delete"]').click( function() 
@@ -160,8 +202,6 @@ jQuery(function($) {
 						}
 					});
 				});
-					
-
 				break;
 			default:
 				alert('Please input data-key="example-key" in attribut button.');

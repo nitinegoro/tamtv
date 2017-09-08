@@ -38,7 +38,7 @@
 		<div class="clearfix"></div>
 		<div class="box box-default">
 		<?php echo form_open(base_url("administrator/post_tags/bulkaction")); ?>
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover checked">
 				<thead>
 					<tr>
 						<th width="30">

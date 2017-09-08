@@ -34,7 +34,7 @@
 	<div class="col-md-12">
 		<div class="box box-default">
 		<?php echo form_open(base_url("administrator/post/bulkaction")); ?>
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover checked">
 				<thead>
 					<tr>
 						<th width="30">
@@ -111,7 +111,7 @@
 						</td>
 					</tr>
 				<?php endforeach; 
-				if( $posts == FALSE ) echo '<tr><td colspan="6">Tidak ada pengguna yang ditemukan.</td></tr>';
+				if( $posts == FALSE ) echo '<tr><td colspan="6">Tidak ada berita yang ditemukan.</td></tr>';
 				?>
 				</tbody>
 				<tfoot>
