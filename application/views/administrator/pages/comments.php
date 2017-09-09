@@ -3,9 +3,15 @@
 	<?php echo form_open(current_url(), array('method' => 'get')); ?>
 	<div class="col-md-12 bottom2x">
 		<div class="col-md-4">
-			<a href="<?php echo base_url("administrator/cm?order_by=all"); ?>" class="btn btn-link">(2) Semua</a> |
-			<a href="<?php echo base_url("administrator/cm?order_by=pending"); ?>" class="btn btn-link">(2) Tertunda</a> |
-			<a href="<?php echo base_url("administrator/cm?order_by=approve"); ?>" class="btn btn-link">(2) Disetujui</a> 
+			<a href="<?php echo base_url("administrator/cm?filter=all&query={$this->query}"); ?>" class="btn btn-link">
+				(<?php echo $this->db->count_all('comments'); ?>) Semua
+			</a> |
+			<a href="<?php echo base_url("administrator/cm?filter=pending&query={$this->query}"); ?>" class="btn btn-link">
+				(<?php echo $this->comment->count_by_status('no'); ?>) Tertunda
+			</a> |
+			<a href="<?php echo base_url("administrator/cm?filter=approve&query={$this->query}"); ?>" class="btn btn-link">
+				(<?php echo $this->comment->count_by_status('yes'); ?>) Disetujui
+			</a> 
 		</div>
 		<div class="col-md-4 pull-right">
             <div class="input-group input-group-sm">
@@ -41,19 +47,24 @@
 					<tr>
 						<td>
 			                 <div class="checkbox checkbox-inline">
-			                     <input id="checkbox1" type="checkbox" name="posts[]" value=""> <label for="checkbox1"></label>
+			                     <input id="checkbox1" type="checkbox" name="comments[]" value="<?php echo $row->comment_id ?>"> <label for="checkbox1"></label>
 			                 </div>
 						</td>
 						<td width="200"> <strong><?php echo $row->fullname ?></strong> </td>
 						<td class="td-action">
 								<small>	<?php 	echo $row->comment_content ?></small>
-							<div class="button-action">
-								<a href="<?php echo base_url("administrator/post/update/{}") ?>" class="text-yellow">Tolak</a> |
+							<div class="button-action" id="action-<?php echo $row->comment_id ?>">
+								<?php if($row->comment_approved == 'yes') : ?>
+								<a id="set-status" data-id="<?php echo $row->comment_id ?>" data-status="no" class="text-yellow">Tolak</a> 
+								<?php else : ?>
+								<a id="set-status" data-id="<?php echo $row->comment_id ?>" data-status="yes" class="text-success">Terima</a> 
+								<?php endif; ?>
+								|
 								<a data-toggle="collapse" data-target="#reply-<?php echo $row->comment_id ?>">Balas</a> |
-								<a href="#" data-action="delete" data-key="post" data-id="" class="red">Hapus</a>
+								<a href="#" data-action="delete" data-key="comment" data-id="<?php echo $row->comment_id ?>" class="red">Hapus</a>
 							</div>
 							<div id="reply-<?php echo $row->comment_id ?>" class="collapse pad">
-								<textarea name="comment_reply" cols="30" rows="6" class="form-control"></textarea>
+								<textarea name="comment_reply_<?php echo $row->comment_id ?>" cols="30" rows="6" class="form-control"></textarea>
 								<div class="pad">	
 									<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#reply-<?php echo $row->comment_id ?>">Batal</button>
 									<button id="set-reply" class="btn btn-primary pull-right" data-id="<?php echo $row->comment_id ?>" data-post="<?php echo $row->comment_post_ID ?>" type="button">Balas</button>
@@ -110,7 +121,7 @@
 	</div>
 </div>
 
-<div class="modal" id="modal-delete-post">
+<div class="modal" id="modal-delete-comment">
 	<div class="modal-dialog modal-sm modal-danger">
 		<div class="modal-content">
 			<div class="modal-header">

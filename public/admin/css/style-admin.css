@@ -242,3 +242,7 @@ li.dd-item > div.dd-handle span {
 	border: 1.5px solid #CDCDCD;
 	background: white;
 }
+
+.bg-gray:hover {
+    color: gray
+}   

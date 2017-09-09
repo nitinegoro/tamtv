@@ -11,7 +11,7 @@ class Cm extends Admin_panel
 
 	public $query;
 
-	public $order_by;
+	public $filter;
 
 	public function __construct()
 	{
@@ -25,7 +25,7 @@ class Cm extends Admin_panel
 
 		$this->query = $this->input->get('query');
 
-		$this->order_by = (!$this->input->get('order_by')) ? 'all' : $this->input->get('order_by');
+		$this->filter = (!$this->input->get('filter')) ? 'all' : $this->input->get('filter');
 
 		$this->page_title->push('Komentar', 'Manajemen Komentar');
 
@@ -37,7 +37,7 @@ class Cm extends Admin_panel
 		$config = $this->template->pagination_list();
 
 		$config['base_url'] = site_url("
-			administrator/cm?per_page={$this->per_page}&query={$this->query}&order_by={$this->order_by}
+			administrator/cm?per_page={$this->per_page}&query={$this->query}&filter={$this->filter}
 		");
 
 		$config['per_page'] = $this->per_page;
@@ -61,7 +61,7 @@ class Cm extends Admin_panel
 		{
 			$this->data = array(
 				'status' => 'success',
-				'result' => $setReply
+				'result' => $this->comment->get($setReply)
 			);
 		} else {
 			$this->data = array(
@@ -70,6 +70,45 @@ class Cm extends Admin_panel
 		}
 
 		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+	}
+
+	public function delete($param = 0)
+	{
+		$this->comment->delete( $param );
+
+		redirect(base_url("administrator/cm"));
+	}
+
+	public function approved($param = 0)
+	{
+		if( $this->comment->approved($param) == TRUE)
+		{
+			$this->data = array(
+				'status' => 'success'
+			);
+		} else {
+			$this->data = array(
+				'status' => 'failed'
+			);
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+	}
+
+	public function bulkaction()
+	{
+		switch ($this->input->post('action')) 
+		{
+			case 'delete':
+				$this->comment->delete_multiple();
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+
+		redirect(base_url("administrator/cm"));
 	}
 }
 

@@ -19,6 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/admin/css/animate.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/theme/css/daterangepicker-bs3.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/theme/css/daterangepicker-bs3.css"); ?>">
+  
   <link rel="shortcut icon" href="<?php echo base_url("public/image/site/favicon.png"); ?>">
   <script src="<?php echo base_url("public/theme/js/jquery-3.2.1.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/bootstraps/js/bootstrap.min.js"); ?>"></script>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-   		<aside class="main-sidebar">
+   		<aside class="main-sidebar ">
       	<section class="sidebar">
 
       		<ul class="sidebar-menu">
@@ -51,6 +51,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	        	<li class="treeview <?php echo active_link_controller('cm'); ?>">
 	            	<a href="<?php echo base_url("administrator/cm"); ?>">
 	               		<i class="fa fa-comments"></i> <span>Komentar</span>
+	            	</a>
+	        	</li>
+	        	<li class="<?php echo active_link_controller('question'); ?>">
+	            	<a href="<?php echo base_url("administrator/question"); ?>">
+	               		<i class="fa fa-question-circle"></i> <span> Manajemen Polling</span>
 	            	</a>
 	        	</li>
 	        	<li class="treeview <?php echo active_link_multiple(array('setting','role','penilaian', 'user')); ?>">
@@ -113,11 +118,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            		</li>
 	          		</ul>
 	        	</li>
-	        	<li class="<?php echo active_link_controller('userguide'); ?>">
+<!-- 	        	<li class="<?php echo active_link_controller('userguide'); ?>">
 	            	<a href="">
 	               		<i class="fa fa-info-circle"></i> <span> Panduan Penggunaan</span>
 	            	</a>
-	        	</li>
+</li> -->
       		</ul>
       	</section>
    	</aside>

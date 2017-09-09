@@ -125,14 +125,18 @@ jQuery(function($) {
 	    } else {
 			$.post(base_url + '/cm/reply/', 
 			{ 
-				comment_reply : $('textarea[name="comment_reply"]').val(),
+				comment_reply : $('textarea[name="comment_reply_'+$(this).data('id')+'"]').val(),
 				comment_post : $(this).data('post'),
 				parent : $(this).data('id')
 			}, 
 			function(data) 
 			{
-				if( data.status === 'failed')
+				if( data.status === 'failed') 
+				{
 					alert("Failed when saving data!");   
+				} else {
+					window.location.reload();
+				}
 
 				$('textarea[name="comment_reply"]').val();     
 			});
@@ -142,6 +146,38 @@ jQuery(function($) {
 		{
 			$('button#set-reply').html("Balas");
 			$('#reply-' + $(this).data('id')).collapse('hide');
+		});
+	});
+
+	/* COMMENT STATUS */
+	$('a#set-status').on('click', function() 
+	{
+		var comment = $(this).data('id')
+			status = $(this).data('status');
+
+		$.post(base_url + '/cm/approved/' + comment, 
+		{ 
+			status : status
+		}, 
+		function(data) 
+		{
+			if( data.status === 'failed') 
+			{
+				alert("Failed when saving data!");   
+			} else {
+				if( status === 'yes') 
+				{
+					var newButton = '<a id="set-status" data-id="'+comment+'" data-status="no" class="text-yellow">Tolak</a>';
+				} else {
+					var newButton = '<a id="set-status" data-id="'+comment+'" data-status="yes" class="text-success">Terima</a>';
+				}
+
+				$('div#action-' + comment).prepend(newButton).fadeIn(300);
+
+				$('div#action-'+comment+'>a:nth-child(2)').fadeOut(300, function() {
+					$(this).remove();
+				});
+			} 
 		});
 	});
 
@@ -164,6 +200,10 @@ jQuery(function($) {
 			case 'post':
 				$('#modal-delete-post').modal('show');
 				$('a#btn-delete').attr('href', base_url + '/post/delete/' + $(this).data('id'));
+				break;
+			case 'comment':
+				$('#modal-delete-comment').modal('show');
+				$('a#btn-delete').attr('href', base_url + '/cm/delete/' + $(this).data('id'));
 				break;
 			case 'page':
 				$('#modal-delete-page').modal('show');

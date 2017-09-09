@@ -648,6 +648,11 @@ class Cpost extends CI_Model
 
 		return $this->db->insert_id();
 	}
+
+	public function count_all()
+	{
+		return $this->db->get_where('posts', array('post_type !=' => 'page'))->num_rows();
+	}
 }
 
 /* End of file Cpost.php */

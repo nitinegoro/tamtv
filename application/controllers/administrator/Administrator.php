@@ -10,6 +10,8 @@ class Administrator extends Admin_panel
 		$this->page_title->push('Dashboard', 'Halaman Utama administrator');
 
 		$this->load->js(base_url("public/admin/app/main.js"));
+
+		$this->load->model('cpost');
 	}
 
 	public function index()

@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <footer class="main-footer">
         <div class="container text-center">
             <small>
-                Hak Cipta &copy; 2017 <?php if(date('Y')!=2017) echo "- ".date('Y'); ?> TAM TV Babel. Develop By 
+                Hak Cipta &copy; 2017 <?php if(date('Y')!=2017) echo "- ".date('Y'); ?> PT. Tenaga Anugerah Media <br> Develop By 
                 <a href="http://teitramega.co.id" target="_blank">Teitra Mega</a>
             <small>
         </div>
