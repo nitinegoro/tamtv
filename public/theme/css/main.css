@@ -1180,126 +1180,102 @@ div.headline-slider .headline-slider-item {
 }
 
 /* BOX FOTO */
-.box-foto {
+ .box-foto {
     display: block;
     position: relative;
     width: 100%;
     overflow: hidden;
 }
-.box-foto .left-foto .text-foto {
-    background: rgba(0,0,0,0.5);
-    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(90%, rgba(0,0,0,1)));
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
-    background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
-    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#111111', GradientType=1 );
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px 30px 15px 15px;
-    z-index: 2;
+.photo-galery > .one-photo {
+  position: relative;
+  width: 66.2%;
+  margin: 1px;
+  float: left;
 }
-.box-foto .left-foto {
-    width: 50%;
-    float: left;
-    display: block;
-    overflow: hidden;
-    position: relative;
+.photo-galery > .photo {
+  position: relative;
+  width: 33%;
+  margin: 1px;
+  float: left;
 }
-.box-foto .left-foto img {
-    width: 100%;
-    display: block;
+.photo-galery > .photo > .imagepone {
+  width: 100%;
+  height: 110px !important;
 }
-.box-foto .left-foto .foto-icon, 
-.cover-foto .foto-icon {
-    width: 20px;
-    height: 20px;
-    padding: 4px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: #fff;
-    z-index: 3;
-    cursor: pointer;
+.photo-galery > .one-photo > .imagepone  {
+  width: 100%;
+  height: 222px !important;
 }
-.cover-foto .foto-icon img {
-  margin-top: -3px;
-}
-.box-foto .left-foto .foto-icon:before, 
-.cover-foto .foto-icon:before {
-    content: '';
-    border-style: solid;
-    border-width: 5px 20px 0px 0px;
-    border-color: transparent #fff transparent transparent;
-    position: absolute;
-    top: -4px;
-    left: 0;
+.photo-galery > .photo > .imagepone,
+.photo-galery > .one-photo > .imagepone {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.box-foto .left-foto .text-foto h2.title {
-    font-size: 18px;
-    line-height: 22px;
-}
-.box-foto .left-foto .text-foto h2.title a {
-    color: #fff;
-}
-.box-foto .left-foto .text-foto h2.title a:hover {
-      box-sizing: border-box;
-}
-.box-foto .right-foto {
-    width: 50%;
-    float: left;
-    display: block;
-    padding: 0;
-    position: relative;
-}
-.box-foto .right-foto ul.foto-other {
-    list-style: none;
-    list-style-position: inside;
-    margin: 0;
-    padding: 0;
-    display: block;
-}
-.box-foto .right-foto ul.foto-other li:first-child {
-    padding-top: 0;
-}
-.box-foto .right-foto ul.foto-other li {
-    margin: 0;
-    padding: 8px 0 8px 16px;
-    display: block;
-    overflow: hidden;
-    height: 105px;
-}
-.box-foto .right-foto ul.foto-other li .cover-foto {
-    width: 140px;
-    height: 100px;
-    display: block;
-    overflow: hidden;
-    float: left;
-    margin-right: 10px;
-    position: relative;
-}
-.box-foto .right-foto ul.foto-other li .cover-foto img {
-    display: block;
-    width: 100%;
-    height: auto;
+.photo-galery > .photo > .one-overlay,
+.photo-galery > .one-photo > .one-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000;
+  cursor: pointer;
 }
 
-.box-foto .right-foto ul.foto-other li h2.title {
-    min-height: 109px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 11pt;
-    line-height: 15px;
-    flex-direction: column;
-    display: block
+.photo-galery > .photo:hover .one-overlay,
+.photo-galery > .one-photo:hover .one-overlay {
+  opacity: 0.6;
 }
-.box-foto .right-foto ul.foto-other li h2.title a {
-    color: black;
+
+.photo-galery > .photo a,
+.photo-galery > .photo span, 
+.photo-galery > .one-photo a,
+.photo-galery > .one-photo span {
+  display: none;
+}
+.photo-galery > .photo:hover a {
+  text-align: left;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  z-index: 99;
+  color: white;
+  font-size: 10pt;
+  font-weight: 500;
+  font-family: 'Cabin', sans-serif;
+  display: inherit;
+}
+.photo-galery > .one-photo:hover a {
+  text-align: left;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 99;
+  color: white;
+  font-size: 14pt;
+  font-weight: 500;
+  font-family: 'Cabin', sans-serif;
+  display: inherit;
+}
+.photo-galery > .photo:hover span,
+.photo-galery > .one-photo:hover span {
+  display: inherit;
+  text-align: left;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 99;
+  color: white;
+  font-size: 8pt;
 }
 /* BOX VIDEO */
 

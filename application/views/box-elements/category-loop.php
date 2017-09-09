@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php if($this->posts->getmeta('video', $post->ID)) echo '<i class="fa fa-play-circle-o"></i> '; echo $post->post_title; ?>
 				</a>
 			</h4>
-			<p><?php echo strip_tags(word_limiter($post->post_content, 10)) ?></p>
+			<p><?php echo ($post->post_excerpt != '') ? strip_tags($post->post_excerpt) : strip_tags(word_limiter($post->post_content, 10)) ?></p>
 		</div>
 	</div>
 	<?php endforeach; ?>

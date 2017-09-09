@@ -33,10 +33,6 @@ class Cpost extends CI_Model
 			'viewer' => 0
 		);
 
-		if( $this->input->post('type') == 'headline')
-			$this->db->update('posts', array('post_type' => 'default'), array('post_type' => 'headline'));
-
-
 		$this->db->insert('posts', $object); 
 
 		$post = $this->db->insert_id();
@@ -84,9 +80,6 @@ class Cpost extends CI_Model
 			'post_modified' => date('Y-m-d H:i:s'),
 			'image' => $this->upload_image( $param ),
 		);
-
-		if( $this->input->post('type') == 'headline')
-			$this->db->update('posts', array('post_type' => 'default'), array('post_type' => 'headline'));
 
 		$this->db->update('posts', $object, array('ID' => $param));
 

@@ -81,7 +81,7 @@ class Posts extends CI_Model
 
 	public function get_type($param = NULL, $limit = 6, $offset = 0, $type = 'result')
 	{
-		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_excerpt');
 
 		$this->db->where_not_in('post_type', 'page');
 
@@ -100,7 +100,7 @@ class Posts extends CI_Model
 
 	public function most_viewer($limit = 6, $offset = 0)
 	{
-		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_excerpt');
 
 		$this->db->where_not_in('post_type', 'page');
 
@@ -111,7 +111,7 @@ class Posts extends CI_Model
 
 	public function latest($limit = 6, $offset = 0)
 	{
-		$this->db->select('ID, post_title, post_slug, post_date, post_content, image');
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_excerpt');
 
 		$this->db->where_not_in('post_type', array('page', 'video', 'photo'));
 
@@ -122,7 +122,7 @@ class Posts extends CI_Model
 
 	public function tags($tags = 0, $limit = 6, $offset = 0, $type = 'num')
 	{
-		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id, post_excerpt');
 
 		$this->db->where_not_in('post_type', 'page');
 
@@ -144,7 +144,7 @@ class Posts extends CI_Model
 
 	public function category($category = 0, $limit = 6, $offset = 0, $type = 'num')
 	{
-		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id');
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id, post_excerpt');
 
 		$this->db->where_not_in('post_type', 'page');
 

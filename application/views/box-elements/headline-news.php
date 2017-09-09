@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $box = $this->themes->get('headline-news');
 
 $value = json_decode($box->meta_value);
+if( $this->posts->get_type('headline', 1, 0, 'result') == TRUE) :
 ?>
 
 <div class="clearfix"></div>
@@ -36,6 +37,7 @@ $value = json_decode($box->meta_value);
 		);
 
 		$tags = implode(', ', $inputTags);
+
 	?>
 	<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
 		<img src="<?php echo $this->posts->get_thumbnail($post->image); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
@@ -46,21 +48,25 @@ $value = json_decode($box->meta_value);
 			<a href="<?php echo $this->posts->permalink($post->ID) ?>" itemprop="name" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
 		</h3>
 		<div class="item-content">
-			<p><?php echo strip_tags(word_limiter($post->post_content, 15, 'result')) ?></p>
+			<p><?php echo ($post->post_excerpt != '') ? strip_tags($post->post_excerpt) : strip_tags(word_limiter($post->post_content, 10)) ?></p>
 		</div>
 	</div>
 	<?php endforeach;  ?>
 	<div class="item-box-related">
 		<h4 class="related-heading"><?php echo $box->meta_name; ?></h4>
 		<ul class="list-related">
-			<?php foreach( $this->posts->similar($tags, $headline, (--$value->limit), 1) as $row) : ?>
+			<?php 
+			foreach( $this->posts->similar($tags, $headline, (--$value->limit), 1) as $row) : ?>
 			<li>
 				<a href="<?php echo $this->posts->permalink($row->ID) ?>" itemprop="relatedLink" title="<?php echo $row->post_title; ?>">
 					<?php echo $row->post_title; ?>
 				</a>
 			</li>
-			<?php endforeach; ?>
+			<?php 
+			endforeach; 
+			?>
 		</ul>
 	</div>
 </div>
 <div class="clearfix"></div>
+<?php endif; ?>

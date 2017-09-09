@@ -93,6 +93,7 @@
 					<select name="type" id="inputStatus" class="form-control" required="required">
 						<option value="default" <?php if($post->post_type=='default') echo 'selected'; ?>>Standar</option>
 						<option value="headline" <?php if($post->post_type=='headline') echo 'selected'; ?>>Utama</option>
+						<option value="recomended" <?php if($post->post_type=='recomended') echo 'selected'; ?>>Pilihan</option>
 						<option value="video" <?php if($post->post_type=='video') echo 'selected'; ?>>Video</option>
 						<option value="photo" <?php if($post->post_type=='photo') echo 'selected'; ?>>Photo</option>
 					</select>
