@@ -26,7 +26,7 @@ if( $this->posts->get_type('photo', 1, 0, 'result') ) :
 		<div class="one-photo">
   			<img alt="<?php echo $post->post_title; ?>" src="<?php echo $this->posts->get_thumbnail($post->image); ?>" class="imagepone">
   			<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>"> <?php echo $post->post_title; ?></a>
-  			<span class="camera-icon"><i class="fa fa-camera"></i> 7 Foto</span>
+  			<span class="camera-icon"><i class="fa fa-camera"></i> <?php echo count($this->posts->getphoto($post->ID)) ?> Foto</span>
   			<div class="one-overlay"> </div>
 		</div>
 		<?php
@@ -36,7 +36,7 @@ if( $this->posts->get_type('photo', 1, 0, 'result') ) :
 		<div class="photo">
   			<img alt="<?php echo $post->post_title; ?>" src="<?php echo $this->posts->get_thumbnail($post->image); ?>" class="imagepone">
   			<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>"> <?php echo $post->post_title; ?></a>
-  			<span class="camera-icon"><i class="fa fa-camera"></i> 7 Foto</span>
+  			<span class="camera-icon"><i class="fa fa-camera"></i> <?php echo count($this->posts->getphoto($post->ID)) ?> Foto</span>
   			<div class="one-overlay"> </div>
 		</div>
 		<?php

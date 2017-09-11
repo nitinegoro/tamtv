@@ -510,12 +510,14 @@ span.more-heading {
   font-size: 9pt;
   letter-spacing: 0.7px;
 }
-.big-loop-item > .item-content > h4.item-heading > a {
+.big-loop-item > .item-content > h4.item-heading > a,
+.box-vidio-one > .video-title a  {
   color: black;
   font-weight: 600;
   font-size: 12pt;
 }
-.big-loop-item > .item-content > h4.item-heading > a:hover {
+.big-loop-item > .item-content > h4.item-heading > a:hover,
+.box-vidio-one > .video-title a:hover {
   text-decoration: none;
   color: #6666B2;
 }
@@ -1278,9 +1280,44 @@ div.headline-slider .headline-slider-item {
   font-size: 8pt;
 }
 /* BOX VIDEO */
+.box-vidio-one {
 
+}
+.box-vidio-one > div.cover-vidio a img {
+  float: left;
+  width: 300px;
+}
+div.cover-vidio > a img:hover .video-icon {
+  display: block;
+}
+div.cover-vidio > .video-icon {
+    display: block;
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+    margin-top:80px;
+    margin-left: -160px;
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+div.cover-vidio > .video-icon img {
+  width: 100%;
+}
+.box-vidio-one > .video-title {
+  width: 290px;
+  float: right;
+}
+.box-vidio-one > .video-title p {
+    font-size: 10pt;
+    padding-top: 10px;
+  text-align: justify-all;;
+  font-family: 'Roboto', sans-serif;
+  color: #444; 
+}
+/* THUMBANAIL VIDIO */
 .box-video-thumbnail {
-
+  margin-top: 15px;
 }
 .box-video-thumbnail > div.video-thumbnail {
   float: left

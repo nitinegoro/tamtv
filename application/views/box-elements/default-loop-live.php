@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	?> 
 	<div class="box-category-1 c3">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
-			<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
+			<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="<?php echo $post->post_title; ?>" height="100">
 		</a>
 		<div class="item-featured">
 			<h4 class="item-heading">

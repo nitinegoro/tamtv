@@ -94,7 +94,7 @@
 						<option value="default" <?php if(set_value('type')=='default') echo 'selected'; ?>>Standar</option>
 						<option value="headline" <?php if(set_value('type')=='headline') echo 'selected'; ?>>Utama</option>
 						<option value="recomended" <?php if(set_value('type')=='recomended') echo 'selected'; ?>>Pilihan</option>
-						<option value="vidio" <?php if(set_value('type')=='video') echo 'selected'; ?>>Video</option>
+						<option value="video" <?php if(set_value('type')=='video') echo 'selected'; ?>>Video</option>
 						<option value="photo" <?php if(set_value('type')=='photo') echo 'selected'; ?>>Photo</option>
 					</select>
 				</div>	
