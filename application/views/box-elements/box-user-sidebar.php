@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<img class="img-circle" src="<?php echo base_url("public/image/avatar/author.png"); ?>" alt="avatar " width="100">
 					</div>
 					<div class="account-info">
-						<h1>Vicky Nitinegoro <br><small>@sira898</small></h1>
+						<h1><?php echo $this->session->userdata('user')->fullname ?> <br><small>@<?php echo $this->session->userdata('user')->username ?></small></h1>
 					</div>
 				</div>
 				<ul class="menu-account">

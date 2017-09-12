@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<li><a href=""><img src="<?php echo base_url("public/image/component/instagram.png") ?>" alt=""></a></li>
 				</ul>
 			</div>
-			<p class="copyright"><small>Hak Cipta 2017 Tam TV Babel - Develop By <a href="">Teitra Mega</a></small></p>
+			<p class="copyright"><small>&copy; Hak Cipta 2017 Tam TV Bangka Belitung  <br> Develop By <a href="https://www.google.co.id/maps/place/Teitra+Mega/@-2.1345868,106.1080505,15z/" target="_blank">Teitra Mega</a></small></p>
 		</div>
 	</footer>
 	</body>

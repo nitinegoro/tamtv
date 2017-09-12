@@ -91,12 +91,15 @@
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed left" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a href="<?php echo $this->options->get('live-streaming') ?>" class="btn-live left">
+                <i class="fa fa-video-camera"></i>
+            </a>
             <a class="navbar-brand" href="<?php echo base_url() ?>">
                 <?php  
                 /**
@@ -113,12 +116,28 @@
         <div id="navbar" class="navbar-collapse collapse">
             <div class="user-menu">
                 <ul class="menu">
-                    <li><a href="">Daftar</a></li>
-                    <li><a href="">Masuk</a></li>
+                <?php 
+                /**
+                 * Displayed User Menu
+                 * if permission ( akun ) else (login or signup )
+                 *
+                 **/
+                if($this->user_login == FALSE) : 
+                ?>
+                    <li><a href="<?php echo base_url("signup"); ?>">Daftar</a></li>
+                    <li><a href="<?php echo base_url("login") ?>">Masuk</a></li>
+                <?php else : ?>
+                    <li>
+                      <a href="<?php echo base_url("login/signout?back-to=".current_url()); ?>">Logout</a>
+                      <i class="fa fa-sign-out" style="padding-left: 10px;"></i>
+                    </li>
+                <?php endif; 
+                /* End user menu */
+                ?>
                 </ul>
                 <div href="" class="avatar">
                     <img src="<?php echo base_url("public/image/avatar/author.png") ?>" class="img-circle" alt="user avatar">
-                    <span>Halo Sobat pembaca</span>
+                    <span><?php if($this->user_login == FALSE) echo 'Halo Sobat pembaca'; else echo $this->session->userdata('user')->fullname ?></span>
                 </div>
             </div>
             <form class="navbar-form" action="<?php echo base_url("search"); ?>" role="search">

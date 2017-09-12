@@ -38,19 +38,28 @@ $author = $this->posts->get_post_author($post->ID);
 		<time class="padding" itemprop="datePublished"><?php echo $this->posts->date_format($post->post_date); ?></time>
 	</div>
 	<?php  
-	if( $post->image AND $post->post_type != 'vidio') :
+	if( $post->image AND $post->post_type != 'video' AND $this->posts->getphoto($post->ID) == FALSE) :
 	?>
 	<figure class="top2x" align="center">
 		<img src="<?php echo $this->posts->get_thumbnail($post->image) ?>" alt="<?php echo $post->post_title ?>" class="img-responsive">
 		<figcaption><?php echo $post->post_excerpt; ?> </figcaption>
 	</figure>
-	<?php elseif($post->post_type == 'vidio') : ?>
+	<?php elseif($post->post_type == 'video') : ?>
 	<figure class="top2x" align="center">
-		<iframe width="100%" height="250" src="https://www.youtube.com/embed/<?php echo $this->posts->getmeta('vidio', $post->ID) ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
+		<iframe width="100%" height="250" src="https://www.youtube.com/embed/<?php echo $this->posts->getmeta('video', $post->ID) ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
 		<figcaption><?php echo $post->post_excerpt; ?> </figcaption>
 	</figure>
 	<?php endif; ?>
 	<div class="sharethis-inline-share-buttons padding"></div>
+	<?php
+		foreach( $this->posts->getphoto($post->ID) as $row) :
+			$img = json_decode($row->meta_value);
+	?>
+	<figure class="top2x">
+		<img src="<?php echo base_url("public/image/news/photos/$img->image") ?>" alt="<?php echo $img->caption; ?>" class="img-responsive">
+		<figcaption><?php echo $img->caption; ?> </figcaption>
+	</figure>
+	<?php endforeach; ?>
 	<section class="padding" itemprop="description">
 		<?php echo str_replace('<p>[related_news]</p>', $this->content_parser->related_news($post->ID, 4), $post->post_content); ?>
 	</section>

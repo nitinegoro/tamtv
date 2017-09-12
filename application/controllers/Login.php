@@ -66,7 +66,12 @@ class Login extends Web
 			'title' => "Login "	
 		);
 
-		$this->template->view('login', $this->data);
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('login', $this->data);
+		} else {
+			$this->load->view('mobile/login', $this->data);
+		}
 	}
 
 	public function signout()
@@ -85,7 +90,7 @@ class Login extends Web
 		$this->form_validation->set_rules('email', 'E-Mail', 'trim|required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-		$this->form_validation->set_rules('condition', 'Anda tidak bisa mendaftar apabila tidak menyetuji syarat dan ketentuan yang kami berikan.', 'trim|required');
+		$this->form_validation->set_rules('condition', 'Anda tidak bisa mendaftar apabila tidak menyetujui syarat dan ketentuan yang kami berikan.', 'trim|required');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -114,7 +119,12 @@ class Login extends Web
 			'title' => "Daftar Akun "	
 		);
 
-		$this->template->view('signup', $this->data);
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('signup', $this->data);
+		} else {
+			$this->load->view('mobile/signup', $this->data);
+		}
 	}
 
 }

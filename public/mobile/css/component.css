@@ -18,14 +18,29 @@ nav.navbar {
     max-height: none !important;
     height: auto !important;
 }
+.navbar-toggle {
+  float: left;
+  margin-left: 15px;
+}
+.navbar-brand {
+  margin-left: -20px;
+}
 .navbar-header {
   /* border-bottom: 1.5px solid #0000e5; */
 }
-/* .navbar-toggle:focus {
+.btn-live {
+  float: right;
+  margin-right: 15px;
+  font-size: 18pt;
+  color: #0000e5;
+  margin-top: 10px;
+}
+ .navbar-toggle:focus {
   background-color: none;
 }
 .navbar-default .navbar-toggle {
   border-color: #0000e5;
+  border: none;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #0000e5;
@@ -38,7 +53,7 @@ nav.navbar {
 .navbar-toggle:hover .icon-bar {
     background-color: white;
     border: none;
-} */
+} 
 .navbar-collapse {
   background-color: #F9F9F9
 }
@@ -741,4 +756,46 @@ div.results {
     color: white;
     background-color: #283593;
     border-color: #283593;
+}
+
+/* BOX LOGIN */
+.box-login {
+  font-size: 11pt;
+}
+.box-login h1 {
+  font-family: 'Cabin', sans-serif;
+  font-size: 18pt;
+  text-align: center;
+}
+.box-login > .btn-social {
+  text-align: center
+}
+.box-login > .btn-social p,
+.btn-forgot,
+span,
+.box-login > .form-login > .form-group p{
+  font-size: 9pt;
+}
+
+.box-login > .btn-social p:last-child {
+  margin-top: 15px;
+}
+.box-login > .btn-social > .btn {
+  margin-right: 10px;
+}
+.facebook {
+  background-color: #3B5998
+}
+.google {
+  background-color: #DC4E41
+}
+.btn-tamtv {
+  color: white;
+  background-color:  #0000e5;
+  font-weight: 600;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 1.3px;
+}
+.box-login > .form-login {
+  padding: 20px;
 }
