@@ -378,7 +378,7 @@ $config['encryption_key'] = 'B498A6F13E4BECD3485B2BCDA5AFEEA0';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_session';
+$config['sess_cookie_name'] = 'tamnews';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = sys_get_temp_dir();
 $config['sess_match_ip'] = FALSE;

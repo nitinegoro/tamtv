@@ -35,8 +35,10 @@ class Main extends Web
 		$this->from_date = $this->input->get('from_date');
 
 		$this->to_date = $this->input->get('to_date');
-	}
 
+		$this->visitors->visitor_create();
+	}
+	
 	/**
 	 * Index Page for this controller.
 	 *
