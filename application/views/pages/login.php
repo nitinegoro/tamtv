@@ -22,9 +22,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<button type="button" class="btn btn-primary btn-social login-facebook">
 						<i class="fa fa-facebook"></i> Facebook
 					</button>
-					<button type="button" class="btn btn-danger btn-social login-google">
+					<a href="<?php echo base_url("api/google/log_google?back-to=".current_url()) ?>" class="btn btn-danger btn-social login-google">
 						<i class="fa fa-google-plus"></i> Google
-					</button>
+					</a>
 				</div>
 				<p>Atau masuk dengan akun yang sudah ada :</p>
 				<div class="col-md-12 text-left">
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div class="form-group">
 						<label>Password : </label>
-						<a href="" class="link pull-right">Lupa?</a>
+						<a href="<?php echo base_url("login/forgot") ?>" class="link pull-right">Lupa?</a>
 						<input type="password" name="password" value="<?php echo set_value('password'); ?>" class="form-control" placeholder="Masukkan Paswird anda ...">
 						<p class="help-block"><?php echo form_error('password', '<small class="text-danger">', '</small>'); ?></p>
 					</div>
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<button type="submit" class="btn btn-block btn-primary">Masuk</button>
 					</div>
 				</div>
-				<p><a href="">Daftar Akun</a></p>
+				<p>Belum Punya Akun? daftar <a href="<?php echo base_url("signup"); ?>">Disini</a></p>
 			</div>
 			</form>
 		</div>

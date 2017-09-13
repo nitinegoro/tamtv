@@ -75,15 +75,6 @@ $(function(){
         }, {scope: 'public_profile,publish_actions,email'});
     });
 
-    /* Login Google*/
-    $('button.login-google').on('click',function() 
-    {
-        var x = screen.width/2 - 700/2;
-        var y = screen.height/2 - 450/2;
-        var dialog_google = window.open( base_url + 'api/google/log_google','Login Dengan Akun Google','height=400,width=700,left='+x+',top='+y);
-
-        window.location = base_url + 'main';
-    })
 });
 
 

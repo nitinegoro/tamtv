@@ -27,6 +27,7 @@ class Google extends Web
 				'fullname' => $userCheck->fullname,
 				'email' => $userCheck->username,
 				'username' => $userCheck->username,
+                'avatar' => $userCheck->avatar,
 				'last_login' => $userCheck->last_login
 	 		)
 		);	
@@ -67,7 +68,7 @@ class Google extends Web
 					'email' => $profile['emails'][0]['value'],
 					'password' => null,
 					'registered' => date('Y-m-d H:i:s'),
-					'avatar' => "https://lh3.googleusercontent.com/--rPCU8l_0qA/AAAAAAAAAAI/AAAAAAAADAc/QG18t33ghQg/photo.jpg?sz=50",
+					'avatar' => $profile['emails']['url'],
 					'status' => 1
 				);
 
@@ -81,7 +82,12 @@ class Google extends Web
 			}
 	  	} 
 
-        echo "<script>window.close();</script>";
+        if( $this->input->get('back-to') != '' )
+        {
+            redirect($this->input->get('back-to'));
+        } else {
+            redirect(base_url());
+        }
     }
   
     private function get_client()

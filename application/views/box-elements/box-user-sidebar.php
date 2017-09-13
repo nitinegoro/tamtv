@@ -13,7 +13,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 				<div class="box-account">
 					<div class="account-avatar text-center">
+					<?php if( $this->session->userdata('user')->avatar != '') :  ?>
+					<img class="img-circle" src="<?php echo $this->session->userdata('user')->avatar; ?>" alt="avatar " width="100">
+					<?php else : ?>
 						<img class="img-circle" src="<?php echo base_url("public/image/avatar/author.png"); ?>" alt="avatar " width="100">
+					<?php endif; ?>
 					</div>
 					<div class="account-info">
 						<h1><?php echo $this->session->userdata('user')->fullname ?> <br><small>@<?php echo $this->session->userdata('user')->username ?></small></h1>

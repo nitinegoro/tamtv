@@ -16,15 +16,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<form action="<?php echo current_url(); ?>" method="post">
 			<div class="box-login text-center">
 				<h1>Daftar</h1>
-<!-- 				<p>Gunakan akun media sosial Anda untuk mendaftar.</p>
-<div class="btn-social">
-	<a href="" class="btn btn-primary btn-social">
-		<i class="fa fa-facebook"></i> Facebook
-	</a>
-	<a href="" class="btn btn-danger btn-social">
-		<i class="fa fa-google-plus"></i> Google
-	</a>
-</div> -->
+ 				<p>Gunakan akun media sosial Anda untuk mendaftar.</p>
+				<div class="btn-social">
+					<a href="" class="btn btn-primary btn-social login-facebook">
+						<i class="fa fa-facebook"></i> Facebook
+					</a>
+					<a href="<?php echo base_url("api/google/log_google?back-to=".current_url()) ?>" class="btn btn-danger btn-social login-google">
+						<i class="fa fa-google-plus"></i> Google
+					</a>
+				</div>
 				<p>Atau miliki akun dengan mendaftarkan email Anda.</p>
 				<div class="col-md-12 text-left">
 					<div class="form-group">

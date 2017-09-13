@@ -29,9 +29,11 @@ class Fb extends Web
 				    'fullname' => $user->fullname,
 				    'email' => $user->username,
 				    'username' => $user->username,
+				    'avatar' => $user->avatar,
 				    'last_login' => $user->last_login
 			    )
 	        );	
+	        
 	        $this->session->set_userdata( $account_session );
 
 	        $output = array('status' => true);

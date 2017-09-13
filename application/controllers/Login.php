@@ -32,6 +32,7 @@ class Login extends Web
 			        		'fullname' => $user->fullname,
 			        		'email' => $user->username,
 			        		'username' => $user->username,
+			        		'avatar' => $user->avatar,
 			        		'last_login' => $user->last_login
 			        	)
 			        );	
@@ -74,6 +75,29 @@ class Login extends Web
 		}
 	}
 
+	public function forgot()
+	{
+		$this->form_validation->set_rules('email', 'E-Mail', 'trim|valid_email|required');
+
+		if ($this->form_validation->run() == TRUE)
+		{
+
+		}
+
+		$this->meta_tags->set_meta_tag('title', "Login" );
+
+		$this->data = array(
+			'title' => "Login "	
+		);
+
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('forgot', $this->data);
+		} else {
+			//$this->load->view('mobile/login', $this->data);
+		}		
+	}
+
 	public function signout()
 	{
 		$this->session->sess_destroy();
@@ -105,6 +129,7 @@ class Login extends Web
 					  'ID' => $user->ID,
 					  'fullname' => $user->fullname,
 					  'email' => $user->username,
+					  'avatar' => $user->avatar,
 					  'username' => $user->username,
 					  'last_login' => $user->last_login
 				 )
