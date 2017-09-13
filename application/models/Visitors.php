@@ -23,11 +23,13 @@ class Visitors extends CI_Model
 		{
 			return $this->db->get_where('visitors', array(
 				'ip_address' => $this->input->ip_address(),
+				'DATE(visitor_date)' => date('Y-m-d'), 
 				'ci_session' => $this->input->cookie('tamnews')
 			))->num_rows();
 		} else {
 			return $this->db->get_where('visitors', array(
 				'ip_address' => $this->input->ip_address(),
+				'DATE(visitor_date)' => date('Y-m-d'), 
 				'ci_session' => $this->input->cookie('tamnews'),
 				'post_id' => $this->getpostid()
 			))->num_rows();
@@ -46,6 +48,22 @@ class Visitors extends CI_Model
 
 	        return $post->ID;
 	    }
+	}
+
+	/**
+	 * Hitung Jumlah Pengunjung
+	 *
+	 * @param date (tanggal)
+	 * @param String (jenis tanggal)
+	 * @return Integer
+	 **/
+	public function count_by_date($date = NULL)
+	{
+		return $this->db->query("
+			SELECT DISTINCT ip_address, platform, browser, post_id, ci_session
+				FROM visitors  
+			WHERE DATE(visitor_date) = '{$date}'
+		")->num_rows();
 	}
 }
 

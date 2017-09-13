@@ -4,9 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="hold-transition skin-black-light sidebar-collapse sidebar-mini">
     <div class="wrapper">
         <header class="main-header">
-            <a href="<?php echo base_url('administrator') ?>" class="logo">
-                <span class="logo-mini"><i class="fa fa-home"></i></span>
-                <span class="logo-lg">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <nav class="navbar navbar-static-top">
                 <?php  
                 /**
                  * Displayed main logo
@@ -15,14 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  * @param String (main_logo)
                  **/
                 if( $this->options->get('main_logo', TRUE)->image )
-                    echo '<img src="'.$this->options->get('main_logo', TRUE)->image.'" width="100">';
-                ?>
-                </span>
-            </a>
-            <nav class="navbar navbar-static-top">
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                </a>
+                    echo '<img src="'.$this->options->get('main_logo', TRUE)->image.'" width="200" style="padding:8px;">';
+                ?>  
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu" data-toggle="tooltip" data-placement="bottom" title="Pengaturan Login">

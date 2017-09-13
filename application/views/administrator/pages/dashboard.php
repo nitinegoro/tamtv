@@ -1,38 +1,150 @@
 <div class="row">
 	<div class="col-lg-3 col-xs-6">
-		<div class="small-box bg-gray">
+		<div class="small-box bg-aqua">
 			<div class="inner"> <h3><?php echo $this->cpost->count_all(); ?></h3> <p>Berita</p> </div>
 			<div class="icon"> <i class="fa fa-pencil"></i> </div>
 			<a href="<?php echo base_url("administrator/post"); ?>" class="small-box-footer">Selengkapnya... <i class="fa fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 	<div class="col-lg-3 col-xs-6">
-		<div class="small-box bg-gray">
+		<div class="small-box bg-aqua">
 			<div class="inner"> <h3><?php echo $this->db->count_all('comments'); ?></h3> <p>Komentar</p> </div>
 			<div class="icon"> <i class="fa fa-comments"></i> </div>
 			<a href="<?php echo base_url("administrator/cm"); ?>" class="small-box-footer">Selengkapnya... <i class="fa fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 	<div class="col-lg-3 col-xs-6">
-		<div class="small-box bg-gray">
+		<div class="small-box bg-aqua">
 			<div class="inner"> <h3><?php echo $this->db->count_all('categories'); ?></h3> <p>Kategori</p> </div>
 			<div class="icon"> <i class="fa fa-tags"></i> </div>
 			<a href="<?php echo base_url("administrator/post_category"); ?>" class="small-box-footer">Selengkapnya... <i class="fa fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 	<div class="col-lg-3 col-xs-6">
-		<div class="small-box bg-gray">
-			<div class="inner"> <h3><?php echo $this->db->count_all('users'); ?></h3> <p>Pengguna</p> </div>
+		<div class="small-box bg-aqua">
+			<div class="inner"> <h3>+<?php echo $this->visitors->count_by_date(date('Y-m-d')); ?></h3> <p>Pengunjung Hari Ini</p> </div>
 			<div class="icon"> <i class="fa fa-users"></i> </div>
-			<a href="<?php echo base_url("administrator/users"); ?>" class="small-box-footer">Selengkapnya... <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="<?php echo base_url("administrator/stats"); ?>" class="small-box-footer">Selengkapnya... <i class="fa fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-7">
+		<div id="chart-visitors"></div>
+		<script>
+		Highcharts.chart('chart-visitors', {
+		    chart: {
+		        type: 'area' 
+		    },
+		    title: {
+		        text: 'STATISTIK PENGUNJUNG'
+		    },
+		    subtitle: {
+		        text: '10 Hari Terakhir'
+		    },
+		    xAxis: {
+		        allowDecimals: false,
+		        labels: {
+		            formatter: function () {
+		                return this.value;
+		            }
+		        },
+		        categories: [
+		              <?php  
+		              foreach (date_range($this->lastweek, date('Y-m-d')) as $date) :
+		              		$dt = new DateTime($date);
+		              		echo "'".$dt->format('d')." ".$dt->format('F')."',";
+		              endforeach;
+		              ?>
+		        ]
+		    },
+		    yAxis: {
+		        title: {
+		            text: 'Jumlah'
+		        }
+		    },
+		    tooltip: {
+		        pointFormat: '{series.name} <b>{point.y:,.0f}</b> Pengunjung'
+		    },
+		    series: [{
+		        name: 'Total ',
+		        data: [
+		        	<?php  
+		              foreach (date_range($this->lastweek, date('Y-m-d')) as $date) :
+		              		$dt = new DateTime($date);
+		              		echo $this->visitors->count_by_date($date).',';
+		              endforeach;
+		        	?>
+		        ]
+		    }]
+		});
+		</script>
+	</div>
+	<div class="col-md-5">
+		<div id="pie-feedback"></div>
+		<script>
+		Highcharts.chart('pie-feedback', {
+		    chart: {
+		        plotBackgroundColor: null,
+		        plotBorderWidth: null,
+		        plotShadow: false,
+		        type: 'pie'
+		    },
+		    title: {
+		        text: 'Umpan Balik Terhadap Berita'
+		    },
+		    tooltip: {
+		        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		    },
+		    plotOptions: {
+		        pie: {
+		            allowPointSelect: true,
+		            cursor: 'pointer',
+		            dataLabels: {
+		                enabled: true,
+		                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+		                style: {
+		                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+		                }
+		            }
+		        }
+		    },
+		    series: [{
+		        name: 'Perasaan ',
+		        colorByPoint: true,
+		        data: [{
+		            name: 'Senang',
+		            y: 36.33
+		        }, {
+		            name: 'Terhibur',
+		            y: 24.03
+		        }, {
+		            name: 'Terinspirasi',
+		            y: 10.38
+		        }, {
+		            name: 'Bangga',
+		            y: 4.77
+		        }, {
+		            name: 'Terkejut',
+		            y: 4.91
+		        }, {
+		            name: 'Sedih',
+		            y: 5.2
+		        },{
+		            name: 'Takut',
+		            y: 3.2
+		        },{
+		            name: 'Marah',
+		            y: 15.2
+		        }]
+		    }]
+		});
+		</script>
+	</div>
+	<div class="col-md-7" style="margin-top: 20px;">
 		<div class="box box-default">
 			<div class="box-header with-border">
-				<strong class="box-heading">Youtube Live Streaming</strong>
+				<strong class="box-heading">Live Streaming Channel</strong>
 			</div>
 			<div class="box-body">
 				<form id="save-streaming" method="post">
@@ -46,4 +158,5 @@
 			</div>
 		</div>
 	</div>
+
 </div>

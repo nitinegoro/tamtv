@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Administrator extends Admin_panel 
 {
+	public $lastweek;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -11,7 +13,9 @@ class Administrator extends Admin_panel
 
 		$this->load->js(base_url("public/admin/app/main.js"));
 
-		$this->load->model('cpost');
+		$this->load->model(array('cpost','visitors'));
+
+		$this->lastweek = date('Y-m-d', strtotime('-10 days', strtotime(date('Y-m-d'))));
 	}
 
 	public function index()

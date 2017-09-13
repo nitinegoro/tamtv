@@ -41,7 +41,7 @@ class Web extends MY_Controller
 		}
 
 		$this->load->helper(
-			array('text', 'form', 'language')
+			array('text', 'form', 'language','date')
 		);
 
 		$this->breadcrumbs->unshift(0, 'Home', "/");
@@ -116,7 +116,7 @@ class Admin_panel extends CI_Controller
 		);
 
 		$this->load->helper(
-			array('text', 'form', 'language','menus','admin')
+			array('text', 'form', 'language','menus','admin','date')
 		);
 
 		if($this->session->userdata('admin_login') == FALSE)  

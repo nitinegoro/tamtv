@@ -246,3 +246,18 @@ li.dd-item > div.dd-handle span {
 .bg-gray:hover {
     color: gray
 }   
+
+
+.skin-black-light .main-header .sidebar-toggle {
+  color: #ffffff;
+}
+.skin-black-light .main-header .sidebar-toggle:hover {
+  color: #f6f6f6;
+  background: #1010E5;
+}
+.skin-black-light .main-header .sidebar-toggle {
+  color: #1010E5;
+}
+.skin-black-light .main-header .sidebar-toggle:hover {
+  background-color: #1010E5;
+}

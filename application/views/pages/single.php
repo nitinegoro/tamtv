@@ -113,7 +113,7 @@ if( $this->posts->getmeta('video', $post->ID) != '')
 					<?php if($this->posts->get_post_author($post->ID)) : ?>
 					  <div class="media-left media-middle">
 					    	<a href="">
-					      	<img class="media-object img-circle" src="<?php echo base_url("public/image/avatar/{$author->avatar}"); ?>" alt="avatar <?php echo $author->fullname ?>" width="40">
+					      	<img class="media-object img-circle" src="<?php echo $author->avatar; ?>" alt="avatar <?php echo $author->fullname ?>" width="40">
 					    </a>
 					  </div>
 					  <?php endif; ?>

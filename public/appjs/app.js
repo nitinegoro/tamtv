@@ -40,10 +40,10 @@ function statusCheck(response)
         });
     } else if (response.status === 'not_authorized')
     {
-            // User logged into facebook, but not to our app.
+       
     } else
     {
-        
+       
     }
 }
 
@@ -51,7 +51,7 @@ function statusCheck(response)
 function loginCheck()
 {
     FB.getLoginStatus(function(response) {
-         //console.log('loginCheck', response);
+         console.log('loginCheck', response);
         statusCheck(response);
     });
 }

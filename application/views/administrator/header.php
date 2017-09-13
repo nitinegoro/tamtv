@@ -30,7 +30,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("public/theme/js/daterangepicker.js"); ?>"></script>
   <script src="<?php echo base_url("public/tinymce/js/tinymce.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/select2/select2.full.min.js"); ?>"></script>
-  <script src="<?php echo base_url("public/plugins/select2/select2.full.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/heightchart/highcharts.js"); ?>"></script>
+  <script src="<?php echo base_url("public/admin/highcharts/modules/exporting.js"); ?>"></script>
+  <script src="<?php echo base_url("public/admin/highcharts/modules/data.js"); ?>"></script>
+  <script src="<?php echo base_url("public/admin/highcharts/modules/drilldown.js"); ?>"></script>
   <script type="text/javascript"> 
       var base_url   = '<?php echo site_url("administrator"); ?>';
       var base_path  = '<?php echo base_url('public'); ?>';
