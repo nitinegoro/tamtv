@@ -29,6 +29,9 @@ $this->load->view('mobile/header', $this->data);
 		<p class="tag-description"><?php echo $tag->description ?></p>
 	</div>
 </div>
+<?php  
+	echo $this->themes->get_element('mobile-index','top-index');
+?>
 <div class="padding">
 	<?php  
 	/**

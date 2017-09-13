@@ -38,14 +38,12 @@ function statusCheck(response)
                 }
             });
         });
-            //window.location = base_url + '/admission/personal';
-    }
-     else if (response.status === 'not_authorized')
+    } else if (response.status === 'not_authorized')
     {
             // User logged into facebook, but not to our app.
     } else
     {
-            // User not logged into Facebook.
+        
     }
 }
 

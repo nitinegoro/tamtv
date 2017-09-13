@@ -5,7 +5,7 @@ class Comment extends CI_Model
 {
 	public function get_post_comments($post = 0, $limit = 10)
 	{
-		$this->db->select('comment_id, comment_parent, comment_date, comment_content, fullname, user_id');
+		$this->db->select('comment_id, comment_parent, comment_date, comment_content, fullname, avatar, user_id');
 
 		$this->db->join('users', 'comments.user_id = users.ID', 'inner');
 
@@ -20,7 +20,7 @@ class Comment extends CI_Model
 
 	public function get_post_child_comments($parent = 0, $limit = 10)
 	{
-		$this->db->select('comment_id, comment_parent, comment_date, comment_content, fullname, user_id');
+		$this->db->select('comment_id, comment_parent, comment_date, comment_content, fullname, avatar, user_id');
 
 		$this->db->join('users', 'comments.user_id = users.ID', 'inner');
 

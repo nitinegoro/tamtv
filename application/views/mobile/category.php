@@ -13,6 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('mobile/header', $this->data);
 ?>
 <div class="start"></div>
+<?php  
+	echo $this->themes->get_element('mobile-index','top-index');
+?>
 <div class="bg-blue">
 	<?php  
 	$this->load->view('mobile/box/topic-trend-top', $this->data );

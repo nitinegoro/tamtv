@@ -26,7 +26,11 @@ $author = $this->posts->get_post_author($post->ID);
 		?>
 		<div class="media">
 			<div class="media-left media-middle">
+			<?php if( $row->avatar == FALSE) : ?>
 				<img class="media-object img-circle" src="<?php echo base_url("public/image/avatar/author.png"); ?>" alt="avatar " width="40">
+			<?php else : ?>
+				<img class="media-object img-circle" src="<?php echo $row->avatar; ?>" alt="avatar " width="40">
+			<?php endif; ?>
 			</div>
 			<div class="media-body">
 				<strong class="media-heading"><?php echo $row->fullname; ?></strong>
@@ -55,7 +59,11 @@ $author = $this->posts->get_post_author($post->ID);
 		?>
 		<div class="media left">
 			<div class="media-left media-middle">
+			<?php if( $child->avatar == FALSE) : ?>
 				<img class="media-object img-circle" src="<?php echo base_url("public/image/avatar/author.png"); ?>" alt="avatar " width="40">
+			<?php else : ?>
+				<img class="media-object img-circle" src="<?php echo $child->avatar; ?>" alt="avatar " width="40">
+			<?php endif; ?>
 			</div>
 			<div class="media-body">
 				<strong class="media-heading"><?php echo $child->fullname; ?></strong>

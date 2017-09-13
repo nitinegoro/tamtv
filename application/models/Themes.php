@@ -11,6 +11,14 @@ class Themes extends CI_Model
 			ORDER BY position ASC
 		")->result();
 	}
+
+	public function get_element($layout = '', $key = '')
+	{
+		return $this->db->query("
+			SELECT meta_name, meta_key, meta_value FROM themesmeta 
+				WHERE status = 'yes' AND layout = '{$layout}' AND meta_key = '{$key}'
+		")->row('meta_value');
+	}
 	
 	public function get($param = '')
 	{

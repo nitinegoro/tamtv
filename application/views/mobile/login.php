@@ -21,7 +21,7 @@ $this->load->view('mobile/header', $this->data);
 			<button type="button" class="btn btn-primary btn-social facebook login-facebook">
 				<i class="fa fa-facebook"></i> Facebook
 			</button>
- 			<a href="" class="btn google btn-danger btn-social ">
+ 			<a href="<?php echo base_url("api/google/log_google?back-to=".$this->input->get('back-to')) ?>" class="btn google btn-danger btn-social ">
 				<i class="fa fa-google-plus"></i> Google
 			</a>
 			<p>Atau masuk dengan akun yang sudah ada :</p>

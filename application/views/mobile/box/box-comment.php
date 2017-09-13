@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $author = $this->posts->get_post_author($post->ID);
 ?>
 <section class="box-comments padding" name="#comment-list">
+	<h3 class="featured-heading padding"> Komentar </h3>
 	<section class="comment-list">
 		<?php  
 		/**
@@ -26,7 +27,11 @@ $author = $this->posts->get_post_author($post->ID);
 		?>
 		<div class="media">
 			<div class="media-left media-middle">
+			<?php if( $row->avatar == FALSE) : ?>
 				<img class="media-object img-circle" src="<?php echo base_url("public/image/avatar/author.png"); ?>" alt="avatar " width="40">
+			<?php else : ?>
+				<img class="media-object img-circle" src="<?php echo $row->avatar; ?>" alt="avatar " width="40">
+			<?php endif; ?>
 			</div>
 			<div class="media-body">
 				<strong class="media-heading"><?php echo $row->fullname; ?></strong>
@@ -44,9 +49,13 @@ $author = $this->posts->get_post_author($post->ID);
 		foreach( $this->comment->get_post_child_comments($row->comment_id, 10) as $child) :
 			$datechildClass = new DateTime($child->comment_date);
 		?>
-		<div class="media left">
+		<div class="media left" style="margin-bottom: 20px;">
 			<div class="media-left media-middle">
+			<?php if( $child->avatar == FALSE) : ?>
 				<img class="media-object img-circle" src="<?php echo base_url("public/image/avatar/author.png"); ?>" alt="avatar " width="40">
+			<?php else : ?>
+				<img class="media-object img-circle" src="<?php echo $child->avatar; ?>" alt="avatar " width="40">
+			<?php endif; ?>
 			</div>
 			<div class="media-body">
 				<strong class="media-heading"><?php echo $child->fullname; ?></strong>

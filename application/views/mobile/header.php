@@ -68,10 +68,12 @@
     <script src="<?php echo base_url("public/mobile/js/component.js"); ?>"></script>
     <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=59227929b27f700011ad0da3&product=inline-share-buttons' async='async'></script>
     <script type="text/javascript">
-        var base_url = '<?php echo site_url('apps/'); ?>',
+        var base_url = '<?php echo site_url(); ?>',
             base_path  = '<?php echo base_url('public'); ?>';
             current_url = '<?php echo current_url(); ?>';
     </script>
+    <script src="<?php echo base_url("public/appjs/app.js"); ?>"></script>
+    <script src="<?php echo base_url("public/theme/mobile/js/main.js"); ?>"></script>
     <?php 
 
     /**

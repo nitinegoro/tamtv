@@ -63,5 +63,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <?php
+
 /* End of file header.php */
 /* Location: ./application/views/header.php */

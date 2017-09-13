@@ -21,9 +21,10 @@ $this->load->view('mobile/header', $this->data);
 			<button type="button" class="btn btn-primary btn-social facebook login-facebook">
 				<i class="fa fa-facebook"></i> Facebook
 			</button>
- 			<a href="" class="btn google btn-danger btn-social ">
+ 			<a href="<?php echo base_url("api/google/log_google?back-to=".current_url()) ?>" class="btn google btn-danger btn-social ">
 				<i class="fa fa-google-plus"></i> Google
 			</a>
+			<p>Atau miliki akun dengan mendaftarkan email Anda.</p>
 		</div>
 		<?php echo $this->session->flashdata('alert'); ?>
 		<form class="form-login" method="post">

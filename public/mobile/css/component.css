@@ -11,7 +11,6 @@ body {
 nav.navbar {
   background-color: white;
   font-family: 'PT Sans Narrow', sans-serif;
-  max-height: 50px;
 }
 .navbar-collapse.in{
     overflow-y: hidden;
