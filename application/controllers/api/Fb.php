@@ -14,44 +14,85 @@ class Fb extends Web
 	{
 		$this->facebook->login_url();
 	}
+	
+	public function me($param = 0) {
+        $user = $this->facebook->login('get', '/me');
+        if (!isset($user['error']))
+        {
+            print_r($user);
+        }
+	}
 
     public function get_user()
     {
-    	$user = $this->user->get_user_login();
+    	$user = $this->db->get_where('users', array('email' => $this->input->post('email')))->row();
 
-    	if($user AND $this->input->post('email') != '')
+    	if($user == TRUE)
     	{
-	        $account_session = array(
-	        	'user_login' => TRUE,
-			    'ID' => $user->ID,
-			    'user' => (Object) array(
-				    'ID' => $user->ID,
-				    'fullname' => $user->fullname,
-				    'email' => $user->username,
-				    'username' => $user->username,
-				    'avatar' => $user->avatar,
-				    'last_login' => $user->last_login
-			    )
-	        );	
-	        
-	        $this->session->set_userdata( $account_session );
+	        $this->create_session_login($user);
 
 	        $output = array('status' => true);
     	} else {
-			$this->template->alert(
-				' Maaf! anda tidak terdaftar, silahkan mendaftar terlebih dahulu.', 
-				array('type' => 'warning','icon' => 'warning')
-			);
+    	    $this->daftar();
 
-    		$output = array('status' => false);
+    		if( $this->input->post('email') == FALSE )
+    		{
+        		$this->template->alert(
+        			' Maaf! <br>kami tidak bisa mengakses alamat E-Mail anda.', 
+        			array('type' => 'warning','icon' => 'warning')
+        		);
+    		
+    		    $output = array('status' => false);
+    		} else {
+    		    $output = array('status' => true);
+    		}
     	}
 
     	$this->output->set_content_type('application/json')->set_output(json_encode($output));
     }
 
-   	public function daftar()
+    private function create_session_login($userCheck = FALSE)
+    {
+	  	$account_session = array(
+		   'user_login' => TRUE,
+			'ID' => $userCheck->ID,
+			'user' => (Object) array(
+				'ID' => $userCheck->ID,
+				'fullname' => $userCheck->fullname,
+				'email' => $userCheck->username,
+				'username' => $userCheck->username,
+                'avatar' => $userCheck->avatar,
+				'last_login' => $userCheck->last_login
+	 		)
+		);	
+		$this->session->set_userdata( $account_session );
+    }
+    
+   	private function daftar()
    	{
-
+		if( $this->input->post('email') != '' )
+		{
+			if( $this->db->get_where('users', array('email' => $this->input->post('email')))->num_rows() == FALSE )
+			{
+    			$object = array(
+    				'fullname' => $this->input->post('name'),
+    				'username' => $this->slug->create_slug( $this->input->post('name')),
+    				'email' =>  $this->input->post('email'),
+    				'password' => null,
+    				'registered' => date('Y-m-d H:i:s'),
+    				'avatar' =>  $this->input->post('picture')['data']['url'],
+    				'status' => 1
+    			);
+    
+    			$this->db->insert('users', $object);
+    			$insert = $this->db->insert_id();
+    
+    			if($insert  == TRUE )
+    			    $this->create_session_login($this->db->get_where('users', array('ID' => $insert))->row());
+    			    
+    			return $insert;
+			}
+		}
    	}
 }
 

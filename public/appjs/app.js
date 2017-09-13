@@ -21,18 +21,19 @@ function statusCheck(response)
     console.log('statusCheck', response.status);
     if (response.status === 'connected')
     {
-        FB.api('/me?fields=id,name,email,birthday', function(response) 
+        FB.api('/me?fields=id,name,email,birthday,picture', function(response) 
         {
             $.ajax({
                 type: "POST",
                 url: base_url + "api/fb/get_user",
                 data: response,
                 success: function(data) {
+                    console.log(data);
                     if (data.status === true)
                     {
                         window.location = base_url + 'main';
                     }   else {
-                        window.location = base_url + 'signup?back-to=' + current_url;
+                        window.location = base_url + 'login';
                     }                 
                 }
             });
@@ -65,6 +66,7 @@ function getUser()
         console.log('getUser', response);
     });
 }
+
 
 
 $(function(){
