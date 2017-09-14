@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin:300,400,500,600+Roboto|Raleway|PT+Sans+Narrow|Baloo+Bhaijaan');
+@import url('https://fonts.googleapis.com/css?family=Cabin:300,400,500,600+Roboto|Raleway|PT+Sans+Narrow|Baloo+Bhaijaan|Open+Sans|Merriweather');
 body {
 
 }
@@ -374,25 +374,26 @@ p.copyright > small > a {
   padding: 10px;
 }
 div.box-author {
-  font-size: 8pt;
+  font-size: 7pt;
   margin-top: -15px;
   padding: 10px 0px 10px 10px;
   font-family: 'Cabin', sans-serif;
 }
 article.content-news {
   text-align: justify-all;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 10.3pt;
   margin-top: -20px;
+  letter-spacing: 0;
   border-bottom: 1.2px solid #EEEEEE;
 }
 article.content-news > h1 {
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Merriweather', serif;
   font-size: 17pt;
   font-weight: bold;
   margin-top: 0px;
   margin-bottom: -5px;
-  line-height: 1.3em;
+  line-height: 1.7em;
 }
 article.content-news > figure {
   border-bottom: 1.2px solid #EEEEEE;

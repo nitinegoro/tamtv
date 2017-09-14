@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin:300,400,500,600+Roboto+Raleway');
+@import url('https://fonts.googleapis.com/css?family=Cabin:300,400,500,600|Roboto|Raleway|Merriweather|Open+Sans');
 
 body {
   font-family: 'Arial', sans-serif;
@@ -582,8 +582,11 @@ div.single-content {
   padding-top: 30px;
 }
 article.content-news > h1 {
+  font-family: 'Merriweather', serif;
   font-weight: 600;
-  font-size: 22pt;
+  line-height: 1.4em;
+  color: #37474F;
+  font-size: 21pt;
 }
 
 /*  BREADCRUMBS */
@@ -618,11 +621,11 @@ div.author-box > .media > .media-body > time {
 article.content-news {
   text-align: justify-all;
   margin-top: 20px;
-  font-family: 'Arial', sans-serif;
-  letter-spacing: 1px;
-  font-size: 9pt;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  font-family: 'Open Sans', serif-serif;
+  font-weight: 400;
+  font-size: 9.5pt;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
   border-bottom: 1.2px solid #EEEEEE;
 }
 article.content-news > figure ,
@@ -639,7 +642,7 @@ article.content-news div.galery > figure > figcaption {
 }
 article.content-news > section > p {
   padding-bottom: 7px;
-  line-height: 1.5em;
+  line-height: 1.7em;
 }
 
 article.content-news > section > p img.pull-right {
