@@ -104,7 +104,7 @@
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title"><i class="fa fa-info-circle"></i> Hapus!</h4>
-							<span>Hapus data berita yang terpilih dari database?</span>
+							<span>Hapus data komentar yang terpilih dari database?</span>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Batal</button>
@@ -127,7 +127,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title"><i class="fa fa-info-circle"></i> Hapus!</h4>
-				<span>Hapus data berita ini dari database?</span>
+				<span>Hapus data komentar ini dari database?</span>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Batal</button>

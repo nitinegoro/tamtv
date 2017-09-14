@@ -76,6 +76,18 @@ class Polling extends CI_Model
 			'user_id' => $this->session->userdata('user')->ID
 		))->num_rows();
 	}
+
+	public function get_question_pg($limit = 15, $offset = 0, $type = 'result')
+	{
+		if( $this->input->get('query') != '')
+			$this->db->like('question', $this->input->get('query'));
+		if( $type == 'result')
+		{
+			return $this->db->get('pollingquestion',$limit, $offset)->result();
+		} else {
+			return $this->db->get('pollingquestion')->num_rows();
+		}
+	}
 }
 
 /* End of file Polling.php */

@@ -123,7 +123,7 @@ class Admin_panel extends CI_Controller
 			redirect('administrator/auth');
 
 		$this->load->model(
-			array('menus', 'options','themes', 'tags','posts','category','user','polling','comment')
+			array('menus', 'options','themes', 'tags','posts','category','user','polling','comment','respondent')
 		);
 
 		$this->breadcrumbs->unshift(0, 'Dashboard', "administrator");

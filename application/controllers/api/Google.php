@@ -63,12 +63,12 @@ class Google extends Web
 			if( $this->db->get_where('users', array('email' => $email))->num_rows() == FALSE )
 			{
 				$object = array(
-					'fullname' => $profile['name']['familyName'].' '.$profile['name']['givenName'],
-					'username' => $profile['name']['givenName'],
-					'email' => $profile['emails'][0]['value'],
+					'fullname' => @$profile['name']['familyName'].' '.$profile['name']['givenName'],
+					'username' => @strtolower($profile['name']['givenName']),
+					'email' => @$profile['emails'][0]['value'],
 					'password' => null,
 					'registered' => date('Y-m-d H:i:s'),
-					'avatar' => $profile['emails']['url'],
+					'avatar' => @$profile['emails']['url'],
 					'status' => 1
 				);
 

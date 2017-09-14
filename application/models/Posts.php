@@ -418,7 +418,7 @@ class Posts extends CI_Model
 
 	public function get_polling_post($param = 0)
 	{
-		$this->db->select('pollingquestion.question_id, pollingquestion.question');
+		$this->db->select('pollingquestion.question_id, pollingquestion.question, pollingpost.pollingpost_id');
 
 		$this->db->join('pollingquestion', 'pollingpost.question_id = pollingquestion.question_id', 'inner');
 

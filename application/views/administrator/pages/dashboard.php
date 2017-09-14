@@ -102,7 +102,7 @@
 		            cursor: 'pointer',
 		            dataLabels: {
 		                enabled: true,
-		                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+		                format: '<b>{point.name}</b> : {point.percentage:.1f} %',
 		                style: {
 		                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 		                }
@@ -112,31 +112,12 @@
 		    series: [{
 		        name: 'Perasaan ',
 		        colorByPoint: true,
-		        data: [{
-		            name: 'Senang',
-		            y: 36.33
-		        }, {
-		            name: 'Terhibur',
-		            y: 24.03
-		        }, {
-		            name: 'Terinspirasi',
-		            y: 10.38
-		        }, {
-		            name: 'Bangga',
-		            y: 4.77
-		        }, {
-		            name: 'Terkejut',
-		            y: 4.91
-		        }, {
-		            name: 'Sedih',
-		            y: 5.2
-		        },{
-		            name: 'Takut',
-		            y: 3.2
-		        },{
-		            name: 'Marah',
-		            y: 15.2
-		        }]
+		        data: [
+		        <?php foreach( $this->polling->get_answers(1) as $q) : ?>
+		        {
+		            name: '<?php echo $q->label ?>',
+		            y: <?php echo $this->respondent->count(1, $q->answer_id) ?>
+		        },<?php endforeach; ?>]
 		    }]
 		});
 		</script>
