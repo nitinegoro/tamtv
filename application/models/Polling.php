@@ -88,6 +88,11 @@ class Polling extends CI_Model
 			return $this->db->get('pollingquestion')->num_rows();
 		}
 	}
+
+	public function create_polling()
+	{
+		
+	}
 }
 
 /* End of file Polling.php */

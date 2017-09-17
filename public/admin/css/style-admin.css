@@ -261,3 +261,15 @@ li.dd-item > div.dd-handle span {
 .skin-black-light .main-header .sidebar-toggle:hover {
   background-color: #1010E5;
 }
+
+/* QUESTION FROM */
+.top1x {
+  margin-top: 10px;
+}
+.c50 {
+  float: left;
+  width: 48%;
+}
+.c50:first-of-type {
+  margin-right: 20px;
+}

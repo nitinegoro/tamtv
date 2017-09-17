@@ -15,7 +15,7 @@ class Question extends Admin_panel
 	{
 		parent::__construct();
 
-		$this->page_title->push('Polling', 'Manajemen poliing berita');
+		$this->breadcrumbs->unshift(1, 'Polling', "index");
 
 		$this->load->js(base_url("public/admin/app/main.js"));
 
@@ -28,6 +28,8 @@ class Question extends Admin_panel
 	
 	public function index()
 	{
+		$this->page_title->push('Polling', 'Manajemen poliing berita');
+
 		$config = $this->template->pagination_list();
 
 		$config['base_url'] = site_url("
@@ -47,6 +49,27 @@ class Question extends Admin_panel
 		$this->template->admin('pquestion', $this->data);
 	}
 
+	public function create()
+	{
+		$this->page_title->push('Polling', 'Manajemen polling berita');
+
+		$this->breadcrumbs->unshift(2, 'Tambah Polling', "index");
+
+		$this->form_validation->set_rules('question', 'Pertanyaan Polling', 'trim|required');
+
+		if( $this->form_validation->run() == TRUE )
+		{
+			$this->polling->create_polling();
+
+			//redirect(current_url());
+		}
+
+		$this->data = array(
+			'title' => "Tambah Polling"
+		);
+
+		$this->template->admin('createquestion', $this->data);
+	}
 }
 
 /* End of file Question.php */

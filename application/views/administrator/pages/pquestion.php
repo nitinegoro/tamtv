@@ -45,7 +45,7 @@
 							</strong>
 							<div class="button-action" id="action-">
 
-								<a href="">Balas</a> |
+								<a href="">Update</a> |
 								<a href="#" data-action="delete" data-key="question" data-id="<?php echo $row->question_id ?>" class="red">Hapus</a>
 							</div>
 						</td>

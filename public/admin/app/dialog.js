@@ -110,6 +110,30 @@ jQuery(function($) {
 		counter++;
 	});
 
+	/*
+	* ADD FORM Perasaan
+	*/
+	var minFormUpload = 2;
+	$('button#addFormUpload').on('click', function() 
+	{
+		var html  = '<div class="form-group" id="form-'+minFormUpload+'">';
+			html += '<button type="button" class="btn btn-xs btn-danger pull-right bottom1x" id="delete-form" data-id="'+minFormUpload+'"><i class="fa fa-times"></i></button>';
+			html += '<input type="file" name="perasaan[]">';
+			html += '<input type="text" class="form-control top1x" name="jawaban[]" required>';
+			html += '</div>';
+
+		$(html).appendTo('div.form-dynamic').hide().fadeIn(500);
+
+		$('button#delete-form').on('click', function() 
+		{
+			minFormUpload--;
+			$('div#form-' + $(this).data('id')).fadeOut(300, function() {
+				$(this).remove();
+			})
+		});
+	});
+
+
 	/* COMMENT REPLY  */
 	$('button#set-reply').on('click', function(argument) 
 	{
