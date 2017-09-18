@@ -268,6 +268,34 @@ jQuery(function($) {
 					});
 				});
 				break;
+			case 'question':
+				$('#modal-delete-question').modal('show');
+				$('a#btn-delete').attr('href', base_url + '/question/delete/' + $(this).data('id'));
+				break;
+			case 'answer':
+				$('#modal-delete-answer').modal('show');
+				var ID =  $(this).data('id');
+
+				$('a#btn-delete').on('click', function() 
+				{
+					$.post(base_url + '/question/deleteanswer/' + ID, function(result) 
+					{
+						$('#modal-delete-answer').modal('hide');
+
+						$(document).ajaxComplete(function(e, xhr, opt)
+						{
+							if( result.status === 'success')
+							{
+								$('div#answer-' + ID).fadeOut(300, function() {
+									$(this).remove();
+								});
+							} else {
+								alert("Terjadi kesalahan saat menhapus data!");
+							}
+						});
+					});
+				});
+				break;
 			default:
 				alert('Please input data-key="example-key" in attribut button.');
 			break;

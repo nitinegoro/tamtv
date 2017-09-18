@@ -7,11 +7,11 @@
 			<textarea name="question" rows="3" class="form-control" required=""><?php echo (set_value('question')==FALSE) ? $question->question : set_value('question'); ?></textarea>
 		</div>
 		<?php foreach( $this->polling->get_answers($question->question_id) as $row) : ?>
-		<div class="form-group">
+		<div class="form-group" id="answer-<?php echo $row->answer_id ?>">
 			<label>Jawaban</label>
-			<button type="button" class="btn btn-xs btn-danger pull-right bottom1x" id="delete-form" data-id="<?php echo $row->answer_id ?>" title="Hapus Jawaban ini">
+			<a href="javascript:void(0)" data-action="delete" data-key="answer" data-id="<?php echo $row->answer_id ?>" class="btn btn-xs btn-danger pull-right bottom1x" id="delete-form" data-id="<?php echo $row->answer_id ?>" title="Hapus Jawaban ini">
 				<i class="fa fa-times"></i>
-			</button>
+			</a>
 			<input type="file" name="icon[<?php echo $row->answer_id ?>]">
 			<input type="text" class="form-control top1x" name="label[<?php echo $row->answer_id ?>]" value="<?php echo $row->label; ?>" required>
 		</div>
@@ -29,4 +29,20 @@
 		</div>
 	</div>
 	<?php echo form_close(); ?>
+</div>
+
+<div class="modal" id="modal-delete-answer">
+	<div class="modal-dialog modal-sm modal-danger">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-info-circle"></i> Hapus!</h4>
+				<span>Hapus data Jawaban ini dari database?</span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Batal</button>
+				<a href="javascript:void(0)" id="btn-delete" class="btn btn-outline">Hapus</a>
+			</div>
+		</div>
+	</div>
 </div>

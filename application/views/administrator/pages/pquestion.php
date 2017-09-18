@@ -65,7 +65,7 @@
 					<tr>
 						<td colspan="4">
 							<label>Yang terpilih :</label>
-							<a class="btn btn-xs btn-round btn-danger" data-toggle="modal" data-target="#modal-delete-polling-selected"><i class="fa fa-trash-o"></i> Hapus</a>
+							<a href="javascript:void(0)" class="btn btn-xs btn-round btn-danger" data-toggle="modal" data-target="#modal-delete-polling-selected"><i class="fa fa-trash-o"></i> Hapus</a>
 							<small class="pull-right"><?php echo count($questions) ?> dari <?php echo $this->polling->get_question_pg(null, null, 'num') ?> data.</small>
 						</td>
 					</tr>
@@ -94,7 +94,7 @@
 	</div>
 </div>
 
-<div class="modal" id="modal-delete-comment">
+<div class="modal" id="modal-delete-question">
 	<div class="modal-dialog modal-sm modal-danger">
 		<div class="modal-content">
 			<div class="modal-header">

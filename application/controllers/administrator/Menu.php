@@ -9,7 +9,9 @@ class Menu extends Admin_panel
 
 		$this->load->model('page');
 		
-		$this->page_title->push('Menu Navigasi', 'Pengaturan Menu Navigasi');
+		$this->page_title->push('Tampilan', 'Pengaturan Menu Navigasi');
+
+		$this->breadcrumbs->unshift(2, 'Tampilan', $this->uri->uri_string());
 
 		$this->load->js(base_url("public/admin/js/jquery.nestable.js"));
 		$this->load->js(base_url("public/admin/app/menus.js"));
@@ -17,6 +19,8 @@ class Menu extends Admin_panel
 
 	public function index()
 	{
+		$this->breadcrumbs->unshift(3, 'Menu Navigasi', $this->uri->uri_string());
+
 		if( $this->input->post('action'))
 		{
 			switch ($this->input->post('action')) 

@@ -166,7 +166,7 @@ class Polling extends CI_Model
 	    ));
 
 	    /** 
-	    * Anonymouse set
+	    * Validation set
 	    * 
 		* @link http://php.net/manual/en/features.file-upload.multiple.php
 	    */
@@ -232,6 +232,43 @@ class Polling extends CI_Model
 	public function get_answersId($param = 0)
 	{
 		return $this->db->get_where('pollinganswer', array('answer_id' => $param))->row();
+	}
+
+	public function delete($param = 0)
+	{
+		foreach( $this->get_answers( $param ) as $row)
+		{
+			$this->db->delete('pollingrespondent', array('answer_id' => $row->answer_id));
+
+		    if( $row->icon != '')
+		    	@unlink("./public/image/polling/{$row->icon}");
+		}
+
+		$this->db->delete('pollingpost', array('question_id' => $param));
+
+		$this->db->delete('pollingquestion', array('question_id' => $param));
+
+		$this->template->alert(
+			' Polling berhasil dihapus. ', 
+			array('type' => 'success','icon' => 'check')
+		);
+	}
+
+	public function delete_answer($param = 0)
+	{
+		$answer = $this->get_answersId( $param );
+
+		if( $answer->icon != '')
+			@unlink("./public/image/polling/{$answer->icon}");
+
+		$this->db->delete('pollinganswer', array('answer_id' => $param));
+
+		if( $this->db->affected_rows() )
+		{
+			return array('status' => 'success');
+		} else {
+			return array('status' => 'failed');
+		}
 	}
 }
 

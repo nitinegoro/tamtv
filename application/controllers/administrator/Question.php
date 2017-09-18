@@ -98,6 +98,20 @@ class Question extends Admin_panel
 
 		$this->template->admin('updatequestion', $this->data);
 	}
+
+	public function delete($param = 0)
+	{
+		$this->polling->delete( $param );
+
+		redirect(base_url("administrator/question"));
+	}
+
+	public function deleteanswer($param = 0)
+	{
+		$this->response = $this->polling->delete_answer($param);
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->response));
+	}
 }
 
 /* End of file Question.php */

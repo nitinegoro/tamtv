@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	               		<i class="fa fa-question-circle"></i> <span> Manajemen Polling</span>
 	            	</a>
 	        	</li>
-	        	<li class="treeview <?php echo active_link_multiple(array('setting','role','penilaian', 'user')); ?>">
+	        	<li class="treeview <?php echo active_link_multiple(array('stats')); ?>">
 	            	<a href="#">
 	               		<i class="fa fa-line-chart"></i> <span>Statistik</span>
 	               		<span class="pull-right-container">
@@ -66,11 +66,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	               		</span>
 	            	</a>
 	          		<ul class="treeview-menu">
-	            		<li class="<?php echo active_link_controller('setting') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Pengunjung</a>
+	            		<li class="<?php echo active_link_method('index','stats') ?>">
+	              			<a href="<?php echo base_url("administrator/stats"); ?>"><i class="fa fa-angle-double-right"></i> Pengunjung</a>
 	            		</li>
-	            		<li class="<?php echo active_link_controller('user') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Polling Berita</a>
+	            		<li class="<?php echo active_link_method('polling','stats') ?>">
+	              			<a href="<?php echo base_url("administrator/stats/polling"); ?>"><i class="fa fa-angle-double-right"></i> Polling Berita</a>
 	            		</li>
 	          		</ul>
 	        	</li>
@@ -93,7 +93,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            		</li>
 	          		</ul>
 	        	</li>
-	        	<li class="treeview <?php echo active_link_multiple(array('menu')); ?>">
+	        	<li class="treeview <?php echo active_link_multiple(array('theme','menu')); ?>">
+	            	<a href="#">
+	               		<i class="fa fa-clone"></i> <span>Tampilan</span>
+	               		<span class="pull-right-container">
+	                  		<i class="fa fa-angle-right pull-right"></i>
+	               		</span>
+	            	</a>
+	          		<ul class="treeview-menu">
+	            		<li class="<?php echo active_link_controller('theme') ?>">
+	              			<a href="<?php echo base_url("administrator/theme"); ?>"><i class="fa fa-angle-double-right"></i> Element</a>
+	            		</li>
+	            		<li class="<?php echo active_link_controller('menu') ?>">
+	              			<a href="<?php echo base_url("administrator/menu") ?>"><i class="fa fa-angle-double-right"></i> Menu Navigasi</a>
+	            		</li>
+	          		</ul>
+	        	</li>
+	        	<li class="treeview <?php echo active_link_multiple(array('dsff')); ?>">
 	            	<a href="#">
 	               		<i class="fa fa-wrench"></i> <span>Pengaturan</span>
 	               		<span class="pull-right-container">
@@ -102,19 +118,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            	</a>
 	          		<ul class="treeview-menu">
 	            		<li class="<?php echo active_link_controller('setting') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Umum</a>
-	            		</li>
-	            		<li class="<?php echo active_link_controller('menu') ?>">
-	              			<a href="<?php echo base_url("administrator/menu") ?>"><i class="fa fa-angle-double-right"></i> Menu Navigasi</a>
+	              			<a href=""><i class="fa fa-angle-double-right"></i> Informasi Umum</a>
 	            		</li>
 	            		<li class="<?php echo active_link_controller('setting') ?>">
 	              			<a href=""><i class="fa fa-angle-double-right"></i> Sosial Media</a>
 	            		</li>
 	            		<li class="<?php echo active_link_controller('setting') ?>">
 	              			<a href=""><i class="fa fa-angle-double-right"></i> Permalink</a>
-	            		</li>
-	            		<li class="<?php echo active_link_controller('user') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Elemen</a>
 	            		</li>
 	          		</ul>
 	        	</li>
