@@ -75,7 +75,7 @@
 						</td>
 						<td><?php echo user_role($row->user_type) ?></td>
 						<td class="text-center">
-							<?php echo anchor(base_url("administrator/posts?author={$row->ID}"), $this->user->count_posts($row->ID)); ?>	
+							<?php echo anchor(base_url("administrator/post?author={$row->ID}"), $this->user->count_posts($row->ID)); ?>	
 						</td>
 					</tr>
 				<?php endforeach; 

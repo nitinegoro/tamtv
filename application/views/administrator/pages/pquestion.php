@@ -45,8 +45,9 @@
 							</strong>
 							<div class="button-action" id="action-">
 
-								<a href="">Update</a> |
-								<a href="#" data-action="delete" data-key="question" data-id="<?php echo $row->question_id ?>" class="red">Hapus</a>
+								<a href="<?php echo base_url("administrator/question/update/{$row->question_id}") ?>">Update</a> |
+								<a href="<?php echo base_url("administrator/stats/polling/{$row->question_id}") ?>" class="text-success">Statistik</a> |
+								<a href="javascript:void(0)" data-action="delete" data-key="question" data-id="<?php echo $row->question_id ?>" class="red">Hapus</a>
 							</div>
 						</td>
 						<td class="text-center">  

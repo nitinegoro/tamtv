@@ -113,7 +113,8 @@ jQuery(function($) {
 	/*
 	* ADD FORM Perasaan
 	*/
-	var minFormUpload = 2;
+	var minFormUpload = $('div.form-dynamic').data('start');
+	
 	$('button#addFormUpload').on('click', function() 
 	{
 		var html  = '<div class="form-group" id="form-'+minFormUpload+'">';

@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Polling extends CI_Model 
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library(array('upload'));
+	}
 	public function get_question($param = 0)
 	{
 		$this->db->where('question_id', $param);
@@ -91,7 +96,142 @@ class Polling extends CI_Model
 
 	public function create_polling()
 	{
-		
+	    $this->db->insert('pollingquestion', array(
+	    	'question' => $this->input->post('question')
+	    ));
+
+	    $question = $this->db->insert_id();
+
+	    $this->inserts_icon($question);
+
+		$this->template->alert(
+			' Polling berhasil ditambahkan. ', 
+			array('type' => 'success','icon' => 'check')
+		);
+	}
+
+	public function inserts_icon($question = FALSE)
+	{
+		$hasilUpload = array();
+
+		$object = array();
+
+		if( $question == TRUE)
+		{
+			$jumlahfiles = count(@$_FILES['perasaan']['name']);
+
+		    // Faking upload calls to $_FILES
+		    for ($i = 0; $i < $jumlahfiles; $i++) 
+		    {
+		    	$_FILES['perasaan']['name']     = $_FILES['perasaan']['name'][$i];
+		    	$_FILES['perasaan']['type']     = $_FILES['perasaan']['type'][$i];
+		    	$_FILES['perasaan']['tmp_name'] = $_FILES['perasaan']['tmp_name'][$i];
+		    	$_FILES['perasaan']['error']    = $_FILES['perasaan']['error'][$i];
+		    	$_FILES['perasaan']['size']     = $_FILES['perasaan']['size'][$i];
+		    	$config = array(
+		        	'file_name'     => $_FILES['perasaan']['name'][$i],
+		        	'allowed_types' => 'jpg|jpeg|png|gif|svg',
+		        	'max_size'      => 20000,
+		        	'overwrite'     => FALSE,
+		        	'upload_path' 	=>'./public/image/polling'
+		    	);
+		      
+		      	$this->upload->initialize($config);
+		      
+		      	if ( ! $this->upload->do_upload()) 
+		      	{
+			        continue;
+		      	} else {
+		      		$hasilUpload[] = $this->upload->data();
+
+		      		$object[] = array(
+		      			'question_id' => $question,
+		      			'label' => $this->input->post('jawaban')[$i],
+		      			'icon' => $hasilUpload[$i]['file_name']
+		      		);
+		      	}
+		    }
+
+		    if( $jumlahfiles >= 1)
+		    	$this->db->insert_batch('pollinganswer', $object);
+		}
+	}
+
+	public function update_polling($param = 0)
+	{
+	    $this->db->update('pollingquestion', array(
+	    	'question' => $this->input->post('question')
+	    ), array(
+	    	'question_id' => $param
+	    ));
+
+	    /** 
+	    * Anonymouse set
+	    * 
+		* @link http://php.net/manual/en/features.file-upload.multiple.php
+	    */
+		$filesUpdate = function($files)
+		{
+		    $names = array( 'name' => 1, 'type' => 1, 'tmp_name' => 1, 'error' => 1, 'size' => 1);
+
+		    foreach ($files as $key => $part) 
+		    {
+		        // only deal with valid keys and multiple files
+		        $key = (string) $key;
+		        if (isset($names[$key]) && is_array($part)) 
+		        {
+		            foreach ($part as $position => $value) 
+		            {
+		            	if( $value == FALSE OR $key == 'error')
+		            		continue;
+
+		                $files[$position][$key] = $value;
+		            }
+		            // remove old key reference
+		            unset($files[$key]);
+		        }
+		    }
+
+		    return $files;
+		};
+
+		foreach ($filesUpdate($_FILES['icon']) as $key => $file) 
+		{
+		    move_uploaded_file($file['tmp_name'],'./public/image/polling/'.$file['name']);
+
+		    $answer = $this->get_answersId( $key );
+
+		    if( $answer->icon != '')
+		    	@unlink("./public/image/polling/{$answer->icon}");
+
+		    $this->db->update('pollinganswer', array(
+		      	'icon' => $file['name']
+		    ), array(
+		     	'question_id' => $param,
+		     	'answer_id' => $key
+		    ));		    
+		}
+
+		foreach ($this->input->post('label') as $key => $value) 
+		    $this->db->update('pollinganswer', array(
+		      	'label' => $this->input->post('label')[$key]
+		    ), array(
+		     	'question_id' => $param,
+		     	'answer_id' => $key
+		    )
+		);	
+
+	    $this->inserts_icon($param);
+
+		$this->template->alert(
+			' Polling berhasil diubah. ', 
+			array('type' => 'success','icon' => 'check')
+		);
+	}
+
+	public function get_answersId($param = 0)
+	{
+		return $this->db->get_where('pollinganswer', array('answer_id' => $param))->row();
 	}
 }
 

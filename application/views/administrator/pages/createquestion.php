@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3 col-xs-12"><?php echo $this->session->flashdata('alert'); ?></div>
-	<?php echo form_open_multipart(current_url(), array('method' => 'get')); ?>
+	<?php echo form_open_multipart(current_url(), array('method' => 'post')); ?>
 	<div class="col-md-6 col-md-offset-3 bottom2x">
 		<div class="form-group">
 			<label>Pertanyaan Polling </label>
@@ -19,7 +19,7 @@
 			<input type="file" name="perasaan[]">
 			<input type="text" class="form-control top1x" name="jawaban[]" required>
 		</div>
-		<div class="form-dynamic">
+		<div class="form-dynamic" data-start="2">
 			<div class="form-group">
 				<button type="button" class="btn btn-xs pull-right top1x bottom2x" id="addFormUpload"><i class="fa fa-plus"></i> Tambah Jawaban</button>
 			</div>

@@ -51,7 +51,7 @@ class Question extends Admin_panel
 
 	public function create()
 	{
-		$this->page_title->push('Polling', 'Manajemen polling berita');
+		$this->page_title->push('Tambah', 'Manajemen polling berita');
 
 		$this->breadcrumbs->unshift(2, 'Tambah Polling', "index");
 
@@ -61,7 +61,7 @@ class Question extends Admin_panel
 		{
 			$this->polling->create_polling();
 
-			//redirect(current_url());
+			redirect(current_url());
 		}
 
 		$this->data = array(
@@ -69,6 +69,34 @@ class Question extends Admin_panel
 		);
 
 		$this->template->admin('createquestion', $this->data);
+	}
+
+	public function update($param = 0)
+	{
+		$question = $this->polling->get_question($param);
+
+		if( $question == FALSE)
+			show_404();
+
+		$this->page_title->push('Update', 'Manajemen polling berita');
+
+		$this->breadcrumbs->unshift(2, 'Update Polling', "index");
+
+		$this->form_validation->set_rules('question', 'Pertanyaan Polling', 'trim|required');
+
+		if( $this->form_validation->run() == TRUE )
+		{
+			$this->polling->update_polling( $param );
+			
+			redirect(current_url());
+		}
+
+		$this->data = array(
+			'title' => "Update Polling",
+			'question' => $question
+		);
+
+		$this->template->admin('updatequestion', $this->data);
 	}
 }
 
