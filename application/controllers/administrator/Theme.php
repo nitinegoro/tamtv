@@ -12,6 +12,8 @@ class Theme extends Admin_panel
 		$this->breadcrumbs->unshift(1, 'Tampilan', $this->uri->uri_string());
 
 		$this->layout = ( $this->input->get('layout') != '') ? $this->input->get('layout') : 'sidebar-index';
+
+		$this->load->js(base_url("public/admin/app/main.js"));
 	}
 
 	public function index()
@@ -27,15 +29,11 @@ class Theme extends Admin_panel
 		$this->template->admin('element', $this->data);
 	}
 
-	public function update()
+	public function update( $param = 'sidebar-index' )
 	{
-		$this->themes->update_layout();
+		$this->themes->update_layout( $param );
 
-		 redirect(base_url("administrator/theme?layout="));
-
-		echo "<pre>";
-		print_r ($this->input->post('trending-tags'));
-		echo "</pre>";
+		 redirect(base_url("administrator/theme?layout={$param}"));
 	}
 
 }

@@ -18,6 +18,10 @@ $valhead = json_decode($boxhead->meta_value);
 ?>
 <div class="col-xs-12"><hr></div>
 <div class="box-big-loop" itemscope itemtype="http://schema.org/Article">
+	<div class="block-box">
+		<h3 class="featured-heading"> <?php echo $box->meta_name ?> </h3> 
+		<div class="line"></div>
+	</div>
 	<?php  
 	/**
 	 * Get Latest Post

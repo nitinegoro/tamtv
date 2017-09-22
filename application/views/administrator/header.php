@@ -34,6 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("public/admin/highcharts/modules/exporting.js"); ?>"></script>
   <script src="<?php echo base_url("public/admin/highcharts/modules/data.js"); ?>"></script>
   <script src="<?php echo base_url("public/admin/highcharts/modules/drilldown.js"); ?>"></script>
+  <script src="<?php echo base_url("public/theme/js/jquery.sticky.min.js"); ?>"></script>
   <script type="text/javascript"> 
       var base_url   = '<?php echo site_url("administrator"); ?>';
       var base_path  = '<?php echo base_url('public'); ?>';

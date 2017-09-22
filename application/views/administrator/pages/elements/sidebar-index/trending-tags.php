@@ -11,9 +11,6 @@ $tags = json_decode($box->meta_value);
 
 echo form_hidden('elements[]', 'trending-tags');
 ?>		
-<div class="box-header with-border">
-	<h4 class="box-heading"><?php echo @$this->themes->layout_aliases[$this->layout]; ?></h4>
-</div>
 <div class="box-header"> Topik Trending	 </div>
 <div class="box-body">
 	<div class="form-group">

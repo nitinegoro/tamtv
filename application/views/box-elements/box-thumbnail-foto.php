@@ -54,7 +54,7 @@ if( $this->posts->get_type('photo', 1, 0, 'result') ) :
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->get_type('photo', 3, 6, 'result') as $key => $post) :
+	foreach( $this->posts->get_type('photo', $value->limit, 6, 'result') as $key => $post) :
 	?>
 	<div class="big-loop-item">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">

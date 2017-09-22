@@ -1,5 +1,7 @@
 jQuery(function($) {
 
+	$("div.sticker").sticky({topSpacing:20, bottomSpacing:100});
+	
 	$('form#save-streaming').submit(function(event) 
 	{
 		event.preventDefault(); 
