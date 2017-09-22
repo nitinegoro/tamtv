@@ -36,6 +36,9 @@ if( $this->router->fetch_class() == 'main' )
 		case 'live':
 			$this->load->view('sidebar-live', $this->data);
 			break;
+		case 'getpost':
+			$this->load->view('sidebar-single', $this->data);
+			break;
 		case 'gettag':
 		case 'page':
 			break;

@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  **/
 
-$box = $this->themes->get('ads-300x100', 'sidebar-index');
+$box = $this->themes->get('ads-300x100', 'sidebar-single');
 
 $tags = json_decode($box->meta_value);
 

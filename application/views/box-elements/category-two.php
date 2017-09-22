@@ -10,8 +10,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
-$box = $this->themes->get('category-two');
-
+switch ($this->router->fetch_method()) {
+	case 'getpost':
+		$box = $this->themes->get('category-two', 'sidebar-single');
+		break;
+	
+	default:
+		$box = $this->themes->get('category-two', 'sidebar-index');
+		break;
+}
 $value = json_decode($box->meta_value);
 
 ?>

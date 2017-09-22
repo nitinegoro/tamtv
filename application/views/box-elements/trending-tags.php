@@ -8,7 +8,9 @@ switch ($this->router->fetch_method()) {
 	case 'gettag':
 		$box = $this->themes->get('trending-tags', 'sidebar-tag');
 		break;
-	
+	case 'getpost':
+		$box = $this->themes->get('trending-tags', 'sidebar-single');
+		break;
 	default:
 		$box = $this->themes->get('trending-tags', 'sidebar-index');
 		break;

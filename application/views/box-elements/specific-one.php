@@ -10,8 +10,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
-$box = $this->themes->get('specific-one');
+//$box = $this->themes->get('specific-one');
 
+switch ($this->router->fetch_method()) {
+	case 'getpost':
+		$box = $this->themes->get('specific-one','sidebar-single');
+		break;
+	default:
+		$box = $this->themes->get('specific-one', 'sidebar-index');
+		break;
+}
+if( $box ) :
 $value = json_decode($box->meta_value);
 ?>
 <div id="<?php if($value->sticky == 'yes') echo 'sticker'; ?>">
@@ -59,5 +68,6 @@ $value = json_decode($box->meta_value);
 </div>
 </div>
 <?php
+endif;
 /* End of file specific-one.php */
 /* Location: ./application/views/box-elements/specific-one.php */

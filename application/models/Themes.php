@@ -282,6 +282,20 @@ class Themes extends CI_Model
 				)
 		);
 	}
+	public function Update_specific_two($layout='')
+	{
+		return $this->db->update('themesmeta', 
+				array(
+					'meta_name' => $this->input->post('specific-two[name]'),
+					'meta_value' => json_encode($this->input->post('specific-two[json]')),
+					'status' => $this->input->post('specific-two[status]')
+				),
+				array(
+					'meta_key' => 'specific-two',
+					'layout' => $layout
+				)
+		);
+	}
 }
 
 /* End of file Themes.php */

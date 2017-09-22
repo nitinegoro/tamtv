@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  **/
 
-$box = $this->themes->get('category-two');
+$box = $this->themes->get('category-two', 'sidebar-index');
 
 $json = json_decode($box->meta_value);
 
