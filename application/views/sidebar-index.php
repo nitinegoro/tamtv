@@ -26,7 +26,7 @@ $box = $this->themes->get('ads-120x600-right');
 			}
 			?>
 		</div>
-		<?php if( $box AND $this->posts->getmeta('vidio', @$post->ID) == FALSE) : ?>
+		<?php if( $box == 'yes' AND $this->posts->getmeta('vidio', @$post->ID) == FALSE) : ?>
 		<div class="ads-right">
 			<?php echo $box->meta_value ?>
 		</div>

@@ -8,7 +8,7 @@ class Posts extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
-		
+
 		$this->permalink_type = $this->get_option('permalink');
 
 		$this->permalink_page = $this->uri->segment(2);
@@ -63,7 +63,12 @@ class Posts extends CI_Model
 			case 'slug':
 				$this->db->where('post_slug', $this->uri->segment(1));
 				break;
-			
+			case 'date':
+				$this->db->where('post_slug', $this->uri->segment(4));
+				break;
+			case 'month':
+				$this->db->where('post_slug', $this->uri->segment(3));
+				break;
 			default:
 				# code...
 				break;
@@ -372,7 +377,7 @@ class Posts extends CI_Model
 			case 'date':
 				return base_url($date->format('Y') . '/' . $date->format('m') . '/' . $date->format('d') . '/' . $post->post_slug);
 				break;
-			case 'month_year':
+			case 'month':
 				return base_url($date->format('Y') . '/' . $date->format('m') . '/' . $post->post_slug);
 				break;
 			default:

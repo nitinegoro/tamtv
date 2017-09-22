@@ -16,7 +16,7 @@ $adsleft = $this->themes->get('ads-120x600-left');
 $asdtop = $this->themes->get('ads-980x90');
 ?>
 	<div class="container content-wrapper" id="infinite">
-        <?php if( $adsleft ) : ?>
+        <?php if( $adsleft == 'yes' ) : ?>
 		<div class="ads-left">
 			<?php echo $adsleft->meta_value ?>
 		</div>

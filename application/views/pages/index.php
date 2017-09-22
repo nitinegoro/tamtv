@@ -16,7 +16,7 @@ $asdtop = $this->themes->get('ads-980x90', 'top-index');
 ?>	
 	<div class="container content-wrapper">
         <?php
-        if( $asdtop ) :
+        if( $asdtop->status == 'yes' ) :
         ?>
         <div class="col-xs-12 text-center">
         	<div class="adsvertising">
@@ -24,7 +24,7 @@ $asdtop = $this->themes->get('ads-980x90', 'top-index');
         	</div>
         </div>
         <?php endif; 
-        if( $adsleft ) : ?>
+        if( $adsleft == 'yes') : ?>
 		<div class="ads-left">
 			<?php echo $adsleft->meta_value ?>
 		</div>

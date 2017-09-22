@@ -22,7 +22,7 @@ if( $this->posts->getmeta('video', $post->ID) != '')
 ?>
 	<div class="container content-wrapper">
         <?php
-        if( $adsleft ) :
+        if( $adsleft == 'yes' ) :
         ?>
         <div class="col-xs-12 text-center">
         	<div class="adsvertising">
@@ -30,7 +30,7 @@ if( $this->posts->getmeta('video', $post->ID) != '')
         	</div>
         </div>
         <?php endif;  
-        if( $asdtop AND $this->posts->getmeta('vidio', $post->ID) == FALSE) : ?>
+        if( $asdtop == 'yes' AND $this->posts->getmeta('vidio', $post->ID) == FALSE) : ?>
 		<div class="ads-left">
 			<?php echo $adsleft->meta_value; ?>
 		</div>

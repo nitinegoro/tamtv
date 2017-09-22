@@ -89,7 +89,7 @@ foreach( $db->get_where( 'posts', array('post_status' => 'publish', 'post_type !
 		case 'date':
 			$route[ $date->format('Y') . '/' . $date->format('m') . '/' . $date->format('d') . '/' . $row->post_slug ]   = 'main/getpost/';
 			break;
-		case 'month_year':
+		case 'month':
 			$route[ $date->format('Y') . '/' . $date->format('m') . '/' . $row->post_slug ]   = 'main/getpost/';
 			break;
 		default:
