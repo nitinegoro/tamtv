@@ -63,7 +63,7 @@ var updateOutput = function(e)
 			                    
 		});
 	} else {
-		output.val('JSON browser support required for this demo.');
+		output.val('JSON browser support required for this feature.');
 	}
 };
 
