@@ -10,7 +10,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
-$box = $this->themes->get('ads-300x400', 'sidebar-index');
+
+switch ($this->router->fetch_method()) {
+	case 'gettag':
+		$box = $this->themes->get('ads-300x400', 'sidebar-tag');
+		break;
+	
+	default:
+		$box = $this->themes->get('ads-300x400', 'sidebar-index');
+		break;
+}
 ?>
 <div class="box-adsvertising">
 	<?php echo $box->meta_value; ?>

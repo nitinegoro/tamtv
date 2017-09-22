@@ -12,9 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 ?>
 	<div class="container content-wrapper">
-
 		<section class="col-md-4">
-			<div id="sticker" class="page-tag box-sidebar">
+			<div id="sticker">
+			<div class="page-tag box-sidebar">
 				<h1><?php echo $tag->name; ?></h1>
 				<p><?php echo $tag->description; ?></p>
 				<?php  
@@ -29,8 +29,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				}
 				?>
 			</div>
+			</div>
 		</section>
-		
 		<div class="col-xs-8 tag-content">
 			<?php  
 			/**

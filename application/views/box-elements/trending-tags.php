@@ -4,9 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Box elements trending tags
  *
  **/
-
-$box = $this->themes->get('trending-tags');
-
+switch ($this->router->fetch_method()) {
+	case 'gettag':
+		$box = $this->themes->get('trending-tags', 'sidebar-tag');
+		break;
+	
+	default:
+		$box = $this->themes->get('trending-tags', 'sidebar-index');
+		break;
+}
 $tags = json_decode($box->meta_value);
 ?>
 <div class="box-topic-tag">

@@ -10,7 +10,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
-$box = $this->themes->get('ads-600x90', 'content-index');
+if( $this->router->fetch_method() == 'index' )
+{
+	$box = $this->themes->get('ads-600x90', 'content-index');
+} else {
+	$box = $this->themes->get('ads-600x90', 'content-single');
+}
 ?>
 <div class="box-adsvertising text-center top">
 	<?php echo $box->meta_value; ?>
