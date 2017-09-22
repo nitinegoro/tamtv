@@ -296,6 +296,34 @@ class Themes extends CI_Model
 				)
 		);
 	}
+	public function Update_similar_one($layout='')
+	{
+		return $this->db->update('themesmeta', 
+				array(
+					'meta_name' => $this->input->post('similar-one[name]'),
+					'meta_value' => json_encode($this->input->post('similar-one[json]')),
+					'status' => $this->input->post('similar-one[status]')
+				),
+				array(
+					'meta_key' => 'similar-one',
+					'layout' => $layout
+				)
+		);
+	}
+	public function Update_most_popular_single($value='')
+	{
+		return $this->db->update('themesmeta', 
+				array(
+					'meta_name' => $this->input->post('most-popular-single[name]'),
+					'meta_value' => json_encode($this->input->post('most-popular-single[json]')),
+					'status' => $this->input->post('most-popular-single[status]')
+				),
+				array(
+					'meta_key' => 'most-popular-single',
+					'layout' => $layout
+				)
+		);
+	}
 }
 
 /* End of file Themes.php */
