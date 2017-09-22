@@ -10,9 +10,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
-$adsleft = $this->themes->get('ads-120x600-left');
+$adsleft = $this->themes->get('ads-120x600-left', 'top-index');
 
-$asdtop = $this->themes->get('ads-980x90');
+$asdtop = $this->themes->get('ads-980x90', 'top-index');
 ?>	
 	<div class="container content-wrapper">
         <?php

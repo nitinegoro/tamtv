@@ -10,10 +10,7 @@ class Themes extends CI_Model
 		'sidebar-single' => 'Sidebar Detail',
 		'content-single' => 'Konten Detail',
 		'sidebar-live' => 'Sedebar Live',
-		'content-live' => 'Konten Live',
-		'content-category' => 'Konten Kategori',
-		'content-tag' => 'Konten Topik',
-		'top-index' => 'Atas Utama'
+		'top-index' => 'Iklan Atas, Kiri dan Kanan'
 	);
 
 	public function layout($layout = 'content-index')
@@ -38,7 +35,7 @@ class Themes extends CI_Model
 	{
 		return $this->db->query("
 			SELECT DISTINCT layout FROM themesmeta 
-			WHERE  layout NOT IN('mobile-index','mobile-category','mobile-tag')
+			WHERE  layout NOT IN('mobile-index','mobile-category','mobile-tag','content-live','content-category','content-tag')
 			ORDER BY tmeta_id ASC
 		")->result();
 	}
@@ -56,11 +53,11 @@ class Themes extends CI_Model
 		if( $layout == FALSE)
 		{
 			return $this->db->query("
-				SELECT meta_name, meta_key, meta_value, status FROM themesmeta WHERE meta_key = '{$param}'
+				SELECT meta_name, meta_key, meta_value, status FROM themesmeta WHERE meta_key = '{$param}' AND status = 'yes'
 			")->row();
 		} else {
 			return $this->db->query("
-				SELECT meta_name, meta_key, meta_value, status FROM themesmeta WHERE meta_key = '{$param}' AND layout = '{$layout}'
+				SELECT meta_name, meta_key, meta_value, status FROM themesmeta WHERE meta_key = '{$param}' AND layout = '{$layout}' AND status = 'yes'
 			")->row();
 		}
 	}
@@ -320,6 +317,45 @@ class Themes extends CI_Model
 				),
 				array(
 					'meta_key' => 'most-popular-single',
+					'layout' => $layout
+				)
+		);
+	}
+	public function Update_ads_980x90($layout = '')
+	{
+		return $this->db->update('themesmeta', 
+				array(
+					'meta_value' => $this->input->post('ads-980x90[iklan]'),
+					'status' => $this->input->post('ads-980x90[status]')
+				),
+				array(
+					'meta_key' => 'ads-980x90',
+					'layout' => $layout
+				)
+		);
+	}
+	public function Update_ads_120x600_left($layout='')
+	{
+		return $this->db->update('themesmeta', 
+				array(
+					'meta_value' => $this->input->post('ads-120x600-left[iklan]'),
+					'status' => $this->input->post('ads-120x600-left[status]')
+				),
+				array(
+					'meta_key' => 'ads-120x600-left',
+					'layout' => $layout
+				)
+		);
+	}
+	public function Update_ads_120x600_right($layout='')
+	{
+		return $this->db->update('themesmeta', 
+				array(
+					'meta_value' => $this->input->post('ads-120x600-right[iklan]'),
+					'status' => $this->input->post('ads-120x600-right[status]')
+				),
+				array(
+					'meta_key' => 'ads-120x600-right',
 					'layout' => $layout
 				)
 		);

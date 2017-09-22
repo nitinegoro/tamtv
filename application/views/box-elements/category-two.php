@@ -14,7 +14,9 @@ switch ($this->router->fetch_method()) {
 	case 'getpost':
 		$box = $this->themes->get('category-two', 'sidebar-single');
 		break;
-	
+	case 'live':
+		$box = $this->themes->get('category-two', 'sidebar-live');
+		break;
 	default:
 		$box = $this->themes->get('category-two', 'sidebar-index');
 		break;
