@@ -76,14 +76,20 @@
 		    		?>
 				</ul>
 				<ul class="social-icon pull-right">
-					<li><a href=""><img src="<?php echo base_url("public/image/component/facebook.png") ?>" alt=""></a></li>
-					<li><a href=""><img src="<?php echo base_url("public/image/component/twitter.png") ?>" alt=""></a></li>
-					<li><a href=""><img src="<?php echo base_url("public/image/component/gplus.png") ?>" alt=""></a></li>
-					<li><a href=""><img src="<?php echo base_url("public/image/component/youtube.png") ?>" alt=""></a></li>
-					<li><a href=""><img src="<?php echo base_url("public/image/component/instagram.png") ?>" alt=""></a></li>
+					<?php  
+					foreach( $this->options->result('socialmedia') as $row) :
+
+						$social = json_decode($row->option_value);
+					?>
+					<li>
+						<a href="<?php echo $social->url ?>" target="_blank"><img src="<?php echo base_url("public/image/component/{$social->media}.png") ?>" alt=""></a>
+					</li>
+					<?php  
+					endforeach;
+					?>
 				</ul>
 				<div class="col-xs-6">
-					<p class="copyright"><small>Hak Cipta 2017 Tam TV Babel - Develop By <a href="">Teitra Mega</a></small></p>
+					<p class="copyright"><small>Hak Cipta 2017 Tam TV Babel - Develop By <a href="http://www.teitramega.co.id">Teitra Mega</a></small></p>
 				</div>
 			</div>
 		</div>

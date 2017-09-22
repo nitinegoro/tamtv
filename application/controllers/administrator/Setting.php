@@ -33,6 +33,26 @@ class Setting extends Admin_panel
 		}
 		redirect(base_url("administrator/setting"));
 	}
+
+	public function socialmedia()
+	{
+		$this->page_title->push('Pengaturan', 'Social Media');
+
+		$this->breadcrumbs->unshift(2, 'Social Media', $this->uri->uri_string());
+
+		$this->data = array(
+			'title' => "Pengaturan Social Media"
+		);
+
+		$this->template->admin('socialmedia', $this->data);	
+	}
+
+	public function set_socialmedia()
+	{
+		$this->options->update_social_media();
+
+		redirect(base_url("administrator/setting/socialmedia"));
+	}
 }
 
 /* End of file Setting.php */

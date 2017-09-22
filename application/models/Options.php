@@ -18,11 +18,27 @@ class Options extends CI_Model
 		}
 	}
 
+	public function result($param = '')
+	{
+		return $this->db->get_where('options', array('option_name' => $param))->result();
+	}
+
 	public function update($paramater = '', $value = '')
 	{
 		$this->db->update('options', array('option_value' => $value), array('option_name' => $paramater));
 
 		return $this->db->affected_rows();
+	}
+
+	public function update_social_media()
+	{
+		if( is_array($this->input->post('social')) )
+		{
+			foreach ($this->input->post('social') as $key => $value) 
+			{
+				$this->db->update('options', array('option_value' => json_encode($value)), array('option_id' => $key));
+			}
+		}
 	}
 
 }

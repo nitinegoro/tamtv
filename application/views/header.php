@@ -47,8 +47,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta name="robots" content="index, follow" />
 	<meta property="og:url" content="<?php echo current_url() ?>" />
 	<meta name="google-site-verification" content="" >
-	<meta name="fb:admins" content="tamtvbabel" />
-	<meta property="fb:app_id" content=""/>
+	<meta name="fb:admins" content="tamnewsbabel" />
+	<meta property="fb:app_id" content="141250066463038"/>
 	<meta property="fb:pages" content="426577360732884" />
 	<meta name="twitter:card" content="summary_large_image"/>
 	<meta name="twitter:site" content="@[PROFILE HERE]"/>

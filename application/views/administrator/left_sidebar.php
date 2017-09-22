@@ -121,7 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	              			<a href="<?php echo base_url("administrator/setting"); ?>"><i class="fa fa-angle-double-right"></i> Umum</a>
 	            		</li>
 	            		<li class="<?php echo active_link_method('socialmedia','setting') ?>">
-	              			<a href=""><i class="fa fa-angle-double-right"></i> Sosial Media</a>
+	              			<a href="<?php echo base_url("administrator/setting/socialmedia"); ?>"><i class="fa fa-angle-double-right"></i> Sosial Media</a>
 	            		</li>
 	          		</ul>
 	        	</li>
