@@ -1,5 +1,11 @@
 jQuery(function($) {
 
+    /* DATEPICKER */
+    $('#datepicker1, #datepicker2').daterangepicker({
+        singleDatePicker: true,
+        format:'YYYY-MM-DD', 
+    });
+    
 	$("div.sticker").sticky({topSpacing:20, bottomSpacing:100});
 	
 	$('form#save-streaming').submit(function(event) 

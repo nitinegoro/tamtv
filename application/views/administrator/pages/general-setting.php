@@ -58,11 +58,20 @@ echo form_open(base_url("administrator/setting/set_general"), array('class' => '
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="password" class="control-label col-md-3 col-xs-12">Terima Komentar Secara Otomatis : <strong class="text-red">*</strong></label>
+					<label for="options[comment_auto_approved]" class="control-label col-md-3 col-xs-12">Terima Komentar Secara Otomatis : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<select name="" class="form-control">
-							<option value="">AKTIF</option>
-							<option value="">TIDAK</option>
+							<option value="yes" <?php if($this->options->get('comment_auto_approved')=='yes') echo 'selected'; ?>>AKTIF</option>
+							<option value="no" <?php if($this->options->get('comment_auto_approved')=='no') echo 'selected'; ?>>TIDAK</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="control-label col-md-3 col-xs-12">Mode Streaming : <strong class="text-red">*</strong></label>
+					<div class="col-md-8">
+						<select name="options[live-mode]" class="form-control">
+							<option value="enable" <?php if($this->options->get('live-mode')=='enable') echo 'selected'; ?>>AKTIF</option>
+							<option value="disable" <?php if($this->options->get('live-mode')=='disable') echo 'selected'; ?>>TIDAK</option>
 						</select>
 					</div>
 				</div>

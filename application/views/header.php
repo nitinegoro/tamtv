@@ -18,11 +18,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta http-equiv="Refresh" content="900" />
 	<title><?php echo $title ?> - <?php echo $this->options->get('sitename') ?></title>
 	<link rel="shortcut icon" href="<?php echo base_url("public/image/site/favicon.png"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("public/bootstraps/css/bootstrap.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("public/bootstraps/css/bootstrap.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/main.css"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/daterangepicker-bs3.css"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("public/bxslider/jquery.bxslider.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/main.min.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/daterangepicker-bs3.min.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("public/bxslider/jquery.bxslider.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/viewer/viewer.min.css"); ?>">
 	<?php  
 	/*
@@ -46,18 +46,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta property="og:locale" content="id_ID" />
 	<meta name="robots" content="index, follow" />
 	<meta property="og:url" content="<?php echo current_url() ?>" />
-	<meta name="google-site-verification" content="" >
+	<meta name="google-site-verification" content="QUYkDXISa5DHjstLgiS03CcmVqXKc_K5ERqlE6jqwPQ" />
 	<meta name="fb:admins" content="tamnewsbabel" />
 	<meta property="fb:app_id" content="141250066463038"/>
 	<meta property="fb:pages" content="426577360732884" />
 	<meta name="twitter:card" content="summary_large_image"/>
-	<meta name="twitter:site" content="@[PROFILE HERE]"/>
+	<meta name="twitter:site" content="@tamnewsid"/>
 	<meta name="twitter:site:id" content="17128975" />
 	<meta name="googlebot-news" content="index,follow" />
 	<meta name="googlebot" content="index,follow" />
 	<meta name="robots" content="index,follow" />
 	<meta http-equiv="content-language" content="In-Id" />
-	<meta name="twitter:creator" content="@[PROFILE HERE]" />
+	<meta name="twitter:creator" content="@tamnewsid" />
 	<link rel="dns-prefetch" href="https://api-read.facebook.com" />
 	<link rel="author" href="https://plus.google.com/[YOUR PERSONAL G+ PROFILE HERE]"/>
 	<!-- Global Site Tag (gtag.js) - Google Analytics -->

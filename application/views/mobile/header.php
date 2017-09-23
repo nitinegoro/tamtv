@@ -99,9 +99,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <?php if( $this->options->get('live-mode') == 'enable') : ?>
             <a href="<?php echo $this->options->get('live-streaming') ?>" class="btn-live left">
                 <i class="fa fa-video-camera"></i>
             </a>
+            <?php endif; ?>
             <a class="navbar-brand" href="<?php echo base_url() ?>">
                 <?php  
                 /**

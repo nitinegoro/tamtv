@@ -81,7 +81,10 @@ class Login extends Web
 
 		if ($this->form_validation->run() == TRUE)
 		{
-
+			$this->template->alert(
+				' Maaf! Alamat E-Mail tidak tersedia.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
 		}
 
 		$this->meta_tags->set_meta_tag('title', "Login" );
@@ -94,7 +97,7 @@ class Login extends Web
 		{
 			$this->template->view('forgot', $this->data);
 		} else {
-			//$this->load->view('mobile/login', $this->data);
+			$this->load->view('mobile/forgot', $this->data);
 		}		
 	}
 

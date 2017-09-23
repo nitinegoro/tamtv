@@ -125,11 +125,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            		</li>
 	          		</ul>
 	        	</li>
-<!-- 	        	<li class="<?php echo active_link_controller('userguide'); ?>">
-	            	<a href="">
-	               		<i class="fa fa-info-circle"></i> <span> Panduan Penggunaan</span>
-	            	</a>
-</li> -->
       		</ul>
       	</section>
    	</aside>

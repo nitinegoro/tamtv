@@ -92,7 +92,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		}
     		?>
     		</ul>
-    		<?php if( $this->router->fetch_class() == 'main' AND $this->router->fetch_method() != 'live') : ?>
+    		<?php if( $this->router->fetch_class() == 'main' AND $this->router->fetch_method() != 'live') :
+    		if( $this->options->get('live-mode') == 'enable') :
+    		?>
     		<ul class="nav navbar-nav navbar-right navbar-live">
     			<li class="live-menu">
     				<a href="<?php echo base_url("live"); ?>">
@@ -101,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     				</a>
     			</li>
     		</ul>
-    		<?php endif; ?>
+    		<?php endif; endif; ?>
 		</nav>
 	</div>
 <?php
