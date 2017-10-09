@@ -112,8 +112,8 @@
                  *
                  * @param String (main_logo)
                  **/
-                if( $this->options->get('main_logo', TRUE)->image )
-                    echo '<img src="'.$this->options->get('main_logo', TRUE)->image.'" alt="'.$this->options->get('main_logo', TRUE)->alt.'" class="main-logo">';
+                if( $this->options->get('small_logo', TRUE)->image )
+                    echo '<img src="'.$this->options->get('small_logo', TRUE)->image.'" alt="'.$this->options->get('small_logo', TRUE)->alt.'" class="main-logo">';
                 ?>
             </a>
         </div>

@@ -45,7 +45,7 @@ if( $this->posts->get_type('photo', 1, 0, 'result') ) :
 	</div>
 </section>
 <div class="col-xs-12"><hr></div>
-<div class="box-big-loop" itemscope itemtype="http://schema.org/Article">
+<!-- <div class="box-big-loop" itemscope itemtype="http://schema.org/Article">
 	<?php  
 	/**
 	 * Get Latest Post
@@ -86,7 +86,7 @@ if( $this->posts->get_type('photo', 1, 0, 'result') ) :
 		</div>
 	</div>
 	<?php endforeach; ?>
-</div>
+</div> -->
 <?php
 endif;
 /* End of file box-thumbnail-foto.php */
