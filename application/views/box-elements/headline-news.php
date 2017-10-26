@@ -17,9 +17,56 @@ if( $this->posts->get_type('headline', 1, 0, 'result') == TRUE) :
 ?>
 
 <div class="clearfix"></div>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">  
+	<?php  
+	/**
+	 * Get Post By Type
+	 *
+	 * @param String (post_type)
+	 * @param Integer (limit)
+	 * @param Integer (offset)
+	 **/
+	foreach( $this->posts->get_type('headline', 3, 0, 'result') as $key => $post) :
+		$date = new DateTime($post->post_date);
 
-
-<div class="featured-news" itemscope itemtype="http://schema.org/Article">
+	?>
+        <div class="item <?php if($key==0) echo 'active'; ?>">
+        	<img src="<?php echo $this->posts->get_thumbnail($post->image, 'large'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
+           <div class="carousel-caption">
+            	<a href="<?php echo $this->posts->permalink($post->ID) ?>">
+            		<?php echo $post->post_title; ?> <br>
+            		<span><?php echo $date->format('d/m/Y H:i')." WIB"; ?></span>
+           		</a>
+          </div>
+        </div><!-- End Item -->
+    <?php  
+	endforeach;
+    ?>
+      </div><!-- End Carousel Inner -->
+      <div class="carousel-controls">
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+      </div>
+    </div><!-- End Carousel -->
+    <ul class="list-group list-group-horizontal">
+    <?php  
+    foreach( $this->posts->get_type('headline', 3, 0, 'result') as $key => $post) :
+    ?>
+        <li data-slide-to="<?php echo $key ?>" data-target="#myCarousel" class="list-group-item">
+			<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
+			<div class="title">
+				<a href="<?php echo $this->posts->permalink($post->ID) ?>"><?php echo $post->post_title; ?></a>
+			</div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+<!-- <div class="featured-news" itemscope itemtype="http://schema.org/Article">
 	<?php  
 	/**
 	 * Get Post By Type
@@ -69,6 +116,6 @@ if( $this->posts->get_type('headline', 1, 0, 'result') == TRUE) :
 			?>
 		</ul>
 	</div>
-</div>
+</div> -->
 <div class="clearfix"></div>
 <?php endif; ?>

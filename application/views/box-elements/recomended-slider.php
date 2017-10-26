@@ -3,13 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * The template for displaying the Headline News
  *
- * Displays all of the New News right element.
+ * Displays all of the headline News right element.
  *
  * @package Codeigniter
  * @subpackage Tamtv Template
+ * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
-$box = $this->themes->get('thumbnail-new');
+$box = $this->themes->get('recomended-slider');
 
 $value = json_decode($box->meta_value);
 ?>
@@ -18,10 +19,11 @@ $value = json_decode($box->meta_value);
 	<div class="block-box">
 		<h3 class="featured-heading"> 
 			<?php echo $box->meta_name ?> 
-			<a href="<?php echo base_url("terbaru"); ?>" class="btn btn-read-all pull-right">Lihat Semua ..</a>
+			<a href="<?php echo base_url("rekomendasi"); ?>" class="btn btn-read-all pull-right">Lihat Semua ..</a>
 		</h3> 
 		<div class="line"></div>
 	</div>
+	<div class="owl-carousel owl-theme owl-loaded">
 	<?php  
 	/**
 	 * Get Post By Type
@@ -30,11 +32,9 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->latest($value->limit, 0, 'result') as $key => $post) :
-		if( $key % 3 == 0)
-			echo '<div class="clearfix"></div>';
+	foreach( $this->posts->get_type('headline', $value->limit, 1, 'result') as $post) :
 	?>
-	<div class="box-category-1 c3">
+	<div class="box-category-1">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
 			<img src="<?php echo $this->posts->get_thumbnail($post->image, 'small'); ?>" alt="<?php echo $post->post_title; ?>" class="img-responsive">
 		</a>
@@ -47,5 +47,11 @@ $value = json_decode($box->meta_value);
 		</div>
 	</div>
 	<?php endforeach; ?>
+	    <div class="owl-controls"></div>
+	</div>
 </div>
 <div class="clearfix"></div>
+<?php
+/* End of file headline-slider.php */
+/* Location: ./application/views/box-elements/headline-slider.php */
+?>

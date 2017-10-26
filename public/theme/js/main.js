@@ -79,39 +79,44 @@ $(document).ready(function()
         auto:true
     });
 
+    $('.owl-carousel').owlCarousel({
+        items:3,
+        lazyLoad:true,
+        margin:10,
+        nav:true,
+        dots:false,
+        autoplay:true,
+        autoplayTimeout:3000,
+        navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>']
+    });
+
     /* VIEWER */
     $('.galery').viewer({
         rotatable:false,
         scalable:false
     });
 
-        $( '#example5' ).sliderPro({
-            width: 600,
-            height: 380,
-            orientation: 'horizontal',
-            loop: true,
-            arrows: false,
-            buttons: false,
-            thumbnailsPosition: 'right',
-            thumbnailPointer: false,
-            thumbnailWidth: 170,
-            breakpoints: {
-                800: {
-                    thumbnailsPosition: 'bottom',
-                    thumbnailWidth: 270,
-                    thumbnailHeight: 100
-                },
-                500: {
-                    thumbnailsPosition: 'bottom',
-                    thumbnailWidth: 120,
-                    thumbnailHeight: 50
-                }
-
+    var clickEvent = false;
+    $('#myCarousel').carousel({
+        interval:   4000    
+    }).on('click', '.list-group li', function() {
+            clickEvent = true;
+            $('.list-group li').removeClass('active');
+            $(this).addClass('active');     
+    }).on('slid.bs.carousel', function(e) {
+        if(!clickEvent) {
+            var count = $('.list-group').children().length -1;
+            var current = $('.list-group li.active');
+            current.removeClass('active').next().addClass('active');
+            var id = parseInt(current.data('slide-to'));
+            if(count == id) {
+                $('.list-group li').first().addClass('active'); 
             }
-        });
-
-
+        }
+        clickEvent = false;
+    });
 
 });
+
 
 console.log("%cHey, what are you doing?%c\nAre you a JavaScript developer? We want you! visit http://teitramega.co.id/career","font-family:sans-serif;font-size: 56px; color: #010080;text-shadow: 0 3px #cecece; webkit-text-stroke: 1px #d87d02;","font-family:sans-serif;font-size:18px;font-weight:600;color:#CDCDCD;");

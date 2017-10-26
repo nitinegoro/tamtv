@@ -22,9 +22,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/main.css?v=".md5(date('YmdHis'))); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/daterangepicker-bs3.min.css"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("public/bxslider/jquery.bxslider.min.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("public/bxslider/jquery.bxslider.css?v=".md5(date('YmdHis'))); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/viewer/viewer.min.css"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("public/theme/carousel/css/slider-pro.css?v=".md5(date('YmdHis'))); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('public/owlcarousel/assets/owl.carousel.min.css') ?>">
+	<link rel="stylesheet" href="<?php echo base_url('public/owlcarousel/assets/owl.theme.default.min.css') ?>">
 	<?php  
 	/*
 	*  Meta Tags

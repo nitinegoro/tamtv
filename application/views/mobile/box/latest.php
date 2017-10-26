@@ -6,7 +6,7 @@
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->latest(15, 0) as $key => $post) :
+	foreach( $this->posts->latest(15, 0, 'result') as $key => $post) :
 	?>
 	<div class="media">
   		<div class="media-left">

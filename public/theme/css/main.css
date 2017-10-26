@@ -1385,3 +1385,97 @@ div.video-item > div.video-title > a:hover {
 .featured-heading > a.btn-read-all:hover {
   color: blue;
 }
+
+div.slider3 > div.box-category-1 {
+  float: left;
+  display: inline-block;
+}
+.owl-prev, .owl-next {
+  font-size: 14pt !important;
+  font-weight: bold !important;
+}
+.owl-prev {
+    left: 0px;
+    position: absolute;
+    top: 20%;
+}
+
+.owl-next {
+    right: 5px;
+    position: absolute;
+    top: 20%;
+    right: 0px;
+}
+
+.carousel {
+  margin-top: 15px;
+}
+.carousel-inner > .item > img {
+  width: 100%!important;
+  max-height: 350px !important;
+}
+#myCarousel .carousel-caption {
+    left:0;
+  right:0;
+  bottom:0;
+  text-align:left;
+  padding:10px;
+  background:rgba(0,0,0,0.3);
+  text-shadow:none;
+}
+#myCarousel .carousel-caption a {
+  color: white;
+  font-size: 16pt;
+}
+#myCarousel .carousel-caption a span {
+  font-size: 9pt;
+}
+#myCarousel .list-group .active {
+  background-color:#eee;  
+}
+
+.list-group-item:first-child {
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
+.list-group-horizontal {
+  background: black;
+}
+.list-group-horizontal .list-group-item {
+  background: transparent;
+  width:32.90%;
+  border:none;
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 10px;
+}
+.list-group-horizontal > .list-group-item > img {
+  cursor: pointer;
+}
+.list-group-horizontal .list-group-item > div.title  {
+  padding: 10px;
+}
+.list-group-horizontal .list-group-item > div.title a {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.3em;
+  margin-top: 20px;
+  font-size: 9pt;
+  font-weight: bold;
+  color: white;
+}
+.list-group-horizontal .list-group-item:first-child {
+  border-top-right-radius:0;
+  border-bottom-left-radius:0px;
+}
+.list-group-horizontal .list-group-item:last-child {
+  border-top-right-radius:0px;
+  border-bottom-left-radius:0;
+}
