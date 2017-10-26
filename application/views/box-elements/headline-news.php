@@ -17,6 +17,8 @@ if( $this->posts->get_type('headline', 1, 0, 'result') == TRUE) :
 ?>
 
 <div class="clearfix"></div>
+
+
 <div class="featured-news" itemscope itemtype="http://schema.org/Article">
 	<?php  
 	/**

@@ -84,6 +84,34 @@ $(document).ready(function()
         rotatable:false,
         scalable:false
     });
+
+        $( '#example5' ).sliderPro({
+            width: 600,
+            height: 380,
+            orientation: 'horizontal',
+            loop: true,
+            arrows: false,
+            buttons: false,
+            thumbnailsPosition: 'right',
+            thumbnailPointer: false,
+            thumbnailWidth: 170,
+            breakpoints: {
+                800: {
+                    thumbnailsPosition: 'bottom',
+                    thumbnailWidth: 270,
+                    thumbnailHeight: 100
+                },
+                500: {
+                    thumbnailsPosition: 'bottom',
+                    thumbnailWidth: 120,
+                    thumbnailHeight: 50
+                }
+
+            }
+        });
+
+
+
 });
 
 console.log("%cHey, what are you doing?%c\nAre you a JavaScript developer? We want you! visit http://teitramega.co.id/career","font-family:sans-serif;font-size: 56px; color: #010080;text-shadow: 0 3px #cecece; webkit-text-stroke: 1px #d87d02;","font-family:sans-serif;font-size:18px;font-weight:600;color:#CDCDCD;");

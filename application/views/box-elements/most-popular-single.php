@@ -27,7 +27,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->latest($value->limit, 0) as $key => $post) :
+	foreach( $this->posts->most_viewer($value->limit, 0) as $key => $post) :
 	?>
 	<div class="big-loop-item">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">

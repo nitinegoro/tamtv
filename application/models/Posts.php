@@ -114,15 +114,20 @@ class Posts extends CI_Model
 		return $this->db->get('posts', $limit, $offset)->result();
 	}
 
-	public function latest($limit = 6, $offset = 0)
+	public function latest($limit = 6, $offset = 0, $type = 'num')
 	{
 		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_excerpt');
 
-		$this->db->where_not_in('post_type', array('page', 'video', 'photo'));
+		$this->db->where_not_in('post_type', array('page'));
 
 		$this->db->order_by('post_date', 'desc');
 		
-		return $this->db->get('posts', $limit, $offset)->result();
+		if($type == 'num')
+		{
+			return $this->db->get('posts')->num_rows();
+		} else {
+			return $this->db->get('posts', $limit, $offset)->result();
+		}
 	}
 
 	public function tags($tags = 0, $limit = 6, $offset = 0, $type = 'num')

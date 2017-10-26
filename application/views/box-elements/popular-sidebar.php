@@ -10,8 +10,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  * @since Tamtv 1.0
  */
-$most = $this->themes->get('most-viewer');
-$mostj = json_decode($most->meta_value);
 
 $box = $this->themes->get('popular-sidebar');
 $value = json_decode($box->meta_value);
@@ -28,8 +26,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	$limit = ($this->router->fetch_method() == 'index') ? $mostj->limit : 0; 
-	foreach( $this->posts->most_viewer($value->limit, $limit) as $post) :
+	foreach( $this->posts->most_viewer($value->limit, 0) as $post) :
 	?>
 		<div class="media-item">
 			<div class="media-image">

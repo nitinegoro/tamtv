@@ -104,13 +104,14 @@
 	<script src="<?php echo base_url("public/theme/js/daterangepicker.js"); ?>"></script>
 	<script src="<?php echo base_url("public/bxslider/jquery.bxslider.min.js"); ?>"></script>
 	<script src="<?php echo base_url("public/viewer/viewer.min.js"); ?>"></script>
+	<script src="<?php echo base_url("public/theme/carousel/js/jquery.sliderPro.min.js"); ?>"></script>
 	<script>
 		var base_url = '<?php echo base_url(); ?>',
 			current_url = '<?php echo current_url(); ?>',
 			user_login = '<?php echo json_encode($this->user_login) ?>';
 	</script>
-	<script src="<?php echo base_url("public/theme/js/main.js"); ?>"></script>
-	<script src="<?php echo base_url("public/appjs/app.js"); ?>"></script>
+	<script src="<?php echo base_url("public/theme/js/main.js?v=".md5(date('YmdHis'))); ?>"></script>
+	<script src="<?php echo base_url("public/appjs/app.js?v=".md5(date('YmdHis'))); ?>"></script>
 	<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=59227929b27f700011ad0da3&product=inline-share-buttons' async='async'></script>
 </body>
 </html>

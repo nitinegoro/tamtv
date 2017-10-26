@@ -57,7 +57,7 @@ class Template
         $config['first_link'] = "&larr; ".lang('pagination_first_link');
         $config['first_tag_open'] = '<li class="">';
         $config['first_tag_close'] = '</li>';
-        $config['last_link'] = lang('pagination_last_link')." &raquo";
+        $config['last_link'] = lang('pagination_last_link')." &rarr;";
         $config['last_tag_open'] = '<li class="">';
         $config['last_tag_close'] = '</li>';
         $config['next_link'] = lang('pagination_next_link')." &rarr;";

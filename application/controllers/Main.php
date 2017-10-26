@@ -283,6 +283,39 @@ class Main extends Web
 		}
 	}
 
+	public function terbaru()
+	{
+		$this->meta_tags->set_meta_tag('title', 'Berita Terbaru' );
+		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
+
+		$this->breadcrumbs->unshift(2, 'Berita Terbaru', current_url());
+
+		$config = $this->template->pagination_list();
+
+		$config['base_url'] = site_url("terbaru");
+
+		$config['per_page'] = $this->per_page;
+		$config['total_rows'] = $this->posts->latest(null, null, 'num');
+
+		$this->pagination->initialize($config);
+
+		if(!$this->page)
+			$this->page = 0;
+
+		$this->data = array(
+			'title' => 'Berita Terbaru',
+			'contents'=>  $this->posts->latest($this->per_page, $this->page, 'results'),
+			'results_count' => $config['total_rows']
+		);
+
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('latest', $this->data);
+		} else {
+			$this->load->view("mobile/latest", $this->data);
+		}
+	}
+
 	public function page()
 	{
 		$post = $this->posts->get_page();

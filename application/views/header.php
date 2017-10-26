@@ -20,10 +20,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="shortcut icon" href="<?php echo base_url("public/image/site/favicon.png"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/bootstraps/css/bootstrap.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/main.min.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/main.css?v=".md5(date('YmdHis'))); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/theme/css/daterangepicker-bs3.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/bxslider/jquery.bxslider.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/viewer/viewer.min.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("public/theme/carousel/css/slider-pro.css?v=".md5(date('YmdHis'))); ?>">
 	<?php  
 	/*
 	*  Meta Tags
@@ -59,7 +60,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta http-equiv="content-language" content="In-Id" />
 	<meta name="twitter:creator" content="@tamnewsid" />
 	<link rel="dns-prefetch" href="https://api-read.facebook.com" />
-	<link rel="author" href="https://plus.google.com/[YOUR PERSONAL G+ PROFILE HERE]"/>
 	<!-- Global Site Tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106693435-1"></script>
 	<script>

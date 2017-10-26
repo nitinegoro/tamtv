@@ -58,6 +58,8 @@ $route['live'] = 'main/live';
 
 $route['search'] = 'main/search';
 
+$route['terbaru'] = 'main/terbaru';
+
 $route['signup'] = 'login/signup';
 
 $route['comments/submit'] = 'main/set_comment';

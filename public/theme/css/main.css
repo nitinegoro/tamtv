@@ -963,6 +963,7 @@ div.page-tag > h1 {
   margin-right: 5px;
   border-radius: 50px;
   transition: all 0.5s ease;
+  font-size: 7.5pt;
 }
 
 .pagination > li.active > a,
@@ -1370,3 +1371,17 @@ div.video-item > div.video-title > a:hover {
 }
 
 
+/* BTN READ ALL DETAIL */
+.featured-heading > a.btn-read-all {
+  font-family: 'Roboto', sans-serif;
+  font-size: 9pt;
+  margin-top: -15px;
+  font-weight: bold;
+  color: #737373;
+  text-transform: none;
+  border-radius: 3px;
+  transition: all 0.5s ease;
+}
+.featured-heading > a.btn-read-all:hover {
+  color: blue;
+}
