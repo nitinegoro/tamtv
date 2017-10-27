@@ -18,7 +18,10 @@ if( $this->posts->get_type('video', 4, 0, 'result') ) :
 ?>
 <section class="box-video-index">
 	<div class="block-box">
-		<h3 class="featured-heading"> <?php echo $box->meta_name ?> </h3> 
+		<h3 class="featured-heading"> 
+			<?php echo $box->meta_name ?> 
+			<a href="<?php echo base_url("video"); ?>" class="btn btn-read-all pull-right">Lihat Semua ..</a>
+		</h3> 
 		<div class="line"></div>
 	</div>
 	<?php foreach( $this->posts->get_type('video', 1, 0, 'result') as $row) : ?>
@@ -40,7 +43,11 @@ if( $this->posts->get_type('video', 4, 0, 'result') ) :
 	<div class="clearfix"></div>
 	<div class="box-video-thumbnail">
 		<div class="video-thumbnail">
-			<?php foreach( $this->posts->get_type('video', $value->limit, 1, 'result') as $row) : ?>
+			<?php 
+			foreach( $this->posts->get_type('video', --$value->limit, 1, 'result') as $key => $row) : 
+				if( $key % 4 == 0)
+					echo '<div class="clearfix bottom2x"></div>';
+			?>
 			<div class="video-item">
 				<div class="video-cover">
 					<a href="<?php echo $this->posts->permalink($row->ID) ?>" title="<?php echo $row->post_title; ?>">

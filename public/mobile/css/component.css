@@ -799,3 +799,29 @@ span,
 .box-login > .form-login {
   padding: 20px;
 }
+
+/* CAROUSEL */
+.carousel-inner > .item > img {
+  width: 100%!important;
+  max-height: 350px !important;
+}
+#myCarousel .carousel-caption {
+    left:0;
+  right:0;
+  bottom:0;
+  text-align:left;
+  padding:10px;
+  background:rgba(0,0,0,0.3);
+  text-shadow:none;
+}
+#myCarousel .carousel-caption a {
+  color: white;
+  font-size: 14pt;
+  line-height: 0em;
+}
+#myCarousel .carousel-caption a span {
+  font-size: 9pt;
+}
+#myCarousel .list-group .active {
+  background-color:#eee;  
+}

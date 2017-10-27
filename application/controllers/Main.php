@@ -315,6 +315,43 @@ class Main extends Web
 		}
 	}
 
+	/**
+	 * Berita Regional
+	 *
+	 **/
+	public function regional()
+	{
+		$this->meta_tags->set_meta_tag('title', 'Berita Lokal' );
+		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
+
+		$this->breadcrumbs->unshift(2, 'Berita Lokal', current_url());
+
+		$config = $this->template->pagination_list();
+
+		$config['base_url'] = site_url("terbaru");
+
+		$config['per_page'] = $this->per_page;
+		$config['total_rows'] = $this->posts->news_category_array(array(1,2,3,4,5,6,7,8), null, null, 'num');
+
+		$this->pagination->initialize($config);
+
+		if(!$this->page)
+			$this->page = 0;
+
+		$this->data = array(
+			'title' => 'Berita Lokal',
+			'contents'=>  $this->posts->news_category_array(array(1,2,3,4,5,6,7,8), $this->per_page, $this->page, 'results'),
+			'results_count' => $config['total_rows']
+		);
+
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('regional', $this->data);
+		} else {
+			//$this->load->view("mobile/regional", $this->data);
+		}
+	}
+
 	public function rekomendasi()
 	{
 		$this->meta_tags->set_meta_tag('title', 'Rekomendasi' );
@@ -345,6 +382,72 @@ class Main extends Web
 			$this->template->view('recomended', $this->data);
 		} else {
 			//$this->load->view("mobile/recomended", $this->data);
+		}
+	}
+
+	public function photo()
+	{
+		$this->meta_tags->set_meta_tag('title', 'Berita Foto' );
+		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
+
+		$this->breadcrumbs->unshift(2, 'Berita Foto', current_url());
+
+		$config = $this->template->pagination_list();
+
+		$config['base_url'] = site_url("Berita Foto");
+
+		$config['per_page'] = $this->per_page;
+		$config['total_rows'] = $this->posts->get_type('photo',null, null, 'num');
+
+		$this->pagination->initialize($config);
+
+		if(!$this->page)
+			$this->page = 0;
+
+		$this->data = array(
+			'title' => 'Berita Foto',
+			'contents'=>  $this->posts->get_type('photo',$this->per_page, $this->page, 'results'),
+			'results_count' => $config['total_rows']
+		);
+
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('photo', $this->data);
+		} else {
+			//$this->load->view("mobile/photo", $this->data);
+		}
+	}
+
+	public function video()
+	{
+		$this->meta_tags->set_meta_tag('title', 'Berita Video' );
+		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
+
+		$this->breadcrumbs->unshift(2, 'Berita Video', current_url());
+
+		$config = $this->template->pagination_list();
+
+		$config['base_url'] = site_url("Berita Video");
+
+		$config['per_page'] = $this->per_page;
+		$config['total_rows'] = $this->posts->get_type('video',null, null, 'num');
+
+		$this->pagination->initialize($config);
+
+		if(!$this->page)
+			$this->page = 0;
+
+		$this->data = array(
+			'title' => 'Berita Video',
+			'contents'=>  $this->posts->get_type('video',$this->per_page, $this->page, 'results'),
+			'results_count' => $config['total_rows']
+		);
+
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('video', $this->data);
+		} else {
+			//$this->load->view("mobile/video", $this->data);
 		}
 	}
 

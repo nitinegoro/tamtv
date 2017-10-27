@@ -60,6 +60,12 @@ $route['search'] = 'main/search';
 
 $route['terbaru'] = 'main/terbaru';
 
+$route['regional'] = 'main/regional';
+
+$route['photo'] = 'main/photo';
+
+$route['video'] = 'main/video';
+
 $route['rekomendasi'] = 'main/rekomendasi';
 
 $route['signup'] = 'login/signup';

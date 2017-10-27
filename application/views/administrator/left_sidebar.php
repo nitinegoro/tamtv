@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-   		<aside class="main-sidebar ">
-      	<section class="sidebar">
+   		<aside class="main-sidebar">
+      	<section class="sidebar ">
 
       		<ul class="sidebar-menu">
 	        	<li class="<?php echo active_link_controller('administrator'); ?>">

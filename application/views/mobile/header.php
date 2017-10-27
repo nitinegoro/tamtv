@@ -60,7 +60,7 @@
     <link rel="stylesheet" href="<?php echo base_url("public/mobile/css/style.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("public/bootstraps/css/bootstrap.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
-    <link rel="stylesheet" href="<?php echo base_url("public/mobile/css/component.css"); ?>">
+    <link rel="stylesheet" href="<?php echo base_url("public/mobile/css/component.css?v=".md5(date('YmdHis'))); ?>">
     
     <script src="<?php echo base_url("public/theme/js/jquery-3.2.1.min.js"); ?>"></script>
     <script src="<?php echo base_url("public/bootstraps/js/bootstrap.min.js"); ?>"></script>

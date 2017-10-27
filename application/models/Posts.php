@@ -173,6 +173,34 @@ class Posts extends CI_Model
 		}
 	}
 
+	public function news_category_array($category = NULL,  $limit = 6, $offset = 0, $type = 'num')
+	{
+		if( is_array($category) == FALSE )
+			show_error(
+				"Parameter pertama yang harus dimasukkan harus berupa array.", 
+				500, 
+				'Kesalahan Parameter'
+			);
+
+		$this->db->select('ID, post_title, post_slug, post_date, post_content, image, post_id, post_excerpt');
+
+		$this->db->where_not_in('post_type', 'page');
+
+		$this->db->join('posts', 'postcategory.post_id = posts.ID', 'inner');
+
+		$this->db->where_in('category_id', $category);
+
+		$this->db->order_by('viewer', 'asc');
+
+		$this->db->group_by('post_id');
+		if($type == 'num')
+		{
+			return $this->db->get('postcategory')->num_rows();
+		} else {
+			return $this->db->get('postcategory', $limit, $offset)->result();
+		}
+	}
+
 	public function search($limit = 16, $offset = 0, $type = 'num')
 	{
 		$keyword = $this->clean_string($this->input->get('q'));

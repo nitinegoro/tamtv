@@ -9,16 +9,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage Tamtv Template
  * @since Tamtv 1.0
  */
-$Nbox = $this->themes->get('thumbnail-new');
-$Nvalue = json_decode($Nbox->meta_value);
-
-$box = $this->themes->get('default-loop');
+$box = $this->themes->get('box-news-category-multiple');
 
 
 $value = json_decode($box->meta_value);
 ?>
 <div class="clearfix"></div>
-<div class="box-big-loop top2x" itemscope itemtype="http://schema.org/Article">
+<div class="box-big-loop" itemscope itemtype="http://schema.org/Article">
 	<div class="block-box">
 		<h3 class="featured-heading"> <?php echo $box->meta_name ?> </h3> 
 		<div class="line"></div>
@@ -31,7 +28,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->latest($value->limit, $Nvalue->limit, 'result') as $key => $post) :
+	foreach( $this->posts->news_category_array(array(1,2,3,4,5,6,7,8), $value->limit, 0, 'results') as $key => $post) :
 	?>
 	<div class="big-loop-item">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">
@@ -59,7 +56,7 @@ $value = json_decode($box->meta_value);
 					<?php if($this->posts->getmeta('video', $post->ID)) echo '<i class="fa fa-play-circle-o"></i> '; echo $post->post_title; ?>
 				</a>
 			</h4>
-			<p><?php echo ($post->post_excerpt != '') ? word_limiter(strip_tags($post->post_excerpt), 10) : strip_tags(word_limiter($post->post_content, 15)) ?></p>
+			<p><?php echo ($post->post_excerpt != '') ? strip_tags($post->post_excerpt) : strip_tags(word_limiter($post->post_content, 10)) ?></p>
 		</div>
 	</div>
 	<?php endforeach; ?>

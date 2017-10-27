@@ -1290,6 +1290,56 @@ div.headline-slider .headline-slider-item {
   color: white;
   font-size: 8pt;
 }
+
+/* Photo Page */
+.photo-page > .photo .one-overlay {
+  opacity: 0.4;
+}
+.photo-page > .photo a,
+.photo-page > .photo span, 
+.photo-page > .one-photo a,
+.photo-page > .one-photo span {
+  display: relative !important;
+}
+.photo-page > .photo a {
+  text-align: left;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  z-index: 99;
+  color: white;
+  font-size: 10pt;
+  font-weight: 500;
+  font-family: 'Cabin', sans-serif;
+  display: inherit;
+}
+.photo-page > .one-photo a {
+  text-align: left;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 99;
+  color: white;
+  font-size: 14pt;
+  font-weight: 500;
+  font-family: 'Cabin', sans-serif;
+  display: inherit;
+}
+.photo-page > .photo span,
+.photo-page > .one-photo span {
+  display: inherit;
+  text-align: left;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 99;
+  color: white;
+  font-size: 8pt;
+}
+
 /* BOX VIDEO */
 .box-vidio-one {
 
@@ -1429,7 +1479,6 @@ div.slider3 > div.box-category-1 {
 }
 .carousel-inner > .item > img {
   width: 100%!important;
-  max-height: 350px !important;
 }
 #myCarousel .carousel-caption {
     left:0;
@@ -1465,7 +1514,7 @@ div.slider3 > div.box-category-1 {
 }
 .list-group-horizontal .list-group-item {
   background: transparent;
-  width:32.90%;
+  width:32.89%;
   border:none;
   display: inline-block;
   padding: 0px;

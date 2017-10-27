@@ -23,7 +23,7 @@ $this->load->view('mobile/header', $this->data);
 	 *
 	 * @var string
 	 **/
-	$this->load->view('mobile/box/topic-trend-top', $this->data );
+	//$this->load->view('mobile/box/topic-trend-top', $this->data );
 	
 	/**
 	 * Headline News
@@ -67,8 +67,7 @@ $this->load->view('mobile/header', $this->data);
 <div class="bg-blue">
 	<div class="container-fluid">
 		<div class="box">
-			<a href="" class="more-button-icon"><i class="fa fa-plus"></i></a>
-			<h3 class="box-heading">Most popular</h3>
+			<h3 class="box-heading">Terpopoler</h3>
 		</div>
 	</div>
 	<?php  
