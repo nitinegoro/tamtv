@@ -22,7 +22,7 @@ $value = json_decode($box->meta_value);
 	 *
 	 * @param String (Type)
 	 **/
-	foreach( $this->posts->get_type('headline', $value->limit, 1, 'result') as $post) :
+	foreach( $this->posts->get_type('headline', $value->limit, 0, 'result') as $post) :
 	?>
 	<div class="c2 headline-slider-item">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">

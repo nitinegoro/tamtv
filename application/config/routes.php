@@ -60,6 +60,8 @@ $route['search'] = 'main/search';
 
 $route['terbaru'] = 'main/terbaru';
 
+$route['rekomendasi'] = 'main/rekomendasi';
+
 $route['signup'] = 'login/signup';
 
 $route['comments/submit'] = 'main/set_comment';

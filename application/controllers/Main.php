@@ -57,7 +57,6 @@ class Main extends Web
 	public function index()
 	{
 		$this->meta_tags->set_meta_tag('title', $this->options->get('sitename') );
-		$this->meta_tags->set_meta_tag('news_keywords', '' );
 		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
 
 		$this->data = array(
@@ -254,7 +253,7 @@ class Main extends Web
 	public function search()
 	{
 		$this->meta_tags->set_meta_tag('title', $this->options->get('sitename') );
-		$this->meta_tags->set_meta_tag('news_keywords', '' );
+		$this->meta_tags->set_meta_tag('news_keywords', $this->query );
 		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
 
 		$config = $this->template->pagination_list();
@@ -312,7 +311,40 @@ class Main extends Web
 		{
 			$this->template->view('latest', $this->data);
 		} else {
-			$this->load->view("mobile/latest", $this->data);
+			//$this->load->view("mobile/latest", $this->data);
+		}
+	}
+
+	public function rekomendasi()
+	{
+		$this->meta_tags->set_meta_tag('title', 'Rekomendasi' );
+		$this->meta_tags->set_meta_tag('description', $this->options->get('sitedescription') );
+
+		$this->breadcrumbs->unshift(2, 'Rekomendasi', current_url());
+
+		$config = $this->template->pagination_list();
+
+		$config['base_url'] = site_url("rekomendasi");
+
+		$config['per_page'] = $this->per_page;
+		$config['total_rows'] = $this->posts->get_type('recomended',null, null, 'num');
+
+		$this->pagination->initialize($config);
+
+		if(!$this->page)
+			$this->page = 0;
+
+		$this->data = array(
+			'title' => 'Rekomendasi',
+			'contents'=>  $this->posts->get_type('recomended',$this->per_page, $this->page, 'results'),
+			'results_count' => $config['total_rows']
+		);
+
+		if( $this->agent->is_mobile() == FALSE) 
+		{
+			$this->template->view('recomended', $this->data);
+		} else {
+			//$this->load->view("mobile/recomended", $this->data);
 		}
 	}
 

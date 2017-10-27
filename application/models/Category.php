@@ -166,6 +166,13 @@ class Category extends CI_Model
 	{
 		return $this->db->get('categories')->result();
 	}
+
+	public function get_category_uri($category = 0)
+	{
+		$cat = $this->get($category);
+
+		return base_url("kategori/{$cat->slug}");
+	}
 }
 
 /* End of file Category.php */

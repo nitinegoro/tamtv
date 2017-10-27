@@ -32,7 +32,7 @@ $value = json_decode($box->meta_value);
 	 * @param Integer (limit)
 	 * @param Integer (offset)
 	 **/
-	foreach( $this->posts->get_type('headline', $value->limit, 1, 'result') as $post) :
+	foreach( $this->posts->get_type('recomended', $value->limit, 1, 'result') as $post) :
 	?>
 	<div class="box-category-1">
 		<a href="<?php echo $this->posts->permalink($post->ID) ?>" title="<?php echo $post->post_title; ?>">

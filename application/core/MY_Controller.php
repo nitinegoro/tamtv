@@ -30,7 +30,7 @@ class Web extends MY_Controller
 		);
 		
 		$this->load->model(
-			array('menus', 'options','themes', 'tags','posts','category','user','polling','comment','visitors')
+			array('menus', 'options','themes', 'tags','posts','category','user','polling','comment','visitors','category')
 		);
 
 		if($this->session->userdata('user_login') != FALSE)  

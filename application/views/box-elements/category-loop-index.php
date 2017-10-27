@@ -16,7 +16,10 @@ $value = json_decode($box->meta_value);
 <div class="clearfix"></div>
 <div class="box-big-loop" itemscope itemtype="http://schema.org/Article">
 	<div class="block-box">
-		<h3 class="featured-heading"> <?php echo $box->meta_name ?> </h3> 
+		<h3 class="featured-heading"> 
+			<?php echo $box->meta_name ?> 
+			<a href="<?php echo $this->category->get_category_uri($value->category); ?>" class="btn btn-read-all pull-right">Lihat Semua ..</a>
+		</h3> 
 		<div class="line"></div>
 	</div>
 	<?php  

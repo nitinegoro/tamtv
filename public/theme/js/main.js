@@ -91,10 +91,7 @@ $(document).ready(function()
     });
 
     /* VIEWER */
-    $('.galery').viewer({
-        rotatable:false,
-        scalable:false
-    });
+    $('.galery').lightGallery();
 
     var clickEvent = false;
     $('#myCarousel').carousel({

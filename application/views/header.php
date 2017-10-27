@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" href="<?php echo base_url("public/bxslider/jquery.bxslider.css?v=".md5(date('YmdHis'))); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("public/viewer/viewer.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('public/owlcarousel/assets/owl.carousel.min.css') ?>">
-	<link rel="stylesheet" href="<?php echo base_url('public/owlcarousel/assets/owl.theme.default.min.css') ?>">
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url("public/lightgallery/dist/css/lightGallery.min.css") ?>" />  
 	<?php  
 	/*
 	*  Meta Tags

@@ -1390,6 +1390,24 @@ div.slider3 > div.box-category-1 {
   float: left;
   display: inline-block;
 }
+.owl-theme .owl-nav [class*='owl-'] {
+  color: #FFF;
+  font-size: 14px;
+  margin: 5px;
+  padding: 4px 7px;
+  background: #666;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 3px; 
+}
+.owl-theme .owl-nav [class*='owl-']:hover {
+  background: #869791;
+  color: #FFF;
+  text-decoration: none; 
+}
+.owl-controls {
+  color: red;
+}
 .owl-prev, .owl-next {
   font-size: 14pt !important;
   font-weight: bold !important;
@@ -1399,7 +1417,6 @@ div.slider3 > div.box-category-1 {
     position: absolute;
     top: 20%;
 }
-
 .owl-next {
     right: 5px;
     position: absolute;
